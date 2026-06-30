@@ -1,0 +1,8 @@
+/* Canonical brand tokens — activate only inside .brand-furgenics */
+.brand-furgenics {
+  --fg-ink: #1a1a1a;
+  --fg-paper: #f5f2eb;
+  --fg-accent: #3d2e24;
+  --fg-muted: #6b6560;
+  --fg-grid: rgba(26, 26, 26, 0.12);
+}

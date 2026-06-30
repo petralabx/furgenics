@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "plx-brand/v1",
+  "repoKind": "marketing-brand",
+  "brand": {
+    "slug": "furgenics",
+    "displayName": "Furgenics"
+  },
+  "designSystem": {
+    "adoptsPlxTokens": false,
+    "tokenPrefix": "--fg-",
+    "boundaryClass": "brand-furgenics",
+    "decidedBy": "vince",
+    "decidedAt": "2026-06-30",
+    "rationale": "Consumer-facing Furgenics brand; own token layer; PLX-structure bundle."
+  },
+  "mc": {
+    "github": "Petra-Lab-X/furgenics",
+    "registryId": "furgenics"
+  },
+  "sharedBrandSpine": {
+    "wordmark": true,
+    "periodicMark": false,
+    "favicons": true
+  }
+}
