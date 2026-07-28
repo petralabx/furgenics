@@ -14,28 +14,32 @@
 {%- if product.metafields.custom.faqs -%}
   {%- assign faq_list = product.metafields.custom.faqs.value -%}
   {%- if faq_list.size > 0 -%}
-    <div class="furgenics-faq" style="margin: 40px 0; padding: 32px 0; border-top: 1px solid #e5e5e5;">
+    <div class="furgenics-faq" style="margin: 40px 0; padding: 32px 0 0; border-top: 1px solid #e5e5e5;">
       <h2 style="font-size: 28px; margin-bottom: 24px; font-weight: 600;">Frequently Asked Questions</h2>
       {%- for faq in faq_list -%}
         {%- capture rendered_q -%}{%- render 'token-substitution', text: faq.q -%}{%- endcapture -%}
         {%- capture rendered_a -%}{%- render 'token-substitution', text: faq.a -%}{%- endcapture -%}
-        <details style="margin-bottom: 12px; padding: 16px 20px; background: #f8f8f8; border-radius: 8px; cursor: pointer;">
-          <summary style="font-weight: 600; font-size: 16px; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span>{{ rendered_q }}</span>
-            <span style="font-size: 24px; line-height: 1; margin-left: 12px;">+</span>
+        <details class="furgenics-faq-item">
+          <summary>
+            <span class="furgenics-faq-q">{{ rendered_q }}</span>
+            <span class="furgenics-faq-arrow" aria-hidden="true">&#9013;</span>
           </summary>
-          <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e0e0e0; line-height: 1.6; color: #333;">
-            {{ rendered_a }}
-          </div>
+          <div class="furgenics-faq-a">{{ rendered_a }}</div>
         </details>
       {%- endfor -%}
     </div>
 
+    {%- comment -%} Unified Furgenics PDP accordion style (2026-07-28) — keep
+        in sync with snippets/description-accordion.liquid. {%- endcomment -%}
     <style>
-      .furgenics-faq details[open] summary span:last-child { transform: rotate(45deg); transition: transform 0.2s; }
-      .furgenics-faq summary::-webkit-details-marker { display: none; }
-      .furgenics-faq summary { outline: none; }
-      .furgenics-faq details[open] { background: #f0f0f0; }
+      .furgenics-faq-item { border-bottom: 1px solid #e5e5e5; }
+      .furgenics-faq-item:first-of-type { border-top: 1px solid #e5e5e5; }
+      .furgenics-faq-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; outline: none; }
+      .furgenics-faq-item > summary::-webkit-details-marker { display: none; }
+      .furgenics-faq-q { font-weight: 700; line-height: 1.2; }
+      .furgenics-faq-arrow { display: flex; align-items: center; justify-content: center; width: 20px; flex-shrink: 0; line-height: 1; transition: transform 0.25s ease; }
+      .furgenics-faq-item[open] > summary .furgenics-faq-arrow { transform: rotate(180deg); }
+      .furgenics-faq-a { padding: 0 0 16px; line-height: 1.6; color: #555; }
     </style>
   {%- endif -%}
 {%- endif -%}

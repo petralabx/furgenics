@@ -73,7 +73,10 @@
     {%- assign _inci = product.metafields.custom.full_ingredients.value -%}
     {%- if _show_ingredients and _inci != blank -%}
       <details class="furgenics-pdp-acc-item" id="pdp-full-ingredients-inci">
-        <summary><h2 class="furgenics-pdp-acc-heading">Full ingredients (INCI)</h2></summary>
+        <summary>
+          <h2 class="furgenics-pdp-acc-heading">Full ingredients (INCI)</h2>
+          <span class="furgenics-pdp-acc-arrow" aria-hidden="true">&#9013;</span>
+        </summary>
         <div class="furgenics-pdp-acc-body"><p>{{ _inci }}</p></div>
       </details>
     {%- endif -%}
@@ -92,7 +95,10 @@
       {%- assign _body = _section | remove_first: _head_and_rest[0] | remove_first: '</h2>' -%}
 
       <details class="furgenics-pdp-acc-item" id="pdp-{{ _heading | handleize }}"{% if _open_first and _row == 1 %} open{% endif %}>
-        <summary><h2 class="furgenics-pdp-acc-heading">{{ _heading }}</h2></summary>
+        <summary>
+          <h2 class="furgenics-pdp-acc-heading">{{ _heading }}</h2>
+          <span class="furgenics-pdp-acc-arrow" aria-hidden="true">&#9013;</span>
+        </summary>
         <div class="furgenics-pdp-acc-body">{{ _body }}</div>
       </details>
     {%- endfor -%}
@@ -101,17 +107,19 @@
     {%- if _ingredients_position > _section_count -%}{{ _ingredients_row }}{%- endif -%}
   </div>
 
-  {%- comment -%} Neutral baseline styling — theme team may restyle to match
-      the theme's collapsible-tab look; keep class names stable. {%- endcomment -%}
+  {%- comment -%} Unified Furgenics PDP accordion style (2026-07-28): bold
+      title + rotating chevron + hairline rows, matching the look of the
+      retired metafield custom_liquid rows and snippets/furgenics-product-faqs.
+      Keep class names stable. {%- endcomment -%}
   <style>
-    .furgenics-pdp-accordion { margin-top: 1.5rem; border-top: 1px solid rgba(0, 0, 0, 0.12); }
-    .furgenics-pdp-acc-item { border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
-    .furgenics-pdp-acc-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0.25rem; }
+    .furgenics-pdp-accordion { margin-top: 1.5rem; border-top: 1px solid #e5e5e5; }
+    .furgenics-pdp-acc-item { border-bottom: 1px solid #e5e5e5; }
+    .furgenics-pdp-acc-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; }
     .furgenics-pdp-acc-item > summary::-webkit-details-marker { display: none; }
-    .furgenics-pdp-acc-item > summary::after { content: "+"; font-size: 1.4em; line-height: 1; flex: none; }
-    .furgenics-pdp-acc-item[open] > summary::after { content: "\2013"; }
-    .furgenics-pdp-acc-heading { margin: 0; font-size: 1.05em; }
-    .furgenics-pdp-acc-body { padding: 0 0.25rem 1.25rem; }
+    .furgenics-pdp-acc-heading { margin: 0; font-size: inherit; font-weight: 700; line-height: 1.2; }
+    .furgenics-pdp-acc-arrow { display: flex; align-items: center; justify-content: center; width: 20px; flex-shrink: 0; line-height: 1; transition: transform 0.25s ease; }
+    .furgenics-pdp-acc-item[open] > summary .furgenics-pdp-acc-arrow { transform: rotate(180deg); }
+    .furgenics-pdp-acc-body { padding: 0 0 16px; line-height: 1.6; color: #555; }
   </style>
 
   <script>
