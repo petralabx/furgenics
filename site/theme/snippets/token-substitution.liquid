@@ -5,13 +5,29 @@
   Single source of truth for [[PRICE]] / [[VALUE]] / [[COMPETITOR]] / [[DISCOUNT]] tokens.
 
   Called by:
-    - sections/main-product.liquid           (product descriptions)
+    - sections/main-product.liquid           (product descriptions + Product JSON-LD)
     - sections/main-page-pillar.liquid       (pillar page bodies)
     - snippets/furgenics-product-faqs.liquid (visible FAQ accordion)
     - snippets/furgenics-schema.liquid       (FAQPage JSON-LD schema)
 
+  Parameters:
+    text   (string)  The text to substitute tokens in.
+    plain  (boolean) Optional. When true, the returned string is passed
+                     through strip_html, so substituted values (competitor
+                     spans, discount banner) come out as plain text. Use for
+                     JSON-LD / meta contexts. Safe there because Shopify's
+                     structured_data output escapes its own angle brackets
+                     (\u003c), so strip_html only removes tags this snippet
+                     inserted.
+
+  Fallback behavior (2026-07-28): if a [[PRICE:handle]] product is not
+  visible to the storefront (draft/unpublished — all_products returns blank),
+  the token is replaced with 'currently unavailable online' instead of
+  leaking raw [[...]] brackets to customers. Root-cause fix is publishing
+  the product; this is the safety net.
+
   When adding a new PRICE handle, VALUE key, or COMPETITOR slug:
-  edit this file only. All four call sites pick up the change automatically.
+  edit this file only. All call sites pick up the change automatically.
 
   Maintenance reference: brands/furgenics/knowledge/content-style-guide.md
 {%- endcomment -%}
@@ -27,6 +43,8 @@
     {%- if tprod != blank and tprod.price != blank -%}
       {%- assign price_value = tprod.price | money -%}
       {%- assign rendered = rendered | replace: price_token, price_value -%}
+    {%- else -%}
+      {%- assign rendered = rendered | replace: price_token, 'currently unavailable online' -%}
     {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
@@ -158,4 +176,6 @@
 {%- capture discount_banner_html -%}{%- render 'discount-banner' -%}{%- endcapture -%}
 {%- assign rendered = rendered | replace: '[[DISCOUNT]]', discount_banner_html -%}
 
-{{- rendered -}}
+{%- comment -%} strip_newlines: multi-line substituted values (discount banner)
+    would otherwise inject literal control characters into JSON strings. {%- endcomment -%}
+{%- if plain -%}{{- rendered | strip_html | strip_newlines -}}{%- else -%}{{- rendered -}}{%- endif -%}
