@@ -774,8 +774,20 @@
       endif
     -%}
 
+    {%- comment -%}
+      Shopify's structured_data filter serializes the raw product body, so
+      Furgenics [[PRICE]]/[[VALUE]]/[[COMPETITOR]]/[[DISCOUNT]] tokens would
+      leak into the JSON-LD description that search/AI engines read. Run the
+      serialized JSON through token-substitution in plain mode (values
+      inserted as plain text; structured_data escapes its own angle brackets,
+      so strip_html only touches what the substitution inserted).
+    {%- endcomment -%}
+    {%- capture furgenics_structured_data -%}{{ product | structured_data }}{%- endcapture -%}
+    {%- if furgenics_structured_data contains '[[' -%}
+      {%- capture furgenics_structured_data -%}{%- render 'token-substitution', text: furgenics_structured_data, plain: true -%}{%- endcapture -%}
+    {%- endif -%}
     <script type="application/ld+json">
-      {{ product | structured_data }}
+      {{ furgenics_structured_data }}
     </script>
   </div>
 </product-info>
