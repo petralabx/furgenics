@@ -27,11 +27,23 @@
           "type": "price",
           "settings": {}
         },
+        "furgenics_price_economics": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if product.description contains '[[VALUE:dilution-ratio]]' %}\n<p class=\"furgenics-price-economics\">{% render 'token-substitution', text: '[[VALUE:dilution-ratio]] \u2014 [[VALUE:working-gallons-per-bottle]], [[VALUE:per-working-gallon-cost-narrative]].' %}</p>\n<style>\n  .furgenics-price-economics { margin: 0.2rem 0 0; font-size: 0.95em; color: #555; }\n</style>\n{% endif %}"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
+          }
+        },
+        "furgenics_groomer_cta": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% assign furgenics_gp_url = routes.root_url %}\n{% if furgenics_gp_url == '/' %}{% assign furgenics_gp_url = '' %}{% endif %}\n<div class=\"furgenics-groomer-cta\">\n  {% if localization.country.iso_code == 'US' %}\n    Professional groomer? <a href=\"{{ furgenics_gp_url }}/pages/groomer-program\">Join the Groomer Program</a> for a first-order discount.\n  {% else %}\n    Professional groomer? <a href=\"{{ furgenics_gp_url }}/pages/groomer-program\">Join the Groomer Program</a> \u2014 free 8oz samples for verified pros.\n  {% endif %}\n</div>\n<style>\n  .furgenics-groomer-cta { margin: 1.2rem 0 0.4rem; padding: 10px 14px; border: 1px solid #e5e5e5; border-radius: 6px; font-size: 0.95em; }\n  .furgenics-groomer-cta a { color: inherit; }\n</style>"
           }
         },
         "variant_picker": {
@@ -64,7 +76,9 @@
         "vendor",
         "title",
         "price",
+        "furgenics_price_economics",
         "buy_buttons",
+        "furgenics_groomer_cta",
         "variant_picker",
         "quantity_selector",
         "description",
@@ -99,7 +113,6 @@
     },
     "related-products": {
       "type": "related-products",
-      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
