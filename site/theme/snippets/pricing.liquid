@@ -1,0 +1,55 @@
+{%- comment -%}
+  Furgenics — pricing snippet
+  Renders the live price of a product in the active Shopify Market's currency.
+  Markets-aware: serves CAD on /en-ca/, USD on /en-us/, etc.
+
+  Usage:
+    {% render 'pricing', handle: 'furgenics-gallon-hypoallergenic' %}
+    {% render 'pricing', handle: 'furgenics-gallon-oatmeal-aloe', variant_id: 41234567890 %}
+    {% render 'pricing', handle: 'furgenics-gallon-deshedding', show_compare_at: true %}
+    {% render 'pricing', product: product %}   (inside product context)
+
+  Parameters:
+    handle           (string)   Product handle. Required unless `product` is passed.
+    product          (object)   Product object. Bypasses lookup.
+    variant_id       (number)   Specific variant. Defaults to first variant.
+    show_compare_at  (boolean)  Render strike-through compare-at price. Default false.
+    wrapper_class    (string)   Extra CSS class on the wrapper span. Default empty.
+    inline           (boolean)  Render plain text only, no wrapper span. Default false.
+
+  Returns:
+    A <span class="furgenics-price"> wrapping the price, or plain text if inline=true.
+
+  Maintenance: edit only this file. All content that references our product prices
+  must use this snippet — see knowledge/content-style-guide.md.
+{%- endcomment -%}
+
+{%- if product == blank or product == empty -%}
+  {%- assign product = all_products[handle] -%}
+{%- endif -%}
+
+{%- if product == blank or product == empty -%}
+  {%- comment -%} Visible failure so missing handles surface in QA, not silently in production. {%- endcomment -%}
+  <span class="furgenics-price furgenics-price-missing" data-handle="{{ handle }}">[price unavailable: {{ handle }}]</span>
+{%- else -%}
+  {%- if variant_id -%}
+    {%- assign variant = product.variants | where: 'id', variant_id | first -%}
+  {%- endif -%}
+  {%- if variant == blank or variant == empty -%}
+    {%- assign variant = product.variants.first -%}
+  {%- endif -%}
+
+  {%- assign price_str = variant.price | money -%}
+  {%- assign compare_str = variant.compare_at_price | money -%}
+
+  {%- if inline -%}
+    {{- price_str -}}
+  {%- else -%}
+    <span class="furgenics-price {{ wrapper_class }}" data-handle="{{ handle | default: product.handle }}">
+      {{- price_str -}}
+      {%- if show_compare_at and variant.compare_at_price > variant.price -%}
+        <span class="furgenics-price-strike">{{ compare_str }}</span>
+      {%- endif -%}
+    </span>
+  {%- endif -%}
+{%- endif -%}

@@ -1,0 +1,148 @@
+<!--
+  Furgenics — oatmeal & aloe pillar rewrite (v2, token-driven + universal both-markets)
+  Target page: /pages/oatmeal-aloe-sensitive-skin-dog-shampoo
+  Targets queries: high-intent-04 / breed-03 cluster (oatmeal shampoo for sensitive skin)
+  Template: page.content-pillar
+  Drafted 2026-05-21. Replaces v1 (2026-04-23) which had:
+  - 4x hardcoded "$24.99 CAD" for Furgenics oatmeal shampoo
+  - Hardcoded annual-cost math ($38 CAD Furgenics, $168 Earthbath, $450 Burt's
+    Bees) that locks in specific prices and is now stale
+  - Hardcoded competitor prices: Earthbath at "$32 CAD/gal" (actual capture
+    2026-05: $114.30 CAD — v1 was substantially out of date), Burt's Bees at
+    "$14 CAD per 16oz" (actual: $9.99 CAD), Tropiclean "$45-60 USD", Nature's
+    Specialties "$80", #1 All Systems "$75+" — none Markets-aware
+  - "Canadian winters" framing in skin-condition context
+  - "ships from Ontario / Ships inside Canada free" CA-only framing
+  - "Canadian-made" hardcoded; "17 working gallons" hardcoded
+  - Hardcoded "$100 CAD" starter kit outlay
+
+  Token coverage:
+  - PRICE: oatmeal-aloe-shampoo-gallon, oatmeal-aloe-conditioner-gallon,
+    hypoallergenic-shampoo-gallon, deep-moisturizing-conditioner-gallon
+  - COMPETITOR: earthbath-oatmeal-aloe, burts-bees-oatmeal,
+    tropiclean-pro-hypoallergenic-oatmeal, natures-specialties-colloidal-oatmeal,
+    all-systems-botanical-oatmeal
+  - VALUE: dilution-ratio, working-gallons-per-bottle, made-in-canada
+  - DISCOUNT: near CTA
+
+  TO PUBLISH: same flow as prior pillars — see .md sister file checklist.
+-->
+
+<p><img src="https://cdn.shopify.com/s/files/1/0649/4653/6587/files/oat-conn_3.png?v=1729709668" alt="Furgenics Oatmeal &amp; Aloe Professional Dog Grooming Shampoo gallon — soothing colloidal oatmeal + aloe for sensitive-skin dogs in salon care" width="420" height="496" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p>For dogs with dry, itchy skin, hot spots, seasonal allergies, or sensitive coat conditions, an oatmeal and aloe-based shampoo is the professional standard. The colloidal oatmeal soothes irritation while the aloe provides anti-inflammatory support, and together they clean without the harsh detergents that trigger skin reactions. Furgenics Oatmeal &amp; Aloe Professional Dog Grooming Shampoo was formulated for daily salon use on sensitive-skin dogs and is priced at [[PRICE:oatmeal-aloe-shampoo-gallon]] per gallon direct from furgenics.com.</p>
+
+<p>Furgenics Oatmeal &amp; Aloe is a [[VALUE:dilution-ratio]] designed for professional groomers. One gallon yields [[VALUE:working-gallons-per-bottle]] and handles approximately 340 medium-sized dogs at typical usage. The formulation is sulfate-free, tearless, and pH-balanced specifically for canine skin. The formula is [[VALUE:made-in-canada]] and ships domestically in both markets (Canadian orders from Vaughan, Ontario; US orders from a US fulfillment partner). It's the right daily driver for any salon with a meaningful portion of clients whose dogs flag skin sensitivities during intake.</p>
+
+<p>Below is when to choose oatmeal shampoo over hypoallergenic alternatives, how Furgenics compares to retail-tier and salon-pro oatmeal shampoos on Amazon, and how to use it in your salon's sensitive-skin protocol.</p>
+
+<h2>When to use oatmeal and aloe shampoo</h2>
+
+<p>Oatmeal and aloe shampoos aren't one-size-fits-all — they're specifically indicated for particular skin conditions. Knowing when to reach for oatmeal versus hypoallergenic or another specialty formulation matters for coat outcomes.</p>
+
+<p><strong>Seasonal allergies and environmental irritation.</strong> Dogs with seasonal scratching (spring and fall particularly) benefit from the oatmeal's soothing properties. Reduces post-bath itching.</p>
+
+<p><strong>Post-hot-spot recovery.</strong> After a hot spot has been treated by a vet and has healed, regular bathing with oatmeal/aloe shampoo helps prevent recurrence by keeping the skin moisturized and calm.</p>
+
+<p><strong>Dry, flaky skin in winter.</strong> Cold-weather climates dry out most dog coats. Oatmeal helps restore moisture and reduce flaking without overloading the skin with oils.</p>
+
+<p><strong>Dogs recovering from allergic reactions.</strong> After the acute phase is treated by a vet, oatmeal shampoo supports gentle maintenance cleaning during recovery.</p>
+
+<p><strong>Senior dogs with reduced skin resilience.</strong> Older dogs often develop dry, thinning coats. Gentle oatmeal-based cleaning maintains skin health without stripping.</p>
+
+<p><strong>Post-medicated-shampoo maintenance.</strong> If a dog has been treated with a prescribed medicated shampoo and the vet has cleared regular bathing, oatmeal is the right next step.</p>
+
+<p><strong>When NOT to use oatmeal:</strong></p>
+
+<ul>
+  <li>Active hot spots or untreated skin infections — these need veterinary attention, not regular shampoo</li>
+  <li>Dogs with diagnosed severe allergies requiring prescription medicated shampoo (follow vet guidance)</li>
+  <li>Dogs with oily-coat conditions like seborrhea (needs a different specialty shampoo)</li>
+</ul>
+
+<h2>Oatmeal vs hypoallergenic: which shampoo to choose</h2>
+
+<p>Both shampoos serve sensitive-skin dogs, but the use cases differ.</p>
+
+<p><strong>Choose Oatmeal &amp; Aloe if:</strong> the dog has dry, itchy skin, seasonal allergies, mild irritation, or dandruff/flaking. Oatmeal's soothing and moisturizing properties directly address these symptoms. This is the right choice for the "my dog has been itching lately" complaint.</p>
+
+<p><strong>Choose Hypoallergenic if:</strong> the dog has known allergies to fragrances, dyes, or specific ingredients, or the owner specifically requests a formulation with minimal additives. Hypoallergenic is about removing potential triggers; oatmeal is about actively soothing existing irritation.</p>
+
+<p><strong>Many salons run both</strong> — oatmeal for dogs with active itchy/dry symptoms, hypoallergenic as the general-purpose daily driver for the broader mixed client base. The two SKUs cover 90%+ of sensitive-skin cases.</p>
+
+<h2>The pricing math for a salon running oatmeal</h2>
+
+<p>For a typical salon where 20% of the weekly book requires an oatmeal-based wash (e.g., 10 dogs a week out of 50), Furgenics Oatmeal &amp; Aloe at [[PRICE:oatmeal-aloe-shampoo-gallon]] per gallon delivers:</p>
+
+<ul>
+  <li>Dilution: [[VALUE:dilution-ratio]], yielding [[VALUE:working-gallons-per-bottle]]</li>
+  <li>Dogs per concentrate gallon: approximately 340 at 3 oz per wash</li>
+  <li>Gallons per year on 10 oatmeal washes per week: approximately 1.5 concentrate gallons</li>
+</ul>
+
+<p>The per-gallon prices on Amazon-tier alternatives — Earthbath, Burt's Bees retail bottles, Tropiclean, Nature's Specialties, #1 All Systems — are rendered in the comparison section below for your market. The annual cost gap compounds over time, and the professional-grade concentrate format keeps salon consistency from bath to bath.</p>
+
+<h2>Furgenics Oatmeal &amp; Aloe vs. the retail and salon-pro alternatives</h2>
+
+<p><strong>Furgenics Oatmeal &amp; Aloe Professional Gallon</strong> — [[PRICE:oatmeal-aloe-shampoo-gallon]], [[VALUE:dilution-ratio]], [[VALUE:made-in-canada]] and fulfilled domestically in both markets. Sulfate-free, tearless, professional-grade formulation. Best fit for salons handling sensitive-skin cases as a meaningful share of weekly volume.</p>
+
+<p><strong>Earthbath All Natural Oatmeal &amp; Aloe</strong> — [[COMPETITOR:earthbath-oatmeal-aloe]], ready-to-use (no dilution). Well-regarded consumer brand with good formulation. No concentrate economics — the rendered price is also the working-gallon price, which makes per-wash cost substantially higher than Furgenics at [[VALUE:dilution-ratio]]. Positioned primarily at home users rather than professional use.</p>
+
+<p><strong>Burt's Bees Oatmeal Shampoo</strong> — [[COMPETITOR:burts-bees-oatmeal]] (retail 16-oz bottle), commonly sold at consumer retailers in both markets. Retail-scale packaging — a 16-oz bottle covers roughly 5&ndash;6 baths at the typical 3 oz per medium dog. Impractical for salon volume.</p>
+
+<p><strong>Tropiclean Pro Hypoallergenic Oatmeal</strong> — [[COMPETITOR:tropiclean-pro-hypoallergenic-oatmeal]]. Professional-grade option with strong formulation and good rinse profile. Roughly 2&ndash;3x Furgenics per-gallon pricing for a comparable result; gap is most visible in salons with high sensitive-skin volume.</p>
+
+<p><strong>Nature's Specialties Colloidal Oatmeal</strong> — [[COMPETITOR:natures-specialties-colloidal-oatmeal]], 32:1 concentrate. Higher dilution stretches further per gallon, which narrows the per-wash gap, but upfront gallon price is multiples of Furgenics. Show-groomer favorite.</p>
+
+<p><strong>#1 All Systems Botanical Oatmeal</strong> — [[COMPETITOR:all-systems-botanical-oatmeal]]. Premium professional option, respected for show-coat work. Strong brand among competitive groomers. Per-gallon pricing typically higher than Furgenics; better fit for boutique show-grooming than production salon economics.</p>
+
+<h2>How to use Furgenics Oatmeal &amp; Aloe in salon practice</h2>
+
+<p>For a standard sensitive-skin dog wash:</p>
+
+<ol>
+  <li><strong>Dilute [[VALUE:dilution-ratio]]</strong> — for a 32 oz working bottle, 2 oz of Furgenics concentrate + 30 oz warm water</li>
+  <li><strong>Pre-brush thoroughly</strong> to remove loose fur and any mat starts</li>
+  <li><strong>Wet the coat completely</strong> with warm (not hot) water. Hot water aggravates dry skin</li>
+  <li><strong>Apply the diluted shampoo generously</strong> and massage into the coat for 2&ndash;3 minutes. The extended contact time is important for oatmeal's soothing properties to take effect</li>
+  <li><strong>Leave on for 3&ndash;5 minutes</strong> — longer than a standard wash, since the oatmeal and aloe need time to work on irritated skin</li>
+  <li><strong>Rinse thoroughly</strong> with warm water until completely clear. Residual shampoo on already-irritated skin can re-trigger itching</li>
+  <li><strong>Towel and dry on low heat.</strong> Avoid high-heat drying on sensitive-skin dogs</li>
+</ol>
+
+<p>For weekly or bi-weekly maintenance on dogs with chronic dry skin or seasonal allergies, this protocol can be used as often as needed without stripping the coat.</p>
+
+<h2>What to pair with Oatmeal &amp; Aloe shampoo</h2>
+
+<p>For a complete sensitive-skin protocol:</p>
+
+<ul>
+  <li><strong>Daily driver:</strong> <a href="/products/oatmeal-aloe-shampoo-gallon">Furgenics Oatmeal &amp; Aloe Shampoo Gallon</a> ([[PRICE:oatmeal-aloe-shampoo-gallon]]) for the wash</li>
+  <li><strong>Conditioning follow-up:</strong> <a href="/products/oatmeal-aloe-conditioner-gallon">Furgenics Oatmeal &amp; Aloe Conditioner Gallon</a> ([[PRICE:oatmeal-aloe-conditioner-gallon]]) for full moisture support after the wash</li>
+  <li><strong>For very dry or brittle coats:</strong> <a href="/products/deep-moisturizing-conditioner-gallon">Furgenics Deep Moisturizing Conditioner Gallon</a> ([[PRICE:deep-moisturizing-conditioner-gallon]]) as a weekly or bi-weekly intensive treatment</li>
+  <li><strong>For dogs with both sensitivities and hot-spot recovery:</strong> alternate Oatmeal &amp; Aloe with <a href="/products/hypoallergenic-shampoo-gallon">Furgenics Hypoallergenic Shampoo</a> ([[PRICE:hypoallergenic-shampoo-gallon]]) for maximum gentleness</li>
+</ul>
+
+<p>Four gallons cover the entire sensitive-skin practice.</p>
+
+<h2>Frequently asked questions</h2>
+
+<p><strong>Is this safe for dogs with known allergies?</strong><br>Yes for most general sensitivities. The formulation is sulfate-free, pH-balanced, and tearless. However, for dogs with diagnosed severe allergies or specific ingredient sensitivities, use a vet-recommended medicated shampoo. This is a gentle maintenance product, not a medical treatment.</p>
+
+<p><strong>Can I use this on puppies?</strong><br>Yes. Safe for puppies over 8 weeks. The gentle formulation works well for puppy coats that haven't fully developed their natural oil balance.</p>
+
+<p><strong>How often can I use oatmeal shampoo?</strong><br>For dogs with active dry/itchy skin, weekly baths are reasonable. For maintenance or prevention, every 2&ndash;4 weeks is typical. More frequent than weekly should be under veterinary guidance.</p>
+
+<p><strong>What about dogs with yeast infections or bacterial skin problems?</strong><br>These require vet-prescribed medicated shampoo. Oatmeal &amp; aloe is a gentle maintenance product, not an antimicrobial treatment. Use after the vet has resolved the acute condition.</p>
+
+<p><strong>Does this smell strongly?</strong><br>The scent is mild and subtle — natural oatmeal with light aloe notes. No artificial fragrance. Dogs with scent sensitivities typically tolerate this well.</p>
+
+<p><strong>Do you offer samples?</strong><br>Canadian groomers can request a free 8oz sample of Furgenics Oatmeal &amp; Aloe through the <a href="/pages/groomer-program">Groomer Program</a> (shipped from Vaughan, Ontario). US groomers get a first-order gallon discount through the same program instead, since US fulfillment doesn't ship non-revenue samples. Apply via the Groomer Program either way.</p>
+
+<h2>Ready to add Oatmeal &amp; Aloe to your sensitive-skin protocol?</h2>
+
+<p><a href="/products/oatmeal-aloe-shampoo-gallon">Furgenics Oatmeal &amp; Aloe Professional Dog Grooming Shampoo Gallon</a> is [[PRICE:oatmeal-aloe-shampoo-gallon]], ships domestically in Canada (from Vaughan, Ontario) or in the US (via fulfillment partner) in 3&ndash;5 business days. <a href="/products/oatmeal-aloe-shampoo-gallon">Order now.</a></p>
+
+[[DISCOUNT]]
+
+<p>Prefer to sample first? Request an 8oz bottle through the <a href="/pages/groomer-program">Groomer Program</a>. Questions? Email <a href="mailto:info@furgenics.com">info@furgenics.com</a>.</p>

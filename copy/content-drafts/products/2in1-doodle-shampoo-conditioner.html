@@ -1,0 +1,86 @@
+<!--
+  Furgenics — PDP rewrite (token-driven + universal both-markets)
+  Target product: 2in1-doodle-shampoo-conditioner (FUR-020)
+  GID: gid://shopify/Product/8104408252555
+  Drafted 2026-05-21. Third of 9 PDP token-conversion rewrites.
+
+  KNOWN STATUS QUIRK: This product is currently DRAFT (not ACTIVE) in Shopify.
+  The description update applies regardless of status; customers won't see
+  the new copy until Stephen publishes the product. Flagged in status report
+  alongside the FUR-020/FUR-037 SKU reconciliation note in knowledge/products.md.
+
+  Token coverage:
+  - PRICE: deep-moisturizing-conditioner-gallon (used 2× — in compare section
+    and as hydration follow-up); 2in1-hypoallergenic-shampoo-conditioner
+    (sensitive-skin fallback). NOT the product's own handle.
+  - VALUE: dilution-ratio, working-gallons-per-bottle, per-working-gallon-cost-narrative,
+    made-in-canada
+  - COMPETITOR: chris-christensen-day-to-day (show-coat poodle/doodle community
+    anchor), igroom-silk (modern salon-pro doodle-adjacent). We Love Doodles
+    mentioned qualitatively without a token (half-gallon Amazon-only niche).
+  - DISCOUNT: at the close
+
+  SEO fields (pushed separately via the `seo` field on update-product):
+  - SEO title: "Professional 2-in-1 Doodle Dog Shampoo Gallon | Furgenics" (56 chars)
+  - Meta description: "16:1 doodle 2-in-1 shampoo + conditioner with argan oil
+    and silk amino acids. Built for Goldendoodle, Labradoodle, and curly-coat
+    salon work." (142 chars)
+
+  CHEMISTRY CLAIMS APPROACH: this draft only references hero ingredients already
+  named in the pre-token live description (argan, coconut, shea, silk amino
+  acids, chamomile). No sulfate-free / paraben-free claims — INCI metafield
+  was not returned by get-product-by-id, so those claims can't be substantiated
+  from current data. Future cleanup pass can add those claims if INCI confirms.
+-->
+
+<p>Furgenics 2-in-1 Doodle Shampoo &amp; Conditioner is a [[VALUE:dilution-ratio]] formulated specifically for curly and wavy doodle coats — Goldendoodles, Labradoodles, Bernedoodles, Aussiedoodles, Sheepadoodles. Argan oil, coconut oil, shea butter, silk amino acids, and chamomile wash and condition the coat in one pass. One gallon yields [[VALUE:working-gallons-per-bottle]] — [[VALUE:per-working-gallon-cost-narrative]].</p>
+
+<h2>Why doodle coats need a different chemistry than straight or double coats</h2>
+
+<p>Doodle coats are structurally different from straight or double-coated breeds. The curl pattern traps dead hair and debris in the coat rather than shedding it out, so a routine wash leaves matted spots behind unless the formula has enough slip to release the tangles during the bath itself.</p>
+
+<p>Argan oil and shea butter handle the conditioning — heavy enough to penetrate the coat shaft and add slip without weighing down the wave pattern. Coconut oil reinforces moisture retention as doodle coats lose hydration over the wash cycle. Silk amino acids fill gaps in damaged sections of the hair shaft, tuned for the kinkier doodle structure. Chamomile adds a mild anti-irritant for clients with sensitive skin under the coat.</p>
+
+<p>The 2-in-1 format is the practical pick for production salons — one step, comparable slip to a separate shampoo-plus-conditioner pass on doodle coats, half the bath time on a tight booking day.</p>
+
+<h2>When to use Furgenics 2-in-1 Doodle</h2>
+
+<p><strong>Coat types:</strong> curly, wavy, thick, mat-prone, doodle-specific. The formulation is tuned for the kinked-curl structure that traps debris and resists release without slip-rich chemistry.</p>
+
+<p><strong>Breeds:</strong> Goldendoodles, Labradoodles, Bernedoodles, Aussiedoodles, Sheepadoodles, Cavapoos, Cockapoos, Maltipoos, Schnoodles, and other doodle hybrids. Also appropriate for Bichon Frises, Portuguese Water Dogs, Soft-Coated Wheaten Terriers, and similar breeds with comparable coat physics.</p>
+
+<p><strong>Salon scenarios:</strong> daily driver for any salon with regular doodle traffic; time-saver on high-volume days where two-step systems can't keep up; pre-cut wash before a doodle haircut where coat slip determines clip quality. For full doodle-protocol context across coat phases, see our <a href="/pages/best-shampoo-goldendoodle">Goldendoodle grooming guide</a>.</p>
+
+<h2>How it compares to alternatives</h2>
+
+<p><strong>Chris Christensen Day to Day Shampoo</strong> — [[COMPETITOR:chris-christensen-day-to-day]]. The show-coat brand most often recommended in the poodle and doodle community. Premium positioning, strong on coat presentation. Honest read: on raw cleaning and slip for production salon volume, Furgenics holds comparable quality at materially lower per-gallon cost — though Chris Christensen is a separate shampoo (not 2-in-1), so the direct comparison is on conditioning effect after two passes versus Furgenics' one pass. Where Chris Christensen wins: the brand cachet specific to show-coat work where clients ask which products you use.</p>
+
+<p><strong>iGroom Shampoo Gallon</strong> — [[COMPETITOR:igroom-silk]]. Modern salon-pro brand with strong Instagram-era recognition and doodle-adjacent positioning. Comparable conditioning chemistry; also a two-step system. Where Furgenics differentiates: one-pass 2-in-1 format, direct-to-salon pricing in both markets, and the matching <a href="/products/deep-moisturizing-conditioner-gallon">Deep Moisturizing Conditioner</a> ([[PRICE:deep-moisturizing-conditioner-gallon]]) for doodle coats that need a heavier hydration follow-up.</p>
+
+<p>We Love Doodles is the niche Amazon-only doodle brand at half-gallon size — useful for owner-facing trial but the format limits salon-scale use.</p>
+
+<p>For sensitive-skin doodles where the slip-rich chemistry is too active, fall back to <a href="/products/2in1-hypoallergenic-shampoo-conditioner">Furgenics 2-in-1 Hypoallergenic</a> ([[PRICE:2in1-hypoallergenic-shampoo-conditioner]]).</p>
+
+<h2>How to dilute and use</h2>
+
+<ol>
+  <li><strong>Brush out the coat</strong> before water — important on doodles where matting hides under the wave. Use a slicker to break up visible mats before bath.</li>
+  <li><strong>Saturate the coat fully</strong> with warm water. Doodles wet slower than straight-coated breeds; expect 4&ndash;6 minutes on a fully-coated Bernedoodle.</li>
+  <li><strong>Dilute at [[VALUE:dilution-ratio]]</strong> in a mixing bottle. For severely matted coats, ready-to-use undiluted on the problem areas before rinsing through is acceptable.</li>
+  <li><strong>Apply along the back and work down</strong>, massaging through the curl pattern with hands or a curry comb. The 2-in-1 format means no separate conditioner pass — the slip is built into the wash.</li>
+  <li><strong>Massage 3&ndash;4 minutes</strong> to let the silk amino acids and conditioning oils penetrate the coat shaft.</li>
+  <li><strong>Rinse fully</strong> until water runs clear. Retained product weighs down the wave pattern and shows up as flat-looking coat after dry.</li>
+  <li><strong>Brush while damp</strong> for best detangling results, then HV dry.</li>
+</ol>
+
+<p>For older doodles, mat-prone coats, or particularly dry texture, follow with <a href="/products/deep-moisturizing-conditioner-gallon">Furgenics Deep Moisturizing Conditioner</a> ([[PRICE:deep-moisturizing-conditioner-gallon]]) as a second pass.</p>
+
+<h2>Shipping, sourcing, and the Groomer Program</h2>
+
+<p>Furgenics 2-in-1 Doodle Shampoo &amp; Conditioner is [[VALUE:made-in-canada]] and ships domestically in both markets — Canadian orders from Vaughan, Ontario, US orders from a US fulfillment partner — in 3&ndash;5 business days. No cross-border duty or currency complications either way.</p>
+
+<p>To test before committing to a gallon, the <a href="/pages/groomer-program">Furgenics Groomer Program</a> ships free 8oz samples to verified Canadian groomers. US groomers get a first-order gallon discount through the same program instead, since US fulfillment doesn't ship non-revenue samples. Apply once and the verification covers any SKU.</p>
+
+[[DISCOUNT]]
+
+<p>Questions? Email <a href="mailto:info@furgenics.com">info@furgenics.com</a>.</p>

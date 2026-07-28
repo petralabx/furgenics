@@ -1,0 +1,69 @@
+<!--
+  Furgenics — PDP rewrite (token-driven + universal both-markets)
+  Target product: hypoallergenic-shampoo-gallon (FUR-001)
+  GID: gid://shopify/Product/8104403304587
+  Drafted 2026-05-21. First of 9 PDP token-conversion rewrites.
+
+  Token coverage:
+  - PRICE: 2in1-hypoallergenic-shampoo-conditioner, oatmeal-aloe-shampoo-gallon,
+    oatmeal-aloe-conditioner-gallon (NOT the product's own handle — that renders
+    in the PDP buy box separately, per Step 2 of the rewrite prompt)
+  - VALUE: dilution-ratio, working-gallons-per-bottle, per-working-gallon-cost-narrative,
+    made-in-canada
+  - COMPETITOR: bio-groom-hypo-groom, tropiclean-pro-hypoallergenic-oatmeal
+  - DISCOUNT: at the close
+
+  SEO fields (pushed separately via the `seo` field on update-product, NOT inside
+  this body — Shopify SEO surfaces don't run through the token substitution pipeline):
+  - SEO title: "Professional Hypoallergenic Dog Shampoo Gallon | Furgenics" (58 chars)
+  - Meta description: "Sulfate-free 16:1 hypoallergenic concentrate built for
+    professional salons. One gallon makes up to 17 working gallons for
+    sensitive-skin clients." (143 chars)
+-->
+
+<p>Furgenics Hypoallergenic Shampoo is a tearless, sulfate-free [[VALUE:dilution-ratio]] built as a sensitive-skin daily driver for professional salons. It handles dogs with allergies, recurring irritation, or thin coats — clients who tolerate the gentlest base on your bench. One gallon yields [[VALUE:working-gallons-per-bottle]] — [[VALUE:per-working-gallon-cost-narrative]].</p>
+
+<h2>Why this formulation works for sensitive-skin clients</h2>
+
+<p>The chemistry is built around what to leave out as much as what to put in. The sulfate-free base cleans without stripping the natural skin oils that sensitive coats need to stay calm between baths. Parabens and synthetic dyes are out for the same reason — fewer downstream irritants for dogs already reacting to environmental allergens or food sensitivities. The lather is rich enough to cover a body efficiently but breaks down fast on rinse, so no residue is left behind to re-trigger irritation hours after the dog goes home.</p>
+
+<p>The tearless formulation matters more on this SKU than on a deshedding or doodle shampoo. Sensitive-skin clients often have weepy eyes, recurring conjunctivitis flare-ups, or thin facial coats where ordinary shampoo migrates into the eyes. A tearless base lets you wash the face the same way you wash the body — no special handling, no slow careful work around the muzzle.</p>
+
+<h2>When to use Furgenics Hypoallergenic Shampoo</h2>
+
+<p><strong>Coat types and skin profiles:</strong> sensitive skin, short coats, smooth coats, thin coats, fine coats. Dogs with diagnosed allergies (environmental or food-related), recurring contact dermatitis, or post-medication recovery where the topical chemistry needs to be as minimal as possible.</p>
+
+<p><strong>Breeds where this is typically the right pick:</strong> French Bulldogs, Bulldogs, Boxers, Pitbulls (and AmStaffs), Chihuahuas, Greyhounds, Dalmatians, Whippets, Boston Terriers, Beagles. Many of these breeds are genetically prone to atopic skin conditions — a hypoallergenic base removes the bathing variable so the groomer and the owner can isolate which other factors (diet, environment, parasites) are actually driving the reaction.</p>
+
+<p><strong>Salon scenarios:</strong> daily driver for any salon with a meaningful percentage of allergy-prone clients on the books; first-bath shampoo when a new dog arrives with unknown skin history; recovery bath after a dog has been on medicated chemistry and needs a gentle reset; puppy first-baths over 8 weeks where the goal is gentle handling, not deep cleaning. For broader sensitive-skin protocol context, see our <a href="/pages/oatmeal-aloe-sensitive-skin-dog-shampoo">sensitive-skin coat guide</a>.</p>
+
+<h2>How it compares to alternatives</h2>
+
+<p><strong>Bio-Groom Hypo-Groom Gallon</strong> — [[COMPETITOR:bio-groom-hypo-groom]]. The most-named hypoallergenic gallon in salon-pro conversation and the direct head-to-head for this SKU. Comparable dilution range (15:1 vs Furgenics' [[VALUE:dilution-ratio]]) and similar tearless, sulfate-free positioning. Honest read: on per-gallon economics Furgenics is materially below Bio-Groom in both markets; on formula, the differences are at the edges, not the core. Salons running Hypo-Groom as a daily driver are the most common Furgenics switchers.</p>
+
+<p><strong>TropiClean Pro Hypoallergenic Oatmeal Gallon</strong> — [[COMPETITOR:tropiclean-pro-hypoallergenic-oatmeal]]. Crossover retail/pro brand with strong shelf presence. Adds oatmeal to a hypoallergenic base, which works as a daily driver but layers in more actives than a strictly-minimal formulation. If your sensitive-skin clients are reacting to oats themselves (less common but real), the simpler Furgenics base is the safer baseline.</p>
+
+<p>For groomers consolidating sensitive-skin SKUs, the matching <a href="/products/2in1-hypoallergenic-shampoo-conditioner">Furgenics 2-in-1 Hypoallergenic</a> ([[PRICE:2in1-hypoallergenic-shampoo-conditioner]]) is the time-saver variant when conditioner isn't worth a second pass. For dry, itchy, or eczema-prone skin specifically, the <a href="/products/oatmeal-aloe-shampoo-gallon">Furgenics Oatmeal &amp; Aloe Shampoo</a> ([[PRICE:oatmeal-aloe-shampoo-gallon]]) is the more active option.</p>
+
+<h2>How to dilute and use</h2>
+
+<ol>
+  <li><strong>Pre-brush</strong> to remove loose debris. Important on Frenchies and Bulldogs where facial folds and skin folds need separate attention.</li>
+  <li><strong>Wet the coat fully</strong> with warm water (not hot — sensitive skin reacts to temperature swings).</li>
+  <li><strong>Dilute at [[VALUE:dilution-ratio]]</strong> in a mixing bottle. For a sensitive-skin recovery wash on a problem spot, ready-to-use undiluted before rinsing through works fine.</li>
+  <li><strong>Apply along the back, work through body and face.</strong> The tearless base means face-washing requires no special handling around the eyes.</li>
+  <li><strong>Massage 2&ndash;3 minutes</strong> to let the base work into the coat. Sensitive skin doesn't need aggressive scrubbing; gentler contact reduces flare-up risk.</li>
+  <li><strong>Rinse fully</strong> until the water runs clear. Residue is the most common trigger for post-bath irritation on sensitive dogs — over-rinse rather than under-rinse.</li>
+</ol>
+
+<p>For dogs with diagnosed atopic conditions, follow with a maintenance conditioner — <a href="/products/oatmeal-aloe-conditioner-gallon">Oatmeal &amp; Aloe Conditioner</a> ([[PRICE:oatmeal-aloe-conditioner-gallon]]) is the typical pair for the soothing follow-through.</p>
+
+<h2>Shipping, sourcing, and the Groomer Program</h2>
+
+<p>Furgenics Hypoallergenic Shampoo is [[VALUE:made-in-canada]] and ships domestically in both markets — Canadian orders from Vaughan, Ontario, US orders from a US fulfillment partner — in 3&ndash;5 business days. No cross-border duty or currency complications either way.</p>
+
+<p>If you'd rather test before committing to a gallon, the <a href="/pages/groomer-program">Furgenics Groomer Program</a> ships free 8oz samples to verified Canadian groomers. US groomers get a first-order gallon discount through the same program instead, since US fulfillment doesn't ship non-revenue samples. Apply once and the verification covers any SKU.</p>
+
+[[DISCOUNT]]
+
+<p>Questions? Email <a href="mailto:info@furgenics.com">info@furgenics.com</a>.</p>

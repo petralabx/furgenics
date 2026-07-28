@@ -1,0 +1,52 @@
+{%- comment -%}
+  Furgenics — discount-banner snippet
+  Renders the active general discount campaign for the current market.
+  ONE source of truth for the active discount code + percentage — when the
+  campaign rotates (FUR50 → FUR20 → SUMMER25 → etc.), the change happens in
+  theme settings and propagates to every page using this snippet.
+
+  Reads from theme settings (Markets-aware — Shopify Markets allows per-market
+  setting values when the theme is configured for that):
+    settings.discount_active        (boolean)  Master switch. False = render nothing everywhere.
+    settings.discount_code          (string)   e.g. 'FUR50'
+    settings.discount_percent       (number)   e.g. 50
+    settings.discount_max_units     (number)   e.g. 4 (max gallons per order); optional
+    settings.discount_eligibility   (string)   e.g. 'New customers, first order only'; optional
+    settings.discount_headline      (string)   Optional headline override (e.g. 'Spring sale')
+
+  Per-call overrides — any parameter passed beats the setting:
+    {% render 'discount-banner' %}
+    {% render 'discount-banner', code: 'GROOMER25', percent: 25, eligibility: 'Verified groomers only' %}
+    {% render 'discount-banner', active: false %}   (hide on this specific page)
+
+  Returns nothing if discount is inactive OR if code/percent are missing.
+
+  Used internally by sections/main-page-pillar.liquid for [[DISCOUNT]] token
+  substitution. Can also be called directly from theme templates / sections
+  if needed elsewhere.
+
+  Maintenance: when a campaign rotates, edit ONE place:
+    Shopify admin → Online Store → Themes → Customize → Theme settings →
+    "Active discount campaign" section → update code + percent → save.
+{%- endcomment -%}
+
+{%- assign _active = active -%}
+{%- if _active == nil -%}
+  {%- assign _active = settings.discount_active -%}
+{%- endif -%}
+
+{%- if _active == false -%}
+  {%- comment -%}Campaign off — render nothing.{%- endcomment -%}
+{%- else -%}
+  {%- assign _code = code | default: settings.discount_code -%}
+  {%- assign _percent = percent | default: settings.discount_percent -%}
+  {%- assign _max_units = max_units | default: settings.discount_max_units -%}
+  {%- assign _eligibility = eligibility | default: settings.discount_eligibility -%}
+  {%- assign _headline = headline | default: settings.discount_headline -%}
+
+  {%- if _code != blank and _percent != blank -%}
+    <div class="discount-banner" data-code="{{ _code | escape }}" data-percent="{{ _percent }}">
+      {% if _headline != blank %}<strong class="discount-banner-headline">{{ _headline }}</strong> {% endif %}<strong>Save {{ _percent }}% on your first order</strong> with code <code class="discount-banner-code">{{ _code }}</code>.{% if _max_units %} Max {{ _max_units }} gallons per order.{% endif %}{% if _eligibility != blank %} {{ _eligibility }}.{% endif %}
+    </div>
+  {%- endif -%}
+{%- endif -%}

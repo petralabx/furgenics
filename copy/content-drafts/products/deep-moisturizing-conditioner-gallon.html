@@ -1,0 +1,90 @@
+<!--
+  Furgenics — PDP rewrite (token-driven + universal both-markets)
+  Target product: deep-moisturizing-conditioner-gallon (FUR-021)
+  GID: gid://shopify/Product/8104367325323
+  Drafted 2026-05-21. Seventh of 9 PDP token-conversion rewrites (Session 3, PDP #1).
+
+  Token coverage:
+  - PRICE: oatmeal-aloe-conditioner-gallon (maintenance step-down),
+    lavender-spa-shampoo (spa-experience companion),
+    2in1-doodle-shampoo-conditioner (daily-driver alternative for doodles).
+    3 unique handles, 3 PRICE tokens total. NOT the product's own handle.
+  - VALUE: dilution-ratio (used 2×), working-gallons-per-bottle,
+    per-working-gallon-cost-narrative, made-in-canada
+  - COMPETITOR: coat-handler-15-in-1 (conditioner-category benchmark, used in
+    FUR-014 + FUR-010 — third use, consistent anchor); isle-of-dogs-evening-primrose
+    (NEW premium salon conditioning anchor — diversifies away from coat-handler
+    monopoly on the conditioner-category compare slot). iGroom + Chris Christensen
+    mentioned qualitatively for premium-line context.
+  - DISCOUNT: at the close
+
+  SEO fields (pushed separately via the `seo` field on update-product):
+  - SEO title: "Deep Moisturizing Dog Conditioner Gallon | Furgenics" (52 chars)
+  - Meta description: "16:1 deep moisturizing conditioner with argan oil,
+    shea butter, and hydrolyzed oats. Built for damaged, brittle, long, and
+    curly salon coats." (142 chars)
+
+  CHEMISTRY APPROACH: live description names argan oil, shea butter, and
+  hydrolyzed oats as the heroes. INCI not returned on read (same pattern as
+  prior conditioner PDPs). Post-push response will reveal it. The draft frames
+  the rebuild-vs-maintenance distinction vs FUR-010 explicitly: argan penetrating
+  the cortex of damaged hair shafts, shea as barrier-restoring lipid seal,
+  hydrolyzed oats as water-binding (different mechanism than FUR-010's oat
+  kernel flour). All claims grounded in the live description's named ingredients.
+
+  CRITICAL: this is a CONDITIONER — body structure adapted as in FUR-014 and
+  FUR-010. Chemistry section explains rebuild mechanism (penetration into cortex
+  vs surface coating); how-to section is the conditioner step with longer leave-in
+  time (5–7 min) reflecting the rebuild use case; compare section uses qualitative
+  framing for iGroom + Chris Christensen since their conditioner-line tokens
+  don't exist in main-page-pillar.liquid yet.
+-->
+
+<p>Furgenics Deep Moisturizing Conditioner is a [[VALUE:dilution-ratio]] built for coats that need active rebuilding — not just maintenance. Argan oil, shea butter, and hydrolyzed oats deliver intensive hydration into damaged, brittle, long, or curly coats that don't respond to lighter conditioning. One gallon yields [[VALUE:working-gallons-per-bottle]] — [[VALUE:per-working-gallon-cost-narrative]].</p>
+
+<h2>Why a rebuild conditioner is different from a maintenance conditioner</h2>
+
+<p>Most conditioners coat the surface of the hair shaft. Deep moisturizing conditioners need to actually penetrate damaged sections — the cuticle gaps in coats that have been sun-damaged, chemical-processed, or post-clip-shaved without recovery. The chemistry escalation between a maintenance conditioner and a rebuild conditioner is real.</p>
+
+<p>Argan oil is the penetrating active. Its fatty acid profile is small enough to enter the cortex of damaged hair shafts rather than just sitting on the cuticle, where it restores lipid content lost to environmental wear. Shea butter handles the barrier layer — heavier than argan, it forms a lipid seal that holds moisture in the coat against the post-bath dry-out. Hydrolyzed oats add water-binding capacity: the protein-derived molecules attract and hold water during the leave-in step, which is why hydrolyzed oats specifically (not just oat flour) are the right inclusion for a deep-conditioning formula.</p>
+
+<p>The result is a conditioner that does what a heavier coat actually needs — restore depth, not just smooth the surface.</p>
+
+<h2>When to use Furgenics Deep Moisturizing Conditioner</h2>
+
+<p><strong>Coat types:</strong> dry, brittle, damaged, sun-bleached, chemical-processed, long, curly, mat-prone, post-shave recovery. This is the rebuild option — for coats where lighter conditioning isn't enough.</p>
+
+<p><strong>Breeds:</strong> Poodles, Goldendoodles, Labradoodles, Bernedoodles, Afghan Hounds, Shih Tzus, Malteses, Yorkshire Terriers, Lhasa Apsos, Bichon Frises, Cavalier King Charles Spaniels. Any long-coated, high-maintenance breed where the coat texture and shine are part of the service.</p>
+
+<p><strong>Salon scenarios:</strong> intensive conditioning service add-on at premium price; show-prep work where coat presentation is the deliverable; recovery protocol for clients whose coats were neglected between visits or have post-clip damage; cold-weather seasonal protocol for dry-climate clients. For doodle daily-driver use, the lighter <a href="/products/2in1-doodle-shampoo-conditioner">Furgenics 2-in-1 Doodle</a> ([[PRICE:2in1-doodle-shampoo-conditioner]]) is the everyday pick — Deep Moisturizing is the escalation step when daily isn't doing the work. For full doodle-protocol context, see our <a href="/pages/best-shampoo-goldendoodle">Goldendoodle grooming guide</a>.</p>
+
+<h2>How it compares to alternatives</h2>
+
+<p><strong>Coat Handler 15-in-1 Anti-Static Conditioner</strong> — [[COMPETITOR:coat-handler-15-in-1]]. The salon-pro general-purpose conditioner benchmark, 15:1 concentrate. Coat Handler positions theirs as multi-purpose; Furgenics positions Deep Moisturizing specifically as the intensive-rebuild escalation. Where they overlap: light to medium conditioning needs. Where Deep Moisturizing pulls ahead: damaged-coat work where the argan-shea-hydrolyzed-oats stack is materially heavier than Coat Handler's lighter formulation.</p>
+
+<p><strong>Isle of Dogs Evening Primrose Conditioner</strong> — [[COMPETITOR:isle-of-dogs-evening-primrose]]. Premium salon conditioning anchor — Isle of Dogs is a brand groomers reach for on show coats and high-end clients. Comparable intensive-conditioning chemistry, materially higher per-bottle pricing. Where Furgenics differentiates: direct-to-salon pricing in both markets, and integration with the rest of the line (matching <a href="/products/oatmeal-aloe-conditioner-gallon">Oatmeal &amp; Aloe Conditioner</a> ([[PRICE:oatmeal-aloe-conditioner-gallon]]) as the maintenance step-down, matching <a href="/products/lavender-spa-shampoo">Lavender Spa Shampoo</a> ([[PRICE:lavender-spa-shampoo]]) as the spa-experience companion).</p>
+
+<p>iGroom and Chris Christensen also offer deep-conditioning options in their respective premium lines — both quality formulations, both materially higher per-gallon. The cachet question (brand recognition on show coats) is real for those brands; the chemistry comparison is closer to even than the price gap suggests.</p>
+
+<h2>How to dilute and use</h2>
+
+<p>This is the conditioner step in the intensive-conditioning protocol. Use after any Furgenics shampoo on damaged or high-maintenance coats.</p>
+
+<ol>
+  <li><strong>Confirm shampoo is fully rinsed</strong> before applying. Residual shampoo dilutes the conditioning chemistry and reduces penetration on damaged coats.</li>
+  <li><strong>Dilute at [[VALUE:dilution-ratio]]</strong> in a mixing bottle. For severely damaged or sun-bleached coats, ready-to-use undiluted on the worst sections is appropriate — this is what the rebuild capacity is for.</li>
+  <li><strong>Apply along the back and work through the entire coat</strong>, root to tip. Pay particular attention to the ends of long coats and any visibly damaged sections.</li>
+  <li><strong>Leave on 5&ndash;7 minutes</strong> — longer than a maintenance conditioner. Argan needs time to penetrate the cortex of damaged hair shafts; cutting this short loses most of the rebuild effect.</li>
+  <li><strong>Rinse fully</strong> until water runs clear. The heavier shea content can leave coat-weight if under-rinsed.</li>
+  <li><strong>Towel-dry and HV dry on moderate heat</strong>, working through with hands or a slicker. The shine effect builds during dry as the lipid seal sets.</li>
+</ol>
+
+<h2>Shipping, sourcing, and the Groomer Program</h2>
+
+<p>Furgenics Deep Moisturizing Conditioner is [[VALUE:made-in-canada]] and ships domestically in both markets — Canadian orders from Vaughan, Ontario, US orders from a US fulfillment partner — in 3&ndash;5 business days. No cross-border duty or currency complications either way.</p>
+
+<p>To test before committing to a gallon, the <a href="/pages/groomer-program">Furgenics Groomer Program</a> ships free 8oz samples to verified Canadian groomers. US groomers get a first-order gallon discount through the same program instead, since US fulfillment doesn't ship non-revenue samples. Apply once and the verification covers any SKU.</p>
+
+[[DISCOUNT]]
+
+<p>Questions? Email <a href="mailto:info@furgenics.com">info@furgenics.com</a>.</p>

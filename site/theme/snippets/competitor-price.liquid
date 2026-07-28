@@ -1,0 +1,44 @@
+{%- comment -%}
+  Furgenics — competitor-price snippet
+  Renders a competitor's published price with an explicit as-of date so
+  staleness is always visible to the reader and to maintainers.
+
+  We do NOT auto-pull competitor prices — they are hand-captured in
+  competitor-intel.md and copied here. Quarterly refresh is the expected
+  cadence; see knowledge/content-style-guide.md for the maintenance rhythm.
+
+  Usage:
+    {% render 'competitor-price',
+        brand: 'FURminator',
+        product: 'Anti-Shed Conditioner',
+        price: '$89.01',
+        currency: 'USD',
+        as_of: '2026-04',
+        source: 'Amazon' %}
+
+  Parameters:
+    brand     (string)   Competitor brand name. Required.
+    product   (string)   Product name / SKU descriptor. Required.
+    price     (string)   Price as displayed, including symbol. Required. e.g. '$89.01'.
+    currency  (string)   Currency code. Optional, default 'USD'.
+    as_of     (string)   YYYY-MM date the price was captured. Required.
+    source    (string)   Where the price was captured. Optional. e.g. 'Amazon', 'Brand site'.
+
+  Returns:
+    A <span class="competitor-price"> containing the brand, product, price,
+    and an inline as-of annotation.
+
+  Class-A note: any update to a competitor price flows through competitor-intel.md
+  first (the source of truth), then to the page using this snippet. Don't change
+  the snippet body without updating the content-style-guide.
+{%- endcomment -%}
+
+{%- assign _currency = currency | default: 'USD' -%}
+
+<span class="competitor-price" data-brand="{{ brand | escape }}" data-as-of="{{ as_of }}">
+  {{ brand }} {{ product }}:
+  <strong class="competitor-price-value">{{ price }} {{ _currency }}</strong>
+  <span class="competitor-price-asof" title="Captured {{ as_of }}{% if source %} from {{ source }}{% endif %}">
+    <small>(as of {{ as_of }}{% if source %}, {{ source }}{% endif %})</small>
+  </span>
+</span>
