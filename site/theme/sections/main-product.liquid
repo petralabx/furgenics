@@ -206,7 +206,7 @@
                   {%- endcapture -%}
 
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {{ rendered_description }}
+                    {% render 'description-accordion', description_html: rendered_description, product: product %}
                   </div>
                 {%- endif -%}
           
