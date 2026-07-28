@@ -1,0 +1,526 @@
+# Furgenics — operations log
+
+> Chronological timeline of every operation the system has performed or recorded. Append-only. Most recent first. Uses the Karpathy greppable format: `## [ISO_DATETIME] type | title`.
+>
+> Parse: `grep "^## \[" log.md | tail -20`
+>
+> Types: `ingest` · `audit` · `citation-run` · `lint` · `query` · `fix` · `ship` · `infra`
+
+<!-- AUTO-APPEND:timeline:START -->
+
+## [2026-06-28T03:07:45.585Z] audit | Full audit: 50 findings (10H/36M/2L/2I), 0 auto-fixed
+
+- Auditors run: schema-deployment, alt-text, freshness, answer-block, citation-tracker
+- Duration: 404s
+- Report: sources/audit-reports/2026-06-28-6989d956.json
+
+## [2026-06-28T03:01:03.780Z] citation-run | 46 queries across 12 prompts: 8 mentioned, 1 cited
+
+- Engines run: chatgpt, perplexity, claude, gemini
+- No engines skipped
+- Archive: sources/citation-runs/2026-06-28-4d0c7fd8.json
+
+## [2026-06-21T03:07:01.848Z] audit | Full audit: 50 findings (12H/34M/2L/2I), 0 auto-fixed
+
+- Auditors run: schema-deployment, alt-text, freshness, answer-block, citation-tracker
+- Duration: 401s
+- Report: sources/audit-reports/2026-06-21-a0333e93.json
+
+## [2026-06-21T03:00:23.831Z] citation-run | 48 queries across 12 prompts: 8 mentioned, 1 cited
+
+- Engines run: chatgpt, perplexity, claude, gemini
+- No engines skipped
+- Archive: sources/citation-runs/2026-06-21-7d09588c.json
+
+## [2026-06-14T03:08:07.001Z] audit | Full audit: 51 findings (12H/35M/2L/2I), 0 auto-fixed
+
+- Auditors run: schema-deployment, alt-text, freshness, answer-block, citation-tracker
+- Duration: 486s
+- Report: sources/audit-reports/2026-06-14-06e21ab0.json
+
+## [2026-06-14T03:00:03.660Z] citation-run | 48 queries across 12 prompts: 8 mentioned, 1 cited
+
+- Engines run: chatgpt, perplexity, claude, gemini
+- No engines skipped
+- Archive: sources/citation-runs/2026-06-14-6c9587f1.json
+
+## [2026-06-08T21:00:00Z] infra | v2.0 scaffold: keyword-universe.md + backlinks.md created (Class B)
+
+- v2 (SEO) kickoff. Added the two remaining v2.0 brand-market-context pages (icp.md + market-map.md already existed): `keyword-universe.md` (canonical keyword list + AUTO-UPDATED:keyword-ranks block awaiting v2.2) and `backlinks.md` (outreach pipeline + AUTO-UPDATED:backlink-summary + AUTO-APPEND:outreach-log blocks awaiting v2.3).
+- Decisions locked this session: vendor stack = DataForSEO + Semrush (Ahrefs deferred on budget); keyword seeding = hybrid (Semrush auto-seed → human curate to 200–500). Recorded in both page headers.
+- No external APIs touched (v2.0 is scaffold-only). Next: hybrid seed of the keyword list as a Class B PR, then v2.2 keyword rank tracker. See `docs/roadmap-seo-v2.md`.
+
+## [2026-06-07T03:07:25.980Z] audit | Full audit: 52 findings (12H/36M/2L/2I), 0 auto-fixed
+
+- Auditors run: schema-deployment, alt-text, freshness, answer-block, citation-tracker
+- Duration: 397s
+- Report: sources/audit-reports/2026-06-07-f679e1e8.json
+
+## [2026-06-07T03:00:51.304Z] citation-run | 48 queries across 12 prompts: 8 mentioned, 1 cited
+
+- Engines run: chatgpt, perplexity, claude, gemini
+- No engines skipped
+- Archive: sources/citation-runs/2026-06-07-ab6b290b.json
+
+## [2026-05-28T18:53:19.389Z] infra | Phase 2a Task 3 acceptance — brand-scoped routing regression check
+
+- R
+- o
+- u
+- t
+- i
+- n
+- e
+-  
+- l
+- o
+- g
+-  
+- e
+- n
+- t
+- r
+- y
+-  
+- t
+- o
+-  
+- v
+- a
+- l
+- i
+- d
+- a
+- t
+- e
+-  
+- t
+- h
+- a
+- t
+-  
+- t
+- h
+- e
+-  
+- b
+- r
+- a
+- n
+- d
+- -
+- s
+- c
+- o
+- p
+- e
+- d
+-  
+- r
+- e
+- v
+- i
+- e
+- w
+- e
+- r
+-  
+- p
+- a
+- t
+- h
+-  
+- s
+- t
+- i
+- l
+- l
+-  
+- w
+- o
+- r
+- k
+- s
+-  
+- a
+- f
+- t
+- e
+- r
+-  
+- t
+- h
+- e
+-  
+- P
+- h
+- a
+- s
+- e
+-  
+- 2
+- a
+-  
+- r
+- o
+- u
+- t
+- i
+- n
+- g
+-  
+- c
+- h
+- a
+- n
+- g
+- e
+- .
+- 
+
+- 
+
+- E
+- x
+- p
+- e
+- c
+- t
+- e
+- d
+-  
+- r
+- e
+- v
+- i
+- e
+- w
+- e
+- r
+-  
+- b
+- e
+- h
+- a
+- v
+- i
+- o
+- r
+- :
+-  
+- w
+- o
+- r
+- k
+- f
+- l
+- o
+- w
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- f
+- i
+- e
+- s
+-  
+- b
+- r
+- a
+- n
+- d
+- =
+- f
+- u
+- r
+- g
+- e
+- n
+- i
+- c
+- s
+-  
+- f
+- r
+- o
+- m
+-  
+- t
+- h
+- e
+-  
+- d
+- i
+- f
+- f
+- ,
+-  
+- l
+- o
+- a
+- d
+- s
+-  
+- b
+- r
+- a
+- n
+- d
+- s
+- /
+- f
+- u
+- r
+- g
+- e
+- n
+- i
+- c
+- s
+- /
+- r
+- e
+- v
+- i
+- e
+- w
+- -
+- c
+- o
+- n
+- f
+- i
+- g
+- .
+- m
+- d
+- ,
+-  
+- l
+- a
+- b
+- e
+- l
+- s
+-  
+- a
+- g
+- e
+- n
+- t
+- -
+- r
+- e
+- v
+- i
+- e
+- w
+- e
+- d
+-  
+- (
+- m
+- a
+- t
+- c
+- h
+- e
+- s
+-  
+- F
+- u
+- r
+- g
+- e
+- n
+- i
+- c
+- s
+- '
+-  
+- a
+- u
+- t
+- o
+- -
+- a
+- p
+- p
+- r
+- o
+- v
+- e
+-  
+- c
+- r
+- i
+- t
+- e
+- r
+- i
+- o
+- n
+-  
+- #
+- 1
+- :
+-  
+- l
+- o
+- g
+-  
+- a
+- p
+- p
+- e
+- n
+- d
+-  
+- i
+- n
+-  
+- K
+- a
+- r
+- p
+- a
+- t
+- h
+- y
+-  
+- f
+- o
+- r
+- m
+- a
+- t
+- )
+- .
+- 
+
+- 
+
+- G
+- e
+- n
+- e
+- r
+- a
+- t
+- e
+- d
+-  
+- b
+- y
+-  
+- s
+- c
+- r
+- i
+- p
+- t
+- s
+- /
+- t
+- m
+- p
+- -
+- t
+- a
+- s
+- k
+- 3
+- -
+- a
+- c
+- c
+- e
+- p
+- t
+- a
+- n
+- c
+- e
+- .
+- t
+- s
+- .
+
+## [2026-05-05T16:00:00Z] query | Filed analysis: May 3 Sunday cron review — pillar pages haven't moved the needle yet
+
+- Path: knowledge/analyses/2026-05-05-may3-cron-review.md
+- Kind: synthesis
+- Source: Stephen query 2026-05-05 (first review of cron data post-pillar-page publishes)
+- Retroactive log entry filed 2026-05-28 via Class B to resolve a long-standing filed-not-logged finding from the structural linter (ADR-014). Analysis itself was filed on 2026-05-05 and is unchanged; this entry only adds the log reference.
+
+## [2026-05-20T18:33:44Z] query | Filed analysis: Live pillar content audit — 6 pillars pulled, email bug + pricing inventory + Markets-ready assessment
+
+- Path: knowledge/analyses/2026-05-20-live-pillar-content-audit.md
+- Kind: analysis
+- Source: Stephen query 2026-05-20 (C+Markets rewrite kickoff)
+- Retroactive log entry filed 2026-05-28 via Class B to resolve a long-standing filed-not-logged finding from the structural linter (ADR-014). Analysis itself was filed on 2026-05-20 and is unchanged; this entry only adds the log reference.
+
+## [2026-05-20T18:47:52Z] query | Filed analysis: Content quick wins shipped — 7 fixes across 6 pages (email bug + ToS + About + FAQs template)
+
+- Path: knowledge/analyses/2026-05-20-content-quick-wins-shipped.md
+- Kind: analysis
+- Source: Stephen query 2026-05-20 (post-quick-wins ship)
+- Retroactive log entry filed 2026-05-28 via Class B to resolve a long-standing filed-not-logged finding from the structural linter (ADR-014). Analysis itself was filed on 2026-05-20 and is unchanged; this entry only adds the log reference.
+
+## [2026-05-28T13:23:06.021Z] query | Filed analysis: Class B Phase 1 end-to-end validation marker (Task 8 routine path)
+
+- Path: knowledge/analyses/2026-05-28-class-b-phase-1-e2e-validation.md (synthetic)
+- Kind: validation
+- Source: Task 8 of docs/plans/2026-05-22-class-b-writeback-phase-1.md (routine-path test)
+- Expected reviewer outcome: agent-reviewed (routine log append matching auto-approve criterion #1).
+
+## [2026-05-27T18:30:00Z] ship | FAQ metafield tokenization complete (9 SKUs)
+
+- All 9 active Furgenics gallon products' `custom.faqs` metafields rewritten via Shopify MCP `update-product` to use the shared token vocabulary (`[[PRICE:handle]]` / `[[VALUE:key]]` / `[[COMPETITOR:slug]]` / `[[DISCOUNT]]`). Pilot FUR-001 verified clean on both `/en-ca/` and `/en-us/` (accordion substituted values + JSON-LD schema clean text via `strip_html`). Batch FUR-005, FUR-010, FUR-011, FUR-013, FUR-014, FUR-020 (DRAFT), FUR-021, FUR-050 (DRAFT) all pushed in this session, each on first attempt.
+- Render surfaces the FAQ metafield now drives via token substitution: (a) visible FAQ accordion in `snippets/furgenics-product-faqs.liquid`, (b) FAQPage JSON-LD schema in `snippets/furgenics-schema.liquid` (with `strip_html | json` so `acceptedAnswer.text` is clean for Google). Both paths read from the same `custom.faqs` metafield and both pipe `faq.q` / `faq.a` through the shared `snippets/token-substitution.liquid` snippet before emitting. Per-product FAQ shape: ~11–13 questions = 3–5 product-specific opening Qs + 5-question universal tail (discount, made-in-NA, shipping, return, wholesale); emails standardized to `info@furgenics.com`.
+- Metafield type used: `json` accepting JSON-stringified array of `{q,a}` objects. Shopify upserts by namespace+key (no explicit `id` field required). MCP `get-product-by-id` does NOT return `custom.faqs` in its metafield payload — verification has to be done on the live PDP, not via API round-trip.
+- Sidebar findings: FUR-014 variant CAD price diverged to $29.99 (corrected in `products.md`; `[[PRICE:deshedding-conditioner]]` token absorbed the change automatically); FUR-001 has duplicate `furgenics.dilution_ratio` + `furgenics.working_gallons_per_bottle` metafields in the `furgenics.*` namespace alongside `custom.*` versions on other SKUs — all dormant post-tokenization, batch-delete candidates.
+- US Markets $19 USD override bug confirmed NOT theme-side per Claude Code's exhaustive grep (zero `retail_price_*` / `cost_per_working_gallon` / `public_offer` / `gated_offer` references anywhere in live theme); Stephen resolved outside the theme in this session. The unstructured pricing metafields (`custom.retail_price_*` etc.) are confirmed dormant dead data, not actively overriding. Catalogued in `products.md` "Dormant unstructured metafields" section for the future metafield batch-delete pass.
+- Full after-action analysis filed at `analyses/2026-05-27-token-substitution-extraction-and-faq-architecture.md`. `content-style-guide.md` and `products.md` were pre-staged with 2026-05-27 entries describing the 4-surface architecture and dormant-metafield catalog; this commit closes the loop by filing the analysis both other docs reference.
+
+## [2026-05-24T03:06:49.973Z] audit | Full audit: 50 findings (12H/35M/1L/2I), 0 auto-fixed
+
+- Auditors run: schema-deployment, alt-text, freshness, answer-block, citation-tracker
+- Duration: 404s
+- Report: sources/audit-reports/2026-05-24-518c85ec.json
+
+## [2026-05-24T03:00:07.417Z] citation-run | 48 queries across 12 prompts: 8 mentioned, 2 cited
+
+- Engines run: chatgpt, perplexity, claude, gemini
+- No engines skipped
+- Archive: sources/citation-runs/2026-05-24-b3cd66b1.json
+
+## [2026-05-22T17:05:00Z] infra | Retroactive log entries for 2 filed-not-logged analyses (lint cleanup)
+
+- Resolves the 2 LOW filed-not-logged findings from the 2026-05-22 orchestrated structural lint run.
+- Naming the files so the structural linter's substring match (analyses/<filename> per src/knowledge/structural-linter.ts:248–249) is satisfied: knowledge/analyses/karpathy-wiki-pattern-applied.md (synthesis filed 2026-04-21 during Phase G) and knowledge/analyses/2026-05-05-email-cleanup-audit.md (analysis filed 2026-05-05).
+- Both analyses themselves are unchanged; this entry only adds the log reference. ADR-014 structural linter end-to-end validated on real drift.
+- Post-fix lint: 0 findings.
+
+## [2026-05-21T19:30:00Z] query | Filed analysis: PDP token-conversion project — 9 PDPs shipped, INCI findings, staleness items
+
+- Path: knowledge/analyses/2026-05-21-pdp-token-conversion.md
+- Kind: synthesis
+- Source: 3-session PDP rewrite project converting 9 Furgenics gallon PDP descriptions from hardcoded prose to bracket-token syntax. Drafted across Sessions 1, 2, 3 on 2026-05-21.
+- Headline: all 9 PDPs pushed live (7 ACTIVE, 2 DRAFT). 12 of 13 available competitor token slugs used across the project. INCI verification surfaced 2 sulfate-free claim mismatches (FUR-013 known from Session 1, FUR-005 newly discovered Session 3), 1 lavender-essential-oil INCI placeholder (FUR-050), confirmation that 2 "TEST" INCI flags in products.md are stale (FUR-001 + FUR-011 both have real INCI). 2 status-field staleness items (FUR-020 + FUR-050 both DRAFT in Shopify but ACTIVE in products.md). 5 bonus-actives polish candidates carried forward. Conditioner-category competitor token coverage gap captured for future theme work.
+
+<!-- AUTO-APPEND:timeline:END -->
+
+## Conventions
+
+When appending to this log, keep to the format above:
+
+1. Heading line exactly `## [ISO_DATETIME] type | one-line-title` — no trailing colons, no extra punctuation before the `|`.
+2. Body: 0–5 lines of bullets describing what happened. Link to sources/ artifacts where applicable.
+3. Blank line before the next entry.
+
+Agent writes to this file happen via `appendWikiLog(brand, entry)` in `src/knowledge/writer.ts`. Don't hand-edit inside the marker block — the writer prepends there.

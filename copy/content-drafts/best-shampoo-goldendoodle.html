@@ -1,0 +1,138 @@
+<!--
+  Furgenics — goldendoodle pillar rewrite (v2, token-driven + universal both-markets)
+  Target page: /pages/best-shampoo-goldendoodle
+  Targets queries: breed-01 (best professional shampoo for Goldendoodles),
+    overlaps with high-intent-01
+  Template: page.content-pillar
+  Drafted 2026-05-21. Replaces v1 (2026-04-23) which had 3x hardcoded
+  "$24.99 CAD" for the doodle gallon, hardcoded competitor USD prices
+  ($79 USD CC, $65 USD iGroom Silk, $60+ Isle of Dogs), "$100 CAD starter
+  kit" outlay, "ships from Ontario" / "Ships inside Canada free" CA-only
+  framing. v2 routes everything through tokens and generalizes shipping
+  framing to both markets.
+
+  Note: iGroom and Isle of Dogs token captures use proxy variants
+  (Squeaky Clean / Tearless Puppy) because the originally-named SKUs
+  (Silk / Evening Primrose) weren't directly captured at 1-gallon size.
+  Body text generalizes to "iGroom Shampoo" / "Isle of Dogs Shampoo" to
+  match what the tokens render — the variant annotations in the token
+  output show source.
+
+  Token coverage:
+  - PRICE: 2in1-doodle-shampoo-conditioner, deep-moisturizing-conditioner-gallon,
+    lavender-spa-shampoo, oatmeal-aloe-shampoo-gallon
+  - COMPETITOR: chris-christensen-day-to-day, igroom-silk,
+    isle-of-dogs-evening-primrose, earthbath-oatmeal-aloe
+  - VALUE: dilution-ratio, working-gallons-per-bottle, made-in-canada
+  - DISCOUNT: near CTA
+
+  TO PUBLISH:
+  1. Update meta description in Shopify SEO settings (see .md sister file)
+  2. Shopify admin → Pages → "Best Professional Shampoo for Goldendoodles |
+     Furgenics 2-in-1 Doodle" → Source view (</>) → replace body with everything below
+  3. Save → visually verify on /en-ca/ and /en-us/
+  4. Title and URL stay the same
+-->
+
+<p><img src="https://cdn.shopify.com/s/files/1/0649/4653/6587/files/2_in_1_Shampoo.jpg?v=1773957784" alt="2-in-1 Hypoallergenic Shampoo and Conditioner Gallon For Grooming Professionals — 128oz professional concentrate for grooming salons" width="420" height="408" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p>For professional groomers washing Goldendoodles, the right shampoo has to solve three specific problems: it has to clean the thick mix of curly guard hair and soft undercoat without stripping natural oils, it has to rinse completely (doodle coats hold residue that causes post-bath matting), and it has to condition enough that the coat doesn't feel dry and brittle under the dryer. Furgenics 2-in-1 Doodle Shampoo &amp; Conditioner was formulated specifically for this coat type and is what we recommend as a daily driver for doodle-heavy routes.</p>
+
+<p>Furgenics 2-in-1 Doodle delivers shampoo and conditioning in a single step at [[VALUE:dilution-ratio]], priced at [[PRICE:2in1-doodle-shampoo-conditioner]] per gallon. The formulation combines argan oil, coconut oil, shea butter, silk amino acids, and chamomile — ingredients selected for their performance on curly/wavy coats that tangle and mat easily. One gallon yields [[VALUE:working-gallons-per-bottle]] and washes approximately 340 medium Goldendoodles at typical usage. The formula is [[VALUE:made-in-canada]] and ships domestically in both markets (Canadian orders from Vaughan, Ontario; US orders from a US fulfillment partner).</p>
+
+<p>Below is what groomers actually need to know about shampoo for Goldendoodles, including how coat characteristics determine product choice, how Furgenics compares to premium alternatives like Chris Christensen and iGroom, and what to pair it with in your grooming workflow.</p>
+
+<h2>What makes Goldendoodle coats different</h2>
+
+<p>Goldendoodle coats combine traits from both parent breeds and vary significantly based on whether a dog is F1, F1b, or F2. Understanding the coat type determines shampoo choice.</p>
+
+<p><strong>F1 Goldendoodles (50/50 Golden Retriever + Poodle).</strong> Wavy coat that sheds moderately. Often looks more Retriever-like with some wave. Responds well to standard moisturizing shampoos and doesn't require as much detangling support.</p>
+
+<p><strong>F1b Goldendoodles (F1 x Poodle).</strong> Tighter curls, minimal shedding, closer to a Poodle coat. Much more prone to matting. Requires shampoos that actively support detangling and moisturize deeply to prevent breakage during brushing.</p>
+
+<p><strong>F2 and multigen Goldendoodles.</strong> Coat type varies widely, often unpredictable. Most groomers treat these as F1b-adjacent and use the same detangling-friendly shampoos.</p>
+
+<p><strong>The common challenges across all types:</strong></p>
+
+<ul>
+  <li>Matting between baths, especially behind ears, under front legs, and on the rear</li>
+  <li>Oil buildup at the skin that causes odor if not cleaned thoroughly</li>
+  <li>Dryness after grooming if the shampoo strips natural oils</li>
+  <li>Tangling during the rinse step if the shampoo leaves residue</li>
+</ul>
+
+<h2>What to look for in a Goldendoodle shampoo</h2>
+
+<p><strong>Moisturizing ingredients that condition during the wash.</strong> Argan oil, shea butter, coconut oil, and aloe are all good signals. These hydrate the coat without weighing it down or making it greasy.</p>
+
+<p><strong>Silk amino acids or hydrolyzed keratin.</strong> These penetrate the hair shaft and reduce breakage during brush-out. Especially important for F1b and multigen curls that get aggressive combing after the bath.</p>
+
+<p><strong>A 2-in-1 shampoo+conditioner formulation,</strong> if the goal is efficiency. Separate shampoo and conditioner steps produce slightly better results for show-coat work, but for production salon work on doodles, a well-formulated 2-in-1 saves 40% of bath time with minimal coat quality trade-off.</p>
+
+<p><strong>pH-balanced, sulfate-free base.</strong> Doodle coats are sensitive to harsh detergents. Sulfate-free formulations clean effectively without stripping the oils that keep curls defined.</p>
+
+<p><strong>Predictable dilution ratios.</strong> [[VALUE:dilution-ratio]] or 15:1 is the sweet spot for professional use. Higher ratios (32:1, 50:1) exist and work but require more precise measurement.</p>
+
+<p><strong>Thorough rinse profile.</strong> Some shampoos rinse cleanly at any dilution; others require extended rinsing. Doodles hate being under water longer than necessary, and residual shampoo contributes to post-bath matting. Test a new shampoo on a known doodle before committing to a full gallon.</p>
+
+<h2>Furgenics 2-in-1 Doodle vs. the alternatives</h2>
+
+<p><strong>Furgenics 2-in-1 Doodle Shampoo &amp; Conditioner</strong> — [[PRICE:2in1-doodle-shampoo-conditioner]] per gallon, [[VALUE:dilution-ratio]], [[VALUE:made-in-canada]] and fulfilled domestically in both markets. Purpose-built for doodle coats with argan + coconut + shea + silk amino acids + chamomile. Single-step cleaning and conditioning. Best fit for salons doing volume doodle work who need efficient, effective, and affordable.</p>
+
+<p><strong>Chris Christensen Day to Day</strong> — [[COMPETITOR:chris-christensen-day-to-day]], 16:1 concentrate. Excellent performance on show-coat doodles. Widely respected brand with strong reputation in competitive grooming. Better fit for show-ring prep and high-end boutique salons where price per gallon is less of a constraint than brand prestige.</p>
+
+<p><strong>iGroom Shampoo</strong> — [[COMPETITOR:igroom-silk]], 16:1 concentrate. Strong on coat conditioning but typically requires a separate conditioner step for best results on curly coats. Well-regarded for doodle work but priced at the premium end.</p>
+
+<p><strong>Isle of Dogs Shampoo</strong> — [[COMPETITOR:isle-of-dogs-evening-primrose]], premium hydrating line widely used in doodle-heavy salons. Exceptional coat feel but priced at the premium end and typically requires a separate conditioner. Good for specialty moisturizing needs, less economical as a daily driver.</p>
+
+<p><strong>Earthbath Oatmeal &amp; Aloe</strong> — [[COMPETITOR:earthbath-oatmeal-aloe]], retail-tier option available on Amazon. Works on doodles but not formulated specifically for curly coats; most professional groomers find the rinse profile inadequate for doodle-specific matting concerns.</p>
+
+<p><strong>The honest positioning:</strong> Chris Christensen, iGroom, and Isle of Dogs are all excellent products with better brand recognition than Furgenics. If you're doing show-ring work or running a high-end boutique where premium per-gallon pricing isn't a constraint, they're reasonable choices. For volume salon work where doodles are 30&ndash;50% of your weekly book, Furgenics delivers comparable performance — the per-gallon price gap (rendered above for your market) is the most concrete switch incentive.</p>
+
+<h2>How to wash a Goldendoodle with 2-in-1 Doodle shampoo</h2>
+
+<p>A complete doodle wash using Furgenics 2-in-1 Doodle:</p>
+
+<ol>
+  <li><strong>Pre-brush thoroughly</strong> before water. Remove any existing mats. Attempting to wash a matted doodle makes the mats tighter.</li>
+  <li><strong>Wet the coat completely</strong> with warm water. Doodle coats repel water initially; spend 2&ndash;3 minutes saturating before applying shampoo.</li>
+  <li><strong>Apply Furgenics 2-in-1 Doodle at [[VALUE:dilution-ratio]].</strong> For a medium Goldendoodle, 3&ndash;4 oz of diluted shampoo is typical. Work into the coat thoroughly, paying attention to the rear, belly, and legs where oil and debris collect.</li>
+  <li><strong>Leave on for 2&ndash;3 minutes.</strong> This gives the conditioning ingredients time to work on the hair shaft before rinsing.</li>
+  <li><strong>Rinse completely.</strong> This is the most important step for doodles. Rinse for at least 3&ndash;4 minutes or until water runs completely clear. Any residual shampoo will cause matting during blow-drying.</li>
+  <li><strong>Towel and HV dry.</strong> Use a high-velocity dryer to straighten the coat and separate curls. Follow with scissoring or deshedding as needed.</li>
+</ol>
+
+<p>For F1b or multigen doodles with particularly tight curls, consider following the 2-in-1 wash with a separate application of <a href="/products/deep-moisturizing-conditioner-gallon">Furgenics Deep Moisturizing Conditioner</a> ([[PRICE:deep-moisturizing-conditioner-gallon]]) for additional hydration.</p>
+
+<h2>What to pair with 2-in-1 Doodle in your doodle protocol</h2>
+
+<p>For high-volume doodle routes, the typical Furgenics protocol is:</p>
+
+<ul>
+  <li><strong>Daily driver:</strong> <a href="/products/2in1-doodle-shampoo-conditioner">2-in-1 Doodle Shampoo &amp; Conditioner</a> ([[PRICE:2in1-doodle-shampoo-conditioner]]) for F1 and lighter-coated F1b doodles</li>
+  <li><strong>Deep-hydration follow-up:</strong> <a href="/products/deep-moisturizing-conditioner-gallon">Deep Moisturizing Conditioner</a> ([[PRICE:deep-moisturizing-conditioner-gallon]]) for tighter curls or dry coats</li>
+  <li><strong>Monthly maintenance:</strong> <a href="/products/lavender-spa-shampoo">Lavender Spa Shampoo</a> ([[PRICE:lavender-spa-shampoo]]) for doodles who need occasional scent-variation or deeper clean</li>
+  <li><strong>Specialty needs:</strong> <a href="/products/oatmeal-aloe-shampoo-gallon">Oatmeal &amp; Aloe Shampoo</a> ([[PRICE:oatmeal-aloe-shampoo-gallon]]) for doodles with sensitive skin or hot spots</li>
+</ul>
+
+<p>Four gallons cover the entire doodle-focused practice.</p>
+
+<h2>Frequently asked questions</h2>
+
+<p><strong>Is Furgenics 2-in-1 Doodle safe for puppies?</strong><br>Yes. The formulation is pH-balanced for dog skin, sulfate-free, tearless, and free of dyes. Safe for puppies over 8 weeks. For very young puppies or dogs with diagnosed skin conditions, use a vet-recommended medicated shampoo.</p>
+
+<p><strong>Can I use this on non-doodle curly breeds?</strong><br>Yes. The formulation works well on any curly or wavy coat — Poodles, Bichons, Portuguese Water Dogs, Irish Water Spaniels, Cockapoos, Labradoodles, Bernedoodles. Anywhere coat matting and dryness are concerns, the 2-in-1 Doodle formula delivers.</p>
+
+<p><strong>How does this compare to using separate Chris Christensen shampoo and conditioner?</strong><br>Chris Christensen's two-step system will produce marginally better show-coat results on championship doodles. For production salon work, the difference is small and the 2-in-1 approach saves 40% of bath time per dog. For a salon doing 20 doodles a week, that's 4&ndash;5 hours of reclaimed time per week.</p>
+
+<p><strong>What dilution works best on a heavily matted doodle?</strong><br>For a heavily matted dog, dilute 12:1 instead of [[VALUE:dilution-ratio]] for the first pass and let the shampoo sit for 4&ndash;5 minutes before rinsing. The extra dwell time softens existing tangles and makes post-wash brushout easier.</p>
+
+<p><strong>Do you offer a sample before I buy a full gallon?</strong><br>Canadian groomers can request a free 8oz sample through the <a href="/pages/groomer-program">Groomer Program</a> (shipped from Vaughan, Ontario). US groomers get a first-order gallon discount through the same program instead, since US fulfillment doesn't ship non-revenue samples. Apply via the Groomer Program either way.</p>
+
+<h2>Ready to try Furgenics 2-in-1 Doodle on your route?</h2>
+
+<p><a href="/products/2in1-doodle-shampoo-conditioner">Furgenics 2-in-1 Doodle Shampoo &amp; Conditioner Gallon</a> is [[PRICE:2in1-doodle-shampoo-conditioner]], ships domestically in Canada (from Vaughan, Ontario) or in the US (via fulfillment partner) in 3&ndash;5 business days. <a href="/products/2in1-doodle-shampoo-conditioner">Order now.</a></p>
+
+[[DISCOUNT]]
+
+<p>Prefer to sample first? Request an 8oz bottle through the <a href="/pages/groomer-program">Groomer Program</a>. Questions? Email <a href="mailto:info@furgenics.com">info@furgenics.com</a>.</p>

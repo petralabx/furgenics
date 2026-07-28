@@ -1,0 +1,92 @@
+{
+  "brand": "furgenics",
+  "displayName": "Furgenics",
+  "active": true,
+  "tier": "primary",
+  "shopify": {
+    "shopDomain": "scg9xy-xt.myshopify.com",
+    "publicDomain": "furgenics.com",
+    "adminUrl": "https://admin.shopify.com/store/scg9xy-xt",
+    "clientIdEnv": "FURGENICS_CLIENT_ID",
+    "clientSecretEnv": "FURGENICS_CLIENT_SECRET",
+    "apiVersion": "2026-01"
+  },
+  "seo": {
+    "primaryMarket": "CA",
+    "secondaryMarkets": ["US"],
+    "primaryLanguage": "en",
+    "brandTagline": "Professional dog grooming shampoos for salons",
+    "brandKeywords": [
+      "professional dog shampoo",
+      "dog grooming shampoo gallon",
+      "salon dog shampoo",
+      "mobile groomer shampoo",
+      "dog grooming concentrate 16:1"
+    ]
+  },
+  "aeo": {
+    "trackPrompts": true,
+    "targetEngines": ["chatgpt", "perplexity", "claude", "gemini"],
+    "competitorBrands": [
+      "Bio-Groom",
+      "Coat Handler",
+      "Chris Christensen",
+      "South Bark",
+      "Nature's Specialties",
+      "Tropiclean Pro",
+      "iGroom",
+      "Warren London",
+      "Bubble Bros",
+      "Bark2Basics",
+      "PetAg",
+      "We Love Doodles",
+      "Earthbath",
+      "Isle of Dogs",
+      "#1 All Systems",
+      "Iv San Bernard",
+      "FURminator",
+      "Les Poochs",
+      "Wahl Professional Animal",
+      "Show Season"
+    ]
+  },
+  "audit": {
+    "cadence": "weekly",
+    "cronSchedule": "0 3 * * 0",
+    "autoFix": {
+      "altText": true,
+      "missingMetaDescription": true,
+      "missingFAQSchema": false,
+      "answerBlocks": false
+    },
+    "freshnessThresholdDays": 90,
+    "minDescriptionWords": 300
+  },
+  "schemaDeployment": {
+    "snippetPath": "snippets/furgenics-schema.liquid",
+    "expectedVersionMarker": "v3",
+    "renderCall": "{% render 'furgenics-schema' %}",
+    "lastVerifiedAt": "2026-04-21",
+    "notes": "v3 deployed 2026-04-21. Changes from v2: country code Canada->CA, return policy refund-only with FreeReturn, Petra Lab-X parentOrganization removed, description scrubbed of Petra Lab-X mention, fulfillment reality documented (US via Amazon FBA, Canada direct). v4 is planned but not yet generated -- see knowledge/schema-state.md for candidate additions."
+  },
+  "notifications": {
+    "teamsChannel": "plx-seo",
+    "severity": ["high", "medium"]
+  },
+  "keywordRank": {
+    "enabled": false,
+    "locations": ["United States", "Canada"],
+    "devices": ["desktop"],
+    "language": "en",
+    "maxKeywords": 500,
+    "maxQueriesPerRun": 1000,
+    "trackTiers": ["P1", "P2"]
+  },
+  "operatorNotes": {
+    "primaryContact": "stephen@petralabx.com",
+    "discountCode": "FUR50",
+    "discountTerms": "50% off first order, max 4 gallons, 1 use per customer",
+    "groomerProgramPage": "/pages/groomer-program",
+    "manufacturingContext": "Manufactured by Petra Lab-X. Do NOT reference Petra Lab-X in any public-facing Furgenics content."
+  }
+}

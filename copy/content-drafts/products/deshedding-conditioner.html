@@ -1,0 +1,93 @@
+<!--
+  Furgenics — PDP rewrite (token-driven + universal both-markets)
+  Target product: deshedding-conditioner (FUR-014)
+  GID: gid://shopify/Product/8104408187019
+  Drafted 2026-05-21. Fifth of 9 PDP token-conversion rewrites (Session 2, PDP #2).
+
+  Token coverage:
+  - PRICE: deshedding-shampoo (matching shampoo — system anchor cross-sell),
+    oatmeal-aloe-conditioner-gallon (lighter maintenance fall-back),
+    deep-moisturizing-conditioner-gallon (intensive-rebuild escalation).
+    3 unique handles, 3 PRICE tokens total. NOT the product's own handle.
+  - VALUE: dilution-ratio (used 3×), working-gallons-per-bottle,
+    per-working-gallon-cost-narrative, made-in-canada
+  - COMPETITOR: coat-handler-15-in-1 (the only true conditioner-category
+    token available). FURminator deShedding Ultra Premium Conditioner and
+    Bio-Groom's deshedding conditioner mentioned qualitatively without tokens —
+    the available competitor slugs for these brands resolve to the shampoo
+    line, so they're called out by name without price quotes to avoid
+    misleading per-market price benchmarking.
+  - DISCOUNT: at the close
+
+  SEO fields (pushed separately via the `seo` field on update-product):
+  - SEO title: "Professional Deshedding Dog Conditioner Gallon | Furgenics"
+    (57 chars)
+  - Meta description: "16:1 deshedding conditioner with hydrolyzed keratin
+    and argan oil. Built for Husky and GSD undercoat-release work on heavy
+    salon volume." (137 chars)
+
+  CHEMISTRY CLAIMS APPROACH: lean on what's already in the current live
+  description (hydrolyzed keratin, argan oil, shea butter) without making
+  ingredient-exclusion claims ("sulfate-free", "paraben-free") that aren't
+  in the live description and can't be substantiated from get-product-by-id
+  metafields (not returned on read). Lesson from FUR-013 carried forward.
+
+  CRITICAL: this is a CONDITIONER, not a shampoo. The body structure adapts:
+  - Chemistry section explains conditioner mechanism in a deshedding protocol
+    (slip enables brush-out release without trapping the undercoat)
+  - How-to section is the conditioner step, not a full bath — starts with
+    "confirm shampoo fully rinsed", emphasizes leave-in time + rinse + HV dry
+  - Compare section acknowledges that token coverage is thinner for the
+    conditioner category than the shampoo category and uses qualitative
+    framing for FURminator + Bio-Groom
+-->
+
+<p>Furgenics Deshedding Conditioner is a [[VALUE:dilution-ratio]] built as the back-half of the deshedding system — formulated to follow Furgenics Deshedding Shampoo on heavy double-coated breeds. Hydrolyzed keratin, argan oil, and shea butter add the slip that releases loose undercoat during the HV-dry brush-out while reinforcing the topcoat. One gallon yields [[VALUE:working-gallons-per-bottle]] — [[VALUE:per-working-gallon-cost-narrative]].</p>
+
+<h2>Why a deshedding-specific conditioner matters in the protocol</h2>
+
+<p>A deshedding shampoo loosens undercoat during the bath. The conditioner does the second-act work: lubricates the coat enough that the undercoat actually releases under the HV dryer or slicker rather than re-tangling, while strengthening the topcoat for weather resistance between grooms.</p>
+
+<p>Hydrolyzed keratin is the carry-over from the shampoo — the protein fragments continue penetrating damaged sections of the hair shaft during the conditioner's contact time, where shampoo contact alone wasn't enough. Argan oil handles the slip — light enough to coat individual hairs without weighing down the undercoat (which would trap shedding hair rather than release it). Shea butter adds finishing conditioning to the topcoat without going into the undercoat layer.</p>
+
+<p>The balance matters. Heavy oils in a deshedding conditioner are counterproductive — they coat the undercoat and prevent release. The lighter conditioning chemistry here is purpose-built for the deshedding protocol, not a generic conditioner with "deshedding" on the label.</p>
+
+<h2>When to use Furgenics Deshedding Conditioner</h2>
+
+<p><strong>Coat types:</strong> double-coated, thick, undercoat-heavy, heavy seasonal shedders. The chemistry is calibrated specifically for the deshedding protocol on these coats — using it on single-coated or curly breeds works fine but doesn't unlock the purpose.</p>
+
+<p><strong>Breeds:</strong> Siberian Huskies, German Shepherds, Golden Retrievers, Labrador Retrievers, Akitas, Alaskan Malamutes, Samoyeds, Bernese Mountain Dogs, Australian Shepherds, Chow Chows, Newfoundlands. Anywhere <a href="/products/deshedding-shampoo">Furgenics Deshedding Shampoo</a> applies, this conditioner is the matching follow-up.</p>
+
+<p><strong>Salon scenarios:</strong> completing the two-step deshedding service that owners are paying specifically for; seasonal blowout protocol during spring and late-summer coat-blow periods; production-volume undercoat work where the post-bath brush-out determines service quality. For the full deshedding protocol including the shampoo step and breed-specific notes, see our <a href="/pages/deshedding-shampoo-huskies-german-shepherds">deshedding guide</a>.</p>
+
+<h2>How it compares to alternatives</h2>
+
+<p><strong>Coat Handler 15-in-1 Anti-Static Conditioner</strong> — [[COMPETITOR:coat-handler-15-in-1]]. The closest direct comparison in the salon-pro conditioner category — also a 15:1 concentrate, also positioned for finishing work that supports deshedding output. Coat Handler positions theirs as multi-purpose (15 stated uses); Furgenics positions this specifically as the deshedding-protocol back-half. Where Furgenics differentiates: tighter integration with the matching <a href="/products/deshedding-shampoo">Furgenics Deshedding Shampoo</a> ([[PRICE:deshedding-shampoo]]) as a deliberate two-step system, and direct-to-salon pricing in both markets.</p>
+
+<p>FURminator and Bio-Groom both sell deshedding conditioners as part of their respective lines — both quality formulations, both priced materially higher per-gallon. FURminator's chemistry leans toward the topcoat-shine angle; what matters for production-volume deshedding is brush-out-release, which is where the lighter-conditioning approach here is tuned.</p>
+
+<p>For double-coated dogs whose primary need is dry-skin maintenance rather than active shed-control, the lighter <a href="/products/oatmeal-aloe-conditioner-gallon">Furgenics Oatmeal &amp; Aloe Conditioner</a> ([[PRICE:oatmeal-aloe-conditioner-gallon]]) is the right fall-back. For dry, damaged, or older coats needing intensive rebuilding, escalate to <a href="/products/deep-moisturizing-conditioner-gallon">Furgenics Deep Moisturizing Conditioner</a> ([[PRICE:deep-moisturizing-conditioner-gallon]]).</p>
+
+<h2>How to dilute and use</h2>
+
+<p>This is the conditioner step in the deshedding protocol. Use after <a href="/products/deshedding-shampoo">Furgenics Deshedding Shampoo</a> on the same bath.</p>
+
+<ol>
+  <li><strong>Confirm shampoo is fully rinsed</strong> before applying conditioner. Residual shampoo plus conditioner over loose undercoat creates the worst-case mat scenario during dry-out.</li>
+  <li><strong>Dilute at [[VALUE:dilution-ratio]]</strong> in a mixing bottle. Heavy seasonal blowout coats can take ready-to-use undiluted on the densest undercoat areas (shoulders, hindquarters, tail base).</li>
+  <li><strong>Apply along the back and work down into undercoat areas</strong>, massaging through the coat with hands. Pay particular attention to undercoat-heavy zones rather than treating it as a topcoat-only product.</li>
+  <li><strong>Leave on 3&ndash;5 minutes.</strong> Keratin needs contact time to bond with the hair shaft; shortening this step skips the strengthening effect.</li>
+  <li><strong>Rinse fully</strong> until water runs clear. Retained conditioner traps loose undercoat during the HV-dry phase.</li>
+  <li><strong>HV dry against the lay of the coat</strong>, working the dryer nozzle close to skin. This is where the bulk of dead undercoat actually releases — expect 1&ndash;2 cups of dead undercoat on a heavy seasonal blowout.</li>
+  <li><strong>Finish with a slicker brush</strong> across the topcoat for any straggling hair.</li>
+</ol>
+
+<h2>Shipping, sourcing, and the Groomer Program</h2>
+
+<p>Furgenics Deshedding Conditioner is [[VALUE:made-in-canada]] and ships domestically in both markets — Canadian orders from Vaughan, Ontario, US orders from a US fulfillment partner — in 3&ndash;5 business days. No cross-border duty or currency complications either way.</p>
+
+<p>To test before committing to a gallon, the <a href="/pages/groomer-program">Furgenics Groomer Program</a> ships free 8oz samples to verified Canadian groomers. US groomers get a first-order gallon discount through the same program instead, since US fulfillment doesn't ship non-revenue samples. Apply once and the verification covers any SKU.</p>
+
+[[DISCOUNT]]
+
+<p>Questions? Email <a href="mailto:info@furgenics.com">info@furgenics.com</a>.</p>

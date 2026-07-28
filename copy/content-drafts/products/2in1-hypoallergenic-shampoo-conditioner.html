@@ -1,0 +1,97 @@
+<!--
+  Furgenics — PDP rewrite (token-driven + universal both-markets)
+  Target product: 2in1-hypoallergenic-shampoo-conditioner (FUR-005)
+  GID: gid://shopify/Product/8104408219787
+  Drafted 2026-05-21. Ninth and final PDP token-conversion rewrite (Session 3, PDP #3 — project complete).
+
+  Token coverage:
+  - PRICE: hypoallergenic-shampoo-gallon (used 2× — chemistry section "same base"
+    cross-ref + how-to escalation), 2in1-doodle-shampoo-conditioner (doodle alt),
+    deshedding-shampoo (shedding-primary alt), oatmeal-aloe-conditioner-gallon
+    (escalation pair). 4 unique handles, 5 PRICE tokens total. NOT the product's
+    own handle.
+  - VALUE: dilution-ratio (used 2×), working-gallons-per-bottle,
+    per-working-gallon-cost-narrative, made-in-canada
+  - COMPETITOR: bio-groom-hypo-groom (REPEAT from FUR-001 — unavoidable; canonical
+    hypoallergenic competitor for this category); tropiclean-pro-hypoallergenic-oatmeal
+    (REPEAT from FUR-001 — same reason). The hypoallergenic competitive set in the
+    available token slugs is small; FUR-005 and FUR-001 inevitably share competitors.
+  - DISCOUNT: at the close
+
+  CLEANUP: live description has a stray `[[VALUE:dilution-ratio]]` token appended
+  at the very end with no surrounding context — looks like leftover from POC
+  testing. This rewrite replaces the full descriptionHtml so the stray token is
+  cleaned up automatically as part of the push.
+
+  SEO fields (pushed separately via the `seo` field on update-product):
+  - SEO title: "2-in-1 Hypoallergenic Dog Shampoo & Conditioner | Furgenics"
+    (59 chars)
+  - Meta description: "16:1 2-in-1 hypoallergenic shampoo + conditioner with
+    aloe and oat. Built for high-volume sensitive-skin work in production
+    salons." (133 chars)
+
+  CHEMISTRY APPROACH: conservative on sulfate-free claim (same FUR-011 /
+  FUR-050 precedent) since INCI not returned on read. Lean on tearless +
+  hypoallergenic positioning that's already in the live description and tag
+  set. Chemistry framed by 2-in-1 mechanism (sensitive-skin conditioning
+  built into the wash) + relationship to FUR-001 dedicated two-step.
+
+  CRITICAL: this is a 2-in-1 PRODUCT, same as FUR-020. Body structure adapted:
+  - Chemistry section explains 2-in-1 mechanism for sensitive skin (vs FUR-020
+    which framed it for doodle coats)
+  - How-to is the 2-in-1 protocol (no separate conditioner pass), with optional
+    escalation pair-up to dedicated two-step for severe cases
+  - Compare section acknowledges most hypoallergenic competitors are
+    dedicated shampoos (not 2-in-1), so the comparison is on time-per-bath
+    economics rather than chemistry alone
+-->
+
+<p>Furgenics 2-in-1 Hypoallergenic Shampoo &amp; Conditioner is a [[VALUE:dilution-ratio]] formulated for sensitive-skin dogs in high-volume salon settings — one product, one application, full coat care. Tearless, gentle base with aloe and oat carries sensitive-skin chemistry through both wash and conditioning passes. One gallon yields [[VALUE:working-gallons-per-bottle]] — [[VALUE:per-working-gallon-cost-narrative]].</p>
+
+<h2>Why a hypoallergenic 2-in-1 exists as a category</h2>
+
+<p>A two-step sensitive-skin protocol (shampoo, rinse, conditioner, rinse) is the gold standard for sensitive-skin clients. For high-volume salons running 12+ baths a day, the time math doesn't always work — every extra rinse cycle compounds across the schedule. 2-in-1 chemistry is the practical response: enough conditioning built into the wash that a separate conditioner pass isn't required.</p>
+
+<p>The trick is keeping the hypoallergenic profile intact. Most general-purpose 2-in-1 products lean heavy on fragrance or use surfactants that strip sensitive coats. Furgenics 2-in-1 Hypoallergenic is built on the same gentle base as the dedicated <a href="/products/hypoallergenic-shampoo-gallon">Furgenics Hypoallergenic Shampoo</a> ([[PRICE:hypoallergenic-shampoo-gallon]]) — aloe and oat for soothing, tearless for safety around the eyes — but with the conditioning agents calibrated to deliver enough slip in a single pass.</p>
+
+<p>The result: hypoallergenic performance equivalent to the two-step protocol on most sensitive-skin clients, at half the bath time. For clients with severe allergies or active skin reactions, the dedicated two-step is still the better choice.</p>
+
+<h2>When to use Furgenics 2-in-1 Hypoallergenic</h2>
+
+<p><strong>Coat types:</strong> sensitive, short-to-medium, fine, low-maintenance. The 2-in-1 format is calibrated for coats that don't need heavy conditioning — for long, curly, or damaged coats, the two-step protocol delivers better results.</p>
+
+<p><strong>Breeds:</strong> French Bulldogs, Boston Terriers, Boxers, Beagles, Dachshunds, Chihuahuas, Italian Greyhounds, Miniature Pinschers, Pugs, Whippets. Short to medium-coated breeds prone to skin sensitivities or allergies are the core audience.</p>
+
+<p><strong>Salon scenarios:</strong> high-volume daily driver for any salon running 10+ sensitive-skin baths per day; mobile groomers working in space-constrained rigs where one bottle in the kit beats two; boarding and daycare facilities running efficient bath cycles between play sessions; multi-dog households or kennels where time-per-bath matters. For the dedicated two-step sensitive-skin protocol context, see our <a href="/pages/oatmeal-aloe-sensitive-skin-dog-shampoo">sensitive-skin guide</a>.</p>
+
+<h2>How it compares to alternatives</h2>
+
+<p><strong>Bio-Groom Hypo-Groom Hypoallergenic Shampoo</strong> — [[COMPETITOR:bio-groom-hypo-groom]]. The most recognized hypoallergenic name in the salon-pro market with strong professional history. Honest read: Bio-Groom makes excellent hypoallergenic chemistry, but it's a dedicated shampoo (not 2-in-1) — the direct comparison is on time-per-bath: one Furgenics pass versus Bio-Groom shampoo + a separate conditioner step. Where Furgenics differentiates: format efficiency + materially lower per-gallon cost at comparable hypoallergenic-base quality.</p>
+
+<p><strong>TropiClean Pro Hypoallergenic Oatmeal Shampoo</strong> — [[COMPETITOR:tropiclean-pro-hypoallergenic-oatmeal]]. The other major hypoallergenic name with strong consumer recognition and salon-channel presence. Again a dedicated shampoo, not 2-in-1. Same time-per-bath comparison applies.</p>
+
+<p>For doodle and curly-coat clients who'd benefit from the 2-in-1 time-saving but need different conditioning chemistry, use <a href="/products/2in1-doodle-shampoo-conditioner">Furgenics 2-in-1 Doodle</a> ([[PRICE:2in1-doodle-shampoo-conditioner]]) instead. For double-coated dogs whose primary issue is shedding rather than skin reactivity, <a href="/products/deshedding-shampoo">Furgenics Deshedding Shampoo</a> ([[PRICE:deshedding-shampoo]]) is the better starting point.</p>
+
+<h2>How to dilute and use</h2>
+
+<ol>
+  <li><strong>Brush out</strong> any surface debris before water. Important on short-coated breeds prone to dander accumulation in skin folds.</li>
+  <li><strong>Saturate with warm water</strong> until fully wet to the skin. Short coats wet quickly — 1&ndash;2 minutes is usually enough.</li>
+  <li><strong>Dilute at [[VALUE:dilution-ratio]]</strong> in a mixing bottle. For heavily soiled coats or active irritation, ready-to-use undiluted on problem areas is acceptable.</li>
+  <li><strong>Apply along the back and work into a rich lather</strong> over the whole coat. The 2-in-1 format means no separate conditioner pass — the conditioning is built into the wash.</li>
+  <li><strong>Massage 2&ndash;3 minutes</strong> to let the aloe and oat work on sensitive skin. For active irritation, extend to 4&ndash;5 minutes.</li>
+  <li><strong>Rinse fully</strong> until water runs clear. Tearless formulation means no special eye-protection technique required, but residual product on already-sensitive skin can still compound irritation.</li>
+  <li><strong>Towel-dry or HV dry on moderate setting</strong> — no separate conditioner step needed.</li>
+</ol>
+
+<p>For severe sensitivities or chronic active reactions, escalate to the dedicated two-step protocol: <a href="/products/hypoallergenic-shampoo-gallon">Furgenics Hypoallergenic Shampoo</a> ([[PRICE:hypoallergenic-shampoo-gallon]]) + <a href="/products/oatmeal-aloe-conditioner-gallon">Furgenics Oatmeal &amp; Aloe Conditioner</a> ([[PRICE:oatmeal-aloe-conditioner-gallon]]).</p>
+
+<h2>Shipping, sourcing, and the Groomer Program</h2>
+
+<p>Furgenics 2-in-1 Hypoallergenic Shampoo &amp; Conditioner is [[VALUE:made-in-canada]] and ships domestically in both markets — Canadian orders from Vaughan, Ontario, US orders from a US fulfillment partner — in 3&ndash;5 business days. No cross-border duty or currency complications either way.</p>
+
+<p>To test before committing to a gallon, the <a href="/pages/groomer-program">Furgenics Groomer Program</a> ships free 8oz samples to verified Canadian groomers. US groomers get a first-order gallon discount through the same program instead, since US fulfillment doesn't ship non-revenue samples. Apply once and the verification covers any SKU.</p>
+
+[[DISCOUNT]]
+
+<p>Questions? Email <a href="mailto:info@furgenics.com">info@furgenics.com</a>.</p>

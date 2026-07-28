@@ -1,0 +1,132 @@
+<!--
+  Furgenics — pillar rewrite (v2.1, token-driven)
+  Target page: /pages/furgenics-vs-bio-groom
+  Targets queries: comparison-01, high-intent-03 (both P1 in market-map)
+  Template: page.content-pillar (uses main-page-pillar.liquid section with
+    token substitution pipeline — see docs/shopify-theme/sections/main-page-pillar.liquid)
+  Drafted 2026-05-21. v2 (2026-05-20) used Liquid {% render %} syntax which
+  doesn't work in page body content; v2.1 uses [[TOKEN]] syntax that the
+  section template substitutes at render time.
+
+  TO PUBLISH:
+  1. Confirm sections/main-page-pillar.liquid in your live theme has the
+     token substitution pipeline (see docs/shopify-theme/ source-of-truth).
+  2. Shopify admin → Online Store → Pages → "Furgenics vs Bio-Groom" →
+     Source view (</>)
+  3. Replace existing body content with everything below.
+  4. Update meta description (see .md sister file).
+  5. Save → visually verify live page:
+     - [[PRICE:hypoallergenic-shampoo-gallon]] renders as a dollar amount
+     - [[COMPETITOR:bio-groom-hypo-groom]] renders as "Bio-Groom Hypo-Groom
+       Gallon: $49.94 CAD (as of 2026-04, Amazon Canada)"
+     - [[VALUE:...]] tokens render as their phrasings
+     - [[DISCOUNT]] renders the active discount banner
+     - No raw [[TOKEN]] text visible anywhere — if you see any, the section
+       file's substitution rule for that token is missing.
+-->
+
+<p><img src="https://cdn.shopify.com/s/files/1/0649/4653/6587/files/Hypoallergenic_Shampoo.jpg?v=1773957800" alt="Furgenics Hypoallergenic Dog Shampoo 1 gallon bottle, tearless and sulfate-free, for professional dog groomers" width="420" height="427" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p>For most professional grooming salons, Furgenics delivers meaningfully better per-wash economics than Bio-Groom while matching them on formula quality and professional credentials. Furgenics' [[VALUE:dilution-ratio]] lists at [[PRICE:hypoallergenic-shampoo-gallon]] per gallon. For comparison: [[COMPETITOR:bio-groom-hypo-groom]] on a comparable 15:1 dilution. On apples-to-apples per-bath math, the per-dog cost on Furgenics works out to roughly half what Bio-Groom costs at typical salon usage.</p>
+
+<p>Bio-Groom wins on three things: longer brand history (founded 1959), wider distribution via US distributors, and some specialty SKUs Furgenics doesn't yet carry (medicated, anti-itch). Furgenics wins on price-per-working-gallon, Canadian manufacturing and shipping, and a direct-to-salon sample program. For a typical mid-market salon, the economics favor Furgenics; for specialty-heavy salons needing medicated formulas, Bio-Groom's catalog depth matters.</p>
+
+<p>Below is a direct comparison across the dimensions that actually determine which brand works for your salon.</p>
+
+<h2>Head-to-head comparison</h2>
+
+<p><strong>Price per gallon:</strong> Furgenics lists at [[PRICE:hypoallergenic-shampoo-gallon]] direct. [[COMPETITOR:bio-groom-hypo-groom]]. On equivalent hypoallergenic formulations, Furgenics is approximately half the per-gallon price.</p>
+
+<p><strong>Concentrate ratio:</strong> Both brands use similar dilution ratios. Furgenics Hypoallergenic is a [[VALUE:dilution-ratio]]. Bio-Groom Hypo-Groom is 15:1. Practically identical — [[VALUE:working-gallons-per-bottle]] versus roughly 16 working gallons per concentrate gallon.</p>
+
+<p><strong>Per-wash cost:</strong> Furgenics costs approximately half per medium dog washed at typical 3-ounce-per-wash usage compared to Bio-Groom Hypo-Groom on equivalent dilution. The ratio is invariant — it tracks the gallon-price ratio directly.</p>
+
+<p><strong>Shipping origin:</strong> Furgenics ships from Vaughan, Ontario within Canada in 3&ndash;5 business days. Bio-Groom ships from Illinois via Amazon Canada or through distributors — add 2&ndash;4 days plus distributor markup or cross-border handling on wholesale orders.</p>
+
+<p><strong>Professional credentials:</strong> Both brands position as professional salon brands. Bio-Groom has 65+ years of history. Furgenics is newer but [[VALUE:made-in-canada]] and formulated to professional standards. [[VALUE:professional-grade]].</p>
+
+<p><strong>Sample / trial program:</strong> Furgenics offers free 8oz sample bottles to Canadian professional groomers and a first-order gallon discount to US groomers (both via the Groomer Program; US fulfillment doesn't ship non-revenue samples). Bio-Groom does not offer a direct sample program to salons (samples typically come through distributors at cost).</p>
+
+<p><strong>Catalog breadth:</strong> Bio-Groom has 25+ SKUs including specialty medicated and anti-itch formulas. Furgenics has 9 active gallon SKUs focused on the highest-volume use cases (hypoallergenic, deshedding, oatmeal, doodle coats, lavender spa).</p>
+
+<p><strong>Payment terms:</strong> Furgenics offers Net-30 for qualified multi-location groups. Bio-Groom terms depend on distributor.</p>
+
+<h2>The pricing math, worked out</h2>
+
+<p>The per-bath economics track the gallon-price ratio directly. Both brands dilute at roughly the same rate (Furgenics 16:1, Bio-Groom 15:1), so the working-gallon yield is comparable — and the per-dog cost difference comes down to what you pay per concentrate gallon.</p>
+
+<p>Furgenics costs about half per dog washed compared to Bio-Groom Hypo-Groom on equivalent dilution. For a typical grooming salon doing 50 dogs a week using a hypoallergenic shampoo as their daily driver, that adds up over a year. For a multi-location group with five salons, the savings scale linearly to several hundred dollars annually on a single shampoo line. For a 25-location group, the same math compounds to several thousand annually.</p>
+
+<p>The exact savings track current pricing on both brands. Live numbers:</p>
+
+<ul>
+  <li><strong>Furgenics Hypoallergenic Gallon:</strong> [[PRICE:hypoallergenic-shampoo-gallon]]</li>
+  <li><strong>Bio-Groom Hypo-Groom Gallon:</strong> [[COMPETITOR:bio-groom-hypo-groom]]</li>
+</ul>
+
+<h2>Where Bio-Groom wins</h2>
+
+<p>Being honest: Bio-Groom is the better choice for some salons.</p>
+
+<p><strong>If your salon needs medicated shampoos</strong> (oatmeal-tar, anti-fungal, etc.), Bio-Groom has formulations Furgenics doesn't. Furgenics' catalog is focused on the highest-volume everyday SKUs, not the specialty medicated tail.</p>
+
+<p><strong>If you already have a US-based distributor relationship</strong> with favorable terms, switching to Furgenics means sourcing through a different channel. The per-gallon savings usually outweigh this friction, but for large multi-location groups with established distributor-level pricing, the math can get closer.</p>
+
+<p><strong>If brand recognition matters to your clientele</strong> (some high-end salons feature the shampoos they use on their service menus), Bio-Groom has longer brand history. Furgenics is newer and less known.</p>
+
+<h2>Where Furgenics wins</h2>
+
+<p><strong>Per-wash economics on the core SKUs.</strong> The math above is unambiguous for any salon using hypoallergenic, oatmeal, or deshedding shampoos as daily drivers — approximately half the per-dog cost at comparable dilution.</p>
+
+<p><strong>Canadian supply.</strong> For Canadian salons, Furgenics eliminates cross-border shipping delays, duty, and CAD-USD currency risk entirely. [[VALUE:made-in-canada]], shipped from Vaughan, Ontario.</p>
+
+<p><strong>Professional-grooming-first formulation.</strong> Every Furgenics SKU is sized as a gallon, priced for wholesale, and formulated for daily professional use. [[VALUE:pro-vs-retail-positioning]].</p>
+
+<p><strong>Direct Groomer Program.</strong> Canadian groomers can request free 8oz sample bottles of any active SKU through the Groomer Program (shipped from Vaughan, Ontario). US groomers receive a first-order gallon discount through the same program instead, since US fulfillment doesn't ship non-revenue samples.</p>
+
+<p><strong>Responsive supply.</strong> Furgenics ships from one warehouse in Ontario. Restock cycles are predictable and fast for Canadian salons.</p>
+
+<h2>When to choose which</h2>
+
+<p><strong>Choose Furgenics if:</strong></p>
+
+<ul>
+  <li>You operate a salon or multi-location group in Canada</li>
+  <li>Your main volume is on hypoallergenic, oatmeal, deshedding, or doodle-coat formulations</li>
+  <li>Per-gallon price and per-wash economics materially affect your margin</li>
+  <li>You want a direct-to-salon supplier relationship</li>
+  <li>You're open to sampling a new brand before committing</li>
+</ul>
+
+<p><strong>Choose Bio-Groom if:</strong></p>
+
+<ul>
+  <li>You need medicated or specialty formulations Furgenics doesn't carry</li>
+  <li>You have a favorable existing distributor relationship</li>
+  <li>Your clientele specifically expects legacy premium brand names on your service menu</li>
+  <li>You operate primarily in the US and already source through established US wholesale channels</li>
+</ul>
+
+<p><strong>A realistic middle path:</strong> Many salons run both. Use Furgenics for high-volume daily drivers (hypoallergenic, oatmeal, deshedding, doodle) and keep Bio-Groom for specialty medicated work. This is a common and practical setup.</p>
+
+<h2>Frequently asked questions</h2>
+
+<p><strong>Are Furgenics and Bio-Groom formulations directly comparable?</strong><br>For hypoallergenic and oatmeal-based shampoos, yes &mdash; both brands use similar base chemistry (sulfate-free, pH-balanced, tearless) with comparable dilution ratios. Coat-feel, lather, and rinse characteristics are nearly identical on side-by-side testing. The main difference is price, not formulation quality.</p>
+
+<p><strong>Can I switch from Bio-Groom to Furgenics without retraining staff?</strong><br>Yes. The dilution ratios are similar (15:1 vs [[VALUE:dilution-ratio]]) and the application technique is identical. Most salons see no workflow change after switching. Apply for the <a href="/pages/groomer-program">Groomer Program</a> first if you want a low-risk trial before ordering at full price — Canadian groomers get a sample pack, US groomers get a first-order discount.</p>
+
+<p><strong>Does Furgenics have the same shelf life as Bio-Groom?</strong><br>Yes. Both brands' concentrates have roughly 24-month shelf life unopened, 12&ndash;18 months once opened. Store in a cool, dry place out of direct sunlight.</p>
+
+<p><strong>Is Furgenics available through my current distributor?</strong><br>Not at this time. Furgenics is direct-to-salon only. This is intentional &mdash; cutting out distributor markup is what enables the per-gallon pricing advantage.</p>
+
+<p><strong>How does Furgenics handle wholesale / bulk pricing?</strong><br>Multi-gallon and multi-location pricing is available through the <a href="/pages/groomer-program">Groomer Program</a>. Contact us with your volume estimate and locations and we'll quote accordingly.</p>
+
+<h2>Ready to try Furgenics before switching?</h2>
+
+<p>Furgenics runs a Groomer Program for professional salons. Canadian groomers get a free 8oz sample pack shipped from Vaughan, Ontario; US groomers get a first-order gallon discount instead (US fulfillment doesn't ship non-revenue samples). Apply at <a href="/pages/groomer-program">furgenics.com/pages/groomer-program</a>.</p>
+
+<p>Prefer to order direct? <a href="/products/hypoallergenic-shampoo-gallon">Furgenics Hypoallergenic Shampoo Gallon</a> lists at [[PRICE:hypoallergenic-shampoo-gallon]], ships from Vaughan, Ontario in 3&ndash;5 business days inside Canada.</p>
+
+[[DISCOUNT]]
+
+<p>Questions about switching from Bio-Groom? Email <a href="mailto:info@furgenics.com">info@furgenics.com</a>.</p>

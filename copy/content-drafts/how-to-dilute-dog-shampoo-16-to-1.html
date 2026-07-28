@@ -1,0 +1,193 @@
+<!--
+  Furgenics — dilution how-to pillar rewrite (v2, token-driven + universal both-markets)
+  Target page: /pages/how-to-dilute-dog-shampoo-16-to-1
+  Targets queries: how-to-04 (dilute professional dog shampoo at 16:1),
+    overlaps with high-intent-01 (Furgenics brand discovery via educational
+    content)
+  Template: page.content-pillar
+  Drafted 2026-05-21. Replaces v1 (2026-04-28).
+
+  This pillar is technique-focused, not comparison-focused. The dilution math
+  table, equipment guide, mix protocol, and mistakes section are all universal
+  and don't need token treatment. Surgical changes only:
+
+  - Per-bath cost section: was hardcoded "$24.99 CAD ($19 USD)" + derived
+    dollar amounts in both currencies. v2 tokenizes the gallon price and
+    drops the derived dollar specifics (the gallon-price token now drives
+    the math instead).
+  - Final CTA: was "All $24.99 CAD per gallon" — dropped the hardcoded price
+    since the section mentions 5+ SKUs and per-SKU tokens would be noisy.
+  - Sample shipping: "Ships free inside Canada" → both markets
+  - Hero image alt: was empty (accessibility gap from v1) — added
+  - [[DISCOUNT]] near CTA
+
+  Note: 16:1 ratio references remain literal throughout (it's the title and
+  technique being taught). The [[VALUE:dilution-ratio]] token renders as
+  "16:1 concentrate" which would be awkward in many contexts ("at 16:1
+  concentrate, a salon doing..." reads off). Selectively used only where
+  the full positioning phrase is appropriate.
+
+  TO PUBLISH: same flow as prior pillars — see .md sister file checklist.
+-->
+
+<p><strong><img src="https://cdn.shopify.com/s/files/1/0649/4653/6587/files/samplepage_header.jpg?v=1774369206" alt="Professional groomer measuring concentrated dog shampoo into a labeled spray bottle for 16:1 dilution" width="450" height="258" style="display: block; margin-left: auto; margin-right: auto;"></strong></p>
+
+<p><strong>The short answer:</strong> 16:1 means one part shampoo concentrate to sixteen parts water. For a one-gallon working bottle (128 oz total), that's roughly 7.5 oz of concentrate topped up with water. For a 32 oz spray bottle, that's about 2 oz of concentrate to 30 oz of water. For a 16 oz bottle, that's just under 1 oz of concentrate to 15 oz of water. Most professional shampoo concentrates &mdash; including Furgenics, Chris Christensen Day to Day, Coat Handler (close at 15:1), and others &mdash; are formulated for this dilution. The math below is universal; the equipment and protocol guidance is what tends to vary salon to salon.</p>
+
+<p>This guide is for professional groomers and salon staff. If you're a pet owner who wandered in by accident, the very short version is: dilute according to the bottle's label, mix in warm water, store the diluted solution in a clearly labeled spray bottle, and use it within 2&ndash;3 weeks.</p>
+
+<p>Below are the working dilution tables, the equipment that actually holds up in salon use, the four mistakes new groomers make most often, and when to deviate from 16:1 for specific coat conditions.</p>
+
+<h2>The dilution table</h2>
+
+<p>Most professional grooming bottles come in three sizes. Here's exactly what 16:1 looks like for each, both the precise math and the rounded version most groomers actually use.</p>
+
+<table>
+<thead>
+<tr>
+<th>Working bottle size</th>
+<th>Concentrate (precise)</th>
+<th>Water (precise)</th>
+<th>Practical rounded version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 oz spray bottle</td>
+<td>0.47 oz</td>
+<td>7.53 oz</td>
+<td>0.5 oz concentrate + 7.5 oz water</td>
+</tr>
+<tr>
+<td>16 oz spray bottle</td>
+<td>0.94 oz</td>
+<td>15.06 oz</td>
+<td>1 oz concentrate + 15 oz water</td>
+</tr>
+<tr>
+<td>32 oz spray bottle</td>
+<td>1.88 oz</td>
+<td>30.12 oz</td>
+<td>2 oz concentrate + 30 oz water</td>
+</tr>
+<tr>
+<td>64 oz hand-pump bottle</td>
+<td>3.76 oz</td>
+<td>60.24 oz</td>
+<td>4 oz concentrate + 60 oz water</td>
+</tr>
+<tr>
+<td>128 oz (1 gallon)</td>
+<td>7.53 oz</td>
+<td>120.47 oz</td>
+<td>8 oz concentrate + 120 oz water</td>
+</tr>
+<tr>
+<td>5 gallon backpack sprayer</td>
+<td>37.65 oz</td>
+<td>602.35 oz</td>
+<td>40 oz concentrate + 600 oz water</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Note on rounding.</strong> The "practical" column rounds the concentrate up slightly, which makes the working solution about 5&ndash;7% stronger than exact 16:1. This is fine for almost all coat types and is what most professional groomers do because measuring 7.53 oz with a kitchen measuring cup is impossible. If your concentrate is particularly potent or your dogs have sensitive skin, round down (7 oz instead of 8 oz per gallon).</p>
+
+<p><strong>Yield from one gallon of concentrate.</strong> A single 128 oz bottle of concentrate at 16:1 dilution produces approximately 17 working gallons of bath solution. That's roughly 80&ndash;100 medium-dog baths or 50&ndash;60 large-dog baths, depending on coat density and how heavily soiled the dogs come in.</p>
+
+<h2>Why 16:1 is the professional standard</h2>
+
+<p>16:1 sits in the sweet spot of three competing constraints.</p>
+
+<p><strong>Cost per bath.</strong> Lower dilutions (8:1, 10:1) are easier to mix accurately but use far more concentrate per dog. At 16:1, a salon doing 30 baths a week burns roughly one gallon every 4&ndash;6 weeks instead of every 2&ndash;3 weeks at 8:1. The annual product cost difference is real &mdash; in the order of hundreds of dollars per shampoo SKU per year for a typical salon.</p>
+
+<p><strong>Cleaning power.</strong> Higher dilutions (32:1, 50:1) stretch the gallon further but reduce the per-bath cleaning power. On lightly soiled dogs they work fine. On heavy-coat or muddy dogs they require either a second wash pass or longer dwell time, which negates the cost savings. 16:1 maintains effective cleaning across most realistic coat conditions in one wash.</p>
+
+<p><strong>Mixing accuracy.</strong> At 16:1, the practical rounded measurements (1 oz : 15 oz, 2 oz : 30 oz, 8 oz : 120 oz) line up cleanly with standard graduated bottles. At 32:1 or 50:1, small measurement errors get amplified &mdash; a 0.5 oz overpour in a 32 oz bottle at 50:1 produces a noticeably stronger solution that may leave residue.</p>
+
+<p>Most shampoo manufacturers formulate at 16:1 because of these constraints, not because the chemistry requires it. A few brands offer different ratios for specific use cases (Bark2Basics at 32:1 for high-volume salons; Chris Christensen Day to Day also at 16:1; Coat Handler at 15:1, close enough that 16:1 protocols still work). When in doubt, follow the bottle's label.</p>
+
+<h2>The equipment that holds up</h2>
+
+<p>Four types of containers are standard in production salon use. Specific brand recommendations vary by region; what matters is the container type and material.</p>
+
+<p><strong>32 oz hand-spray bottles with adjustable nozzle.</strong> The workhorse for most bath setups. Use HDPE plastic, not the cheaper LDPE that goes brittle from repeated exposure to surfactants. A clean adjustable nozzle that switches between mist and stream is essential &mdash; mist for face and ears, stream for body. Tolco, Sparta, and similar professional-grade brands run $4&ndash;6 USD each and last 12&ndash;18 months under daily use.</p>
+
+<p><strong>1 gallon dilution jug with hand pump.</strong> For high-volume bath setups where you'll dispense diluted shampoo into a sponge or bath tub. Look for a screw-top pump with an internal dip tube. These run $15&ndash;25 and replace easily when the pump wears out (which it will, after 18&ndash;24 months).</p>
+
+<p><strong>5 gallon backpack sprayer.</strong> Mostly for mobile groomers and large-volume salon setups. The diluted shampoo is mixed in the tank, and the wand-spray dispenses to the dog. Solo and Chapin make professional-grade versions for $80&ndash;150. Critical: do not use a pesticide-ever sprayer for shampoo, even if it's been cleaned. Residual chemistry will harm dogs.</p>
+
+<p><strong>Marked dilution-pump bottles.</strong> A higher-end option &mdash; these have built-in pumps that dispense a fixed volume of concentrate (typically 1 oz per pump), so you can dilute by counting pumps rather than measuring. Useful for staff training and consistency across shifts. Check pump accuracy monthly; they drift over time.</p>
+
+<p>Whatever container type you choose, three rules apply universally: label every bottle clearly with the shampoo name and the dilution date, never reuse a container that previously held a different shampoo without a thorough rinse, and replace any container that develops cloudy plastic, cracks, or persistent odor.</p>
+
+<h2>How to mix a 16:1 dilution: step by step</h2>
+
+<ol>
+  <li><strong>Start with a clean, labeled bottle.</strong> Rinse with warm water. Confirm the label matches the shampoo you're about to mix.</li>
+  <li><strong>Measure concentrate first, then add water.</strong> Pour the concentrate into the empty bottle, then top up with warm water. This produces better blending than the reverse order.</li>
+  <li><strong>Use warm water, not cold.</strong> Cold water makes some surfactants gel or streak. Warm tap water (around the temperature you'd use to wash dishes) blends fully and quickly. Hot water isn't necessary and can degrade certain ingredients over time.</li>
+  <li><strong>Cap and gently rotate, don't shake hard.</strong> Excessive shaking creates foam that takes a long time to settle. A few gentle inversions is enough to mix.</li>
+  <li><strong>Let the solution rest 5 minutes before first use.</strong> This lets any introduced air bubbles dissipate and gives the surfactants time to fully integrate with the water.</li>
+  <li><strong>Mark the dilution date on the bottle.</strong> Most professional shampoos at 16:1 dilution stay stable for 2&ndash;4 weeks at room temperature. Concentrate preservatives are designed for concentrated solutions; once diluted, the preservative is also diluted, and biological growth risk increases over time. Use older bottles first; discard anything past 4 weeks.</li>
+</ol>
+
+<h2>The four mistakes new groomers make</h2>
+
+<p><strong>1. Under-rinsing because the diluted shampoo "looks like nothing."</strong> A properly diluted 16:1 solution is much thinner than concentrate. Visually, it can look almost like water with mild bubbles. Groomers who are used to thick consumer-bottle shampoos sometimes assume the dog is already "done" and stop rinsing too early. Rule of thumb: rinse until water runs completely clear and continues clear for 30&ndash;60 additional seconds.</p>
+
+<p><strong>2. Diluting in cold water.</strong> Surfactants &mdash; the active cleaning ingredients in any shampoo &mdash; don't fully integrate with cold water. The result is a solution where some pockets are stronger than others, leading to inconsistent cleaning and occasional residue streaks. Always mix in warm water.</p>
+
+<p><strong>3. Using 16:1 on heavily soiled or matted coats without a pre-wash.</strong> 16:1 is calibrated for normal-condition dogs. For heavily muddy, oily, or matted coats, either pre-wash with a stronger 12:1 dilution to break down the worst soil before doing a 16:1 main wash, or do two consecutive 16:1 passes with full rinses between. Trying to do a single 16:1 wash on a severely soiled coat usually fails on the rinse and leaves residue.</p>
+
+<p><strong>4. Storing diluted shampoo for too long.</strong> Diluted shampoo is a microbial-growth opportunity that concentrate isn't. After 2&ndash;4 weeks at room temperature, even properly mixed bottles can develop bacterial or fungal growth that contaminates the next bath. Mark the dilution date, use older bottles first, and discard any bottle that smells off or shows cloudy or discolored solution.</p>
+
+<h2>When to deviate from 16:1</h2>
+
+<p>The 16:1 standard works for most coats and most dogs. There are four scenarios where adjusting the ratio produces better results.</p>
+
+<p><strong>Heavy seasonal blowouts on double coats.</strong> For Huskies, German Shepherds, Goldens, or other heavy double-coats mid-blowout, a stronger 12:1 dilution on the first wash pass produces better undercoat release. Follow with the standard 16:1 on the second pass. (More on double-coat protocol on the <a href="/pages/deshedding-shampoo-huskies-german-shepherds">deshedding shampoo for Huskies and GSDs page</a>.)</p>
+
+<p><strong>Sensitive-skin dogs with diagnosed conditions.</strong> For dogs with active hot spots, post-vet-treatment recovery, or known surfactant sensitivity, a weaker 20:1 or 24:1 dilution reduces irritation while still cleaning effectively. (For sensitive-skin breeds and shampoo selection, see <a href="/pages/oatmeal-aloe-sensitive-skin-dog-shampoo">oatmeal &amp; aloe shampoo for sensitive skin</a>.)</p>
+
+<p><strong>Puppies under 12 weeks.</strong> A lighter 24:1 dilution is gentler on puppy skin, which is thinner and more permeable than adult skin. Most professional shampoos are puppy-safe at standard dilution &mdash; the lighter mix is conservative, not strictly necessary.</p>
+
+<p><strong>Show-coat finishing on very fine coats.</strong> For Maltese, Yorkie, or similar fine-coated breeds being prepped for show, a 20:1 dilution preserves more of the natural coat structure and produces less weight on the topcoat after drying.</p>
+
+<h2>Per-bath cost at 16:1</h2>
+
+<p>Quick economics on what 16:1 dilution actually costs per dog. Using a Furgenics gallon as the example (any of the 16:1 line works the same way at this dilution):</p>
+
+<ul>
+  <li><strong>Furgenics gallon price:</strong> [[PRICE:hypoallergenic-shampoo-gallon]] (rendered in your market currency)</li>
+  <li><strong>Working gallons per bottle at 16:1:</strong> 17</li>
+  <li><strong>Cost per working gallon:</strong> [[VALUE:per-working-gallon-cost-narrative]]</li>
+  <li><strong>Working solution per medium-dog wash:</strong> roughly 4&ndash;6 oz of diluted solution</li>
+  <li><strong>Cost per medium-dog wash:</strong> a few cents at professional dilution &mdash; the per-dog math compounds quickly, which is why concentrate format wins at production volume</li>
+</ul>
+
+<p>The exact per-bath cost shifts by brand. The 16:1 economics &mdash; ~17 working gallons per concentrate gallon, 4&ndash;6 oz of working solution per medium dog &mdash; are the same across any professionally-formulated 16:1 concentrate. Brand-to-brand differences show up in the gallon price, not the math.</p>
+
+<h2>Frequently asked questions</h2>
+
+<p><strong>Does this guide work for any 16:1 concentrate, or only Furgenics?</strong><br>The math and protocol work for any professional shampoo formulated for 16:1 dilution. That includes Furgenics, Chris Christensen Day to Day, iGroom (most variants), and many others. Always check the label &mdash; a shampoo formulated for 32:1 or 8:1 will not produce the right results at 16:1.</p>
+
+<p><strong>Can I dilute below 16:1 to stretch a gallon further?</strong><br>For lightly soiled dogs in a maintenance wash, yes &mdash; 24:1 or even 32:1 dilution will clean adequately. For normal salon work, 16:1 is the sweet spot between cost and cleaning power. Going significantly weaker (40:1+) reliably produces under-cleaned dogs and is not recommended.</p>
+
+<p><strong>How long does diluted shampoo last in a spray bottle?</strong><br>Most professional shampoos hold up at 16:1 dilution for 2&ndash;4 weeks at room temperature. Mark the dilution date on the bottle. Discard if the solution becomes cloudy, smells off, or shows visible separation &mdash; these are signs of microbial growth.</p>
+
+<p><strong>Does the dilution change for different coat types within the same shampoo?</strong><br>Generally no. 16:1 works across coat types with the same product. The variations described above (12:1 for heavy blowouts, 20:1+ for puppies and sensitive skin) are exceptions for specific conditions, not coat-type-driven adjustments.</p>
+
+<p><strong>Where can I sample a 16:1 concentrate to test for my salon?</strong><br>Furgenics offers free 8oz samples to professional groomers through the <a href="/pages/groomer-program">Groomer Program</a>. Each sample is enough for 8&ndash;10 medium-dog baths at 16:1 dilution &mdash; enough to evaluate cleaning power, rinse profile, and coat feel before committing to a gallon.</p>
+
+<p><strong>What if my shampoo says "15:1" instead of "16:1"?</strong><br>15:1 (Coat Handler's standard) and 16:1 are close enough that 16:1 protocols work for either with no meaningful difference. Below 12:1 or above 20:1, follow the manufacturer's label &mdash; the chemistry was formulated for that specific ratio.</p>
+
+<h2>Try Furgenics 16:1 concentrates</h2>
+
+<p>Furgenics makes 9 gallon concentrates at the 16:1 dilution standard &mdash; <a href="/products/hypoallergenic-shampoo-gallon">Hypoallergenic</a>, <a href="/products/lavender-spa-shampoo">Lavender Spa</a>, <a href="/products/deshedding-shampoo">Deshedding</a>, <a href="/products/oatmeal-aloe-shampoo-gallon">Oatmeal &amp; Aloe</a>, <a href="/products/2in1-doodle-shampoo-conditioner">2-in-1 Doodle</a>, and others. All consistently priced direct-to-salon and all yielding ~17 working gallons at the dilution math above. The formulations are [[VALUE:made-in-canada]] and ship domestically in both markets (Canadian orders from Vaughan, Ontario; US orders from a US fulfillment partner) in 3&ndash;5 business days.</p>
+
+[[DISCOUNT]]
+
+<p>If you want to evaluate before committing to a gallon, apply via the <a href="/pages/groomer-program">Groomer Program</a>. Canadian groomers get a free 8oz sample pack; US groomers get a first-order gallon discount instead (US fulfillment doesn't ship non-revenue samples).</p>
+
+<p>Questions? Email <a href="mailto:info@furgenics.com">info@furgenics.com</a>.</p>

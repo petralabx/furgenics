@@ -1,0 +1,72 @@
+{
+  "_README_": [
+    "Furgenics theme settings additions for the discount-banner snippet.",
+    "",
+    "WHERE TO PASTE THIS:",
+    "Shopify admin → Online Store → Themes → Edit code → config/settings_schema.json",
+    "",
+    "The settings_schema.json file is a TOP-LEVEL JSON ARRAY. Each element is a 'section'",
+    "of theme settings. Paste the object below AS A NEW ELEMENT in that array — typically",
+    "near the end, before the 'theme_info' section if one exists.",
+    "",
+    "After pasting and saving, the new settings appear in Theme Editor → Customize →",
+    "Theme settings → 'Active Discount Campaign' section. Stephen edits values there;",
+    "the discount-banner snippet renders them automatically across all pages.",
+    "",
+    "DO NOT include this _README_ field in the live theme — copy only the section object",
+    "below (the one starting with 'name: Active Discount Campaign')."
+  ],
+
+  "section_to_paste": {
+    "name": "Active Discount Campaign",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Active Discount Campaign",
+        "info": "Controls the discount-banner snippet rendered across pages (PDPs, pillars, Groomer Program). Update here, and every page reflects the new code instantly."
+      },
+      {
+        "type": "checkbox",
+        "id": "discount_active",
+        "label": "Show discount banner site-wide",
+        "default": true,
+        "info": "Uncheck to hide the banner everywhere without removing the code."
+      },
+      {
+        "type": "text",
+        "id": "discount_code",
+        "label": "Discount code",
+        "default": "FUR50",
+        "info": "Must match an active discount in Settings → Discounts. e.g. FUR50, FUR20, SUMMER25."
+      },
+      {
+        "type": "number",
+        "id": "discount_percent",
+        "label": "Discount percent",
+        "default": 50,
+        "info": "Whole number — 50 means 50% off."
+      },
+      {
+        "type": "number",
+        "id": "discount_max_units",
+        "label": "Max units per order (optional)",
+        "default": 4,
+        "info": "Renders 'Max N gallons per order' in the banner. Leave 0 to omit."
+      },
+      {
+        "type": "text",
+        "id": "discount_eligibility",
+        "label": "Eligibility note (optional)",
+        "default": "New customers, first order only",
+        "info": "Free-form clause. Leave empty to omit."
+      },
+      {
+        "type": "text",
+        "id": "discount_headline",
+        "label": "Banner headline (optional)",
+        "default": "",
+        "info": "Optional bold headline above the banner copy. e.g. 'Spring Sale' or 'Limited time'."
+      }
+    ]
+  }
+}
