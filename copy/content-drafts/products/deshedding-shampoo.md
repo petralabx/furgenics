@@ -50,14 +50,15 @@ Bark2Basics De-Shedding is mentioned qualitatively (no `[[COMPETITOR:bark2basics
 
 See sibling file `deshedding-shampoo.html` for the full token-driven HTML body.
 
-Structure (matches the FUR-001 pattern; adapted for deshedding chemistry depth):
+Structure (v3, accordion-template order — opener stays visible; each H2 section renders as an accordion row via `site/theme/snippets/description-accordion.liquid`, in document order; the Ingredients/INCI row is injected by the snippet after section 4):
 
-1. Answer-first opener (~50 words, no heading) — product + audience + chemistry headline + dilution economics
-2. **Why hydrolyzed keratin and safflower oil work for deshedding** — chemistry rationale, ingredient-level (~125 words)
-3. **When to use Furgenics Deshedding Shampoo** — coat types, breed list, salon scenarios with pillar link (~115 words)
-4. **How it compares to alternatives** — FURminator + Coat Handler Anti-Shed tokens, Bark2Basics qualitative, hypoallergenic-shampoo-gallon cross-ref (~165 words)
-5. **How to dilute and use on a heavy double coat** — 7-step deshedding bath protocol matching the pillar's flow (~165 words)
-6. **Shipping, sourcing, and the Groomer Program** — made-in-canada + dual-market fulfillment + Path B program + `[[DISCOUNT]]` + email contact (~85 words)
+1. Answer-first opener (~50 words, no heading, stays visible above the accordion) — product + audience + chemistry headline + dilution economics
+2. **When to use Furgenics Deshedding Shampoo** — coat types, breed list, salon scenarios with pillar link (~115 words) — accordion row 1, default-open
+3. **How it compares to alternatives** — FURminator + Coat Handler Anti-Shed tokens, Bark2Basics qualitative, hypoallergenic-shampoo-gallon cross-ref (~165 words)
+4. **How to dilute and use on a heavy double coat** — 7-step deshedding bath protocol matching the pillar's flow (~165 words)
+5. _(Full ingredients / INCI — injected from `custom.full_ingredients` by the accordion snippet, not part of this HTML)_
+6. **Why hydrolyzed keratin and safflower oil work for deshedding** — chemistry rationale, ingredient-level (~125 words)
+7. **Shipping, sourcing, and the Groomer Program** — made-in-canada + dual-market fulfillment + Path B program + `[[DISCOUNT]]` + email contact (~85 words)
 
 Total body: ~705 words (slightly above the 400–600 PDP target but justified by deshedding's chemistry-and-protocol depth; pillar context shares this voice).
 
@@ -84,4 +85,5 @@ Total body: ~705 words (slightly above the 400–600 PDP target but justified by
 
 ## Change log
 
+- **2026-07-28** — v3: H2 sections reordered to the PDP accordion-template order (when-to-use → compares → dilute-and-use → chemistry → shipping; INCI row injected by the theme snippet between dilute-and-use and chemistry). Copy otherwise unchanged except one compliance fix: "sulfate-free" claim removed from the chemistry section — SLES is present in FUR-013's INCI and the claim was removed brand-wide pending INCI cleanup. Reference exemplar for the 9-SKU rollout. See `docs/knowledge/analyses/2026-07-28-pdp-accordion-template-proposal.md`.
 - **2026-05-21** — v2 drafted (this file). Second PDP token-conversion rewrite, following PDP #1 (hypoallergenic) pattern. Token-driven prices, value-math snippets, FURminator + Coat Handler Anti-Shed per-market benchmarks, qualitative Bark2Basics positioning, universal both-markets framing, Path B Groomer Program wording, theme-driven discount banner. Replaces v1 prose-only description shipped pre-token-architecture.
