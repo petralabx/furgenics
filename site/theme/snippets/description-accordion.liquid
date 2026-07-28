@@ -1,0 +1,129 @@
+{%- comment -%}
+  Furgenics — description-accordion snippet
+  Restructures the (token-substituted) PDP description into a visible
+  answer-first opener + a native <details>/<summary> accordion, one row per
+  <h2> section, in document order. Optionally injects the Ingredients (INCI)
+  row from the product's `custom.full_ingredients` metafield at a chosen
+  position so the page has ONE unified accordion instead of two stacked ones.
+
+  SEO rationale (why this is safe):
+  - All content stays server-rendered in the DOM. Google indexes content
+    inside collapsed accordions at full weight under mobile-first indexing —
+    nothing is removed or deferred, only visually collapsed.
+  - The H2s remain real <h2> headings (inside <summary>, which permits
+    heading content per the HTML spec), so the heading outline is unchanged.
+  - The pre-H2 opener stays visible for the answer-first AEO pattern.
+  - Each row gets a stable anchor id (handleized heading) and a tiny script
+    auto-opens the row when the URL hash targets it, so deep links keep working.
+
+  Usage (inside sections/main-product.liquid, AFTER token substitution):
+    {%- comment -%} was: {{ description_html }} {%- endcomment -%}
+    {% render 'description-accordion',
+       description_html: description_html,
+       product: product %}
+
+  NOTE: `sections/main-product.liquid` lives in the live theme / steward repo,
+  not here. Verify the substituted-description variable name against the live
+  file before wiring — do not guess it.
+
+  Parameters:
+    description_html      (string)   Token-substituted description HTML.
+                                     Defaults to product.description (raw,
+                                     unsubstituted — pass the substituted
+                                     string in production).
+    product               (object)   Product object; used for the INCI row.
+    show_ingredients      (boolean)  Inject the Ingredients (INCI) row from
+                                     custom.full_ingredients. Default true.
+    ingredients_position  (number)   1-based accordion row position for the
+                                     INCI row. Default 4 (after coat-fit,
+                                     comparison, and directions rows in the
+                                     standard PDP section order).
+    open_first            (boolean)  Render the first row expanded. Default true.
+
+  Content conventions this snippet expects (all 9 PDP drafts comply):
+    - The opener (everything before the first <h2>) is the visible summary.
+    - <h2> headings are plain text — no nested inline tags inside the <h2>.
+    - Accordion order = H2 document order. To reorder rows, reorder the
+      sections in the description HTML (canonical drafts in
+      copy/content-drafts/products/), not in this snippet.
+    - Descriptions with no <h2> (e.g. 8oz samples) render unchanged, so the
+      snippet is safe to wire for all products.
+
+  Returns:
+    The opener div, then a <div class="furgenics-pdp-accordion"> of
+    <details> rows — or the input HTML untouched when it has no <h2>.
+
+  Maintenance: row order is a content decision (see
+  docs/knowledge/analyses/2026-07-28-pdp-accordion-template-proposal.md).
+  Edit this file only for markup/behavior changes.
+{%- endcomment -%}
+
+{%- assign _html = description_html | default: product.description -%}
+{%- assign _show_ingredients = show_ingredients | default: true, allow_false: true -%}
+{%- assign _ingredients_position = ingredients_position | default: 4 -%}
+{%- assign _open_first = open_first | default: true, allow_false: true -%}
+
+{%- assign _sections = _html | split: '<h2' -%}
+
+{%- if _sections.size <= 1 -%}
+  {{ _html }}
+{%- else -%}
+
+  {%- capture _ingredients_row -%}
+    {%- assign _inci = product.metafields.custom.full_ingredients.value -%}
+    {%- if _show_ingredients and _inci != blank -%}
+      <details class="furgenics-pdp-acc-item" id="pdp-full-ingredients-inci">
+        <summary><h2 class="furgenics-pdp-acc-heading">Full ingredients (INCI)</h2></summary>
+        <div class="furgenics-pdp-acc-body"><p>{{ _inci }}</p></div>
+      </details>
+    {%- endif -%}
+  {%- endcapture -%}
+
+  <div class="furgenics-pdp-opener">{{ _sections[0] }}</div>
+
+  <div class="furgenics-pdp-accordion">
+    {%- assign _row = 0 -%}
+    {%- for _section in _sections offset: 1 -%}
+      {%- assign _row = _row | plus: 1 -%}
+      {%- if _row == _ingredients_position -%}{{ _ingredients_row }}{%- endif -%}
+
+      {%- assign _head_and_rest = _section | split: '</h2>' -%}
+      {%- assign _heading = _head_and_rest[0] | split: '>' | last | strip -%}
+      {%- assign _body = _section | remove_first: _head_and_rest[0] | remove_first: '</h2>' -%}
+
+      <details class="furgenics-pdp-acc-item" id="pdp-{{ _heading | handleize }}"{% if _open_first and _row == 1 %} open{% endif %}>
+        <summary><h2 class="furgenics-pdp-acc-heading">{{ _heading }}</h2></summary>
+        <div class="furgenics-pdp-acc-body">{{ _body }}</div>
+      </details>
+    {%- endfor -%}
+
+    {%- assign _section_count = _sections.size | minus: 1 -%}
+    {%- if _ingredients_position > _section_count -%}{{ _ingredients_row }}{%- endif -%}
+  </div>
+
+  {%- comment -%} Neutral baseline styling — theme team may restyle to match
+      the theme's collapsible-tab look; keep class names stable. {%- endcomment -%}
+  <style>
+    .furgenics-pdp-accordion { margin-top: 1.5rem; border-top: 1px solid rgba(0, 0, 0, 0.12); }
+    .furgenics-pdp-acc-item { border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+    .furgenics-pdp-acc-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0.25rem; }
+    .furgenics-pdp-acc-item > summary::-webkit-details-marker { display: none; }
+    .furgenics-pdp-acc-item > summary::after { content: "+"; font-size: 1.4em; line-height: 1; flex: none; }
+    .furgenics-pdp-acc-item[open] > summary::after { content: "\2013"; }
+    .furgenics-pdp-acc-heading { margin: 0; font-size: 1.05em; }
+    .furgenics-pdp-acc-body { padding: 0 0.25rem 1.25rem; }
+  </style>
+
+  <script>
+    (function () {
+      function openTarget() {
+        var hash = window.location.hash;
+        if (!hash || hash.length < 2) return;
+        var el = document.getElementById(hash.slice(1));
+        if (el && el.tagName === 'DETAILS') el.open = true;
+      }
+      openTarget();
+      window.addEventListener('hashchange', openTarget);
+    })();
+  </script>
+{%- endif -%}

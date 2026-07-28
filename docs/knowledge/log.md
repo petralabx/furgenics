@@ -8,6 +8,12 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-07-28T17:45:00Z] query | PDP accordion-template proposal filed + live PDP review defects
+
+- Filed `analyses/2026-07-28-pdp-accordion-template-proposal.md` (Stephen request, PDP UX task 1 of 2): restructure PDP descriptions into one unified purchase-decision-ordered accordion via new `site/theme/snippets/description-accordion.liquid`; deshedding-shampoo drafts reordered as v3 exemplar.
+- Defects observed on live PDPs during the review (not yet fixed): (1) raw unsubstituted `[[PRICE:oatmeal-aloe-shampoo-gallon]]` token rendering on `/products/hypoallergenic-shampoo-gallon` "How it compares" section; (2) compare-at price ($18.04 USD) strikes through BELOW the sale price ($34.99 USD) on both PDPs checked — stale `compare_at_price` in Shopify admin; (3) FUR-013 live description still carries the retired "sulfate-free" claim (fixed in the v3 draft, live push pending).
+- Wiki divergence flagged, not overwritten: products.md $24.99 CAD baseline vs live $34.99 USD.
+
 ## [2026-06-28T03:07:45.585Z] audit | Full audit: 50 findings (10H/36M/2L/2I), 0 auto-fixed
 
 - Auditors run: schema-deployment, alt-text, freshness, answer-block, citation-tracker
