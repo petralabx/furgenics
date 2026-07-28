@@ -8,6 +8,13 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-07-28T19:26:00Z] query | PDP accordion implementation reviewed and end-of-session handoff filed
+
+- Filed `analyses/2026-07-28-pdp-accordion-implementation-review.md`, documenting every duplicate-theme/repo change, preview + branch + PR state, SEO/AEO parity assessment, launch blockers, and prioritized next-session decisions.
+- Unpublished duplicate `Copy of Copy of scg9xy-xt` (`#152547065995`) remains the only Shopify theme changed; live theme was not pushed or published. Current preview is linked in the analysis.
+- Recommendation: do not publish yet. P0s are inventory/market availability, inverted compare-at pricing, cross-surface sulfate-free and medical-adjacent claims, catalog-wide purchase-order rollout, buy-box order, Product JSON-LD safety, and FAQ keyboard focus.
+- This is a review/handoff entry, not a live `ship`; `optimization-log.md` remains unchanged until an approved theme reaches production.
+
 ## [2026-07-28T17:45:00Z] query | PDP accordion-template proposal filed + live PDP review defects
 
 - Filed `analyses/2026-07-28-pdp-accordion-template-proposal.md` (Stephen request, PDP UX task 1 of 2): restructure PDP descriptions into one unified purchase-decision-ordered accordion via new `site/theme/snippets/description-accordion.liquid`; deshedding-shampoo drafts reordered as v3 exemplar.
