@@ -36,7 +36,7 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 ## 2026-08-05 — session log convention added
 
 - **Who:** Stephen + Cursor
-- **PR:** pending
+- **PR:** #7
 - **Done:** Added this file; wired start/end-of-session discipline into `AGENTS.md`
 - **Next:** Colleagues pull `main`, read latest entries before starting; append an entry with each meaningful PR
 - **Watch:** Steward (`plx-aeo-steward/brands/furgenics/`) remains upstream for machine-maintained wiki pages until repointed; soft MC compliance — operator PRs do not need `MC-Checkout`
