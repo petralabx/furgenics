@@ -6,7 +6,7 @@ Consumer brand repository for **Furgenics** (furgenics.com), governed by PLX Mis
 - MC registry id: `furgenics`
 - Live surfaces: Shopify storefront (CA primary, US secondary)
 
-**Start here:** [AGENTS.md](AGENTS.md) (repo map, source-of-truth rules, guardrails, steward-upstream note).
+**Start here:** [AGENTS.md](AGENTS.md) (repo map, source-of-truth rules, guardrails, steward-upstream note). After `git pull`, skim [docs/sessions.md](docs/sessions.md) for the latest handoff.
 
 Brand knowledge wiki: [docs/knowledge/index.md](docs/knowledge/index.md). Product roster: [docs/knowledge/products.md](docs/knowledge/products.md). Shopify theme context: [site/theme/](site/theme/).
 
