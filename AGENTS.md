@@ -35,14 +35,17 @@ Versioned brand home for **Furgenics** (furgenics.com) — professional dog groo
 
 ## Workflow discipline
 
+- **Start of session:** `git checkout main && git pull`, then read the latest entries in `docs/sessions.md` (and skim `docs/knowledge/log.md` / relevant `analyses/` when the work touches SEO/AEO).
 - Copy changes to live surfaces (Shopify pages, PDPs, theme) go through PR review — never direct to `main`.
 - New approved copy lands in `copy/`; experiments and defects get logged in the wiki's `optimization-log.md` / `log.md`.
 - Catalog changes: update `docs/knowledge/products.md` first, then PDP/theme files.
+- **End of session / before merge:** append a short entry to `docs/sessions.md` in the same PR (who, PR, done, next, watch). Deep write-ups still go in `docs/knowledge/analyses/`.
 
 ## Repo map
 
 | Path | What lives there |
 |---|---|
+| `docs/sessions.md` | Append-only session handoff (read first, write last) |
 | `docs/knowledge/` | Brand knowledge wiki (see `index.md` for the full catalog + ownership classes) |
 | `docs/knowledge/analyses/` | Filed analysis/session write-ups (append via index conventions) |
 | `docs/design-system/` | Separate — do not modify for brand-ops tasks |
