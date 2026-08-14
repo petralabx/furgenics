@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-14 — buy-button alignment fix pushed to unpublished duplicate
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Pushed `snippets/buy-buttons.liquid` (2b alignment fix) to unpublished duplicate `#152547065995` only. Live `#150922428555` untouched. Preview at 1440px and 390px: Add to cart full-width solid teal with arrow at the right edge; Apply for salon pricing full-width outlined secondary stacked below; left/right edges identical (desktop both 440px @ x=693; mobile both 350px @ x=20).
+- **Next:** Stephen previews; Search & Discovery complementary pairings still admin; consider versioning `assets/mx-style.css` (P2). Then Phase 2.
+- **Watch:** Never push to or publish the live theme. `mx-style.css` still globally overrides `.button`; the buy-box fix is higher-specificity CSS in the snippet, not a removal of those globals.
+
 ## 2026-08-14 — PDP Phase 1 deployed to unpublished duplicate theme
 
 - **Who:** Stephen + Cursor cloud agent

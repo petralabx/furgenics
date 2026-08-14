@@ -8,6 +8,11 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-14T17:40:00Z] ship | buy-buttons.liquid alignment fix pushed to unpublished duplicate #152547065995
+
+- `shopify theme push --nodelete --only snippets/buy-buttons.liquid` to **Copy of Copy of scg9xy-xt** (`#152547065995`). Live `#150922428555` remained `[live]`; nothing published. Remote file matches repo.
+- Rendered preview `https://furgenics.com/products/deshedding-shampoo?preview_theme_id=152547065995` at 1440px and 390px: Add to cart full-width solid teal `rgb(1, 69, 102)` with arrow `calc(100% - 20px)`; Apply for salon pricing outlined secondary stacked below; edges aligned.
+
 ## [2026-08-14T18:00:00Z] ship | PDP Phase 1 pushed to unpublished duplicate theme #152547065995
 
 - `shopify theme push --nodelete --only` of `sections/main-product.liquid`, `templates/product.json`, `snippets/description-accordion.liquid`, `snippets/furgenics-product-faqs.liquid`, `snippets/product-at-a-glance.liquid`, `snippets/sticky-atc.liquid` to **Copy of Copy of scg9xy-xt** (`#152547065995`). Live theme `#150922428555` was not pushed or published.
