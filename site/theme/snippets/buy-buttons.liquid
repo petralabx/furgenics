@@ -180,14 +180,44 @@
   {%- endif -%}
 </div>
 <style>
-  .furgenics-salon-pricing {
-    margin-top: 0.8rem;
+  /* 2026-08-14 fix: assets/mx-style.css globally forces .button to solid teal
+     with arrow padding, sets `.details .product-form__submit.button` to
+     width:auto, and disables Dawn's :after border mechanism — which made
+     Add to cart shrink to ~122px beside a same-colored salon-pricing pill.
+     These rules (rendered after the stylesheets, higher specificity) stack
+     the buttons full-width and give the salon CTA a true secondary look. */
+  .product-form__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    max-width: 44rem;
+  }
+  .details .product-form__buttons .product-form__submit.button,
+  .product-form__buttons .product-form__submit.button {
+    width: 100%;
+    background-position: calc(100% - 20px) center;
+  }
+  .details .product-form__buttons .product-form__submit.button:hover {
+    background-position: calc(100% - 12px) center;
+  }
+  .product-form__buttons .shopify-payment-button {
+    width: 100%;
+  }
+  .product-form__buttons .furgenics-salon-pricing.button {
+    width: 100%;
+    margin: 0;
+    background-color: transparent;
+    background-image: none;
+    color: #014566;
+    border: 0.15rem solid #014566;
+    padding: 1.1rem 3rem;
     text-align: center;
     text-decoration: none;
+    font-weight: 600;
   }
-  .furgenics-salon-pricing:hover {
-    text-decoration: underline;
-    text-underline-offset: 0.18em;
+  .product-form__buttons .furgenics-salon-pricing.button:hover {
+    background-color: rgba(1, 69, 102, 0.07);
   }
   .furgenics-salon-pricing:focus-visible {
     outline: 2px solid rgb(var(--color-foreground));
