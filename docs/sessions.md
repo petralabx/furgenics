@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-14 — PDP Phase 1: buy-box + at-a-glance + accordion polish (repo-side)
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Assessed external PDP design review and filed `docs/knowledge/analyses/2026-08-14-pdp-phase1-buybox.md` with Stephen's five decisions (canonical shipping CA 2–5 / US 3–5; FUR20 manual entry; claims substantiated via 60+ groomer testing; sulfate claim held; review app pending). Built Phase 1 in `site/theme/`: buy-box reorder + quantity restore, new `product-at-a-glance` and `sticky-atc` snippets, duplicate H2/static rating/hidden legacy accordion removed, testimonial compacted, complementary bundle block, accordion focus-visible + reduced-motion fixes. `products.md` shipping updated.
+- **Next:** Token-equipped agent run pushes the six changed theme files to duplicate theme #152547065995, pulls + restyles `snippets/buy-buttons.liquid` (wholesale → "Apply for salon pricing" secondary), sets Search & Discovery complementary pairings; Stephen previews, then Phase 2 (v4 descriptions, FAQ dedupe, competitor price refresh).
+- **Watch:** This VM predates the `SHOPIFY_CLI_THEME_TOKEN` secret so nothing was pushed to Shopify; admin blockers remain (inventory, inverted compare-at, FUR-011 404). `buy-buttons.liquid` is still unversioned — pull before editing. Never push to the published theme.
+
 ## 2026-08-05 — session log convention added
 
 - **Who:** Stephen + Cursor

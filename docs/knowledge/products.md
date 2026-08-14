@@ -7,7 +7,7 @@
 Furgenics is a dog grooming shampoo and conditioner brand targeting **professional groomers** (grooming salons, single-location through 25+ location groups, across US + Canada) — see `icp.md` for full segmentation. Products are sold as **1-gallon concentrates** (dilute 16:1 for up to 17 working gallons) at wholesale pricing.
 
 - **Manufacturing:** Petra Lab-X (Vaughan, Ontario) — contract manufacturer. **NEVER reference Petra Lab-X in public-facing Furgenics content.** This is a brand-privacy rule.
-- **Markets:** Primary CA (direct from Vaughan, 2-5 day shipping). Secondary US (via Amazon, 3-7 day shipping).
+- **Markets:** Primary CA (direct from Vaughan, **2-5 business day** shipping). Secondary US (via Amazon, **3-5 business day** shipping). _Canonical shipping promises per Stephen 2026-08-14 (US tightened from the earlier 3-7 wording); every surface (descriptions, FAQs, at-a-glance panel, schema) should state these and only these._
 - **Returns:** 30-day refund-only policy (no return shipping required).
 - **Dilution standard:** 16:1 with warm water. Can also use ready-to-use for heavier soiling.
 
@@ -220,6 +220,8 @@ All gallon PDPs carry these custom metafields:
 ---
 
 ## Change log
+
+- **2026-08-14** — Canonical shipping promises set by Stephen: CA 2-5 business days, US 3-5 business days (US previously written as 3-7 in FAQs). Related decisions recorded the same day (see `analyses/2026-08-14-pdp-phase1-buybox.md`): FUR20 must be manually entered at checkout (FAQ tail claiming it "works automatically" is wrong and needs a metafield sweep); performance/safety claims substantiated via the 60+ groomer testing program; sulfate-free claim stays as-is pending formulation confirmation (no sweep yet).
 
 - **2026-05-27** — `custom.faqs` metafield on all 9 active gallon products rewritten to use the shared token vocabulary (`[[PRICE]]` / `[[VALUE]]` / `[[COMPETITOR]]` / `[[DISCOUNT]]`). Same render path as PDP descriptions and pillar bodies — see updated metafields section. FUR-014 CAD price corrected to $29.99 (diverged from $24.99 baseline per MCP read). US Markets override marked resolved in known catalog issues #6 (Stephen confirmed out-of-theme resolution). Dormant unstructured metafields catalogued under "Dormant unstructured metafields" — batch delete candidate for a separate session. FUR-001 namespace quirk flagged (`furgenics.*` duplicates of `custom.*` entries). Full session details in `analyses/2026-05-27-token-substitution-extraction-and-faq-architecture.md`.
 - **2026-04-22** — Added Formula IDs, UPCs, and canonical Shopify titles from `sources/external-research/spreadsheets/2026-04-22-furgenics-gtm-amazon.md` (Shopify Listing Info + Finalized Line Up sheets). Added TBD products section (Deep Moisturizing Shampoo, Deodorizing Shampoo, Leave-In Conditioner) from the same source. Added Amazon market pricing context. Added SKU mapping drift to catalog issues. Added competitive notes on two SKUs where Amazon category leaders are relevant.

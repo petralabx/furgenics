@@ -8,6 +8,11 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-14T16:30:00Z] query | PDP Phase 1 built repo-side + external feedback decisions recorded
+
+- Filed `analyses/2026-08-14-pdp-phase1-buybox.md`: external design-review assessment, Stephen's five decisions (canonical shipping CA 2–5 / US 3–5 business days; FUR20 manual entry — FAQ "works automatically" wording is wrong, sweep pending; claims substantiated via 60+ groomer testing; sulfate claim held pending formulation truth; review app choice pending).
+- Phase 1 theme changes committed to `site/theme/` on PR #5: buy-box reorder, at-a-glance spec panel with computed $/working gallon, mobile sticky ATC, quantity controls restored, duplicate H2 title + static rating image + hidden legacy accordion removed, testimonial compacted, complementary bundle block, accordion focus-visible/reduced-motion fixes. Deploy to duplicate theme #152547065995 pending (needs token-equipped run + buy-buttons.liquid pull).
+
 ## [2026-07-28T19:26:00Z] query | PDP accordion implementation reviewed and end-of-session handoff filed
 
 - Filed `analyses/2026-07-28-pdp-accordion-implementation-review.md`, documenting every duplicate-theme/repo change, preview + branch + PR state, SEO/AEO parity assessment, launch blockers, and prioritized next-session decisions.
