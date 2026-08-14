@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-14 (later) — PDP Phase 2 build: 4-section accordion + Dandylion adoptions
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Phase 2 built repo-side per Stephen's go-ahead (Dandylion reference PDP): `description-accordion.liquid` v2 (INCI merges into an "ingredients" H2 section; "how-it-compares" H2 auto-extracted below the accordion as a compact card; backwards-compatible with un-migrated bodies + samples, simulation-verified), v4 deshedding description + curated 9-question `custom.faqs` (in the draft .md, ready for MCP), at-a-glance chip-strip restyle, `custom.display_title` + gallon eyebrow support in the title block (inert until metafield exists), proposed short titles for 9 SKUs in products.md (Class B). Also: FAQ page-width gutter fix + testimonial layout reverted to original per Stephen (2c). Brief: `docs/knowledge/analyses/2026-08-14-pdp-phase2-build.md`.
+- **Next:** Theme push to #152547065995: `description-accordion.liquid`, `product-at-a-glance.liquid`, `main-product.liquid`, `furgenics-product-faqs.liquid`. Claude MCP: FUR-013 v4 body + faqs v2. Stephen: approve display titles, corrected INCI lists from R&D, August competitor captures, S&D pairings.
+- **Watch:** Pushing snippet v2 extracts the comparison section below the accordion on ALL gallons immediately (intended — verify one conditioner too). No sulfate-claim reinstatement before INCI metafields are corrected. `mx-style.css` still unversioned. Secrets skip injection on this public repo — deploy runs need the Theme Access flow the 2026-08-14 deploy session used.
+
 ## 2026-08-14 — buy-button alignment fix pushed to unpublished duplicate
 
 - **Who:** Stephen + Cursor cloud agent

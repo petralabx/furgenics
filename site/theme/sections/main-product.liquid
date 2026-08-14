@@ -104,10 +104,27 @@
                   yet — showing stars without collected reviews is a trust/rich-results
                   risk; the schema-aware `rating` block takes over once a review app is
                   live and populates the reviews.rating metafields).
+
+                  Phase 2: short display title + eyebrow. When the (proposed, Class B)
+                  custom.display_title metafield is set, the visible H1 uses it and a
+                  gallon-gated eyebrow line carries the professional/size/dilution
+                  modifiers. product.title stays untouched for cart, order emails,
+                  feeds, and SEO title. Inert until the metafield exists.
                 {%- endcomment -%}
+                {%- assign furgenics_display_title = product.metafields.custom.display_title.value -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
-                  <h1>{{ product.title | escape }}</h1>
+                  {%- if furgenics_display_title != blank -%}
+                    {%- if product.description contains '[[VALUE:dilution-ratio]]' -%}
+                      <p class="furgenics-title-eyebrow caption-with-letter-spacing">Professional &middot; 1 gallon &middot; {% render 'token-substitution', text: '[[VALUE:dilution-ratio]]' %}</p>
+                    {%- endif -%}
+                    <h1>{{ furgenics_display_title | escape }}</h1>
+                  {%- else -%}
+                    <h1>{{ product.title | escape }}</h1>
+                  {%- endif -%}
                 </div>
+                <style>
+                  .furgenics-title-eyebrow { margin: 0 0 4px; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.08em; color: #555; }
+                </style>
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',

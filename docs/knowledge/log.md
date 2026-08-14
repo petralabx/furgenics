@@ -8,6 +8,11 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-14T18:45:00Z] ship | PDP Phase 2 built repo-side: 4-section accordion + comparison card + chip strip + display titles
+
+- Filed `analyses/2026-08-14-pdp-phase2-build.md`. Dandylion reference adoptions per Stephen's go-ahead: accordion snippet v2 (INCI merge + comparison extraction, simulation-verified against v4/v3/no-H2 bodies), v4 deshedding exemplar draft, curated custom.faqs v2 (12→9 with FUR20 manual-entry + CA 2–5 / US 3–5 shipping fixes), at-a-glance chip strip, custom.display_title + eyebrow theme support (inert until metafield created), proposed short titles for 9 SKUs in products.md (Class B, awaiting approval).
+- Nothing pushed to Shopify from this session (VM predates the theme token); deploy + MCP content-push sequence in the brief. Prerequisite flagged: August competitor price refresh (captures are 2026-05 vintage).
+
 ## [2026-08-14T17:40:00Z] ship | buy-buttons.liquid alignment fix pushed to unpublished duplicate #152547065995
 
 - `shopify theme push --nodelete --only snippets/buy-buttons.liquid` to **Copy of Copy of scg9xy-xt** (`#152547065995`). Live `#150922428555` remained `[live]`; nothing published. Remote file matches repo.

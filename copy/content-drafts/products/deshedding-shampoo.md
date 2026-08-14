@@ -50,15 +50,32 @@ Bark2Basics De-Shedding is mentioned qualitatively (no `[[COMPETITOR:bark2basics
 
 See sibling file `deshedding-shampoo.html` for the full token-driven HTML body.
 
-Structure (v3, accordion-template order — opener stays visible; each H2 section renders as an accordion row via `site/theme/snippets/description-accordion.liquid`, in document order; the Ingredients/INCI row is injected by the snippet after section 4):
+Structure (v4, four-section accordion template — opener stays visible; each H2 section renders as an accordion row via `site/theme/snippets/description-accordion.liquid` v2; the INCI metafield is auto-appended INTO the "Ingredients and safety" row; the "How it compares on cost" section is auto-extracted and rendered as a compact block BELOW the accordion, ahead of the bundle block):
 
 1. Answer-first opener (~50 words, no heading, stays visible above the accordion) — product + audience + chemistry headline + dilution economics
-2. **When to use Furgenics Deshedding Shampoo** — coat types, breed list, salon scenarios with pillar link (~115 words) — accordion row 1, default-open
-3. **How it compares to alternatives** — FURminator + Coat Handler Anti-Shed tokens, Bark2Basics qualitative, hypoallergenic-shampoo-gallon cross-ref (~165 words)
-4. **How to dilute and use on a heavy double coat** — 7-step deshedding bath protocol matching the pillar's flow (~165 words)
-5. _(Full ingredients / INCI — injected from `custom.full_ingredients` by the accordion snippet, not part of this HTML)_
-6. **Why hydrolyzed keratin and safflower oil work for deshedding** — chemistry rationale, ingredient-level (~125 words)
-7. **Shipping, sourcing, and the Groomer Program** — made-in-canada + dual-market fulfillment + Path B program + `[[DISCOUNT]]` + email contact (~85 words)
+2. **Best for and expected results** — bullets: coat types, breed list, what it does (cosmetic/observational phrasing), salon fit + pillar link — accordion row 1, default-open
+3. **Dilution and professional protocol** — 7-step deshedding bath protocol with bolded ratios/timings + ready-to-use note
+4. **Ingredients and safety** — chemistry rationale (hydrolyzed keratin, safflower oil) + safety block (paraben-free, pH-balanced, tearless, puppy/senior suitability, patch-test, not-for-cats); INCI list auto-appended from `custom.full_ingredients`
+5. **How it compares on cost** — FURminator + Coat Handler Anti-Shed tokens, Bark2Basics qualitative, hypoallergenic fallback (rendered below the accordion by the snippet)
+6. **Shipping, samples, and the Groomer Program** — made-in-canada + canonical market shipping (CA 2–5 / US 3–5 business days) + 30-day refund + Path B program + `[[DISCOUNT]]` + email contact
+
+## custom.faqs v2 (curated, for MCP push)
+
+Curated 9-question set (down from 12). Dropped as duplicative of new page surfaces: dilution-ratio Q (at-a-glance chip + protocol row), breeds Q (best-for row), FURminator comparison Q (comparison block). Fixed per 2026-08-14 decisions: shipping windows (CA 2–5 / US 3–5, was 3–7 US), FUR20 must be entered at checkout (was "works automatically"). Push via `update-product` with `metafields: [{namespace: "custom", key: "faqs", type: "json", value: "<stringified array>"}]`; verify on live PDP both markets (accordion + FAQPage JSON-LD).
+
+```json
+[
+  {"q": "How does Furgenics Deshedding Shampoo actually reduce shedding?", "a": "It works by deeply cleansing and loosening the undercoat during the wash, so when you follow up with brushing the loose fur releases cleanly rather than ending up on your client's couch. Used as part of a complete grooming process (shampoo + conditioner + brushing), it substantially reduces post-bath shedding for 2–3 weeks."},
+  {"q": "How long should I leave the shampoo on?", "a": "3–5 minutes. Long enough for the formulation to penetrate the undercoat; short enough to keep bath times reasonable in a busy salon schedule. Rinse thoroughly — residue will attract new dirt and shed hair."},
+  {"q": "Should I pair this with the Deshedding Conditioner?", "a": "Yes, when shedding is severe. The shampoo loosens undercoat during the wash; the conditioner ([[PRICE:deshedding-conditioner]]) continues that work while softening the coat so the loose fur releases cleanly during brushing. Used together they're substantially more effective than either alone — each product targets a different phase of the shedding cycle."},
+  {"q": "Is Furgenics Deshedding Shampoo safe for puppies?", "a": "Yes. The formula is tearless and free of common irritants — parabens and synthetic dyes — which makes it suitable for puppies, senior dogs, and dogs with sensitive or reactive skin. Always patch-test on a small area first with any new shampoo."},
+  {"q": "Do you offer a discount on first orders?", "a": "Yes — our current first-order discount: [[DISCOUNT]] Enter the code at checkout; it's limited to one use per customer."},
+  {"q": "Is Furgenics made in North America?", "a": "Yes — [[VALUE:made-in-canada]]. We manufacture in Vaughan, Ontario, and ship direct to groomers, salons, and facilities across the United States and Canada."},
+  {"q": "How quickly will my order ship?", "a": "Orders placed before 2pm Eastern on business days typically ship the same day. Canadian orders ship direct from Vaughan, Ontario with 2–5 business day transit. US orders ship from a US fulfillment partner with 3–5 business day transit. You'll receive a tracking number by email once your order ships."},
+  {"q": "What is your return policy on gallons?", "a": "If a gallon doesn't perform as described, we issue a full refund within 30 days of delivery — no return shipping required. Contact info@furgenics.com with your order number and we'll process the refund. We stand behind every bottle."},
+  {"q": "Do you offer wholesale pricing for multiple gallons or salon accounts?", "a": "Yes. Wholesale pricing is available for professional groomers buying regularly. Contact info@furgenics.com with your business license, groomer credential, or business website to set up a wholesale account with recurring-order pricing."}
+]
+```
 
 Total body: ~705 words (slightly above the 400–600 PDP target but justified by deshedding's chemistry-and-protocol depth; pillar context shares this voice).
 
@@ -85,5 +102,6 @@ Total body: ~705 words (slightly above the 400–600 PDP target but justified by
 
 ## Change log
 
+- **2026-08-14** — v4: four-section accordion template (Phase 2, Dandylion-informed). Sections consolidated to best-for / dilution-protocol / ingredients-safety / shipping; chemistry copy folded into "Ingredients and safety" (no copy deleted); "How it compares on cost" auto-extracted below the accordion by the v2 snippet; INCI auto-appended into the ingredients row. "Best for" converted to scannable bullets. Shipping windows updated to canonical CA 2–5 / US 3–5 business days; 30-day refund line added. Curated `custom.faqs` v2 (12 → 9; dedupe + FUR20 manual-entry + shipping fixes) added above for MCP push. Sulfate-free claim still held pending the INCI metafield correction. See `docs/knowledge/analyses/2026-08-14-pdp-phase2-build.md`.
 - **2026-07-28** — v3: H2 sections reordered to the PDP accordion-template order (when-to-use → compares → dilute-and-use → chemistry → shipping; INCI row injected by the theme snippet between dilute-and-use and chemistry). Copy otherwise unchanged except one compliance fix: "sulfate-free" claim removed from the chemistry section — SLES is present in FUR-013's INCI and the claim was removed brand-wide pending INCI cleanup. Reference exemplar for the 9-SKU rollout. See `docs/knowledge/analyses/2026-07-28-pdp-accordion-template-proposal.md`.
 - **2026-05-21** — v2 drafted (this file). Second PDP token-conversion rewrite, following PDP #1 (hypoallergenic) pattern. Token-driven prices, value-math snippets, FURminator + Coat Handler Anti-Shed per-market benchmarks, qualitative Bark2Basics positioning, universal both-markets framing, Path B Groomer Program wording, theme-driven discount banner. Replaces v1 prose-only description shipped pre-token-architecture.

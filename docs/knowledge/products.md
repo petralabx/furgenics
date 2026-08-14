@@ -193,6 +193,24 @@ All gallon PDPs carry these custom metafields:
 - `custom.ready_to_use_or_dilutable_16_1` — dilution messaging
 - `custom.features_benefits` — primary benefit callout
 
+**Proposed metafields (Phase 2, not yet created — create via MCP after Stephen approves):**
+
+- `custom.display_title` (single_line_text_field) — short visible H1 for the PDP. The theme (main-product.liquid title block, shipped 2026-08-14, inert until this exists) renders it with a gallon-gated eyebrow "PROFESSIONAL · 1 GALLON · 16:1 CONCENTRATE". `product.title` stays keyword-rich for cart/order emails/feeds/SEO title. Proposed values (**Class B — needs Stephen approval before push**):
+
+| SKU | Proposed `custom.display_title` |
+|---|---|
+| FUR-001 | Hypoallergenic Shampoo for Sensitive Skin |
+| FUR-011 | Oatmeal & Aloe Shampoo for Dry, Itchy Skin |
+| FUR-050 | Lavender Spa Shampoo |
+| FUR-013 | Deshedding Shampoo for Double-Coated Dogs |
+| FUR-010 | Oatmeal & Aloe Conditioner |
+| FUR-021 | Deep Moisturizing Conditioner for Curly & Long Coats |
+| FUR-014 | Deshedding Conditioner |
+| FUR-005 | 2-in-1 Hypoallergenic Shampoo & Conditioner |
+| FUR-020 | 2-in-1 Doodle Shampoo & Conditioner |
+
+- `custom.contact_time` (single_line_text_field) — per-SKU contact/massage time for the at-a-glance strip. Deferred; values need R&D/Stephen confirmation per SKU.
+
 **Dormant unstructured metafields** (now token-driven; candidates for batch delete in a future cleanup session):
 - `custom.dilution_ratio` — "16:1" (now `[[VALUE:dilution-ratio]]`)
 - `custom.working_gallons_per_bottle` — "17" (now `[[VALUE:working-gallons-per-bottle]]`)
