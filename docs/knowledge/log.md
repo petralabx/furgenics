@@ -8,6 +8,12 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-14T17:15:00Z] fix | Sulfate question resolved: formulas ARE sulfate-free, published INCI lists are wrong
+
+- R&D confirmation via Stephen 2026-08-14. Reverses the assumed fix direction: the `sulfate-free` claim (removed brand-wide 2026-05-27) was correct; the Sodium Laureth Sulfate entries in `custom.full_ingredients` (FUR-013, FUR-005 at minimum) are ingredient-list errors.
+- Fix sequence documented in products.md catalog issue 9: corrected INCI from R&D → metafield push via Claude MCP → live verification → claim reinstatement across all surfaces → AGENTS.md guardrail update. Claim must NOT return before the metafields are fixed.
+- Blocking input: corrected ingredient lists from R&D (and confirmation of which of the 9 SKUs are affected).
+
 ## [2026-08-14T16:30:00Z] query | PDP Phase 1 built repo-side + external feedback decisions recorded
 
 - Filed `analyses/2026-08-14-pdp-phase1-buybox.md`: external design-review assessment, Stephen's five decisions (canonical shipping CA 2–5 / US 3–5 business days; FUR20 manual entry — FAQ "works automatically" wording is wrong, sweep pending; claims substantiated via 60+ groomer testing; sulfate claim held pending formulation truth; review app choice pending).

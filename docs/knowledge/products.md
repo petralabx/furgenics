@@ -66,7 +66,7 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Breeds:** German Shepherds, Huskies, Golden Retrievers, Labs, Akitas, Malamutes, Chow Chows
 - **Key features:** Hydrolyzed keratin + safflower oil, loosens undercoat
 - **Pairs with:** FUR-014 (matching conditioner), FUR-011 (soothing alternative), FUR-001 (sensitive-skin alternative)
-- **Ingredients:** Full list present in metafield. ⚠️ **Sulfate-free claim mismatch** — INCI lists Sodium Laureth Sulfate as primary surfactant despite `sulfate-free` tag. Pending INCI cleanup with formulation team. The 2026-05-27 FAQ rewrite drops "sulfates" from the puppy answer's irritant list to reflect actual chemistry.
+- **Ingredients:** Full list present in metafield — ⚠️ **but the published INCI is WRONG.** R&D confirmed 2026-08-14 the formula IS sulfate-free; the Sodium Laureth Sulfate entry in `custom.full_ingredients` is an ingredient-list error, not a formula problem. Awaiting corrected INCI from R&D → then update the metafield (via Claude MCP) → then reinstate the sulfate-free claim brand-wide. The 2026-05-27 FAQ rewrite dropped "sulfates" from the puppy answer; restore after the INCI fix ships.
 - **Competitive note:** Coat Handler's Deshedding Shampoo (B00OAC5FYU, 32:1) is the Amazon category leader at $49,652/mo. Bark2Basics Deshedding (B0BFTGKWZC, 32:1) at $26,863/mo. See `competitor-intel.md`.
 
 ### FUR-010 — Oatmeal & Aloe Conditioner Gallon
@@ -119,7 +119,7 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Breeds:** French Bulldogs, Boxers, Beagles, Dachshunds, Chihuahuas, Boston Terriers
 - **Key features:** One-step shampoo + conditioner, time-saver for high-volume salons
 - **Pairs with:** FUR-001 (dedicated two-step alt), FUR-020 (doodle 2-in-1), FUR-013 (deshedding alt)
-- **Ingredients:** Full list present in metafield. ⚠️ **Sulfate-free claim mismatch** — primary surfactant is Sodium C14-16 Olefin Sulfonate (sulfate-free convention) BUT INCI also contains Sodium Laureth Sulfate. Pending INCI cleanup with formulation team. FAQ retains brand-wide "sulfate-free" phrasing per Stephen's accepted gap.
+- **Ingredients:** Full list present in metafield — ⚠️ **but the published INCI is WRONG.** R&D confirmed 2026-08-14 the formula IS sulfate-free (primary surfactant Sodium C14-16 Olefin Sulfonate); the Sodium Laureth Sulfate entry in `custom.full_ingredients` is an ingredient-list error. Awaiting corrected INCI from R&D → metafield update → claim reinstatement. FAQ's brand-wide "sulfate-free" phrasing turns out to have been correct.
 
 ### FUR-020 — 2-in-1 Doodle Shampoo & Conditioner Gallon
 - **GID:** `gid://shopify/Product/8104408252555`
@@ -214,13 +214,14 @@ All gallon PDPs carry these custom metafields:
 6. ~~**US Markets override** for $19 USD fixed price display — still pending team implementation.~~ **RESOLVED 2026-05-27.** Stephen confirmed resolution outside the theme (Claude Code's grep proved the override was not theme-side; the unstructured pricing metafields are now dormant dead data, not actively overriding). Per-market pricing now Markets-managed.
 7. **Product line gaps vs Amazon market:** Leave-In Conditioner category (Warren London's outlier), Deep Moisturizing Shampoo, Deodorizing Shampoo are all in the Jan 2026 TBD list but not yet launched.
 8. **Dormant unstructured metafields** (item-level cleanup): see "Dormant unstructured metafields" list above. Batch delete candidate for a separate session — ~50+ metafield deletes across 9 products. Includes FUR-001's duplicate `furgenics.*` namespace entries.
-9. **Sulfate-free claim mismatch** on FUR-013 and FUR-005 (SLES present in INCI despite `sulfate-free` tag). Pending INCI cleanup with formulation team. Per-product FAQ content already adapted on FUR-013 (drops "sulfates" from puppy-safety answer); FUR-005 retains brand-wide phrasing per accepted gap.
+9. **Published INCI lists are wrong on FUR-013 and FUR-005** (Sodium Laureth Sulfate listed in `custom.full_ingredients`). **RESOLVED DIRECTION 2026-08-14:** R&D confirmed all formulas ARE sulfate-free — the claim was right, the ingredient lists are the error. Fix sequence: (a) R&D delivers corrected INCI per affected SKU (confirm whether any of the other 7 lists are also affected), (b) update this file's SKU entries, (c) push corrected `custom.full_ingredients` metafields via Claude MCP and verify on live PDPs (accordion INCI row + FAQPage schema), (d) reinstate the "sulfate-free" claim across descriptions/FAQs/schema/alt text, (e) update the AGENTS.md guardrail that currently blocks the claim. Do NOT reinstate the claim before the metafields are corrected — the on-page contradiction is worse than the missing claim.
 10. **FUR-050 lavender INCI placeholder** — `custom.full_ingredients` has no `Lavandula angustifolia` entry despite product positioning. Pending formulation team finalization.
 
 ---
 
 ## Change log
 
+- **2026-08-14 (later)** — **Sulfate question resolved:** R&D confirmed the formulas are sulfate-free; the published INCI lists (FUR-013, FUR-005 at minimum) are the error. Catalog issue 9 rewritten with the fix sequence (corrected INCI from R&D → metafield push → claim reinstatement → AGENTS.md guardrail update). Blocking input: the corrected ingredient lists themselves.
 - **2026-08-14** — Canonical shipping promises set by Stephen: CA 2-5 business days, US 3-5 business days (US previously written as 3-7 in FAQs). Related decisions recorded the same day (see `analyses/2026-08-14-pdp-phase1-buybox.md`): FUR20 must be manually entered at checkout (FAQ tail claiming it "works automatically" is wrong and needs a metafield sweep); performance/safety claims substantiated via the 60+ groomer testing program; sulfate-free claim stays as-is pending formulation confirmation (no sweep yet).
 
 - **2026-05-27** — `custom.faqs` metafield on all 9 active gallon products rewritten to use the shared token vocabulary (`[[PRICE]]` / `[[VALUE]]` / `[[COMPETITOR]]` / `[[DISCOUNT]]`). Same render path as PDP descriptions and pillar bodies — see updated metafields section. FUR-014 CAD price corrected to $29.99 (diverged from $24.99 baseline per MCP read). US Markets override marked resolved in known catalog issues #6 (Stephen confirmed out-of-theme resolution). Dormant unstructured metafields catalogued under "Dormant unstructured metafields" — batch delete candidate for a separate session. FUR-001 namespace quirk flagged (`furgenics.*` duplicates of `custom.*` entries). Full session details in `analyses/2026-05-27-token-substitution-extraction-and-faq-architecture.md`.
