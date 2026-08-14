@@ -34,12 +34,16 @@
     <style>
       .furgenics-faq-item { border-bottom: 1px solid #e5e5e5; }
       .furgenics-faq-item:first-of-type { border-top: 1px solid #e5e5e5; }
-      .furgenics-faq-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; outline: none; }
+      .furgenics-faq-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; min-height: 52px; box-sizing: border-box; }
       .furgenics-faq-item > summary::-webkit-details-marker { display: none; }
+      .furgenics-faq-item > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
       .furgenics-faq-q { font-weight: 700; line-height: 1.2; }
-      .furgenics-faq-arrow { display: flex; align-items: center; justify-content: center; width: 20px; flex-shrink: 0; line-height: 1; transition: transform 0.25s ease; }
+      .furgenics-faq-arrow { display: flex; align-items: center; justify-content: center; width: 20px; flex-shrink: 0; line-height: 1; }
       .furgenics-faq-item[open] > summary .furgenics-faq-arrow { transform: rotate(180deg); }
       .furgenics-faq-a { padding: 0 0 16px; line-height: 1.6; color: #555; }
+      @media (prefers-reduced-motion: no-preference) {
+        .furgenics-faq-arrow { transition: transform 0.2s ease; }
+      }
     </style>
   {%- endif -%}
 {%- endif -%}

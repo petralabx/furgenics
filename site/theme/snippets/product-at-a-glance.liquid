@@ -1,0 +1,63 @@
+{%- comment -%}
+  Furgenics — product-at-a-glance snippet
+  Compact spec panel for the PDP buy box: the facts a groomer needs before
+  opening anything (dilution, yield, live cost per working gallon, coat fit,
+  size, origin/shipping/returns). Replaces the earlier one-line
+  "price economics" custom_liquid block (which used the cup-of-coffee
+  narrative) with concrete, Markets-aware numbers.
+
+  Usage (custom_liquid block in templates/product.json, after `price`):
+    {% render 'product-at-a-glance', product: product %}
+
+  Data sources — nothing hardcoded that can drift:
+  - Dilution + yield: [[VALUE:dilution-ratio]] / [[VALUE:working-gallons-per-bottle]]
+    via snippets/token-substitution.liquid (single source of truth).
+  - Cost per working gallon: computed at render time from the live variant
+    price ÷ 17 — always current, per-market currency. KEEP THE DIVISOR IN SYNC
+    with the working-gallons-per-bottle VALUE in token-substitution.liquid.
+  - Coat fit: custom.coat_type metafield (coat-types clause, before "Dog types:").
+  - Shipping windows: per Stephen 2026-08-14 — CA 2–5 business days,
+    US 3–5 business days (canonical, see products.md).
+  - Returns: 30-day refund-only policy (products.md).
+  - "1 gallon / 128 oz": invariant for the gallon line; the gallon gate below
+    keeps this snippet off samples/legacy products.
+
+  Gate: renders only when the description carries the dilution VALUE token —
+  i.e. gallon concentrates. Samples and legacy products render nothing.
+
+  Deferred to Phase 2 (needs new per-SKU metafields documented in products.md
+  first): contact time, per-SKU "best for" display line.
+{%- endcomment -%}
+
+{%- if product.description contains '[[VALUE:dilution-ratio]]' -%}
+  {%- assign _working_gallons = 17.0 -%}
+  {%- assign _per_gallon = product.selected_or_first_available_variant.price | divided_by: _working_gallons | round -%}
+  {%- assign _coat_fit = product.metafields.custom.coat_type.value | split: 'Dog types:' | first | strip -%}
+
+  <div class="furgenics-at-a-glance">
+    <ul>
+      <li><strong>{% render 'token-substitution', text: '[[VALUE:dilution-ratio]]' %}</strong> &middot; {% render 'token-substitution', text: '[[VALUE:working-gallons-per-bottle]]' %}</li>
+      <li><strong>&asymp; {{ _per_gallon | money }} per working gallon</strong> at professional dilution</li>
+      {%- if _coat_fit != blank -%}
+        <li><strong>Best for:</strong> {{ _coat_fit }}</li>
+      {%- endif -%}
+      <li><strong>1 gallon / 128 oz</strong> professional size</li>
+      <li>
+        Made in Canada &middot;
+        {%- if localization.country.iso_code == 'US' %}
+          ships in 3&ndash;5 business days
+        {%- else %}
+          ships in 2&ndash;5 business days
+        {%- endif %}
+        &middot; 30-day refund policy
+      </li>
+    </ul>
+  </div>
+
+  <style>
+    .furgenics-at-a-glance { margin: 12px 0 4px; padding: 12px 16px; border: 1px solid #e5e5e5; border-radius: 8px; }
+    .furgenics-at-a-glance ul { list-style: none; margin: 0; padding: 0; }
+    .furgenics-at-a-glance li { padding: 4px 0; font-size: 0.95em; line-height: 1.45; }
+    .furgenics-at-a-glance li + li { border-top: 1px solid #f0f0f0; }
+  </style>
+{%- endif -%}

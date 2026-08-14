@@ -114,12 +114,16 @@
   <style>
     .furgenics-pdp-accordion { margin-top: 1.5rem; border-top: 1px solid #e5e5e5; }
     .furgenics-pdp-acc-item { border-bottom: 1px solid #e5e5e5; }
-    .furgenics-pdp-acc-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; }
+    .furgenics-pdp-acc-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; min-height: 52px; box-sizing: border-box; }
     .furgenics-pdp-acc-item > summary::-webkit-details-marker { display: none; }
+    .furgenics-pdp-acc-item > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
     .furgenics-pdp-acc-heading { margin: 0; font-size: inherit; font-weight: 700; line-height: 1.2; }
-    .furgenics-pdp-acc-arrow { display: flex; align-items: center; justify-content: center; width: 20px; flex-shrink: 0; line-height: 1; transition: transform 0.25s ease; }
+    .furgenics-pdp-acc-arrow { display: flex; align-items: center; justify-content: center; width: 20px; flex-shrink: 0; line-height: 1; }
     .furgenics-pdp-acc-item[open] > summary .furgenics-pdp-acc-arrow { transform: rotate(180deg); }
     .furgenics-pdp-acc-body { padding: 0 0 16px; line-height: 1.6; color: #555; }
+    @media (prefers-reduced-motion: no-preference) {
+      .furgenics-pdp-acc-arrow { transition: transform 0.2s ease; }
+    }
   </style>
 
   <script>

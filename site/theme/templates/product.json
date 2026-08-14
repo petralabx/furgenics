@@ -27,11 +27,22 @@
           "type": "price",
           "settings": {}
         },
-        "furgenics_price_economics": {
+        "furgenics_at_a_glance": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% if product.description contains '[[VALUE:dilution-ratio]]' %}\n<p class=\"furgenics-price-economics\">{% render 'token-substitution', text: '[[VALUE:dilution-ratio]] \u2014 [[VALUE:working-gallons-per-bottle]], [[VALUE:per-working-gallon-cost-narrative]].' %}</p>\n<style>\n  .furgenics-price-economics { margin: 0.2rem 0 0; font-size: 0.95em; color: #555; }\n</style>\n{% endif %}"
+            "custom_liquid": "{% render 'product-at-a-glance', product: product %}"
           }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -46,20 +57,22 @@
             "custom_liquid": "{% assign furgenics_gp_url = routes.root_url %}\n{% if furgenics_gp_url == '/' %}{% assign furgenics_gp_url = '' %}{% endif %}\n<div class=\"furgenics-groomer-cta\">\n  {% if localization.country.iso_code == 'US' %}\n    Professional groomer? <a href=\"{{ furgenics_gp_url }}/pages/groomer-program\">Join the Groomer Program</a> for a first-order discount.\n  {% else %}\n    Professional groomer? <a href=\"{{ furgenics_gp_url }}/pages/groomer-program\">Join the Groomer Program</a> \u2014 free 8oz samples for verified pros.\n  {% endif %}\n</div>\n<style>\n  .furgenics-groomer-cta { margin: 1.2rem 0 0.4rem; padding: 10px 14px; border: 1px solid #e5e5e5; border-radius: 6px; font-size: 0.95em; }\n  .furgenics-groomer-cta a { color: inherit; }\n</style>"
           }
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
         "description": {
           "type": "description",
           "settings": {}
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Complete the grooming system",
+            "make_collapsible_row": false,
+            "icon": "none",
+            "product_list_limit": 2,
+            "products_per_page": 2,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": true
+          }
         },
         "share": {
           "type": "share",
@@ -76,12 +89,13 @@
         "vendor",
         "title",
         "price",
-        "furgenics_price_economics",
-        "buy_buttons",
-        "furgenics_groomer_cta",
+        "furgenics_at_a_glance",
         "variant_picker",
         "quantity_selector",
+        "buy_buttons",
+        "furgenics_groomer_cta",
         "description",
+        "complementary",
         "share",
         "rating_MVieqz"
       ],

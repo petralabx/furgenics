@@ -97,17 +97,17 @@
                   {{- block.settings.text -}}
                 </p> -->
               {%- when 'title' -%}
+                {%- comment -%}
+                  2026-08-14 Phase 1: removed the duplicate <h2 class="h1"> copy of the
+                  product title (double H1-weight heading in the outline) and the
+                  hardcoded static star-rating screenshot (no review system is installed
+                  yet — showing stars without collected reviews is a trust/rich-results
+                  risk; the schema-aware `rating` block takes over once a review app is
+                  live and populates the reviews.rating metafields).
+                {%- endcomment -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
                   <h1>{{ product.title | escape }}</h1>
-                  <a href="{{ product.url }}" class="product__title">
-                    <h2 class="h1">
-                      {{ product.title | escape }}
-                    </h2>
-                  </a>
                 </div>
-                  <div class="reating_details">
-                    <img src="https://cdn.shopify.com/s/files/1/0649/4653/6587/files/Screenshot_2024-10-16_at_4.25.27_PM_5601fd9e-a2a2-4bb3-bd31-7da4d375a88a.png?v=1757074181"/>
-                  </div>
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -209,49 +209,12 @@
                     {% render 'description-accordion', description_html: rendered_description, product: product %}
                   </div>
                 {%- endif -%}
-          
-                <div class="accordion d-none" id="productAccordion" style="display:none;">
-                  <!-- Direction of Use Section -->
-                  {% if product.metafields.custom.directions_for_use.value  %}
-                    <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Direction of Use
-                      </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#productAccordion">
-                      <div class="accordion-body">
-                        {% if product.metafields.custom.directions_for_use  %}
-                          {{ product.metafields.custom.directions_for_use.value }}
-                        
-                        {% endif %}
-                      </div>
-                    </div>
-                  </div>
-                   {%- endif -%}
-
-                  {% if product.metafields.custom.ingredients.value  %}
-                      <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          ingredients
-                        </button>
-                      </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#productAccordion">
-                        <div class="accordion-body">
-                          {% if product.metafields.custom.ingredients  %}
-                            {{ product.metafields.custom.ingredients.value }}
-                          
-                          {% endif %}
-                        </div>
-                      </div>
-                    </div>
-                   {%- endif -%}
-                 
-                
-                  <!-- Add more sections as needed -->
-                </div>
-
+                {%- comment -%}
+                  2026-08-14 Phase 1: removed the legacy display:none Bootstrap-style
+                  accordion (duplicate metafield content in the DOM, repeated
+                  #headingOne/#collapseOne IDs). Its content is covered by the
+                  description accordion + injected INCI row above.
+                {%- endcomment -%}
               
               {%- when 'sku' -%}
                 <p
@@ -294,7 +257,13 @@
                     | item_count_for_variant: product.selected_or_first_available_variant.id
                   -%}
                   {% # theme-check-enable %}
-                  <!-- <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
+                  {%- comment -%}
+                    2026-08-14 Phase 1: restored the quantity controls (label +
+                    quantity-input) that were previously commented out — the
+                    quantity_selector block rendered no visible input. Stock Dawn
+                    markup; the volume-pricing extras below remain as they were.
+                  {%- endcomment -%}
+                  <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
                     {{ 'products.product.quantity.label' | t }}
                     <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}">
                       {%- render 'loading-spinner' -%}
@@ -304,42 +273,42 @@
                         )</span
                       >
                     </span>
-                  </label> -->
+                  </label>
+                  <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
+                    <button class="quantity__button" name="minus" type="button">
+                      <span class="visually-hidden">
+                        {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                      </span>
+                      <span class="svg-wrapper">
+                        {{- 'icon-minus.svg' | inline_asset_content -}}
+                      </span>
+                    </button>
+                    <input
+                      class="quantity__input"
+                      type="number"
+                      name="quantity"
+                      id="Quantity-{{ section.id }}"
+                      data-cart-quantity="{{ cart_qty }}"
+                      data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                      min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                      {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                        data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                        max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                      {% endif %}
+                      step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                      value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                      form="{{ product_form_id }}"
+                    >
+                    <button class="quantity__button" name="plus" type="button">
+                      <span class="visually-hidden">
+                        {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                      </span>
+                      <span class="svg-wrapper">
+                        {{- 'icon-plus.svg' | inline_asset_content -}}
+                      </span>
+                    </button>
+                  </quantity-input>
                   <!-- <div class="price-per-item__container">
-                    <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
-                      <button class="quantity__button" name="minus" type="button">
-                        <span class="visually-hidden">
-                          {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                        </span>
-                        <span class="svg-wrapper">
-                          {{- 'icon-minus.svg' | inline_asset_content -}}
-                        </span>
-                      </button>
-                      <input
-                        class="quantity__input"
-                        type="number"
-                        name="quantity"
-                        id="Quantity-{{ section.id }}"
-                        data-cart-quantity="{{ cart_qty }}"
-                        data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                          data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                          max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                        {% endif %}
-                        step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
-                        value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        form="{{ product_form_id }}"
-                      >
-                      <button class="quantity__button" name="plus" type="button">
-                        <span class="visually-hidden">
-                          {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-                        </span>
-                        <span class="svg-wrapper">
-                          {{- 'icon-plus.svg' | inline_asset_content -}}
-                        </span>
-                      </button>
-                    </quantity-input>
                     {%- liquid
                       assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
                       assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.min
@@ -791,21 +760,28 @@
     </script>
   </div>
 </product-info>
+{% render 'sticky-atc', product: product, product_form_id: product_form_id, section_id: section.id %}
+  {%- comment -%}
+    2026-08-14 Phase 1: compacted the near-full-screen testimonial section into a
+    small proof card. Removed the large portrait (it was hardcoded from a
+    different store's CDN and had no visible connection to the named reviewer —
+    reads as stock imagery) and the oversized heading. Real verified reviews
+    arrive with the review app (Phase 3); do not fabricate ratings here.
+  {%- endcomment -%}
   <section class="shopify-section section loved">
-    <div class="slider-mobile-gutter page-width page-width-desktop scroll-trigger animate--slide-in shop-section">
-      <h2>Loved by Pets,<br/>Endorsed by the Best</h2>
-      <div class="love-wrap">
-          <div class="img-wrap">
-                <img src="https://cdn.shopify.com/s/files/1/0677/2080/6573/files/e6233228e9078f67a314c4fd2394b524.png?v=1729080607"/>
-          </div>
-          <div class="contet-wrap">
-                <div class="ico"> <img src="https://cdn.shopify.com/s/files/1/0649/4653/6587/files/why-icon.png?v=1757676518"/></div>
-                <h3>“I wouldn't recommend anything I don't use myself, and this shampoo gets my full stamp of approval.”</h3>
-            <span>Greg M., Dog Specialist</span>
-          </div>
-      </div>
+    <div class="page-width furgenics-proof-card-wrap">
+      <figure class="furgenics-proof-card">
+        <blockquote>&ldquo;I wouldn't recommend anything I don't use myself, and this shampoo gets my full stamp of approval.&rdquo;</blockquote>
+        <figcaption>Greg M. &middot; Dog Specialist</figcaption>
+      </figure>
     </div>
-  </section>   
+    <style>
+      .furgenics-proof-card-wrap { display: flex; justify-content: center; padding: 8px 0 4px; }
+      .furgenics-proof-card { margin: 0; max-width: 640px; padding: 20px 24px; border: 1px solid #e5e5e5; border-radius: 8px; }
+      .furgenics-proof-card blockquote { margin: 0 0 8px; font-size: 1.05em; font-weight: 600; line-height: 1.45; }
+      .furgenics-proof-card figcaption { font-size: 0.9em; color: #555; }
+    </style>
+  </section>
 {% schema %}
 {
   "name": "t:sections.main-product.name",
