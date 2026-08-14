@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-14 — PDP Phase 1 deployed to unpublished duplicate theme
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Pushed Phase 1 `site/theme/` files to unpublished duplicate **Copy of Copy of scg9xy-xt** (`#152547065995`) only — live `#150922428555` untouched, nothing published. Versioned original `snippets/buy-buttons.liquid`, then restyled Add to cart as solid/primary full-width and the wholesale control as an outlined secondary **Apply for salon pricing** link (keeps `.wholesale-product` so the existing Klaviyo form `W5fDYc` still opens; `/pages/groomer-program` is the no-JS fallback). Preview verified on deshedding + deshedding conditioner, `/en-us/` and `/en-ca/`: at-a-glance + market shipping/currency, sticky ATC markup, no legacy Features & Benefits accordion, tokens substituting, 6 JSON-LD blocks parse.
+- **Next:** Stephen previews; Search & Discovery complementary pairings still need admin (bundle block empty until then); then Phase 2 (v4 descriptions, FAQ dedupe, competitor price refresh). Sulfate: wait on corrected INCI lists before reinstating the claim.
+- **Watch:** Never push to or publish the live theme. Nav still has a “Wholesale Pricing” menu label (out of scope). Admin blockers remain (inventory, inverted compare-at, FUR-011 404). `SHOPIFY_CLI_THEME_TOKEN` did not inject into this VM (public-repo secret skip); session used Theme Access against the duplicate only.
+
 ## 2026-08-14 — PDP Phase 1: buy-box + at-a-glance + accordion polish (repo-side)
 
 - **Who:** Stephen + Cursor cloud agent

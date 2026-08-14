@@ -8,6 +8,12 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-14T18:00:00Z] ship | PDP Phase 1 pushed to unpublished duplicate theme #152547065995
+
+- `shopify theme push --nodelete --only` of `sections/main-product.liquid`, `templates/product.json`, `snippets/description-accordion.liquid`, `snippets/furgenics-product-faqs.liquid`, `snippets/product-at-a-glance.liquid`, `snippets/sticky-atc.liquid` to **Copy of Copy of scg9xy-xt** (`#152547065995`). Live theme `#150922428555` was not pushed or published.
+- Pulled and versioned `snippets/buy-buttons.liquid`; restyled Add to cart to `button--primary` full-width; wholesale button → outlined secondary link **Apply for salon pricing** (Klaviyo `.wholesale-product` hook preserved).
+- Preview: `https://scg9xy-xt.myshopify.com/products/deshedding-shampoo?preview_theme_id=152547065995` — verified deshedding + deshedding conditioner, CA/US. Search & Discovery complementary pairings still pending (admin).
+
 ## [2026-08-14T17:15:00Z] fix | Sulfate question resolved: formulas ARE sulfate-free, published INCI lists are wrong
 
 - R&D confirmation via Stephen 2026-08-14. Reverses the assumed fix direction: the `sulfate-free` claim (removed brand-wide 2026-05-27) was correct; the Sodium Laureth Sulfate entries in `custom.full_ingredients` (FUR-013, FUR-005 at minimum) are ingredient-list errors.

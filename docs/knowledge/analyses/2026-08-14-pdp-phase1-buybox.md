@@ -41,13 +41,17 @@ All in `site/theme/`, targeting duplicate theme **“Copy of Copy of scg9xy-xt�
 | “Complete the grooming system” complementary-products block (Search & Discovery-driven, quick add on) | `templates/product.json` |
 | Accordion a11y polish: `:focus-visible` restored (FAQ CSS had `outline: none`), 52px rows, reduced-motion | `snippets/description-accordion.liquid`, `snippets/furgenics-product-faqs.liquid` |
 
-## Deploy runbook (needs `SHOPIFY_CLI_THEME_TOKEN`; this session's VM predates the secret)
+## Deploy runbook
 
-1. `shopify theme push` the six changed/new `site/theme/` files to theme `#152547065995` only. Never push to the published theme; never publish.
-2. **Pull `snippets/buy-buttons.liquid`** (not yet versioned — the "Wholesale Pricing" button lives there), commit the original, then restyle: Add to cart solid/primary full-width; wholesale as outlined secondary relabelled **“Apply for salon pricing”**. Commit the edit.
-3. In Shopify admin → Search & Discovery, set complementary products from the `products.md` "Pairs with" data (FUR-013→FUR-014, FUR-011→FUR-010, FUR-021↔FUR-020, etc.) so the bundle block renders.
-4. Verify preview on `/products/deshedding-shampoo` + one conditioner, both `/en-ca/` and `/en-us/`: at-a-glance values + currency, quantity controls, sticky bar on mobile viewport, bundle block, no legacy accordion in DOM, tokens still substituting, JSON-LD parses.
+Target: unpublished duplicate **“Copy of Copy of scg9xy-xt”** (`#152547065995`). Never push to live `#150922428555`; never publish.
+
+1. **Done 2026-08-14.** `shopify theme push --nodelete --only` of the six Phase 1 files (`sections/main-product.liquid`, `templates/product.json`, `snippets/description-accordion.liquid`, `snippets/furgenics-product-faqs.liquid`, `snippets/product-at-a-glance.liquid`, `snippets/sticky-atc.liquid`) to `#152547065995` only.
+2. **Done 2026-08-14.** Pulled `snippets/buy-buttons.liquid`, committed the original, then restyled: Add to cart solid/primary full-width; wholesale as outlined secondary link **“Apply for salon pricing”** (class `wholesale-product` kept for the existing Klaviyo form `W5fDYc`; href `/pages/groomer-program` is the no-JS fallback). Pushed the edit to the same duplicate.
+3. **Still admin.** In Shopify admin → Search & Discovery, set complementary products from the `products.md` "Pairs with" data (FUR-013→FUR-014, FUR-011→FUR-010, FUR-021↔FUR-020, etc.) so the bundle block renders.
+4. **Done 2026-08-14 (except bundle).** Preview verified on `/products/deshedding-shampoo` + `/products/deshedding-conditioner`, both `/en-ca/` and `/en-us/`: at-a-glance values + currency, quantity controls, sticky ATC markup, no legacy accordion in DOM, tokens substituting, 6 JSON-LD blocks parse. Complementary bundle is empty until step 3.
 5. Admin blockers unchanged from the implementation review: inventory/availability, inverted `compare_at_price` ($18.04 under $34.99), FUR-011 storefront 404.
+
+Preview: `https://scg9xy-xt.myshopify.com/products/deshedding-shampoo?preview_theme_id=152547065995`
 
 ## Phase 2 backlog (content + metafields, needs approval/MCP)
 

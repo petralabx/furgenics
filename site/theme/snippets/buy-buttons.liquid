@@ -22,6 +22,11 @@
       if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
         assign show_dynamic_checkout = true
       endif
+
+      assign furgenics_gp_url = routes.root_url
+      if furgenics_gp_url == '/'
+        assign furgenics_gp_url = ''
+      endif
     -%}
 
     <product-form
@@ -74,7 +79,7 @@
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="product-form__submit button button--full-width button--primary"
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null
@@ -93,16 +98,31 @@
             </span>
             {%- render 'loading-spinner' -%}
           </button>
-          <button id="wholesale-product" type="button" name="wholesale-product" class="wholesale-product product-form__submit button button--full-width button--secondary">
-                <span>Wholesale Pricing</span>
-          </button>
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}
+          {%- comment -%}
+            Salon-pricing CTA. Keep class "wholesale-product": a layout/app
+            script opens Klaviyo form W5fDYc on click (preventDefault). href is
+            the no-JS fallback to the Groomer Program page.
+          {%- endcomment -%}
+          <a
+            id="wholesale-product"
+            class="wholesale-product furgenics-salon-pricing button button--secondary button--full-width"
+            href="{{ furgenics_gp_url }}/pages/groomer-program"
+          >
+            <span>Apply for salon pricing</span>
+          </a>
         </div>
       {%- endform -%}
     </product-form>
   {%- else -%}
+    {%- liquid
+      assign furgenics_gp_url = routes.root_url
+      if furgenics_gp_url == '/'
+        assign furgenics_gp_url = ''
+      endif
+    -%}
     <div class="product-form">
       <div class="product-form__buttons form">
         <button
@@ -113,9 +133,13 @@
         >
           {{ 'products.product.sold_out' | t }}
         </button>
-        <button id="wholesale-product" type="button" name="wholesale-product" class="wholesale-product product-form__submit button button--full-width button--secondary">
-                <span>Wholesale Pricing</span>
-        </button>
+        <a
+          id="wholesale-product"
+          class="wholesale-product furgenics-salon-pricing button button--secondary button--full-width"
+          href="{{ furgenics_gp_url }}/pages/groomer-program"
+        >
+          <span>Apply for salon pricing</span>
+        </a>
       </div>
     </div>
   {%- endif -%}
@@ -155,3 +179,18 @@
     <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 </div>
+<style>
+  .furgenics-salon-pricing {
+    margin-top: 0.8rem;
+    text-align: center;
+    text-decoration: none;
+  }
+  .furgenics-salon-pricing:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+  .furgenics-salon-pricing:focus-visible {
+    outline: 2px solid rgb(var(--color-foreground));
+    outline-offset: 3px;
+  }
+</style>
