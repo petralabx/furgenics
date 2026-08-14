@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-14 — Phase 2 theme files pushed to unpublished duplicate
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Pushed `description-accordion.liquid`, `product-at-a-glance.liquid`, `furgenics-product-faqs.liquid`, `main-product.liquid` to unpublished `#152547065995` only. Preview: 2×2 chip-strip at-a-glance, comparison card below the accordion on deshedding, FAQ in the page gutter, original "Loved by Pets, Endorsed by the Best" testimonial restored. Live theme not published.
+- **Next:** Claude MCP FUR-013 v4 body + faqs v2; Stephen: display titles, corrected INCI, August competitor captures, S&D pairings.
+- **Watch:** Current Shopify bodies are still pre-v4, so accordion row titles are the old H2s (comparison extraction still works). Do not publish. No sulfate-claim reinstatement before INCI metafields are corrected.
+
 ## 2026-08-14 (later) — PDP Phase 2 build: 4-section accordion + Dandylion adoptions
 
 - **Who:** Stephen + Cursor cloud agent

@@ -8,6 +8,11 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-14T19:00:00Z] ship | Phase 2 theme files pushed to unpublished duplicate #152547065995
+
+- `shopify theme push --nodelete --only` of `snippets/description-accordion.liquid`, `snippets/product-at-a-glance.liquid`, `snippets/furgenics-product-faqs.liquid`, `sections/main-product.liquid` to **Copy of Copy of scg9xy-xt** (`#152547065995`). Live `#150922428555` remained `[live]`; nothing published.
+- Preview `https://furgenics.com/products/deshedding-shampoo?preview_theme_id=152547065995`: 2×2 chip-strip, comparison card below accordion, FAQ `page-width` gutter, original testimonial layout. v4 body + faqs v2 still pending MCP.
+
 ## [2026-08-14T18:45:00Z] ship | PDP Phase 2 built repo-side: 4-section accordion + comparison card + chip strip + display titles
 
 - Filed `analyses/2026-08-14-pdp-phase2-build.md`. Dandylion reference adoptions per Stephen's go-ahead: accordion snippet v2 (INCI merge + comparison extraction, simulation-verified against v4/v3/no-H2 bodies), v4 deshedding exemplar draft, curated custom.faqs v2 (12→9 with FUR20 manual-entry + CA 2–5 / US 3–5 shipping fixes), at-a-glance chip strip, custom.display_title + eyebrow theme support (inert until metafield created), proposed short titles for 9 SKUs in products.md (Class B, awaiting approval).

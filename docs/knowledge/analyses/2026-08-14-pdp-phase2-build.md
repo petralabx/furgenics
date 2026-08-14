@@ -21,7 +21,7 @@ Adopted: four-row product accordion (theirs: Details / Key Ingredients / How to 
 
 ## Deploy + content push sequence
 
-1. Theme push (token-equipped run) to `#152547065995`: `snippets/description-accordion.liquid`, `snippets/product-at-a-glance.liquid`, `sections/main-product.liquid` — plus the still-pending 2c files from Phase 1 (`snippets/furgenics-product-faqs.liquid` FAQ gutter fix, `sections/main-product.liquid` testimonial revert — same file, one push covers both).
+1. **Done 2026-08-14.** Theme push to `#152547065995` only: `snippets/description-accordion.liquid`, `snippets/product-at-a-glance.liquid`, `snippets/furgenics-product-faqs.liquid`, `sections/main-product.liquid`. Live `#150922428555` unchanged, nothing published. Preview verified: 2×2 chip-strip at-a-glance, comparison card extracted below the accordion on deshedding (not an accordion row), FAQ `page-width` with 50px side gutter, original "Loved by Pets, Endorsed by the Best" testimonial restored.
    - Note: pushing the v2 snippet immediately extracts "How it compares…" below the accordion on ALL gallons (current bodies included) — intended.
 2. Content push (Claude MCP), FUR-013 first: v4 `descriptionHtml` from the draft (strip the HTML comment header) + `custom.faqs` v2 JSON. Verify both markets: 4 accordion rows, INCI standalone row gone / merged into Ingredients and safety, comparison card below accordion, FAQPage JSON-LD parses with 9 questions.
 3. After Stephen approves display titles: create `custom.display_title` metafield + push values (MCP); verify eyebrow + H1 on gallons and unchanged H1 on samples.
