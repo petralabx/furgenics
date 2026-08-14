@@ -762,25 +762,27 @@
 </product-info>
 {% render 'sticky-atc', product: product, product_form_id: product_form_id, section_id: section.id %}
   {%- comment -%}
-    2026-08-14 Phase 1: compacted the near-full-screen testimonial section into a
-    small proof card. Removed the large portrait (it was hardcoded from a
-    different store's CDN and had no visible connection to the named reviewer —
-    reads as stock imagery) and the oversized heading. Real verified reviews
-    arrive with the review app (Phase 3); do not fabricate ratings here.
+    "Loved by Pets, Endorsed by the Best" — original full testimonial layout
+    restored 2026-08-14 per Stephen's preference (the interim compact card was
+    reverted). Alt text + lazy loading added. NOTE: the portrait is hardcoded
+    from a different store's CDN (/1/0677/2080/6573/) — swap for licensed
+    Furgenics imagery when the photography upload lands, and replace this
+    whole section with real verified reviews once a review app is collecting.
   {%- endcomment -%}
   <section class="shopify-section section loved">
-    <div class="page-width furgenics-proof-card-wrap">
-      <figure class="furgenics-proof-card">
-        <blockquote>&ldquo;I wouldn't recommend anything I don't use myself, and this shampoo gets my full stamp of approval.&rdquo;</blockquote>
-        <figcaption>Greg M. &middot; Dog Specialist</figcaption>
-      </figure>
+    <div class="slider-mobile-gutter page-width page-width-desktop scroll-trigger animate--slide-in shop-section">
+      <h2>Loved by Pets,<br/>Endorsed by the Best</h2>
+      <div class="love-wrap">
+          <div class="img-wrap">
+                <img src="https://cdn.shopify.com/s/files/1/0677/2080/6573/files/e6233228e9078f67a314c4fd2394b524.png?v=1729080607" alt="Groomer with a freshly washed dog" loading="lazy"/>
+          </div>
+          <div class="contet-wrap">
+                <div class="ico"> <img src="https://cdn.shopify.com/s/files/1/0649/4653/6587/files/why-icon.png?v=1757676518" alt="" loading="lazy"/></div>
+                <h3>“I wouldn't recommend anything I don't use myself, and this shampoo gets my full stamp of approval.”</h3>
+            <span>Greg M., Dog Specialist</span>
+          </div>
+      </div>
     </div>
-    <style>
-      .furgenics-proof-card-wrap { display: flex; justify-content: center; padding: 8px 0 4px; }
-      .furgenics-proof-card { margin: 0; max-width: 640px; padding: 20px 24px; border: 1px solid #e5e5e5; border-radius: 8px; }
-      .furgenics-proof-card blockquote { margin: 0 0 8px; font-size: 1.05em; font-weight: 600; line-height: 1.45; }
-      .furgenics-proof-card figcaption { font-size: 0.9em; color: #555; }
-    </style>
   </section>
 {% schema %}
 {

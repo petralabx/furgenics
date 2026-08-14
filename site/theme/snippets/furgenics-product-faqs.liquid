@@ -14,7 +14,12 @@
 {%- if product.metafields.custom.faqs -%}
   {%- assign faq_list = product.metafields.custom.faqs.value -%}
   {%- if faq_list.size > 0 -%}
-    <div class="furgenics-faq" style="margin: 40px 0; padding: 32px 0 0; border-top: 1px solid #e5e5e5;">
+    {%- comment -%} page-width: the theme's custom-liquid section has no width
+        container of its own, so without this class the FAQ runs edge-to-edge.
+        This theme's mx-style.css makes .page-width full-width with a 50px side
+        gutter (padding: 0 50px) — only override padding-top here, never the
+        shorthand, or the side gutter collapses to zero. {%- endcomment -%}
+    <div class="furgenics-faq page-width" style="margin: 40px auto; padding-top: 32px; border-top: 1px solid #e5e5e5;">
       <h2 style="font-size: 28px; margin-bottom: 24px; font-weight: 600;">Frequently Asked Questions</h2>
       {%- for faq in faq_list -%}
         {%- capture rendered_q -%}{%- render 'token-substitution', text: faq.q -%}{%- endcapture -%}
