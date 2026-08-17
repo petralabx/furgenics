@@ -37,6 +37,22 @@
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
+
+    {%- comment -%}
+      Shopify Markets often writes a blank US compare-at as 0 (not null).
+      Dawn's unversioned price snippet then treats that as a sale vs $0.00.
+      Only show sale UI when compare-at is actually higher than the selling price.
+      See docs/knowledge/analyses/2026-08-17-us-compare-at-zero.md
+    {%- endcomment -%}
+    .furgenics-price-no-compare .price--on-sale .price__sale {
+      display: none !important;
+    }
+    .furgenics-price-no-compare .price--on-sale .price__regular {
+      display: block !important;
+    }
+    .furgenics-price-no-compare .price__badge-sale {
+      display: none !important;
+    }
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
@@ -126,7 +142,18 @@
                   .furgenics-title-eyebrow { margin: 0 0 4px; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.08em; color: #555; }
                 </style>
               {%- when 'price' -%}
-                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                {%- assign fur_compare = product.selected_or_first_available_variant.compare_at_price | default: 0 -%}
+                {%- assign fur_price = product.selected_or_first_available_variant.price -%}
+                {%- assign fur_show_compare = false -%}
+                {%- if fur_compare > fur_price -%}
+                  {%- assign fur_show_compare = true -%}
+                {%- endif -%}
+                <div
+                  id="price-{{ section.id }}"
+                  role="status"
+                  class="{% unless fur_show_compare %}furgenics-price-no-compare{% endunless %}"
+                  {{ block.shopify_attributes }}
+                >
                   {%- render 'price',
                     product: product,
                     use_variant: true,
@@ -342,7 +369,7 @@
                         {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
                           {%- assign variant_price_compare = product.selected_or_first_available_variant.compare_at_price -%}
                           <div class="price-per-item">
-                            {%- if variant_price_compare -%}
+                            {%- if variant_price_compare > product.selected_or_first_available_variant.price -%}
                               <dl class="price-per-item--current">
                                 <dt class="visually-hidden">
                                   {{ 'products.product.price.regular_price' | t }}
@@ -382,7 +409,7 @@
                           -%}
                           {%- assign variant_price_compare = product.selected_or_first_available_variant.compare_at_price -%}
                           <div class="price-per-item">
-                            {%- if variant_price_compare -%}
+                            {%- if variant_price_compare > product.selected_or_first_available_variant.price -%}
                               <dl class="price-per-item--current">
                                 <dt class="visually-hidden">
                                   {{ 'products.product.price.regular_price' | t }}

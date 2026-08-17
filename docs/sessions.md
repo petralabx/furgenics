@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-17 — US compare-at $0.00 is a Markets override, not a blank
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Diagnosed USA compare-at: blanking the Markets field writes `0` (Sale vs `$0.00` on FUR-013 + FUR-014); Canada is already `null`. Reset pricing is the wrong control — it wipes the whole US fixed price, which is why the selling price jumped and then looked uneditable. Filed `docs/knowledge/analyses/2026-08-17-us-compare-at-zero.md`. Theme guard in `main-product.liquid` hides sale UI when compare-at is 0 or not greater than price (repo-side; unpublished duplicate until a token-equipped push).
+- **Next:** Stephen (or Claude + Shopify Admin MCP): `priceListFixedPricesUpdate` with US `price: 34.99` and `compareAtPrice: null` — do not Reset. Then spot-check `/en-us/` JSON `compare_at_price: null`. Theme push of `main-product.liquid` to `#152547065995` when a deploy VM is available.
+- **Watch:** Do not type `0` into compare-at. Do not delete the US fixed price. Live theme will keep showing `$0.00` until the catalog is `null` or the guard is published.
+
 ## 2026-08-14 — Phase 2 theme files pushed to unpublished duplicate
 
 - **Who:** Stephen + Cursor cloud agent

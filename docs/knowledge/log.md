@@ -8,6 +8,13 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-17T19:10:00Z] query | US Markets compare-at blanks to $0.00; Reset pricing is the wrong button
+
+- Live JSON: US FUR-013 + FUR-014 `compare_at_price: 0`; CA FUR-013 `null`. Selling price still $34.99 USD.
+- Diagnosis: Markets UI writes blank compare-at as `0` (a stored override). Reset pricing deletes the entire US fixed-price override, so the selling price reverts to inherited CAD/FX and the US price field locks.
+- Fix: keep US fixed price; set compare-at to `null` via `priceListFixedPricesUpdate` or catalog CSV. Theme guard in `main-product.liquid` hides sale UI when compare-at is 0 or ≤ price (unpublished duplicate until pushed).
+- Filed `analyses/2026-08-17-us-compare-at-zero.md`; catalog issue 11 in products.md.
+
 ## [2026-08-14T19:00:00Z] ship | Phase 2 theme files pushed to unpublished duplicate #152547065995
 
 - `shopify theme push --nodelete --only` of `snippets/description-accordion.liquid`, `snippets/product-at-a-glance.liquid`, `snippets/furgenics-product-faqs.liquid`, `sections/main-product.liquid` to **Copy of Copy of scg9xy-xt** (`#152547065995`). Live `#150922428555` remained `[live]`; nothing published.
