@@ -26,6 +26,8 @@ Verified 2026-08-17 on the live storefront JSON:
 
 The old inverted `$18.04` US compare-at is gone. It was replaced by `0`, which is worse visually (`Sale` vs `$0.00`).
 
+**Update 2026-08-18:** Stephen shipped the catalog CSV fix (empty Compare At, keep Fixed Price). Live `/en-us/products/deshedding-shampoo.js` now returns `compare_at_price: null`. Do not reopen Reset pricing or write `0`. Collection CTR is wait-and-see.
+
 ## Why Reset pricing is the wrong button
 
 **Reset pricing** on a market row does not mean “clear compare-at.” It deletes the **entire US fixed-price override** (selling price **and** compare-at) and falls back to the catalog default — usually the CAD base converted at Shopify’s FX, or a percentage adjustment.

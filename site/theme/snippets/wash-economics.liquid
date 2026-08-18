@@ -1,0 +1,92 @@
+{%- comment -%}
+  Furgenics — canonical wash-economics engine (2026-08-18)
+  ===
+  One place for dilution + diluted-oz-per-wash. Wash counts and cost-per-wash
+  tokens compute from this. Do not hardcode 512, $0.18, 80–100, or 340 anywhere.
+
+  Base (concentrate gallon):
+    gallon_oz        = 128
+    dilution_parts   = 16     (16 parts water + 1 part concentrate)
+  Derived:
+    working_multiplier = dilution_parts + 1  = 17
+    working_oz         = 128 × 17            = 2176
+    working_gallons    = 17
+  Usage (diluted ounces per wash) — Stephen 2026-08-18:
+    small  = 5
+    medium = 11
+    large  = 18
+    deshed = 25
+  Computed:
+    washes_tier        = working_oz / usage_oz_tier
+    cost_per_wash_tier = variant.price × usage_oz_tier / working_oz
+                         (live Markets price, never a hardcoded dollar)
+
+  Discount code/percent is NOT here. It lives in theme settings
+  (settings.discount_code / settings.discount_percent). Swap FUR20 → FUR10
+  in one line in Theme settings → Active Discount Campaign.
+
+  Keep this file in sync with data/config.json → economics.
+
+  Usage:
+    {% render 'wash-economics', claim: 'dilution-ratio-bare' %}
+    {% render 'wash-economics', claim: 'washes', tier: 'medium' %}
+    {% render 'wash-economics', claim: 'usage-oz', tier: 'deshed' %}
+    {% render 'wash-economics', claim: 'cost-per-wash', handle: 'deshedding-shampoo', tier: 'medium' %}
+    {% render 'wash-economics', claim: 'cost-per-wash', product: product, tier: 'medium' %}
+    {% render 'wash-economics', claim: 'working-gallons-number' %}
+    {% render 'wash-economics', claim: 'working-oz-number' %}
+
+  Floats are required — Shopify integer division would floor 2176/11 to 197.
+{%- endcomment -%}
+
+{%- assign we_gallon_oz = 128.0 -%}
+{%- assign we_dilution_parts = 16.0 -%}
+{%- assign we_working_multiplier = we_dilution_parts | plus: 1.0 -%}
+{%- assign we_working_oz = we_gallon_oz | times: we_working_multiplier -%}
+
+{%- case tier -%}
+  {%- when 'small' -%}
+    {%- assign we_usage = 5.0 -%}
+  {%- when 'large' -%}
+    {%- assign we_usage = 18.0 -%}
+  {%- when 'deshed' -%}
+    {%- assign we_usage = 25.0 -%}
+  {%- else -%}
+    {%- assign we_usage = 11.0 -%}
+{%- endcase -%}
+
+{%- assign we_output = '' -%}
+{%- case claim -%}
+  {%- when 'dilution-ratio-bare' -%}
+    {%- assign we_output = we_dilution_parts | round | append: ':1' -%}
+  {%- when 'working-gallons-number' -%}
+    {%- assign we_output = we_working_multiplier | round | append: '' -%}
+  {%- when 'working-oz-number' -%}
+    {%- assign we_output = we_working_oz | round | append: '' -%}
+  {%- when 'usage-oz' -%}
+    {%- assign we_output = we_usage | round | append: '' -%}
+  {%- when 'washes' -%}
+    {%- assign we_output = we_working_oz | divided_by: we_usage | round | append: '' -%}
+  {%- when 'cost-per-wash' -%}
+    {%- assign we_price = nil -%}
+    {%- if handle != blank -%}
+      {%- assign we_prod = all_products[handle] -%}
+      {%- if we_prod != blank and we_prod.price != blank -%}
+        {%- assign we_price = we_prod.price -%}
+      {%- endif -%}
+    {%- elsif product != blank and product.selected_or_first_available_variant.price != blank -%}
+      {%- assign we_price = product.selected_or_first_available_variant.price -%}
+    {%- endif -%}
+    {%- if we_price != blank and we_price > 0 -%}
+      {%- assign we_cost_cents = we_price | times: we_usage | divided_by: we_working_oz | round -%}
+      {%- assign we_output = we_cost_cents | money -%}
+    {%- else -%}
+      {%- assign we_output = 'currently unavailable online' -%}
+    {%- endif -%}
+{%- endcase -%}
+
+{%- if we_output == '' -%}
+  <span class="wash-economics-missing" data-claim="{{ claim }}" data-tier="{{ tier }}">[unknown wash-economics claim]</span>
+{%- else -%}
+  {{- we_output | strip -}}
+{%- endif -%}

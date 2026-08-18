@@ -1488,15 +1488,15 @@
         "type": "text",
         "id": "discount_code",
         "label": "Discount code",
-        "default": "FUR50",
-        "info": "Must match an active discount in Settings → Discounts. e.g. FUR50, FUR20, SUMMER25."
+        "default": "FUR20",
+        "info": "Must match an active discount in Settings → Discounts. Live 2026-08-18 is FUR20. Swap to FUR10 (or any new code) in this one field."
       },
       {
         "type": "number",
         "id": "discount_percent",
         "label": "Discount percent",
-        "default": 50,
-        "info": "Whole number — 50 means 50% off."
+        "default": 20,
+        "info": "Whole number — 20 means 20% off. Keep in lockstep with the live discount code."
       },
       {
         "type": "number",

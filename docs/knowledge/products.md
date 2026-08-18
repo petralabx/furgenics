@@ -20,8 +20,9 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Handle:** `hypoallergenic-shampoo-gallon`
 - **Shopify title:** `Hypoallergenic Dog Shampoo Gallon for Professional Groomers`
 - **Formula ID:** `F-26-0653`  · **UPC:** `990312501688`
-- **Price:** $24.99 CAD / Markets-managed USD
-- **Status:** ACTIVE
+- **Price:** $34.99 CAD / $34.99 USD
+- **Status:** ACTIVE · storefront `available: false` both markets (sold out; restock inbound). Keep the collection tile; gate the buy CTA only — do not hide the SKU.
+
 - **Coat types:** sensitive skin, short, smooth, thin, fine
 - **Breeds:** French Bulldogs, Bulldogs, Boxers, Pitbulls, Chihuahuas, Greyhounds, Dalmatians, Whippets
 - **Key features:** Tearless, sulfate-free, paraben-free, hypoallergenic
@@ -34,8 +35,9 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Handle:** `oatmeal-aloe-shampoo-gallon`
 - **Shopify title:** `Oatmeal & Aloe Professional Dog Grooming Shampoo Gallon`
 - **Formula ID:** `F-26-0100`  · **UPC:** `990312501800`
-- **Price:** $24.99 CAD / Markets-managed USD
-- **Status:** ACTIVE
+- **Price:** $34.99 CAD listed in admin (not storefront-visible)
+- **Status:** DRAFT / unpublished _(confirmed 2026-08-18: `/products/oatmeal-aloe-shampoo-gallon.js` 404 both markets). Homepage still tiles it — remove that tile. Do not activate this round._
+
 - **Coat types:** dry, itchy, double, medium, long
 - **Breeds:** Golden Retrievers, Labs, German Shepherds, Huskies, Bernese Mountain Dogs, Collies, Aussies
 - **Key features:** Colloidal oatmeal + aloe vera for dry/itchy skin
@@ -47,8 +49,8 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Handle:** `lavender-spa-shampoo`
 - **Shopify title:** `Lavender Spa Professional Dog Grooming Shampoo Gallon`
 - **Formula ID:** `F-26-0691`  · **UPC:** `990312501770`
-- **Price:** $24.99 CAD / Markets-managed USD
-- **Status:** DRAFT _(as of 2026-05-21 confirmation)_
+- **Price:** $24.99 CAD listed in admin (not storefront-visible)
+- **Status:** DRAFT _(confirmed 2026-08-18: storefront 404 both markets. Staying draft — Stephen.)_
 - **Coat types:** all, especially medium, long, curly
 - **Breeds:** Poodles, Cavapoos, Cockapoos, Malteses, Shih Tzus, Bichon Frises, Yorkies
 - **Key features:** Real lavender essential oil, spa-grade scent _(INCI placeholder — `custom.full_ingredients` shows "Fragrance/Parfum" only, no Lavandula INCI entry. Pending formulation team finalization.)_
@@ -60,7 +62,7 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Handle:** `deshedding-shampoo`
 - **Shopify title:** `Deshedding Dog Shampoo Gallon for Professional Groomers`
 - **Formula ID:** `F-26-0652`  · **UPC:** `990312501671`
-- **Price:** $24.99 CAD / Markets-managed USD
+- **Price:** $34.99 CAD / $34.99 USD · US `compare_at_price: null` (CSV fix 2026-08-18)
 - **Status:** ACTIVE
 - **Coat types:** double, thick, heavy shedders, undercoat-heavy
 - **Breeds:** German Shepherds, Huskies, Golden Retrievers, Labs, Akitas, Malamutes, Chow Chows
@@ -74,7 +76,7 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Handle:** `oatmeal-aloe-conditioner-gallon`
 - **Shopify title:** `Oatmeal & Aloe Dog Conditioner Gallon For Grooming Professionals`
 - **Formula ID:** `F-24-0273`  · **UPC:** `990312501657`
-- **Price:** $24.99 CAD / Markets-managed USD
+- **Price:** $37.99 CAD / $34.99 USD
 - **Status:** ACTIVE
 - **Coat types:** dry, itchy, medium-long, double
 - **Breeds:** Golden Retrievers, Labs, Border Collies, Aussies, Huskies
@@ -87,7 +89,7 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Handle:** `deep-moisturizing-conditioner-gallon`
 - **Shopify title:** `Deep Moisturizing Dog Conditioner Gallon For Professional Groomers`
 - **Formula ID:** `F-26-0654`  · **UPC:** `990312501848`
-- **Price:** $24.99 CAD / Markets-managed USD
+- **Price:** $37.99 CAD / $34.99 USD _(Markets divergence — do not force tokens to a single number; `[[PRICE]]` reads live variant.price)_
 - **Status:** ACTIVE
 - **Coat types:** dry, brittle, long, curly, damaged, mat-prone
 - **Breeds:** Poodles, Goldendoodles, Labradoodles, Afghan Hounds, Shih Tzus, Malteses, Yorkies
@@ -100,7 +102,7 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Handle:** `deshedding-conditioner`
 - **Shopify title:** `Deshedding Dog Conditioner Gallon For Professional Groomers`
 - **Formula ID:** `F-26-0651`  · **UPC:** `990312501664`
-- **Price:** **$29.99 CAD** / Markets-managed USD _(CAD diverged from $24.99 baseline; confirmed via MCP read 2026-05-27)_
+- **Price:** $34.99 CAD / $34.99 USD _(was $29.99 CAD as of 2026-05-27; live JSON 2026-08-18 is 3499 both markets. Brief that listed $37.99 CAD was wrong.)_
 - **Status:** ACTIVE
 - **Coat types:** double, thick, undercoat-heavy, heavy shedders
 - **Breeds:** Huskies, German Shepherds, Golden Retrievers, Labs, Akitas, Samoyeds
@@ -113,7 +115,7 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Handle:** `2in1-hypoallergenic-shampoo-conditioner`
 - **Shopify title:** `2-in-1 Hypoallergenic Shampoo & Conditioner Gallon For Grooming Professionals`
 - **Formula ID:** `F-25-0154`  · **UPC:** `990312501916`  · _Note: FUR-026 is the newer SKU in GTM Amazon workbook; confirm catalog consolidation._
-- **Price:** $24.99 CAD / Markets-managed USD
+- **Price:** $37.99 CAD / $34.99 USD
 - **Status:** ACTIVE
 - **Coat types:** sensitive skin, short to medium, fine, low-maintenance
 - **Breeds:** French Bulldogs, Boxers, Beagles, Dachshunds, Chihuahuas, Boston Terriers
@@ -126,8 +128,8 @@ Furgenics is a dog grooming shampoo and conditioner brand targeting **profession
 - **Handle:** `2in1-doodle-shampoo-conditioner`
 - **Shopify title:** `2-in-1 Doodle Shampoo & Conditioner Gallon For Grooming Professionals`
 - **Formula ID:** `F-26-0690`  · **UPC:** `627949188073`  · _Note: FUR-037 is the newer SKU in GTM Amazon workbook; confirm catalog consolidation._
-- **Price:** $24.99 CAD / Markets-managed USD
-- **Status:** DRAFT _(as of 2026-05-21 confirmation)_
+- **Price:** $24.99 CAD listed in admin (not storefront-visible)
+- **Status:** DRAFT _(confirmed 2026-08-18: storefront 404 both markets. Staying draft — Stephen. Goldendoodle guide must not CTA this SKU.)_
 - **Coat types:** curly, wavy, thick, mat-prone
 - **Breeds:** Goldendoodles, Labradoodles, Bernedoodles, Aussiedoodles, Sheepadoodles
 - **Key features:** Argan + coconut + shea + silk amino acids + chamomile, purpose-built for doodle coats
@@ -175,10 +177,36 @@ All samples are **gated to the Groomer Program**, $0 price, distributed free to 
 
 ## Pricing and economics
 
-- **One gallon = 17 working gallons** at professional dilution
-- **Per-working-gallon cost:** ~$1.47 CAD (without FUR50), ~$0.74 CAD (with FUR50 first order)
-- **Industry comparison messaging:** "Roughly the cost of a cup of coffee per working gallon at pro dilution"
-- **Amazon market comparison:** Competitor gallon pricing ranges $29.99 (We Love Doodles half-gallon) to $89.01 (Bio-Groom Anti-Shed). Median ~$47 USD. Furgenics direct-to-salon price is materially below this band — a deliberate DTC positioning. **Amazon channel pricing is an open strategic decision** and should not default to DTC pricing.
+Live storefront JSON 2026-08-18 (cents → dollars). **Do not hardcode these in copy** — use `[[PRICE:handle]]`. Wiki figures below are a snapshot for agents.
+
+| SKU | Handle | CA | US | Storefront |
+|---|---|---|---|---|
+| FUR-013 | `deshedding-shampoo` | $34.99 | $34.99 | ACTIVE |
+| FUR-014 | `deshedding-conditioner` | $34.99 | $34.99 | ACTIVE |
+| FUR-001 | `hypoallergenic-shampoo-gallon` | $34.99 | $34.99 | ACTIVE, `available: false` |
+| FUR-005 | `2in1-hypoallergenic-shampoo-conditioner` | $37.99 | $34.99 | ACTIVE |
+| FUR-010 | `oatmeal-aloe-conditioner-gallon` | $37.99 | $34.99 | ACTIVE |
+| FUR-021 | `deep-moisturizing-conditioner-gallon` | $37.99 | $34.99 | ACTIVE |
+| FUR-011 | `oatmeal-aloe-shampoo-gallon` | — | — | DRAFT / 404 |
+| FUR-020 | `2in1-doodle-shampoo-conditioner` | — | — | DRAFT / 404 |
+| FUR-050 | `lavender-spa-shampoo` | — | — | DRAFT / 404 |
+
+US compare-at is `null` on checked gallons (CSV fix 2026-08-18). Do not use Markets Reset pricing.
+
+**Canonical wash math** (source: `data/config.json` → `economics` and `site/theme/snippets/wash-economics.liquid`):
+
+- Base: 128 oz concentrate × (16 dilution parts + 1) = **2176 working oz** = 17 working gallons
+- Diluted oz per wash: small 5 · medium 11 · large 18 · deshed 25
+- `washes_tier = 2176 / usage_oz_tier` → 435 / 198 / 121 / 87
+- `cost_per_wash_tier = live_price × usage_oz / 2176` (at $34.99: $0.08 / **$0.18** / $0.29 / $0.40)
+- Tokens: `[[VALUE:washes-medium]]`, `[[COST:deshedding-shampoo:medium]]`, `[[VALUE:dilution-ratio-bare]]` → `16:1`
+- **512 washes is wrong** (implies 4.25 oz). **340 Goldendoodles is wrong.** Do not pick one bath-count for every surface — label the tier.
+- Discount: live **FUR20 / 20%** (`[[DISCOUNT]]` / `[[DISCOUNT:code]]`). Swap in theme settings, one field.
+
+**Industry comparison messaging:** "Roughly the cost of a cup of coffee per working gallon at pro dilution" (`[[VALUE:per-working-gallon-cost-narrative]]`).
+**Amazon market comparison:** Competitor gallon pricing ranges $29.99 (We Love Doodles half-gallon) to $89.01 (Bio-Groom Anti-Shed). Median ~$47 USD. Furgenics direct-to-salon price is materially below this band — a deliberate DTC positioning. **Amazon channel pricing is an open strategic decision** and should not default to DTC pricing.
+
+**Purchasable shampoo lineup as of 2026-08-18:** FUR-013 (in stock) + FUR-005 (in stock) + FUR-001 (sold out, restock inbound). Do not copy that implies a full 9-SKU shampoo wall.
 
 ## Metafields in use
 
@@ -234,13 +262,16 @@ All gallon PDPs carry these custom metafields:
 8. **Dormant unstructured metafields** (item-level cleanup): see "Dormant unstructured metafields" list above. Batch delete candidate for a separate session — ~50+ metafield deletes across 9 products. Includes FUR-001's duplicate `furgenics.*` namespace entries.
 9. **Published INCI lists are wrong on FUR-013 and FUR-005** (Sodium Laureth Sulfate listed in `custom.full_ingredients`). **RESOLVED DIRECTION 2026-08-14:** R&D confirmed all formulas ARE sulfate-free — the claim was right, the ingredient lists are the error. Fix sequence: (a) R&D delivers corrected INCI per affected SKU (confirm whether any of the other 7 lists are also affected), (b) update this file's SKU entries, (c) push corrected `custom.full_ingredients` metafields via Claude MCP and verify on live PDPs (accordion INCI row + FAQPage schema), (d) reinstate the "sulfate-free" claim across descriptions/FAQs/schema/alt text, (e) update the AGENTS.md guardrail that currently blocks the claim. Do NOT reinstate the claim before the metafields are corrected — the on-page contradiction is worse than the missing claim.
 10. **FUR-050 lavender INCI placeholder** — `custom.full_ingredients` has no `Lavandula angustifolia` entry despite product positioning. Pending formulation team finalization.
-11. **US Markets compare-at is `0`, not empty** (FUR-013 + FUR-014 confirmed 2026-08-17; likely other US gallons). Blanking the USA compare-at field in admin writes `$0.00`, which the storefront treats as a Sale vs `$0.00`. **Do not use Reset pricing** — that deletes the whole US fixed-price override, so the selling price jumps and the US price field becomes inherited/uneditable. Fix: keep the US fixed selling price and set compare-at to `null` via GraphQL `priceListFixedPricesUpdate` or a catalog CSV with an empty compare-at cell. Canada is already `null`. Write-up: `analyses/2026-08-17-us-compare-at-zero.md`.
+11. ~~**US Markets compare-at is `0`**~~ **RESOLVED 2026-08-18** via catalog CSV (empty Compare At, keep Fixed Price). Live JSON: `/en-us/products/deshedding-shampoo.js` → `compare_at_price: null`, `price: 3499`. Same for conditioner + hypoallergenic. Do not use Reset pricing, `priceListFixedPricesDelete`, or set compare-at to `0`. Write-up: `analyses/2026-08-17-us-compare-at-zero.md`. Collection CTR / `$0.00` snippet hypothesis is now wait-and-see.
+12. **Homepage economics + draft tiles (unversioned theme JSON).** Live homepage still asserts "Up to 512 washes" and "$0.18 AVG COST PER WASH" together, tiles FUR-011 (404), links `/products/ultra-gentle-shampoo`, and claims sulfate-free. Drop-in: `snippets/homepage-wash-stats.liquid`. Gate buy CTAs on `product.available`; keep FUR-001 tile as Sold out.
+13. **$24.99 CAD on draft SKUs (FUR-020, FUR-050)** vs $34.99/$37.99 on live gallons. Open: is $24.99 a stale leftover or the intended launch price? Do not publish it until Stephen says.
 
 ---
 
 ## Change log
 
-- **2026-08-17** — Catalog issue 11: US Markets compare-at blanks to `0` (not `null`). Do not use Reset pricing. Diagnosis + GraphQL/CSV fix in `analyses/2026-08-17-us-compare-at-zero.md`.
+- **2026-08-18** — Live JSON price sweep (CA/US Markets). FUR-014 is $34.99 CAD not $37.99. FUR-005/010/021 are $37.99 CAD / $34.99 USD. FUR-011/020/050 storefront 404. FUR-001 sold out both markets. US compare-at null (issue 11 resolved). Canonical wash-economics (5/11/18/25 oz → 435/198/121/87 washes) in `data/config.json` + `snippets/wash-economics.liquid`. Live discount FUR20/20%. See `analyses/2026-08-18-gsc-ctr-economics-brief.md`.
+- **2026-08-17** — Catalog issue 11: US Markets compare-at blanks to `0` (not `null`). Do not use Reset pricing. Diagnosis + GraphQL/CSV fix in `analyses/2026-08-17-us-compare-at-zero.md`. **Superseded 2026-08-18:** CSV empty-cell fix shipped; live JSON is `null`.
 - **2026-08-14 (later)** — **Sulfate question resolved:** R&D confirmed the formulas are sulfate-free; the published INCI lists (FUR-013, FUR-005 at minimum) are the error. Catalog issue 9 rewritten with the fix sequence (corrected INCI from R&D → metafield push → claim reinstatement → AGENTS.md guardrail update). Blocking input: the corrected ingredient lists themselves.
 - **2026-08-14** — Canonical shipping promises set by Stephen: CA 2-5 business days, US 3-5 business days (US previously written as 3-7 in FAQs). Related decisions recorded the same day (see `analyses/2026-08-14-pdp-phase1-buybox.md`): FUR20 must be manually entered at checkout (FAQ tail claiming it "works automatically" is wrong and needs a metafield sweep); performance/safety claims substantiated via the 60+ groomer testing program; sulfate-free claim stays as-is pending formulation confirmation (no sweep yet).
 

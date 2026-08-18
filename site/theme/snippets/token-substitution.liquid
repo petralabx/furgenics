@@ -27,9 +27,15 @@
   the product; this is the safety net.
 
   When adding a new PRICE handle, VALUE key, or COMPETITOR slug:
-  edit this file only. All call sites pick up the change automatically.
+    edit this file. Wash-count / cost-per-wash math lives in
+    snippets/wash-economics.liquid — keep those in sync.
 
-  Maintenance reference: brands/furgenics/knowledge/content-style-guide.md
+  Wash counts and $/wash are NOT hardcoded here. They render from
+  snippets/wash-economics.liquid (128 oz × 17 = 2176 working oz; usage
+  tiers small/medium/large/deshed). Cost tokens use live variant.price.
+
+  Maintenance reference: docs/knowledge/content-style-guide.md
+    + docs/knowledge/analyses/2026-08-18-gsc-ctr-economics-brief.md
 {%- endcomment -%}
 
 {%- assign rendered = text -%}
@@ -49,13 +55,63 @@
   {%- endif -%}
 {%- endfor -%}
 
-{%- comment -%} [[VALUE:key]] — invariant value-math claims {%- endcomment -%}
-{%- assign rendered = rendered | replace: '[[VALUE:dilution-ratio]]', '16:1 concentrate' -%}
-{%- assign rendered = rendered | replace: '[[VALUE:working-gallons-per-bottle]]', 'up to 17 working gallons per bottle at professional dilution' -%}
+{%- comment -%} [[VALUE:key]] — invariant value-math + wash-count claims {%- endcomment -%}
+{%- capture we_ratio_bare -%}{%- render 'wash-economics', claim: 'dilution-ratio-bare' -%}{%- endcapture -%}
+{%- assign we_ratio_bare = we_ratio_bare | strip -%}
+{%- capture we_working_gallons_n -%}{%- render 'wash-economics', claim: 'working-gallons-number' -%}{%- endcapture -%}
+{%- assign we_working_gallons_n = we_working_gallons_n | strip -%}
+{%- capture we_washes_small -%}{%- render 'wash-economics', claim: 'washes', tier: 'small' -%}{%- endcapture -%}
+{%- capture we_washes_medium -%}{%- render 'wash-economics', claim: 'washes', tier: 'medium' -%}{%- endcapture -%}
+{%- capture we_washes_large -%}{%- render 'wash-economics', claim: 'washes', tier: 'large' -%}{%- endcapture -%}
+{%- capture we_washes_deshed -%}{%- render 'wash-economics', claim: 'washes', tier: 'deshed' -%}{%- endcapture -%}
+{%- capture we_usage_small -%}{%- render 'wash-economics', claim: 'usage-oz', tier: 'small' -%}{%- endcapture -%}
+{%- capture we_usage_medium -%}{%- render 'wash-economics', claim: 'usage-oz', tier: 'medium' -%}{%- endcapture -%}
+{%- capture we_usage_large -%}{%- render 'wash-economics', claim: 'usage-oz', tier: 'large' -%}{%- endcapture -%}
+{%- capture we_usage_deshed -%}{%- render 'wash-economics', claim: 'usage-oz', tier: 'deshed' -%}{%- endcapture -%}
+
+{%- assign we_washes_small = we_washes_small | strip -%}
+{%- assign we_washes_medium = we_washes_medium | strip -%}
+{%- assign we_washes_large = we_washes_large | strip -%}
+{%- assign we_washes_deshed = we_washes_deshed | strip -%}
+{%- assign we_usage_small = we_usage_small | strip -%}
+{%- assign we_usage_medium = we_usage_medium | strip -%}
+{%- assign we_usage_large = we_usage_large | strip -%}
+{%- assign we_usage_deshed = we_usage_deshed | strip -%}
+
+{%- assign we_ratio_full = we_ratio_bare | append: ' concentrate' -%}
+{%- assign we_working_gallons_phrase = 'up to ' | append: we_working_gallons_n | append: ' working gallons per bottle at professional dilution' -%}
+{%- assign rendered = rendered | replace: '[[VALUE:dilution-ratio-bare]]', we_ratio_bare -%}
+{%- assign rendered = rendered | replace: '[[VALUE:dilution-ratio]]', we_ratio_full -%}
+{%- assign rendered = rendered | replace: '[[VALUE:working-gallons-per-bottle]]', we_working_gallons_phrase -%}
 {%- assign rendered = rendered | replace: '[[VALUE:per-working-gallon-cost-narrative]]', 'roughly the cost of a cup of coffee per working gallon at pro dilution' -%}
 {%- assign rendered = rendered | replace: '[[VALUE:made-in-canada]]', 'Made in Canada' -%}
 {%- assign rendered = rendered | replace: '[[VALUE:professional-grade]]', 'built for professional salons' -%}
 {%- assign rendered = rendered | replace: '[[VALUE:pro-vs-retail-positioning]]', 'a professional concentrate designed for salon volume — not a retail bottle in a bigger size' -%}
+{%- assign rendered = rendered | replace: '[[VALUE:washes-small]]', we_washes_small -%}
+{%- assign rendered = rendered | replace: '[[VALUE:washes-medium]]', we_washes_medium -%}
+{%- assign rendered = rendered | replace: '[[VALUE:washes-large]]', we_washes_large -%}
+{%- assign rendered = rendered | replace: '[[VALUE:washes-deshed]]', we_washes_deshed -%}
+{%- assign rendered = rendered | replace: '[[VALUE:usage-oz-small]]', we_usage_small -%}
+{%- assign rendered = rendered | replace: '[[VALUE:usage-oz-medium]]', we_usage_medium -%}
+{%- assign rendered = rendered | replace: '[[VALUE:usage-oz-large]]', we_usage_large -%}
+{%- assign rendered = rendered | replace: '[[VALUE:usage-oz-deshed]]', we_usage_deshed -%}
+
+{%- comment -%}
+  [[COST:handle:tier]] — live Markets price × usage_oz / 2176 working oz.
+  Tiers: small, medium, large, deshed. Draft/unpublished handles fall back
+  the same way PRICE does ('currently unavailable online').
+{%- endcomment -%}
+{%- assign cost_tiers = 'small,medium,large,deshed' | split: ',' -%}
+{%- for handle in furgenics_handles -%}
+  {%- for tier in cost_tiers -%}
+    {%- assign cost_token = '[[COST:' | append: handle | append: ':' | append: tier | append: ']]' -%}
+    {%- if rendered contains cost_token -%}
+      {%- capture cost_value -%}{%- render 'wash-economics', claim: 'cost-per-wash', handle: handle, tier: tier -%}{%- endcapture -%}
+      {%- assign cost_value = cost_value | strip -%}
+      {%- assign rendered = rendered | replace: cost_token, cost_value -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
 
 {%- comment -%}
   [[COMPETITOR:brand-slug]] — per-market dated benchmarks.
@@ -171,6 +227,19 @@
   {%- capture comp_bark2basics -%}<span class="competitor-price">Bark2Basics De-Shedding Gallon: <strong>$71.35 CAD</strong> <small>(as of 2026-05, Amazon Canada, de-shedding conditioner as proxy — shampoo CA price pending)</small></span>{%- endcapture -%}
 {%- endif -%}
 {%- assign rendered = rendered | replace: '[[COMPETITOR:bark2basics-de-shedding]]', comp_bark2basics -%}
+
+{%- comment -%}
+  [[DISCOUNT:code]] / [[DISCOUNT:percent]] — scalar campaign values.
+  Replace these BEFORE [[DISCOUNT]] so the banner token stays exact-match.
+  Swap the live offer in Theme settings (one line), not in copy.
+{%- endcomment -%}
+{%- if settings.discount_code != blank -%}
+  {%- assign rendered = rendered | replace: '[[DISCOUNT:code]]', settings.discount_code -%}
+{%- endif -%}
+{%- if settings.discount_percent != blank -%}
+  {%- assign we_pct = settings.discount_percent | append: '' -%}
+  {%- assign rendered = rendered | replace: '[[DISCOUNT:percent]]', we_pct -%}
+{%- endif -%}
 
 {%- comment -%} [[DISCOUNT]] — active discount campaign banner from theme settings {%- endcomment -%}
 {%- capture discount_banner_html -%}{%- render 'discount-banner' -%}{%- endcapture -%}

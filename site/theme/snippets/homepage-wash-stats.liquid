@@ -1,0 +1,28 @@
+{%- comment -%}
+  Drop-in replacement for the homepage stats that currently hardcode
+  "Up to 512 washes" and "$0.18 AVG COST PER WASH" in the same unlabeled
+  block. Those two numbers are internally contradictory ($34.99 ÷ 512 ≠ $0.18)
+  and 512 implies 4.25 oz diluted — below even the small-dog tier.
+
+  Homepage JSON / mx-style.css are unversioned. Paste this render into the
+  homepage custom-liquid / stats section after a theme pull:
+
+    {% render 'homepage-wash-stats' %}
+
+  Representative SKU is deshedding-shampoo (FUR-013): $34.99 CAD and $34.99 USD
+  as of 2026-08-18, so the medium $/wash matches both markets. Other SKUs that
+  are $37.99 CAD will compute a different medium cost via [[COST:handle:medium]].
+
+  Labels are load-bearing: "up to" = small-dog maximum; "avg" = medium-dog typical.
+{%- endcomment -%}
+
+<div class="furgenics-wash-stats">
+  <div class="furgenics-wash-stat">
+    <span class="furgenics-wash-stat-value">Up to {% render 'wash-economics', claim: 'washes', tier: 'small' %} washes</span>
+    <span class="furgenics-wash-stat-label">small dogs · {% render 'wash-economics', claim: 'usage-oz', tier: 'small' %} oz diluted per wash</span>
+  </div>
+  <div class="furgenics-wash-stat">
+    <span class="furgenics-wash-stat-value">{% render 'wash-economics', claim: 'cost-per-wash', handle: 'deshedding-shampoo', tier: 'medium' %} avg cost per wash</span>
+    <span class="furgenics-wash-stat-label">medium dogs · {% render 'wash-economics', claim: 'usage-oz', tier: 'medium' %} oz diluted · live deshedding-shampoo price</span>
+  </div>
+</div>
