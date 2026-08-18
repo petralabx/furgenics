@@ -8,6 +8,10 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-18T17:50:00Z] query | EOD handoff filed for next session
+
+- Filed `analyses/2026-08-18-eod-handoff.md`. Morning GSC brief + earlier session Next bullets still mention 512 / ultra-gentle as open — those are shipped. Pickup: merge PR #9, paste guide HTML, INCI issue 9, FUR-013 v4 MCP.
+
 ## [2026-08-18T16:45:00Z] ship | Homepage dilution band + hypoallergenic hero on live #152547065995
 
 - Decision: "up to" = small-dog washes (5 oz → 435); avg $/wash = medium from live deshedding-shampoo. Labels required.

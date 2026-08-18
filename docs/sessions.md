@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-18 — EOD handoff (start here)
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #9 (merge this so `main` matches live). #8 already merged.
+- **Done:** Full day: wash-economics tokens on `main` (#8); five snippets + dilution band + hypoallergenic hero **live** on theme `#152547065995`. Stephen kept oatmeal tile, FUR-001 SHOP NOW, sulfate sentence, pet-owner hero, Bella/Charlie. Write-up: `docs/knowledge/analyses/2026-08-18-eod-handoff.md`.
+- **Next:** (1) Merge #9. (2) Paste Goldendoodle + deshedding v3 HTML in Shopify Admin. (3) INCI metafields (issue 9) before spreading sulfate-free. (4) FUR-013 v4 body + faqs v2 via MCP. Do not publish FUR-011/020/050 yet.
+- **Watch:** Ignore Next bullets in the two older 2026-08-18 entries below — 512 / ultra-gentle / “remove oatmeal” are done or reversed. Live push always `--allow-live --nodelete --only`. Do not Reset US pricing. `main-page-pillar.liquid` is not in this repo.
+
 ## 2026-08-18 — Homepage dilution math + hypoallergenic hero
 
 - **Who:** Cursor cloud agent (Stephen)

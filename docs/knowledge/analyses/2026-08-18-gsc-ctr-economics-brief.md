@@ -2,7 +2,9 @@
 
 > Filed: 2026-08-18  ·  Kind: brief
 > Source: Stephen uploaded `furgenics-cursor-brief.md` plus the wash-economics model from Claude (`gallon_oz: 128`, `dilution_parts: 16`, usage 5/11/18/25, discount FUR20). Live storefront + this repo were re-checked before any copy/token work.
-> Related: [products.md](../products.md), [content-style-guide.md](../content-style-guide.md), [2026-08-17-us-compare-at-zero.md](./2026-08-17-us-compare-at-zero.md)
+> Related: [products.md](../products.md), [content-style-guide.md](../content-style-guide.md), [2026-08-17-us-compare-at-zero.md](./2026-08-17-us-compare-at-zero.md), **[EOD handoff (start here)](./2026-08-18-eod-handoff.md)**
+
+**EOD 2026-08-18 — this brief is the morning diagnosis, not the current to-do list.** Live homepage no longer pairs unlabeled 512 with $0.18; ultra-gentle hero is retargeted; Stephen kept the oatmeal tile, FUR-001 SHOP NOW, sulfate sentence, and Bella/Charlie. Pickup: [2026-08-18-eod-handoff.md](./2026-08-18-eod-handoff.md).
 
 The uploaded brief is useful on diagnosis (US CTR vs impressions; Goldendoodle 404 CTA; homepage 512 vs $0.18). Several acceptance items and catalog rows are **stale or wrong**. This page is the working plan. Repo is **`petralabx/furgenics`**, not `stephenalton-collab/plx-aeo-steward`.
 
@@ -80,11 +82,11 @@ Live Shopify page paste still needs admin/MCP (this VM has no Shopify MCP). Them
 
 ## Open for Stephen
 
-1. Confirm usage_oz 5 / 11 / 18 / 25 as canonical, including Goldendoodle (old guide said 3–4 oz — v3 uses medium 11 oz so economics and protocol match).
-2. Homepage hero: keep pet-owner line vs switch to groomer; real salon names for testimonials.
-3. FUR-001 homepage: keep Sold out tile (recommended) vs hide.
-4. $24.99 on draft SKUs: stale leftover or intended launch price?
-5. Steward/GSC work is a **separate repo** if you want Lane 4 this week.
+1. ~~Confirm usage_oz 5 / 11 / 18 / 25~~ **Used as canonical** on live dilution band + tokens (Goldendoodle v3 uses medium 11 oz).
+2. ~~Homepage hero / testimonials~~ **Keep** pet-owner line and Bella/Charlie (2026-08-18).
+3. ~~FUR-001 homepage CTA~~ **Keep SHOP NOW** (inbound). Tile stays.
+4. $24.99 on draft SKUs: stale leftover or intended launch price? **Still open.**
+5. Steward/GSC work is a **separate repo** if you want Lane 4 this week. **Still true.**
 
 ## Sources & references
 
