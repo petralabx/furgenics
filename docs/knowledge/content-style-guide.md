@@ -65,13 +65,28 @@ Renders as `Furgenics is a 16:1 concentrate built for professional salons. One g
 | Key | Renders as |
 |---|---|
 | `dilution-ratio` | `16:1 concentrate` |
+| `dilution-ratio-bare` | `16:1` (use after prepositions: "Dilute at [[VALUE:dilution-ratio-bare]]") |
 | `working-gallons-per-bottle` | `up to 17 working gallons per bottle at professional dilution` |
+| `washes-small` / `washes-medium` / `washes-large` / `washes-deshed` | `435` / `198` / `121` / `87` (2176 working oz ÷ usage oz; from `wash-economics.liquid`) |
+| `usage-oz-small` / `usage-oz-medium` / `usage-oz-large` / `usage-oz-deshed` | `5` / `11` / `18` / `25` (diluted ounces per wash) |
 | `per-working-gallon-cost-narrative` | `roughly the cost of a cup of coffee per working gallon at pro dilution` |
 | `made-in-canada` | `Made in Canada` |
 | `professional-grade` | `built for professional salons` |
 | `pro-vs-retail-positioning` | `a professional concentrate designed for salon volume — not a retail bottle in a bigger size` |
 
-**Adding a new claim:** add a `replace` line to the VALUE block in `snippets/token-substitution.liquid` AND add the key to the table above. Both edits in one commit.
+**Adding a new claim:** add a `replace` line to the VALUE block in `snippets/token-substitution.liquid` AND add the key to the table above. Both edits in one commit. Wash-count keys must be computed in `snippets/wash-economics.liquid`, not hardcoded.
+
+### `[[COST:handle:tier]]` — for cost per wash
+
+Renders the live Markets price of `handle` × usage_oz_tier ÷ 2176 working oz, as money. Tiers: `small` · `medium` · `large` · `deshed`.
+
+```
+A medium wash costs [[COST:deshedding-shampoo:medium]] at typical usage.
+```
+
+At $34.99 this is `$0.18`. Draft/unpublished handles fall back to `currently unavailable online` (same safety net as PRICE). Never hardcode `$0.18`, `$0.40`, or a bath count.
+
+Homepage stats: do not pair an unlabeled "up to N washes" with an unlabeled "$X avg cost" unless they are the same tier. Use `snippets/homepage-wash-stats.liquid` (small = "up to"; medium = "avg").
 
 ### `[[COMPETITOR:brand-slug]]` — for industry benchmarks
 
@@ -109,7 +124,7 @@ For competitors where only one market's data has been captured, the proxy market
 
 ### `[[DISCOUNT]]` — for the active discount campaign
 
-Renders the active general discount campaign for the current market. Pulls from theme settings (currently FUR50 / 50% / max 4 gallons / "New customers, first order only").
+Renders the active general discount campaign for the current market. Pulls from theme settings (live 2026-08-18: **FUR20 / 20%** / max 4 gallons / "New customers, first order only"). Scalars: `[[DISCOUNT:code]]` → `FUR20`, `[[DISCOUNT:percent]]` → `20`. Swap FUR20 → FUR10 in Theme settings → Active Discount Campaign (one field) — do not edit copy.
 
 ```
 [[DISCOUNT]]
@@ -325,4 +340,5 @@ Five problems:
 - **2026-05-20** (later) — `discount-banner.liquid` added as the fourth snippet; companion `theme-drafts/config/settings_schema.json` for editable theme settings. Closed the hardcoded-discount-code gap.
 - **2026-05-21** — **Architectural revision.** Discovered that Shopify does not render Liquid in `page.content`, so the `{% render '...' %}` snippet API failed when pasted into page body. Pivoted to token-substitution architecture: body content uses `[[TOKEN]]` placeholders that the `page.content-pillar` section template substitutes at render time. The 4 underlying snippets stay as theme infrastructure; the discount-banner snippet is still rendered (via `{% render %}` inside the section template) for the `[[DISCOUNT]]` substitution. Content drafts converted from `{% render %}` syntax to `[[TOKEN]]` syntax in the same commit. Page-type policy added (`page.content-pillar` is the only template with the substitution pipeline; product/policy templates can't use tokens).
 - **2026-05-21** (later) — **Per-market `[[COMPETITOR]]` rendering** + **discount-banner spacing fix**. Section template's COMPETITOR block restructured with per-market `{% if active_market == 'US' %}` / `{% else %}` (CA) captures for all 13 tracked competitors. Active market detected via `localization.country.iso_code`; default `CA`. Stephen captured fresh Amazon CA + Amazon US prices on 2026-05-21 — captures recorded in `competitor-intel.md` "Per-market price capture history" table (the source of truth). Discount-banner snippet `{%- ... -%}` whitespace stripping replaced with `{% ... %}` + explicit leading spaces to fix the "FUR50.Max 4..." run-together rendering bug.
+- **2026-08-18** — Wash-economics tokens. `[[VALUE:dilution-ratio-bare]]`, wash/usage tiers, `[[COST:handle:tier]]`, `[[DISCOUNT:code]]` / `[[DISCOUNT:percent]]`. Engine: `snippets/wash-economics.liquid` + `data/config.json` `economics`. Live campaign FUR20/20% (schema defaults updated; live banner was already FUR20). Do not hardcode 512 / $0.18 / 80–100 / 340. See `analyses/2026-08-18-gsc-ctr-economics-brief.md`.
 - **2026-05-27** — **4-surface token-substitution architecture.** Inline substitution pipelines (previously duplicated in `sections/main-product.liquid` AND `sections/main-page-pillar.liquid`) extracted into a single shared snippet `snippets/token-substitution.liquid`. Two new call sites added: `snippets/furgenics-product-faqs.liquid` (visible FAQ accordion) and `snippets/furgenics-schema.liquid` (FAQPage JSON-LD, with `strip_html` before `json`-encoding so Google reads clean text). The `custom.faqs` metafield on all 9 active gallon products rewritten to use tokens — same vocabulary as page bodies, same maintenance story. Pillar template's `product` variable shadowing fixed as a side effect (renamed to `tprod` in the shared snippet). Schema OnlineStore description updated to drop "free of sulfates" brand-wide claim (FUR-013 + FUR-005 INCI mismatch); now reads "paraben-free, and dye-free". Token surface area is now four files behind one source of truth: adding a new PRICE handle, VALUE key, or COMPETITOR slug is a one-file edit. See `analyses/2026-05-27-token-substitution-extraction-and-faq-architecture.md` for full session details.

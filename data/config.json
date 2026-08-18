@@ -84,9 +84,30 @@
   },
   "operatorNotes": {
     "primaryContact": "stephen@petralabx.com",
-    "discountCode": "FUR50",
-    "discountTerms": "50% off first order, max 4 gallons, 1 use per customer",
+    "discountCode": "FUR20",
+    "discountPercent": 20,
+    "discountTerms": "20% off first order, max 4 gallons, 1 use per customer. Live banner 2026-08-18. Swap code in theme settings (one field) — do not hardcode in copy.",
     "groomerProgramPage": "/pages/groomer-program",
     "manufacturingContext": "Manufactured by Petra Lab-X. Do NOT reference Petra Lab-X in any public-facing Furgenics content."
+  },
+  "economics": {
+    "gallon_oz": 128,
+    "dilution_parts": 16,
+    "derived": {
+      "working_oz": 2176,
+      "working_gallons": 17
+    },
+    "usage_oz": {
+      "small": 5,
+      "medium": 11,
+      "large": 18,
+      "deshed": 25
+    },
+    "formulas": {
+      "washes_tier": "working_oz / usage_oz_tier",
+      "cost_per_wash_tier": "live_variant_price * usage_oz_tier / working_oz"
+    },
+    "themeSnippet": "site/theme/snippets/wash-economics.liquid",
+    "notes": "usage_oz is diluted ounces per wash. Wash counts are invariant; cost-per-wash uses live Markets price. Do not hardcode 512, $0.18, 80-100, or 340. Keep in sync with wash-economics.liquid."
   }
 }

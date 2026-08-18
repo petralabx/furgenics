@@ -19,11 +19,18 @@
 
   Available claims (keep this list and the case statement in sync):
     - dilution-ratio
+    - dilution-ratio-bare
     - working-gallons-per-bottle
     - per-working-gallon-cost-narrative
     - made-in-canada
     - professional-grade
     - pro-vs-retail-positioning
+    - washes-small / washes-medium / washes-large / washes-deshed
+    - usage-oz-small / usage-oz-medium / usage-oz-large / usage-oz-deshed
+
+  Wash-count and usage-oz claims render from snippets/wash-economics.liquid.
+  Cost-per-wash is NOT a value-math claim (it depends on live price) — use
+  [[COST:handle:tier]] via token-substitution.liquid.
 
   Adding a new claim:
     1. Confirm the claim is substantiated (no exclusivity claims, no medical claims).
@@ -37,9 +44,39 @@
 {%- assign _output = '' -%}
 {%- case claim -%}
   {%- when 'dilution-ratio' -%}
-    {%- assign _output = '16:1 concentrate' -%}
+    {%- capture _output -%}{%- render 'wash-economics', claim: 'dilution-ratio-bare' -%} concentrate{%- endcapture -%}
+    {%- assign _output = _output | strip -%}
+  {%- when 'dilution-ratio-bare' -%}
+    {%- capture _output -%}{%- render 'wash-economics', claim: 'dilution-ratio-bare' -%}{%- endcapture -%}
+    {%- assign _output = _output | strip -%}
   {%- when 'working-gallons-per-bottle' -%}
-    {%- assign _output = 'up to 17 working gallons per bottle at professional dilution' -%}
+    {%- capture _wg -%}{%- render 'wash-economics', claim: 'working-gallons-number' -%}{%- endcapture -%}
+    {%- assign _wg = _wg | strip -%}
+    {%- assign _output = 'up to ' | append: _wg | append: ' working gallons per bottle at professional dilution' -%}
+  {%- when 'washes-small' -%}
+    {%- capture _output -%}{%- render 'wash-economics', claim: 'washes', tier: 'small' -%}{%- endcapture -%}
+    {%- assign _output = _output | strip -%}
+  {%- when 'washes-medium' -%}
+    {%- capture _output -%}{%- render 'wash-economics', claim: 'washes', tier: 'medium' -%}{%- endcapture -%}
+    {%- assign _output = _output | strip -%}
+  {%- when 'washes-large' -%}
+    {%- capture _output -%}{%- render 'wash-economics', claim: 'washes', tier: 'large' -%}{%- endcapture -%}
+    {%- assign _output = _output | strip -%}
+  {%- when 'washes-deshed' -%}
+    {%- capture _output -%}{%- render 'wash-economics', claim: 'washes', tier: 'deshed' -%}{%- endcapture -%}
+    {%- assign _output = _output | strip -%}
+  {%- when 'usage-oz-small' -%}
+    {%- capture _output -%}{%- render 'wash-economics', claim: 'usage-oz', tier: 'small' -%}{%- endcapture -%}
+    {%- assign _output = _output | strip -%}
+  {%- when 'usage-oz-medium' -%}
+    {%- capture _output -%}{%- render 'wash-economics', claim: 'usage-oz', tier: 'medium' -%}{%- endcapture -%}
+    {%- assign _output = _output | strip -%}
+  {%- when 'usage-oz-large' -%}
+    {%- capture _output -%}{%- render 'wash-economics', claim: 'usage-oz', tier: 'large' -%}{%- endcapture -%}
+    {%- assign _output = _output | strip -%}
+  {%- when 'usage-oz-deshed' -%}
+    {%- capture _output -%}{%- render 'wash-economics', claim: 'usage-oz', tier: 'deshed' -%}{%- endcapture -%}
+    {%- assign _output = _output | strip -%}
   {%- when 'per-working-gallon-cost-narrative' -%}
     {%- assign _output = 'roughly the cost of a cup of coffee per working gallon at pro dilution' -%}
   {%- when 'made-in-canada' -%}

@@ -12,9 +12,8 @@
   Data sources — nothing that can silently drift:
   - Dilution: [[VALUE:dilution-ratio]] via snippets/token-substitution.liquid.
   - Cost per working gallon: computed at render time from the live variant
-    price ÷ 17 — always current, per-market currency.
-  - KEEP "17" (divisor AND the chip label) in sync with the
-    working-gallons-per-bottle VALUE in token-substitution.liquid.
+    price ÷ working-gallons (from wash-economics.liquid) — always current.
+  - KEEP the divisor in sync with snippets/wash-economics.liquid (128 oz × 17).
   - Coat fit: custom.coat_type metafield (coat-types clause, before "Dog types:").
   - Shipping: canonical per Stephen 2026-08-14 — CA 2–5 / US 3–5 business
     days (see products.md). Market-aware via localization.country.
@@ -28,7 +27,8 @@
 {%- endcomment -%}
 
 {%- if product.description contains '[[VALUE:dilution-ratio]]' -%}
-  {%- assign _working_gallons = 17.0 -%}
+  {%- capture _wg -%}{%- render 'wash-economics', claim: 'working-gallons-number' -%}{%- endcapture -%}
+  {%- assign _working_gallons = _wg | strip | plus: 0.0 -%}
   {%- assign _per_gallon = product.selected_or_first_available_variant.price | divided_by: _working_gallons | round -%}
   {%- assign _coat_fit = product.metafields.custom.coat_type.value | split: 'Dog types:' | first | strip -%}
 
@@ -36,7 +36,7 @@
     <ul class="furgenics-aag-grid">
       <li class="furgenics-aag-chip">
         <span class="furgenics-aag-value">{% render 'token-substitution', text: '[[VALUE:dilution-ratio]]' %}</span>
-        <span class="furgenics-aag-label">up to 17 working gallons per bottle</span>
+        <span class="furgenics-aag-label">up to {% render 'wash-economics', claim: 'working-gallons-number' %} working gallons per bottle</span>
       </li>
       <li class="furgenics-aag-chip">
         <span class="furgenics-aag-value">&asymp; {{ _per_gallon | money }}</span>

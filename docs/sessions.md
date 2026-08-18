@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-18 — GSC CTR brief corrected; wash-economics tokens
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #8
+- **Done:** Re-checked the uploaded GSC/economics brief against live JSON. US compare-at is already `null` (do not redo). Canonical wash math is 128 oz × 17 = 2176 working oz; usage 5/11/18/25 → 435/198/121/87 washes; $/wash from live `variant.price`. Wired `snippets/wash-economics.liquid`, `[[COST:handle:tier]]`, `[[VALUE:dilution-ratio-bare]]`, FUR20 defaults. Goldendoodle + deshedding drafts retargeted to live SKUs. Filed `docs/knowledge/analyses/2026-08-18-gsc-ctr-economics-brief.md`.
+- **Next:** Paste guide HTML in Shopify (no MCP on this VM). Pull unversioned homepage and replace 512/$0.18 with `{% render 'homepage-wash-stats' %}`; remove FUR-011 tile and ultra-gentle hero; sulfate copy stays off until INCI metafields are fixed. Lane 4 GSC cron is the steward repo, not this one.
+- **Watch:** Homepage JSON is not in git. `main-page-pillar.liquid` is not in this repo — tokens on pages only work if the live theme still has it. Do not activate FUR-020/050/011. Do not Reset US pricing.
+
 ## 2026-08-17 — US compare-at $0.00 is a Markets override, not a blank
 
 - **Who:** Stephen + Cursor cloud agent

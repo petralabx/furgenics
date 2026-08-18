@@ -8,6 +8,13 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-18T14:30:00Z] query | GSC CTR brief corrected; wash-economics model tokenized
+
+- Uploaded brief mixed live facts with stale catalog (FUR-014 is $34.99 CAD not $37.99; US compare-at already null; repo is petralabx/furgenics). Canonical economics: 128 oz × 17 = 2176 working oz; usage 5/11/18/25; FUR20/20%.
+- Theme: `snippets/wash-economics.liquid` + COST/VALUE/DISCOUNT scalars. Drafts: goldendoodle v3 (FUR-005+FUR-021, email waitlist), deshedding v3 (deshed tier, live pairing SKUs).
+- Out of scope here: GSC cron, custom Admin app, homepage JSON (unversioned), `/blogs/guides/` 301s.
+- Filed `analyses/2026-08-18-gsc-ctr-economics-brief.md`.
+
 ## [2026-08-17T19:10:00Z] query | US Markets compare-at blanks to $0.00; Reset pricing is the wrong button
 
 - Live JSON: US FUR-013 + FUR-014 `compare_at_price: 0`; CA FUR-013 `null`. Selling price still $34.99 USD.

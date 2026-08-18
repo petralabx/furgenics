@@ -1,25 +1,39 @@
-# Best Professional Deshedding Shampoo for Huskies and German Shepherds — pillar rewrite (v2, token-driven + universal both-markets)
+# Best Professional Deshedding Shampoo for Huskies and German Shepherds — pillar rewrite (v3)
 
-> **Page draft for `/pages/deshedding-shampoo-huskies-german-shepherds`.** Targets `breed-02` ("best professional deshedding shampoo for Huskies and German Shepherds"). Overlaps with `high-intent-01` (Furgenics brand discovery for groomers). Per market-map: this pillar serves both markets via Shopify Markets — copy is universal in v2.
+> **Page draft for `/pages/deshedding-shampoo-huskies-german-shepherds`.** Paste-ready body: `deshedding-shampoo-huskies-german-shepherds.html`.
 >
-> _Drafted 2026-05-21 as the third C+Markets snippet-driven pillar rewrite (after `furgenics-vs-bio-groom` and `bulk-dog-shampoo-for-canadian-mobile-groomers`). Replaces v1 (2026-04-27) which had hardcoded gallon prices, hardcoded per-bath costs, internal SKU codes throughout, stale Amazon Brand Analytics monthly-revenue estimates ($49,652/mo and $26,863/mo for Coat Handler and Bark2Basics), wrong contact email (`hello@furgenics.com`), and CA-only fulfillment framing._
-
----
+> v3 (2026-08-18): wash-economics tokens (`[[VALUE:washes-deshed]]` / `[[VALUE:usage-oz-deshed]]` / `[[COST:deshedding-shampoo:deshed]]`) replace the 80–100 vs 5–7 oz contradiction; pairing uses live SKUs (FUR-010 conditioner, not FUR-011/FUR-050 404s); sulfate-free and the shipped internal note are gone; doodle cross-link goes to the Goldendoodle **page**, not the draft PDP.
 
 ## Meta + technical
 
-- **URL:** `/pages/deshedding-shampoo-huskies-german-shepherds` (unchanged; serves both markets via Shopify Markets)
-- **Template:** `page.content-pillar` (unchanged; renders tokens via the pipeline in `docs/shopify-theme/sections/main-page-pillar.liquid`)
-- **Page title (unchanged):** `Best Professional Deshedding Shampoo for Huskies and German Shepherds` (universal — works for both markets as-is)
-- **SEO title (UPDATE, drop the `FUR-013` framing if present):** `Best Professional Deshedding Shampoo for Huskies & GSDs | Furgenics`
-- **Meta description (UPDATE, ≤155 chars):** `Professional deshedding shampoo for Huskies & German Shepherds. 16:1 concentrate, hydrolyzed keratin + safflower oil. Direct-to-salon in Canada & the US.`
-- **Schema:** `FAQPage` for FAQ section (JSON-LD below)
-- **Hero image:** Existing FUR-013 deshedshampoo.png on the live page (kept as-is)
-- **Email:** `info@furgenics.com` (v1 had `hello@furgenics.com` — typo, corrected in v2)
+- **URL:** `/pages/deshedding-shampoo-huskies-german-shepherds` (unchanged)
+- **Template:** `page.content-pillar`
+- **Page title (unchanged):** `Best Professional Deshedding Shampoo for Huskies and German Shepherds`
+- **SEO title:** `Best Professional Deshedding Shampoo for Huskies & GSDs | Furgenics`
+- **Meta description (no price):** `Professional deshedding shampoo for Huskies & German Shepherds. 16:1 concentrate, hydrolyzed keratin + safflower oil. Direct-to-salon in Canada & the US.`
+
+## v3 vs v2 (economics + availability)
+
+| v2 | v3 |
+|---|---|
+| “roughly 80–100 deshed baths” + protocol “5–7 oz” (~362 baths) | `[[VALUE:washes-deshed]]` baths at `[[VALUE:usage-oz-deshed]]` oz (~87 at 25 oz) |
+| Hardcoded/internal “per-gallon price gap (rendered above…)” | Compare `[[PRICE:deshedding-shampoo]]` to competitor tokens |
+| Pairing: Lavender Spa + Oatmeal shampoo (404) | Oatmeal **conditioner** FUR-010 (ACTIVE). Draft gallons named as not for sale. |
+| FAQ links `/products/2in1-doodle-shampoo-conditioner` | Links `/pages/best-shampoo-goldendoodle` |
+| Sulfate-free in criteria + puppy FAQ | Dropped pending INCI cleanup |
+| Checklist expected $24.99 CAD | `[[PRICE]]` is Markets-live (FUR-013/014 $34.99 both markets; FUR-021 $37.99 CAD / $34.99 USD) |
+
+## Pre-publish checklist
+
+- [ ] Paste v3 HTML; confirm meta has no `$24.99`
+- [ ] `/en-ca/` + `/en-us/`: prices render; no raw tokens; no 404 product hrefs for FUR-011/020/050
+- [ ] Discount banner FUR20
 
 ---
 
-## What's different from v1
+# v2 history (2026-05-21)
+
+The v2 rewrite tokenized v1 hardcoded prices and CA-only shipping. Keep the notes below as archive; **do not paste v2 HTML**.
 
 ### Pricing & math (hardcoded → token / ratio)
 
