@@ -1,0 +1,307 @@
+{%- comment -%}
+  Canonical homepage economics (Stephen 2026-08-18):
+    "up to"  = small-dog washes (5 oz diluted → 2176/5 ≈ 435)
+    "avg"    = medium-dog cost from live deshedding-shampoo price (11 oz)
+    dilution = wash-economics dilution-ratio-bare
+  Theme-editor number/heading fields are ignored so 512 / $0.18 cannot return.
+{%- endcomment -%}
+<div class="fg-dilution-section" id="fg-dilution-{{ section.id }}">
+  <div class="fg-dil-inner">
+
+    <div class="fg-dil-stats">
+      <div class="fg-dil-stat">
+        <span class="fg-dil-num">{% render 'wash-economics', claim: 'dilution-ratio-bare' %}</span>
+        <span class="fg-dil-unit">{{ section.settings.stat_1_label }}</span>
+      </div>
+      <div class="fg-dil-divider"></div>
+      <div class="fg-dil-stat">
+        <span class="fg-dil-num fg-dil-num--sm">{% render 'wash-economics', claim: 'cost-per-wash', handle: 'deshedding-shampoo', tier: 'medium' %}</span>
+        <span class="fg-dil-unit">Avg cost per wash · medium</span>
+      </div>
+      <div class="fg-dil-divider"></div>
+      <div class="fg-dil-text">
+        <h2 class="fg-dil-heading">One gallon. Up to {% render 'wash-economics', claim: 'washes', tier: 'small' %} small-dog washes.</h2>
+        <p class="fg-dil-body">{{ section.settings.body }}</p>
+        <div class="fg-dil-badges">
+          {% if section.settings.badge_1 != blank %}
+            <span class="fg-dil-badge">{{ section.settings.badge_1 }}</span>
+          {% endif %}
+          {% if section.settings.badge_2 != blank %}
+            <span class="fg-dil-badge">{{ section.settings.badge_2 }}</span>
+          {% endif %}
+          {% if section.settings.badge_3 != blank %}
+            <span class="fg-dil-badge">{{ section.settings.badge_3 }}</span>
+          {% endif %}
+        </div>
+        {% if section.settings.cta_label != blank and section.settings.cta_url != blank %}
+          <a href="{{ section.settings.cta_url }}" class="fg-dil-cta">
+            {{ section.settings.cta_label }} →
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.fg-dilution-section {
+  background: #014567;
+  padding: 52px 0;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+.fg-dilution-section::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: rgba(185, 225, 231, 0.05);
+  top: -80px;
+  left: -80px;
+  pointer-events: none;
+}
+.fg-dilution-section::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(74, 191, 176, 0.06);
+  bottom: -50px;
+  right: 60px;
+  pointer-events: none;
+}
+.fg-dil-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 1;
+}
+.fg-dil-stats {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.fg-dil-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+.fg-dil-num {
+  font-size: 60px;
+  font-weight: 600;
+  color: #4ABFB0;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.fg-dil-num--sm {
+  font-size: 42px;
+  white-space: nowrap;
+}
+.fg-dil-num .money {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+.fg-dil-unit {
+  font-size: 10px;
+  color: #B9E1E7;
+  opacity: 0.75;
+  margin-top: 6px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.fg-dil-divider {
+  width: 1px;
+  height: 80px;
+  background: rgba(185, 225, 231, 0.2);
+  flex-shrink: 0;
+}
+.fg-dil-text {
+  flex: 1;
+  min-width: 240px;
+}
+.fg-dil-heading {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+.fg-dil-body {
+  color: #B9E1E7;
+  font-size: 14px;
+  line-height: 1.7;
+  opacity: 0.85;
+  margin: 0 0 20px;
+  max-width: 460px;
+}
+.fg-dil-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.fg-dil-badge {
+  background: rgba(185, 225, 231, 0.1);
+  border: 0.5px solid rgba(185, 225, 231, 0.25);
+  color: #B9E1E7;
+  font-size: 10px;
+  padding: 5px 12px;
+  border-radius: 14px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.fg-dil-cta {
+  display: inline-block;
+  background: #B9E1E7;
+  color: #014567;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 22px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: background 0.15s ease;
+}
+.fg-dil-cta:hover {
+  background: #a6d6dc;
+  color: #014567;
+}
+@media (max-width: 768px) {
+  .fg-dil-stats {
+    flex-direction: column;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .fg-dil-divider {
+    width: 60px;
+    height: 1px;
+  }
+  .fg-dil-stat {
+    flex-direction: row;
+    gap: 14px;
+    align-items: baseline;
+  }
+  .fg-dil-num {
+    font-size: 44px;
+  }
+  .fg-dil-num--sm {
+    font-size: 36px;
+  }
+  .fg-dil-heading {
+    font-size: 22px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "FG Dilution Callout",
+  "tag": "section",
+  "class": "fg-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Stat 1 (left)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Dilution, small-dog wash count, and medium $/wash are computed live from snippets/wash-economics.liquid. Do not hardcode 512 or $0.18."
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Number (ignored — live 16:1 from wash-economics)",
+      "default": "16:1"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Label",
+      "default": "DILUTION RATIO"
+    },
+    {
+      "type": "header",
+      "content": "Stat 2 (centre)"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Number (ignored — live medium $/wash from deshedding-shampoo)",
+      "default": "computed"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Label (ignored — hardcoded medium)",
+      "default": "AVG COST PER WASH · MEDIUM"
+    },
+    {
+      "type": "header",
+      "content": "Body copy"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading (ignored — live small-dog wash count)",
+      "default": "One gallon. Up to 435 small-dog washes."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "At 16:1 dilution, a single Furgenics gallon outperforms brands charging three times as much. Your margin improves. Your clients notice the difference. That's the professional formula advantage."
+    },
+    {
+      "type": "header",
+      "content": "Badges (up to 3)"
+    },
+    {
+      "type": "text",
+      "id": "badge_1",
+      "label": "Badge 1",
+      "default": "OWNED MANUFACTURING"
+    },
+    {
+      "type": "text",
+      "id": "badge_2",
+      "label": "Badge 2",
+      "default": "NO MIDDLEMAN MARKUP"
+    },
+    {
+      "type": "text",
+      "id": "badge_3",
+      "label": "Badge 3 (optional)"
+    },
+    {
+      "type": "header",
+      "content": "CTA button (optional)"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop Gallon Sizes"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FG Dilution Callout"
+    }
+  ]
+}
+{% endschema %}

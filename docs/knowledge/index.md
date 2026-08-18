@@ -39,7 +39,9 @@
 
 <!-- AUTO-APPEND:analyses:START -->
 
-- [GSC CTR + economics — corrected brief (do not implement the original as-is)](./analyses/2026-08-18-gsc-ctr-economics-brief.md) — filed 2026-08-18 as `brief` · Uploaded GSC brief re-checked against live JSON: US compare-at already null; FUR-014 $34.99 CAD not $37.99; FUR20 live; 512 washes rejected; canonical model is 128 oz × 17 = 2176 working oz with usage 5/11/18/25 and live variant.price; homepage 512/$0.18 + FUR-011 tile remain unversioned; Goldendoodle CTA must not hit draft FUR-020
+- [2026-08-18 end of day — pick up here](./analyses/2026-08-18-eod-handoff.md) — filed 2026-08-18 as `synthesis` · Start-here for the next person: live theme is `#152547065995`; wash-economics + dilution band + hypoallergenic hero are shipped; Stephen kept oatmeal tile / FUR-001 SHOP NOW / sulfate sentence / pet-owner hero / Bella-Charlie; merge PR #9 then paste Goldendoodle + deshedding v3 HTML; INCI issue 9 still blocks spreading sulfate-free; do not Reset US pricing or full-theme-push
+
+- [GSC CTR + economics — corrected brief (do not implement the original as-is)](./analyses/2026-08-18-gsc-ctr-economics-brief.md) — filed 2026-08-18 as `brief` · Uploaded GSC brief re-checked against live JSON: US compare-at already null; FUR-014 $34.99 CAD not $37.99; FUR20 live; 512 washes rejected; canonical model is 128 oz × 17 = 2176 working oz with usage 5/11/18/25 and live variant.price; **homepage 512/ultra-gentle shipped later the same day — use the EOD handoff, not the morning “still true” list**
 
 - [US Markets compare-at blanks to $0.00 — do not use Reset pricing](./analyses/2026-08-17-us-compare-at-zero.md) — filed 2026-08-17 as `query` · Stephen: blanking USA compare-at writes `0` (Sale vs `$0.00`); Reset pricing deletes the whole US fixed-price override so the selling price jumps and the US field locks to inherited; Canada is already `null`; fix is `priceListFixedPricesUpdate` with `compareAtPrice: null` (or catalog CSV empty cell) while keeping the US fixed selling price; unpublished theme now hides sale UI when compare-at is 0 or not greater than price
 
