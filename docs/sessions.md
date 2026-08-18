@@ -36,7 +36,7 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 ## 2026-08-18 — Wash-economics snippets pushed to live theme #152547065995
 
 - **Who:** Cursor cloud agent (Stephen)
-- **PR:** this PR
+- **PR:** #9
 - **Done:** Confirmed `[live]` is **Copy of Copy of scg9xy-xt** `#152547065995` (old live `#150922428555` is unpublished). `shopify theme push --allow-live --nodelete --only` of `snippets/wash-economics.liquid`, `homepage-wash-stats.liquid`, `token-substitution.liquid`, `value-math.liquid`, `product-at-a-glance.liquid`. Pull-back diff: all 5 match repo. Live HTML `Shopify.theme.id` is 152547065995.
 - **Next:** Homepage JSON is still unversioned and still shows **$0.18 / Up to 512 washes**. Pull homepage and replace that block with `{% render 'homepage-wash-stats' %}`; remove FUR-011 tile and ultra-gentle hero. Paste guide HTML in Shopify (no MCP on this VM). Sulfate copy stays off until INCI metafields are fixed.
 - **Watch:** `--nodelete` is mandatory on partial pushes. Do not push `config/` or a full theme (would clobber live settings / homepage JSON). `main-page-pillar.liquid` is not in this repo. Do not activate FUR-020/050/011. Do not Reset US pricing.
