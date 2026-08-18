@@ -8,6 +8,13 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-18T15:10:00Z] ship | Wash-economics snippets pushed to live theme #152547065995
+
+- Confirmed live role: **Copy of Copy of scg9xy-xt** (`#152547065995`). Former live `#150922428555` is unpublished.
+- `shopify theme push --allow-live --nodelete --only` of `snippets/wash-economics.liquid`, `snippets/homepage-wash-stats.liquid`, `snippets/token-substitution.liquid`, `snippets/value-math.liquid`, `snippets/product-at-a-glance.liquid`.
+- Verify: `theme pull --force --only` of the same five files; all match `/workspace/site/theme/snippets/`. Live storefront `Shopify.theme.id` = 152547065995.
+- Homepage custom HTML still hardcodes `$0.18` / `Up to 512 washes` — snippet is on the theme but not wired until homepage JSON is edited.
+
 ## [2026-08-18T14:30:00Z] query | GSC CTR brief corrected; wash-economics model tokenized
 
 - Uploaded brief mixed live facts with stale catalog (FUR-014 is $34.99 CAD not $37.99; US compare-at already null; repo is petralabx/furgenics). Canonical economics: 128 oz × 17 = 2176 working oz; usage 5/11/18/25; FUR20/20%.
