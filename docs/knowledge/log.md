@@ -8,6 +8,12 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-18T16:45:00Z] ship | Homepage dilution band + hypoallergenic hero on live #152547065995
+
+- Decision: "up to" = small-dog washes (5 oz → 435); avg $/wash = medium from live deshedding-shampoo. Labels required.
+- `sections/fg-dilution-callout.liquid` computes 16:1 / medium cost / small-dog wash count from `wash-economics`. Slideshow slide 3 `ultra-gentle-shampoo` → `hypoallergenic-shampoo-gallon`.
+- Kept per Stephen: FUR-011 tile, FUR-001 SHOP NOW, sulfate-free sentence, pet-owner hero, Bella/Charlie. Versioned `templates/index.json`.
+
 ## [2026-08-18T15:10:00Z] ship | Wash-economics snippets pushed to live theme #152547065995
 
 - Confirmed live role: **Copy of Copy of scg9xy-xt** (`#152547065995`). Former live `#150922428555` is unpublished.

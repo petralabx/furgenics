@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-18 — Homepage dilution math + hypoallergenic hero
+
+- **Who:** Cursor cloud agent (Stephen)
+- **PR:** #9
+- **Done:** Wired live `fg-dilution-callout` to `wash-economics` (16:1; up to small-dog washes; medium $/wash from deshedding-shampoo). Hero slide 3 now links `hypoallergenic-shampoo-gallon`. Kept oatmeal tile, FUR-001 SHOP NOW, existing sulfate sentence, pet-owner hero, Bella/Charlie. Versioned `sections/fg-dilution-callout.liquid` + `templates/index.json`.
+- **Next:** Correct INCI metafields (issue 9) so the kept sulfate sentence matches published lists. Paste guide HTML in Shopify. Do not activate FUR-020/050/011 until restock.
+- **Watch:** `--nodelete` on partial pushes. Dilution numbers are computed in section liquid — theme-editor 512/$0.18 fields are ignored. Do not Reset US pricing.
+
 ## 2026-08-18 — Wash-economics snippets pushed to live theme #152547065995
 
 - **Who:** Cursor cloud agent (Stephen)

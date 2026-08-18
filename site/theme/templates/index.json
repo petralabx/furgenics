@@ -1,0 +1,483 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "text_d3RMbW": {
+          "type": "text",
+          "settings": {
+            "text": "Happy Pets, No Regrets",
+            "text_style": "body"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Happy Pets, No Regrets",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop the Newest Line",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_d3RMbW",
+        "heading",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/home-banner.png",
+        "image_overlay_opacity": 0,
+        "image_height": "large",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "slideshow_pXGAbF": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_eKbqfh": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/banner.png",
+            "heading": "Happy Pets No Regrets",
+            "heading_size": "h0",
+            "subheading": "Safe, effective, and luxurious grooming essentials designed to bring out the best in every pet.",
+            "button_label": "Shop The Complete Product Lineup",
+            "link": "shopify://collections/active-gallon-pet-grooming-products",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 10,
+            "color_scheme": "scheme-e48a4e99-91c9-4081-a56a-a0156ceee6f3",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_iV8ATw": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/iStock-108352808.jpg",
+            "heading": "Gentle & Effective Grooming Products",
+            "heading_size": "h0",
+            "subheading": "Shampoos & Conditioners Designed to Cleanse Without Irritation",
+            "button_label": "Shop Shampoos & Conditioners",
+            "link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-e48a4e99-91c9-4081-a56a-a0156ceee6f3",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_HyieWk": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home-banner.png",
+            "heading": "Hypoallergenic Degreasing Shampoo",
+            "heading_size": "h0",
+            "subheading": "Leave Your Pets Coat Soft & Clean With A Natural Shine",
+            "button_label": "Shop Degreasing Shampoo",
+            "link": "shopify://products/hypoallergenic-shampoo-gallon",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-e48a4e99-91c9-4081-a56a-a0156ceee6f3",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_eKbqfh",
+        "slide_iV8ATw",
+        "slide_HyieWk"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "large",
+        "slider_visual": "dots",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "furgenics_why_section_z8rhMV": {
+      "type": "furgenics-why-section",
+      "blocks": {
+        "pill_VBr6Qi": {
+          "type": "pill",
+          "settings": {
+            "label": "Owned manufacturing",
+            "dot_color": "#4abfb0"
+          }
+        },
+        "pill_AKafKp": {
+          "type": "pill",
+          "settings": {
+            "label": "16:1 dilution",
+            "dot_color": "#8ebf9a"
+          }
+        },
+        "pill_qBdCY7": {
+          "type": "pill",
+          "settings": {
+            "label": "Coat-specific formulas",
+            "dot_color": "#4abfb0"
+          }
+        },
+        "pill_gFPmmc": {
+          "type": "pill",
+          "settings": {
+            "label": "Canadian made",
+            "dot_color": "#014567"
+          }
+        }
+      },
+      "block_order": [
+        "pill_VBr6Qi",
+        "pill_AKafKp",
+        "pill_qBdCY7",
+        "pill_gFPmmc"
+      ],
+      "name": "FG Why Section",
+      "settings": {
+        "eyebrow": "Why Furgenics?",
+        "heading": "Because man's best friend deserves the best wash.",
+        "subheading": "Furgenics provides premium pet grooming products without the markup.",
+        "body": "<p>We believe that pet care is about more than just cleaning. It's about wellness, comfort and connection. That's why our products are developed with pet-friendly formulas that nourish fur, protect skin, and bring out natural shine.</p><p>Whether you're a groomer, pet store, or a pet owner wanting the best for your furry friend - Furgenics has exceptional grooming solutions for all.</p>",
+        "cta_label": "Shop the full system",
+        "cta_url": "shopify://collections/active-gallon-pet-grooming-products",
+        "image": "shopify://shop_images/iStock-108352808.jpg",
+        "image_alt": "Happy dog being groomed with Furgenics"
+      }
+    },
+    "furgenics_product_grid_eAPEKV": {
+      "type": "furgenics-product-grid",
+      "blocks": {
+        "product_card_WePeA4": {
+          "type": "product_card",
+          "settings": {
+            "product_name": "Hypoallergenic Shampoo",
+            "product_subtitle": "SENSITIVE SKIN - ALL COATS",
+            "bottle_label": "HYPO",
+            "accent_color": "#b9e1e7",
+            "product_image": "shopify://shop_images/hypoallergenic_gallon_furgenics.png",
+            "price_from": "$34.99 / Gallon",
+            "price_note": "Professional Groomer Size - 1 Gallon",
+            "product_url": "shopify://products/hypoallergenic-shampoo-gallon"
+          }
+        },
+        "product_card_7QMRnc": {
+          "type": "product_card",
+          "settings": {
+            "product_name": "2-in-1 Hypoallergenic",
+            "product_subtitle": "SHAMPOO & CONDITIONER",
+            "bottle_label": "2-IN-1",
+            "accent_color": "#b9e1e7",
+            "product_image": "shopify://shop_images/2in1gallon.png",
+            "price_from": "$37.99 / Gallon",
+            "price_note": "Professional Groomer Size - 1 Gallon",
+            "product_url": "shopify://products/2in1-hypoallergenic-shampoo-conditioner"
+          }
+        },
+        "product_card_rADfhB": {
+          "type": "product_card",
+          "settings": {
+            "product_name": "Deshedding Shampoo",
+            "product_subtitle": "DOUBLE COAT - HUSKY - SHEPHERD",
+            "bottle_label": "DESHED",
+            "accent_color": "#4abfb0",
+            "product_image": "shopify://shop_images/deshedshampoo.png",
+            "price_from": "$34.99 / Gallon",
+            "price_note": "Professional Groomer Size - 1 Gallon",
+            "product_url": "shopify://products/deshedding-shampoo"
+          }
+        },
+        "product_card_XLMJaE": {
+          "type": "product_card",
+          "settings": {
+            "product_name": "Deshedding Conditioner",
+            "product_subtitle": "DOUBLE COAT - REDUCES SHEDDING",
+            "bottle_label": "COND",
+            "accent_color": "#4abfb0",
+            "product_image": "shopify://shop_images/deshedconditioner.png",
+            "price_from": "$37.99 / Gallon",
+            "price_note": "Professional Groomer Size - 1 Gallon",
+            "product_url": "shopify://products/deshedding-conditioner"
+          }
+        },
+        "product_card_HqeifH": {
+          "type": "product_card",
+          "settings": {
+            "product_name": "Oatmeal & Aloe Shampoo",
+            "product_subtitle": "MEDIUM COAT - GOLDEN - LAB",
+            "bottle_label": "OAT",
+            "accent_color": "#8ebf9a",
+            "product_image": "shopify://shop_images/oatmealaloeshampoogallon.png",
+            "price_from": "$34.99 / Gallon",
+            "price_note": "Professional Groomer Size - 1 Gal",
+            "product_url": "shopify://products/oatmeal-aloe-shampoo-gallon"
+          }
+        },
+        "product_card_pQkHLG": {
+          "type": "product_card",
+          "settings": {
+            "product_name": "Deep Moisturizing Conditioner",
+            "product_subtitle": "LONG COAT - AFGHAN - SHIH TZU",
+            "bottle_label": "MOIST",
+            "accent_color": "#8e8677",
+            "product_image": "shopify://shop_images/deepmoistureconditioner.jpg",
+            "price_from": "$37.99 / Gallon",
+            "price_note": "Professional Groomer Size - 1 Gallon",
+            "product_url": "shopify://products/deep-moisturizing-conditioner-gallon"
+          }
+        }
+      },
+      "block_order": [
+        "product_card_WePeA4",
+        "product_card_7QMRnc",
+        "product_card_rADfhB",
+        "product_card_XLMJaE",
+        "product_card_HqeifH",
+        "product_card_pQkHLG"
+      ],
+      "name": "Furgenics Product Grid",
+      "settings": {
+        "eyebrow": "THE FULL SYSTEM",
+        "heading": "Shampoos & Conditioners",
+        "subheading": "Every SKU formulated and manufactured in-house. Available in professional grooming gallon sizes to help streamline your operations.",
+        "gallon_note": "Professional Size Grooming Gallons from $34.99 - 16:1 dilution ratio"
+      }
+    },
+    "fg_dilution_callout_XyA4g9": {
+      "type": "fg-dilution-callout",
+      "name": "FG Dilution Callout",
+      "settings": {
+        "stat_1_number": "16:1",
+        "stat_1_label": "DILUTION RATIO",
+        "stat_2_number": "",
+        "stat_2_label": "AVG COST PER WASH · MEDIUM",
+        "heading": "One gallon. Up to 435 small-dog washes.",
+        "body": "At 16:1 dilution, a single Furgenics gallon outperforms brands charging three times as much. Your margin improves. Your clients notice the difference. That's the professional formula advantage.",
+        "badge_1": "OWNED MANUFACTURING",
+        "badge_2": "NO MIDDLEMAN MARKUP",
+        "badge_3": "",
+        "cta_label": "Shop Gallon Sizes",
+        "cta_url": ""
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "shop-now",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_4hB3kC": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div class=\"slider-mobile-gutter page-width page-width-desktop scroll-trigger animate--slide-in why-section\">\n\n    <h2>Why Furgenics?</h2>\n    <h5>Premium Pet Grooming Products <br/>\n       Crafted With Natural Ingredients</h5>\n        <div class=\"row\">\n            <div class=\"data\">\n                <img src=\"https://cdn.shopify.com/s/files/1/0649/4653/6587/files/why-icon.png?v=1757676518\" alt=\"\">\n                <p>We believe that pet care is about more than just cleaning. Its about wellness, comfort and connection. That's why our pet care products are developed with pet friendly formulas that nourish fur, protect skin, and bring out natural shine.</p>\n                <p>Whether you are a pet store or salon looking to stock premium products or a pet owner wanting the best for your furry friend, Furgenics offers exceptional grooming solutions for all.</p>\n                <a href=\"/collections/all\" class=\"button\">Learn More <img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/right-arrow-w.png?v=1728912790\"/></a>\n            </div>\n            <div class=\"img-box\">\n                <img src=\"https://cdn.shopify.com/s/files/1/0649/4653/6587/files/FURGENICS_WEB_GRAPHICS-01.png?v=1738303534\" alt=\"\">\n            </div>\n        </div>\n    </div>",
+        "color_scheme": "scheme-e48a4e99-91c9-4081-a56a-a0156ceee6f3",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "featured_collection_Q9dJDz": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Shop Shampoos",
+        "heading_size": "hxl",
+        "description": "<p>Learn more about our full range of pet care products.</p>",
+        "show_description": false,
+        "description_style": "subtitle",
+        "collection": "shampoos",
+        "products_to_show": 18,
+        "columns_desktop": 3,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "bulk",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 52,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_kDpdnH": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Shop Conditioners",
+        "heading_size": "h1",
+        "description": "<p>Keep your pets teeth, ears and eyes healthy with our range of products.</p>",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "conditioners",
+        "products_to_show": 13,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_63W3qR": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div\n  class=\"slider-mobile-gutter page-width page-width-desktop scroll-trigger animate--slide-in shop-section\"\n>\n  <h2>Shop Shampoo</h2>\n  <div class=\"row\">\n    <h5>Learn more about our full range <br />\n      of pet shampoo products.</h5>\n    <a href=\"/collections/all\" class=\"button\"\n      >See All\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/right-arrow-light.png?v=1728917044\"\n    /></a>\n  </div>\n  <ul class=\"products-list\">\n    <li>\n      <div class=\"img-box\">\n        <img\n          src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/beigebg.png?v=1728918086\"\n        />\n      </div>\n        <div class=\"product-info\">\n            <h4>Ultra Gentle Shampoo <span>$xx.xx</span></h4>\n            <p>\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris arcu\n                mauris, ultricies in quam vitae, laore.\n            </p>\n            <a href=\"/collections/all\" class=\"button\"\n                >Shop Now\n                <img\n                src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/right-arrow-light.png?v=1728917044\"\n            /></a>\n        </div>\n    </li>\n    <li>\n      <div class=\"img-box\">\n        <img\n          src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/degreasebeige.png?v=1728918087\"\n        />\n      </div>\n      <div class=\"product-info\">\n        <h4>Degreasing Shampoo<span>$xx.xx</span></h4>\n        <p>\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris arcu\n            mauris, ultricies in quam vitae, laore.\n        </p>\n        <a href=\"/collections/all\" class=\"button\"\n            >Shop Now\n            <img\n            src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/right-arrow-light.png?v=1728917044\"\n        /></a>\n        </div>\n    </li>\n    <li>\n      <div class=\"img-box\">\n        <img\n          src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/oatmealmockup.png?v=1728918087\"\n        />\n      </div>\n      <div class=\"product-info\">\n      <h4>Oatmeal Shampoo<span>$xx.xx</span></h4>\n      <p>\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris arcu\n        mauris, ultricies in quam vitae, laore.\n      </p>\n      <a href=\"/collections/all\" class=\"button\"\n        >Shop Now\n        <img\n          src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/right-arrow-light.png?v=1728917044\"\n      /></a>\n      </div>\n    </li>\n  </ul>\n</div>",
+        "color_scheme": "scheme-e48a4e99-91c9-4081-a56a-a0156ceee6f3",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_TrajTy": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div class=\"slider-mobile-gutter page-width page-width-desktop scroll-trigger animate--slide-in shop-section\">\n  <ul class=\"category-list\">\n    <li>\n        <div class=\"img-box\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0649/4653/6587/files/shop-shampoos.jpg?v=1729709668\" alt=\"\"/>\n        </div>\n        <h3>Shop<br/> Shampoos</h3>\n    </li>\n    <li>\n        <div class=\"img-box\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/shop-dental-care.jpg?v=1729697259\" alt=\"\"/>\n        </div>\n        <h3>Shop<br/>\nDental Care</h3>\n    </li>\n    <li>\n        <div class=\"img-box\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/shop-washes.jpg?v=1729697259\" alt=\"\"/>\n        </div>\n        <h3>Shop<br/> Conditioners</h3>\n    </li>\n    <li>\n      <div class=\"img-box\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/shop-conditioner.jpg?v=1729697259\" alt=\"\"/>\n      </div>\n      <h3>Shop<br/> Ears & Eyes</h3>\n    </li>\n  </ul>\n</div>",
+        "color_scheme": "scheme-e48a4e99-91c9-4081-a56a-a0156ceee6f3",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_CfEwEJ": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"slider-mobile-gutter page-width page-width-desktop scroll-trigger animate--slide-in satisfaction-section\">\n    <div class=\"img-box\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0649/4653/6587/files/Group_5749.png?v=1730179611\" alt=\"\"/>\n    </div>\n    <p>At Furgenics, we know how much your pets mean to you—that’s why we stand behind our products 100%. Every bottle is a promise of premium quality, and if you or your pet aren’t fully satisfied, we’ve got your back. Our gentle, all natural ingredients are free from parabens, sulfates and harsh chemicals so every wash is a soothing experience.</p>\n    <div class=\"row\">\n        <h5>\n            See What Happy Pups are\n            Saying About our Full Range of Products \n        </h5>\n        <a href=\"/collections/all\" class=\"button\">Leave a Review\n          <img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/right-arrow-w.png?v=1728912790\" alt=\"\"></a>\n      </div>\n  <ul class=\"review-list\">\n    <li>\n        <ul class=\"stars\">\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n        </ul>\n        <h5>I love it.</h5>\n        <p>I have a Golden Retriever, so shedding is a part of life. I’ve tried tons of shampoos, but nothing compares to Furgenics! After using their shampoo, Bella’s coat feels softer than ever, and the shedding has gone down noticeably. I also love that the ingredients are natural—no more worrying about harsh chemicals irritating her skin. And the scent? It’s subtle but clean, which is perfect. Bath time just became less of a chore!</p>\n        <p class=\"reviewer\">Sarah B.</p>\n    </li>\n    <li>\n        <ul class=\"stars\">\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n        </ul>\n        <h5>Incredible</h5>\n        <p>My French Bulldog, Max, has super sensitive skin, and every shampoo I tried before either left him itchy or dry. I’m so glad I found Furgenics! Their shampoo is so gentle, and the anti-itch formula actually works. No more scratching himself all day! Plus, Max smells great afterward without that overpowering fake scent. Knowing the shampoo is eco-friendly is just the icing on the cake—our family is all about sustainability!</p>\n        <p class=\"reviewer\">David M.</p>\n    </li>\n    <li>\n        <ul class=\"stars\">\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n            <li><img src=\"https://cdn.shopify.com/s/files/1/0677/2080/6573/files/star-filled.png?v=1728971486\" alt=\"\"></li>\n        </ul>\n        <h5>Just PAWsome</h5>\n        <p>I started using Furgenics on my Labradoodle, Charlie, and I can honestly say I’ll never go back to store-bought shampoos. His curls are soft, tangle-free, and shiny after every wash. I took him to the groomer last week, and she asked what I’d been using because his coat looked amazing! On top of that, the shampoo rinses out so easily, which makes bath time much quicker (and less stressful for Charlie). Highly recommend!</p>\n        <p class=\"reviewer\">Emma A.</p>\n    </li>\n  </ul>\n</div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "collection_list_C7N9dR": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_FCTjV9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_3j3gGQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_3TAfVC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_FCTjV9",
+        "featured_collection_3j3gGQ",
+        "featured_collection_3TAfVC"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "slideshow_pXGAbF",
+    "furgenics_why_section_z8rhMV",
+    "furgenics_product_grid_eAPEKV",
+    "fg_dilution_callout_XyA4g9",
+    "featured_collection",
+    "custom_liquid_4hB3kC",
+    "featured_collection_Q9dJDz",
+    "featured_collection_kDpdnH",
+    "custom_liquid_63W3qR",
+    "custom_liquid_TrajTy",
+    "custom_liquid_CfEwEJ",
+    "collection_list_C7N9dR"
+  ]
+}
