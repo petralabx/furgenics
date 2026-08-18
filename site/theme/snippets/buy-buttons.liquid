@@ -1,0 +1,226 @@
+{% comment %}
+  Renders product buy-buttons.
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} product form id.
+  - section_id: {String} id of section to which this snippet belongs.
+  - show_pickup_availability: {Boolean} for the pickup availability. If true the pickup availability is rendered, false - not rendered (optional).
+
+  Usage:
+  {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
+{% endcomment %}
+<div {{ block.shopify_attributes }}>
+  {%- if product != blank -%}
+    {%- liquid
+      assign gift_card_recipient_feature_active = false
+      if block.settings.show_gift_card_recipient and product.gift_card?
+        assign gift_card_recipient_feature_active = true
+      endif
+
+      assign show_dynamic_checkout = false
+      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
+        assign show_dynamic_checkout = true
+      endif
+
+      assign furgenics_gp_url = routes.root_url
+      if furgenics_gp_url == '/'
+        assign furgenics_gp_url = ''
+      endif
+    -%}
+
+    <product-form
+      class="product-form"
+      data-hide-errors="{{ gift_card_recipient_feature_active }}"
+      data-section-id="{{ section.id }}"
+    >
+      <div class="product-form__error-message-wrapper" role="alert" hidden>
+        <span class="svg-wrapper">
+          {{- 'icon-error.svg' | inline_asset_content -}}
+        </span>
+        <span class="product-form__error-message"></span>
+      </div>
+
+      {%- form 'product',
+        product,
+        id: product_form_id,
+        class: 'form',
+        novalidate: 'novalidate',
+        data-type: 'add-to-cart-form'
+      -%}
+        <input
+          type="hidden"
+          name="id"
+          value="{{ product.selected_or_first_available_variant.id }}"
+          {% if product.selected_or_first_available_variant.available == false
+            or quantity_rule_soldout
+            or product.selected_or_first_available_variant == null
+          %}
+            disabled
+          {% endif %}
+          class="product-variant-id"
+        >
+
+        {%- if gift_card_recipient_feature_active -%}
+          {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+        {%- endif -%}
+
+        <div class="product-form__buttons">
+          {%- liquid
+            assign check_against_inventory = true
+            if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+              assign check_against_inventory = false
+            endif
+            if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+              assign quantity_rule_soldout = true
+            endif
+          -%}
+          <button
+            id="ProductSubmitButton-{{ section_id }}"
+            type="submit"
+            name="add"
+            class="product-form__submit button button--full-width button--primary"
+            {% if product.selected_or_first_available_variant.available == false
+              or quantity_rule_soldout
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            <span>
+              {%- if product.selected_or_first_available_variant == null -%}
+                {{ 'products.product.unavailable' | t }}
+              {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- else -%}
+                {{ 'products.product.add_to_cart' | t }}
+              {%- endif -%}
+            </span>
+            {%- render 'loading-spinner' -%}
+          </button>
+          {%- if show_dynamic_checkout -%}
+            {{ form | payment_button }}
+          {%- endif -%}
+          {%- comment -%}
+            Salon-pricing CTA. Keep class "wholesale-product": a layout/app
+            script opens Klaviyo form W5fDYc on click (preventDefault). href is
+            the no-JS fallback to the Groomer Program page.
+          {%- endcomment -%}
+          <a
+            id="wholesale-product"
+            class="wholesale-product furgenics-salon-pricing button button--secondary button--full-width"
+            href="{{ furgenics_gp_url }}/pages/groomer-program"
+          >
+            <span>Apply for salon pricing</span>
+          </a>
+        </div>
+      {%- endform -%}
+    </product-form>
+  {%- else -%}
+    {%- liquid
+      assign furgenics_gp_url = routes.root_url
+      if furgenics_gp_url == '/'
+        assign furgenics_gp_url = ''
+      endif
+    -%}
+    <div class="product-form">
+      <div class="product-form__buttons form">
+        <button
+          type="submit"
+          name="add"
+          class="product-form__submit button button--full-width button--primary"
+          disabled
+        >
+          {{ 'products.product.sold_out' | t }}
+        </button>
+        <a
+          id="wholesale-product"
+          class="wholesale-product furgenics-salon-pricing button button--secondary button--full-width"
+          href="{{ furgenics_gp_url }}/pages/groomer-program"
+        >
+          <span>Apply for salon pricing</span>
+        </a>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if show_pickup_availability -%}
+    {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+
+    {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
+      | where: 'pick_up_enabled', true
+    -%}
+
+    <pickup-availability
+      class="product__pickup-availabilities quick-add-hidden"
+      {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
+        available
+      {% endif %}
+      data-root-url="{{ routes.root_url }}"
+      data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+      data-has-only-default-variant="{{ product.has_only_default_variant }}"
+      data-product-page-color-scheme="gradient color-{{ section.settings.color_scheme }}"
+    >
+      <template>
+        <pickup-availability-preview class="pickup-availability-preview">
+          <span class="svg-wrapper">
+            {{- 'icon-unavailable.svg' | inline_asset_content -}}
+          </span>
+          <div class="pickup-availability-info">
+            <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+            <button class="pickup-availability-button link link--text underlined-link">
+              {{ 'products.product.pickup_availability.refresh' | t }}
+            </button>
+          </div>
+        </pickup-availability-preview>
+      </template>
+    </pickup-availability>
+
+    <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+</div>
+<style>
+  /* 2026-08-14 fix: assets/mx-style.css globally forces .button to solid teal
+     with arrow padding, sets `.details .product-form__submit.button` to
+     width:auto, and disables Dawn's :after border mechanism — which made
+     Add to cart shrink to ~122px beside a same-colored salon-pricing pill.
+     These rules (rendered after the stylesheets, higher specificity) stack
+     the buttons full-width and give the salon CTA a true secondary look. */
+  .product-form__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    max-width: 44rem;
+  }
+  .details .product-form__buttons .product-form__submit.button,
+  .product-form__buttons .product-form__submit.button {
+    width: 100%;
+    background-position: calc(100% - 20px) center;
+  }
+  .details .product-form__buttons .product-form__submit.button:hover {
+    background-position: calc(100% - 12px) center;
+  }
+  .product-form__buttons .shopify-payment-button {
+    width: 100%;
+  }
+  .product-form__buttons .furgenics-salon-pricing.button {
+    width: 100%;
+    margin: 0;
+    background-color: transparent;
+    background-image: none;
+    color: #014566;
+    border: 0.15rem solid #014566;
+    padding: 1.1rem 3rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .product-form__buttons .furgenics-salon-pricing.button:hover {
+    background-color: rgba(1, 69, 102, 0.07);
+  }
+  .furgenics-salon-pricing:focus-visible {
+    outline: 2px solid rgb(var(--color-foreground));
+    outline-offset: 3px;
+  }
+</style>

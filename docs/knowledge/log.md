@@ -8,6 +8,58 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-08-17T19:10:00Z] query | US Markets compare-at blanks to $0.00; Reset pricing is the wrong button
+
+- Live JSON: US FUR-013 + FUR-014 `compare_at_price: 0`; CA FUR-013 `null`. Selling price still $34.99 USD.
+- Diagnosis: Markets UI writes blank compare-at as `0` (a stored override). Reset pricing deletes the entire US fixed-price override, so the selling price reverts to inherited CAD/FX and the US price field locks.
+- Fix: keep US fixed price; set compare-at to `null` via `priceListFixedPricesUpdate` or catalog CSV. Theme guard in `main-product.liquid` hides sale UI when compare-at is 0 or ≤ price (unpublished duplicate until pushed).
+- Filed `analyses/2026-08-17-us-compare-at-zero.md`; catalog issue 11 in products.md.
+
+## [2026-08-14T19:00:00Z] ship | Phase 2 theme files pushed to unpublished duplicate #152547065995
+
+- `shopify theme push --nodelete --only` of `snippets/description-accordion.liquid`, `snippets/product-at-a-glance.liquid`, `snippets/furgenics-product-faqs.liquid`, `sections/main-product.liquid` to **Copy of Copy of scg9xy-xt** (`#152547065995`). Live `#150922428555` remained `[live]`; nothing published.
+- Preview `https://furgenics.com/products/deshedding-shampoo?preview_theme_id=152547065995`: 2×2 chip-strip, comparison card below accordion, FAQ `page-width` gutter, original testimonial layout. v4 body + faqs v2 still pending MCP.
+
+## [2026-08-14T18:45:00Z] ship | PDP Phase 2 built repo-side: 4-section accordion + comparison card + chip strip + display titles
+
+- Filed `analyses/2026-08-14-pdp-phase2-build.md`. Dandylion reference adoptions per Stephen's go-ahead: accordion snippet v2 (INCI merge + comparison extraction, simulation-verified against v4/v3/no-H2 bodies), v4 deshedding exemplar draft, curated custom.faqs v2 (12→9 with FUR20 manual-entry + CA 2–5 / US 3–5 shipping fixes), at-a-glance chip strip, custom.display_title + eyebrow theme support (inert until metafield created), proposed short titles for 9 SKUs in products.md (Class B, awaiting approval).
+- Nothing pushed to Shopify from this session (VM predates the theme token); deploy + MCP content-push sequence in the brief. Prerequisite flagged: August competitor price refresh (captures are 2026-05 vintage).
+
+## [2026-08-14T17:40:00Z] ship | buy-buttons.liquid alignment fix pushed to unpublished duplicate #152547065995
+
+- `shopify theme push --nodelete --only snippets/buy-buttons.liquid` to **Copy of Copy of scg9xy-xt** (`#152547065995`). Live `#150922428555` remained `[live]`; nothing published. Remote file matches repo.
+- Rendered preview `https://furgenics.com/products/deshedding-shampoo?preview_theme_id=152547065995` at 1440px and 390px: Add to cart full-width solid teal `rgb(1, 69, 102)` with arrow `calc(100% - 20px)`; Apply for salon pricing outlined secondary stacked below; edges aligned.
+
+## [2026-08-14T18:00:00Z] ship | PDP Phase 1 pushed to unpublished duplicate theme #152547065995
+
+- `shopify theme push --nodelete --only` of `sections/main-product.liquid`, `templates/product.json`, `snippets/description-accordion.liquid`, `snippets/furgenics-product-faqs.liquid`, `snippets/product-at-a-glance.liquid`, `snippets/sticky-atc.liquid` to **Copy of Copy of scg9xy-xt** (`#152547065995`). Live theme `#150922428555` was not pushed or published.
+- Pulled and versioned `snippets/buy-buttons.liquid`; restyled Add to cart to `button--primary` full-width; wholesale button → outlined secondary link **Apply for salon pricing** (Klaviyo `.wholesale-product` hook preserved).
+- Preview: `https://scg9xy-xt.myshopify.com/products/deshedding-shampoo?preview_theme_id=152547065995` — verified deshedding + deshedding conditioner, CA/US. Search & Discovery complementary pairings still pending (admin).
+
+## [2026-08-14T17:15:00Z] fix | Sulfate question resolved: formulas ARE sulfate-free, published INCI lists are wrong
+
+- R&D confirmation via Stephen 2026-08-14. Reverses the assumed fix direction: the `sulfate-free` claim (removed brand-wide 2026-05-27) was correct; the Sodium Laureth Sulfate entries in `custom.full_ingredients` (FUR-013, FUR-005 at minimum) are ingredient-list errors.
+- Fix sequence documented in products.md catalog issue 9: corrected INCI from R&D → metafield push via Claude MCP → live verification → claim reinstatement across all surfaces → AGENTS.md guardrail update. Claim must NOT return before the metafields are fixed.
+- Blocking input: corrected ingredient lists from R&D (and confirmation of which of the 9 SKUs are affected).
+
+## [2026-08-14T16:30:00Z] query | PDP Phase 1 built repo-side + external feedback decisions recorded
+
+- Filed `analyses/2026-08-14-pdp-phase1-buybox.md`: external design-review assessment, Stephen's five decisions (canonical shipping CA 2–5 / US 3–5 business days; FUR20 manual entry — FAQ "works automatically" wording is wrong, sweep pending; claims substantiated via 60+ groomer testing; sulfate claim held pending formulation truth; review app choice pending).
+- Phase 1 theme changes committed to `site/theme/` on PR #5: buy-box reorder, at-a-glance spec panel with computed $/working gallon, mobile sticky ATC, quantity controls restored, duplicate H2 title + static rating image + hidden legacy accordion removed, testimonial compacted, complementary bundle block, accordion focus-visible/reduced-motion fixes. Deploy to duplicate theme #152547065995 pending (needs token-equipped run + buy-buttons.liquid pull).
+
+## [2026-07-28T19:26:00Z] query | PDP accordion implementation reviewed and end-of-session handoff filed
+
+- Filed `analyses/2026-07-28-pdp-accordion-implementation-review.md`, documenting every duplicate-theme/repo change, preview + branch + PR state, SEO/AEO parity assessment, launch blockers, and prioritized next-session decisions.
+- Unpublished duplicate `Copy of Copy of scg9xy-xt` (`#152547065995`) remains the only Shopify theme changed; live theme was not pushed or published. Current preview is linked in the analysis.
+- Recommendation: do not publish yet. P0s are inventory/market availability, inverted compare-at pricing, cross-surface sulfate-free and medical-adjacent claims, catalog-wide purchase-order rollout, buy-box order, Product JSON-LD safety, and FAQ keyboard focus.
+- This is a review/handoff entry, not a live `ship`; `optimization-log.md` remains unchanged until an approved theme reaches production.
+
+## [2026-07-28T17:45:00Z] query | PDP accordion-template proposal filed + live PDP review defects
+
+- Filed `analyses/2026-07-28-pdp-accordion-template-proposal.md` (Stephen request, PDP UX task 1 of 2): restructure PDP descriptions into one unified purchase-decision-ordered accordion via new `site/theme/snippets/description-accordion.liquid`; deshedding-shampoo drafts reordered as v3 exemplar.
+- Defects observed on live PDPs during the review (not yet fixed): (1) raw unsubstituted `[[PRICE:oatmeal-aloe-shampoo-gallon]]` token rendering on `/products/hypoallergenic-shampoo-gallon` "How it compares" section; (2) compare-at price ($18.04 USD) strikes through BELOW the sale price ($34.99 USD) on both PDPs checked — stale `compare_at_price` in Shopify admin; (3) FUR-013 live description still carries the retired "sulfate-free" claim (fixed in the v3 draft, live push pending).
+- Wiki divergence flagged, not overwritten: products.md $24.99 CAD baseline vs live $34.99 USD.
+
 ## [2026-06-28T03:07:45.585Z] audit | Full audit: 50 findings (10H/36M/2L/2I), 0 auto-fixed
 
 - Auditors run: schema-deployment, alt-text, freshness, answer-block, citation-tracker

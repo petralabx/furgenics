@@ -1,0 +1,181 @@
+{%- comment -%}
+  Furgenics token substitution pipeline (shared)
+  ===
+  Takes a `text` parameter and returns the substituted string.
+  Single source of truth for [[PRICE]] / [[VALUE]] / [[COMPETITOR]] / [[DISCOUNT]] tokens.
+
+  Called by:
+    - sections/main-product.liquid           (product descriptions + Product JSON-LD)
+    - sections/main-page-pillar.liquid       (pillar page bodies)
+    - snippets/furgenics-product-faqs.liquid (visible FAQ accordion)
+    - snippets/furgenics-schema.liquid       (FAQPage JSON-LD schema)
+
+  Parameters:
+    text   (string)  The text to substitute tokens in.
+    plain  (boolean) Optional. When true, the returned string is passed
+                     through strip_html, so substituted values (competitor
+                     spans, discount banner) come out as plain text. Use for
+                     JSON-LD / meta contexts. Safe there because Shopify's
+                     structured_data output escapes its own angle brackets
+                     (\u003c), so strip_html only removes tags this snippet
+                     inserted.
+
+  Fallback behavior (2026-07-28): if a [[PRICE:handle]] product is not
+  visible to the storefront (draft/unpublished — all_products returns blank),
+  the token is replaced with 'currently unavailable online' instead of
+  leaking raw [[...]] brackets to customers. Root-cause fix is publishing
+  the product; this is the safety net.
+
+  When adding a new PRICE handle, VALUE key, or COMPETITOR slug:
+  edit this file only. All call sites pick up the change automatically.
+
+  Maintenance reference: brands/furgenics/knowledge/content-style-guide.md
+{%- endcomment -%}
+
+{%- assign rendered = text -%}
+
+{%- comment -%} [[PRICE:handle]] — Markets-aware Furgenics product prices {%- endcomment -%}
+{%- assign furgenics_handles = "hypoallergenic-shampoo-gallon,2in1-hypoallergenic-shampoo-conditioner,oatmeal-aloe-conditioner-gallon,oatmeal-aloe-shampoo-gallon,deshedding-shampoo,deshedding-conditioner,2in1-doodle-shampoo-conditioner,deep-moisturizing-conditioner-gallon,lavender-spa-shampoo" | split: "," -%}
+{%- for handle in furgenics_handles -%}
+  {%- assign price_token = '[[PRICE:' | append: handle | append: ']]' -%}
+  {%- if rendered contains price_token -%}
+    {%- assign tprod = all_products[handle] -%}
+    {%- if tprod != blank and tprod.price != blank -%}
+      {%- assign price_value = tprod.price | money -%}
+      {%- assign rendered = rendered | replace: price_token, price_value -%}
+    {%- else -%}
+      {%- assign rendered = rendered | replace: price_token, 'currently unavailable online' -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} [[VALUE:key]] — invariant value-math claims {%- endcomment -%}
+{%- assign rendered = rendered | replace: '[[VALUE:dilution-ratio]]', '16:1 concentrate' -%}
+{%- assign rendered = rendered | replace: '[[VALUE:working-gallons-per-bottle]]', 'up to 17 working gallons per bottle at professional dilution' -%}
+{%- assign rendered = rendered | replace: '[[VALUE:per-working-gallon-cost-narrative]]', 'roughly the cost of a cup of coffee per working gallon at pro dilution' -%}
+{%- assign rendered = rendered | replace: '[[VALUE:made-in-canada]]', 'Made in Canada' -%}
+{%- assign rendered = rendered | replace: '[[VALUE:professional-grade]]', 'built for professional salons' -%}
+{%- assign rendered = rendered | replace: '[[VALUE:pro-vs-retail-positioning]]', 'a professional concentrate designed for salon volume — not a retail bottle in a bigger size' -%}
+
+{%- comment -%}
+  [[COMPETITOR:brand-slug]] — per-market dated benchmarks.
+  Active market detected via localization.country.iso_code.
+  Default is CA (Furgenics' primary market) when uncertain.
+{%- endcomment -%}
+
+{%- assign active_market = 'CA' -%}
+{%- if localization.country.iso_code == 'US' -%}
+  {%- assign active_market = 'US' -%}
+{%- endif -%}
+
+{%- comment -%} Bio-Groom Hypo-Groom — both markets captured 2026-05 {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_bio_groom_hypo -%}<span class="competitor-price">Bio-Groom Hypo-Groom Gallon: <strong>$49.99 USD</strong> <small>(as of 2026-05, Amazon US)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_bio_groom_hypo -%}<span class="competitor-price">Bio-Groom Hypo-Groom Gallon: <strong>$110.41 CAD</strong> <small>(as of 2026-05, Amazon Canada)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:bio-groom-hypo-groom]]', comp_bio_groom_hypo -%}
+
+{%- comment -%} Coat Handler 15-in-1 — both markets captured 2026-05 {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_coat_handler_15 -%}<span class="competitor-price">Coat Handler 15-in-1 Gallon: <strong>$47.97 USD</strong> <small>(as of 2026-05, Amazon US)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_coat_handler_15 -%}<span class="competitor-price">Coat Handler 15-in-1 Gallon: <strong>$66.02 CAD</strong> <small>(as of 2026-05, Amazon Canada)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:coat-handler-15-in-1]]', comp_coat_handler_15 -%}
+
+{%- comment -%} Coat Handler Anti-Shed — both markets captured 2026-05 {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_coat_handler_anti_shed -%}<span class="competitor-price">Coat Handler Anti-Shed Gallon: <strong>$54.97 USD</strong> <small>(as of 2026-05, Amazon US)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_coat_handler_anti_shed -%}<span class="competitor-price">Coat Handler Anti-Shed Gallon: <strong>$78.95 CAD</strong> <small>(as of 2026-05, Amazon Canada)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:coat-handler-anti-shed]]', comp_coat_handler_anti_shed -%}
+
+{%- comment -%} FURminator deShedding — both markets captured 2026-05 {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_furminator -%}<span class="competitor-price">FURminator deShedding Ultra Premium Shampoo: <strong>$62.47 USD</strong> <small>(as of 2026-05, Amazon US)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_furminator -%}<span class="competitor-price">FURminator deShedding Ultra Premium Shampoo: <strong>$86.01 CAD</strong> <small>(as of 2026-05, Amazon Canada)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:furminator-deshedding]]', comp_furminator -%}
+
+{%- comment -%} Chris Christensen Day to Day — both markets captured 2026-05 (refresh) {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_chris_christensen -%}<span class="competitor-price">Chris Christensen Day to Day Gallon: <strong>$62.48 USD</strong> <small>(as of 2026-05, Amazon US)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_chris_christensen -%}<span class="competitor-price">Chris Christensen Day to Day Gallon: <strong>$151.72 CAD</strong> <small>(as of 2026-05, Amazon Canada)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:chris-christensen-day-to-day]]', comp_chris_christensen -%}
+
+{%- comment -%} iGroom — US: Squeaky Clean 1 gal; CA: Deshedding & Detangling 1 gal {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_igroom -%}<span class="competitor-price">iGroom Shampoo Gallon: <strong>$66.07 USD</strong> <small>(as of 2026-05, Amazon US, Squeaky Clean variant)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_igroom -%}<span class="competitor-price">iGroom Shampoo Gallon: <strong>$63.99 CAD</strong> <small>(as of 2026-05, Amazon Canada, Deshedding &amp; Detangling variant)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:igroom-silk]]', comp_igroom -%}
+
+{%- comment -%} Isle of Dogs — US 1-gal captured 2026-05; no 1-gal listing on Amazon Canada — CA price converted from USD at 1.38 FX {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_isle_of_dogs -%}<span class="competitor-price">Isle of Dogs Shampoo Gallon: <strong>$65.91 USD</strong> <small>(as of 2026-05, Amazon US)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_isle_of_dogs -%}<span class="competitor-price">Isle of Dogs Shampoo Gallon: <strong>~$90.96 CAD</strong> <small>(converted from $65.91 USD at 1.38 FX — no 1-gal listing on Amazon Canada as of 2026-05)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:isle-of-dogs-evening-primrose]]', comp_isle_of_dogs -%}
+
+{%- comment -%} Earthbath Oatmeal & Aloe — CA captured 2026-05; US Oatmeal&Aloe specific not captured, hypoallergenic gallon used as proxy {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_earthbath_oatmeal -%}<span class="competitor-price">Earthbath Oatmeal &amp; Aloe Gallon: <strong>$73.90 USD</strong> <small>(as of 2026-05, Amazon US, hypoallergenic gallon as proxy for the line)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_earthbath_oatmeal -%}<span class="competitor-price">Earthbath Oatmeal &amp; Aloe Gallon: <strong>$114.30 CAD</strong> <small>(as of 2026-05, Amazon Canada)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:earthbath-oatmeal-aloe]]', comp_earthbath_oatmeal -%}
+
+{%- comment -%} Burt's Bees Oatmeal Shampoo — both markets captured 2026-05 (16oz retail size). CA capture was Puppy 2-in-1 (closest available proxy). {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_burts_bees -%}<span class="competitor-price">Burt's Bees Oatmeal Shampoo (16oz): <strong>$7.98 USD</strong> <small>(as of 2026-05, Amazon US)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_burts_bees -%}<span class="competitor-price">Burt's Bees Shampoo (16oz): <strong>$9.99 CAD</strong> <small>(as of 2026-05, Amazon Canada, Puppy 2-in-1 variant — Oatmeal CA price pending)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:burts-bees-oatmeal]]', comp_burts_bees -%}
+
+{%- comment -%} TropiClean Pro Hypoallergenic Oatmeal — US: Aloe & Coconut 1 gal as closest mid-range proxy; CA: gallon variant captured 2026-05 {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_tropiclean -%}<span class="competitor-price">TropiClean Pro Hypoallergenic Oatmeal Gallon: <strong>$59.38 USD</strong> <small>(as of 2026-05, Amazon US, Aloe &amp; Coconut variant)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_tropiclean -%}<span class="competitor-price">TropiClean Pro Gallon: <strong>$83.97 CAD</strong> <small>(as of 2026-05, Amazon Canada)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:tropiclean-pro-hypoallergenic-oatmeal]]', comp_tropiclean -%}
+
+{%- comment -%} Nature's Specialties Colloidal Oatmeal — US 1-gal captured 2026-05 (refresh from prior $80 distributor proxy); no 1-gal listing on Amazon Canada (prior Plum Silky 1 gal at $186.89 CAD no longer available) — CA price converted from USD at 1.38 FX {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_natures_specialties -%}<span class="competitor-price">Nature's Specialties Colloidal Oatmeal Gallon: <strong>$89.99 USD</strong> <small>(as of 2026-05, Amazon US)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_natures_specialties -%}<span class="competitor-price">Nature's Specialties Colloidal Oatmeal Gallon: <strong>~$124.19 CAD</strong> <small>(converted from $89.99 USD at 1.38 FX — no 1-gal listing on Amazon Canada as of 2026-05)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:natures-specialties-colloidal-oatmeal]]', comp_natures_specialties -%}
+
+{%- comment -%} #1 All Systems — US: Super Cleaning & Conditioning 1 gal $49.40 (as Botanical Oatmeal proxy); CA: 1 gal captured 2026-05 {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_all_systems -%}<span class="competitor-price">#1 All Systems Botanical Gallon: <strong>$49.40 USD</strong> <small>(as of 2026-05, Amazon US, Super Cleaning &amp; Conditioning variant)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_all_systems -%}<span class="competitor-price">#1 All Systems Gallon: <strong>$68.01 CAD</strong> <small>(as of 2026-05, Amazon Canada)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:all-systems-botanical-oatmeal]]', comp_all_systems -%}
+
+{%- comment -%} Bark2Basics De-Shedding — US: DeShedding 1 gal $48.97 captured 2026-05; CA: de-shedding conditioner $71.35 as closest available proxy {%- endcomment -%}
+{%- if active_market == 'US' -%}
+  {%- capture comp_bark2basics -%}<span class="competitor-price">Bark2Basics De-Shedding Gallon: <strong>$48.97 USD</strong> <small>(as of 2026-05, Amazon US, 32:1 concentrate)</small></span>{%- endcapture -%}
+{%- else -%}
+  {%- capture comp_bark2basics -%}<span class="competitor-price">Bark2Basics De-Shedding Gallon: <strong>$71.35 CAD</strong> <small>(as of 2026-05, Amazon Canada, de-shedding conditioner as proxy — shampoo CA price pending)</small></span>{%- endcapture -%}
+{%- endif -%}
+{%- assign rendered = rendered | replace: '[[COMPETITOR:bark2basics-de-shedding]]', comp_bark2basics -%}
+
+{%- comment -%} [[DISCOUNT]] — active discount campaign banner from theme settings {%- endcomment -%}
+{%- capture discount_banner_html -%}{%- render 'discount-banner' -%}{%- endcapture -%}
+{%- assign rendered = rendered | replace: '[[DISCOUNT]]', discount_banner_html -%}
+
+{%- comment -%} strip_newlines: multi-line substituted values (discount banner)
+    would otherwise inject literal control characters into JSON strings. {%- endcomment -%}
+{%- if plain -%}{{- rendered | strip_html | strip_newlines -}}{%- else -%}{{- rendered -}}{%- endif -%}

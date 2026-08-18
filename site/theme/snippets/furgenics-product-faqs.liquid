@@ -1,0 +1,54 @@
+{%- comment -%}
+  Furgenics Product FAQ Section (Visual Display)
+  -----------------------------------------------
+  Renders FAQs visually on product pages using the custom.faqs metafield.
+  Paired with furgenics-schema.liquid which provides the invisible JSON-LD.
+
+  Use: Include this snippet in your product template where you want the FAQ
+  section to appear (e.g., below the product description).
+
+  Usage:
+    {% render 'furgenics-product-faqs' %}
+{%- endcomment -%}
+
+{%- if product.metafields.custom.faqs -%}
+  {%- assign faq_list = product.metafields.custom.faqs.value -%}
+  {%- if faq_list.size > 0 -%}
+    {%- comment -%} page-width: the theme's custom-liquid section has no width
+        container of its own, so without this class the FAQ runs edge-to-edge.
+        This theme's mx-style.css makes .page-width full-width with a 50px side
+        gutter (padding: 0 50px) — only override padding-top here, never the
+        shorthand, or the side gutter collapses to zero. {%- endcomment -%}
+    <div class="furgenics-faq page-width" style="margin: 40px auto; padding-top: 32px; border-top: 1px solid #e5e5e5;">
+      <h2 style="font-size: 28px; margin-bottom: 24px; font-weight: 600;">Frequently Asked Questions</h2>
+      {%- for faq in faq_list -%}
+        {%- capture rendered_q -%}{%- render 'token-substitution', text: faq.q -%}{%- endcapture -%}
+        {%- capture rendered_a -%}{%- render 'token-substitution', text: faq.a -%}{%- endcapture -%}
+        <details class="furgenics-faq-item">
+          <summary>
+            <span class="furgenics-faq-q">{{ rendered_q }}</span>
+            <span class="furgenics-faq-arrow" aria-hidden="true">&#9013;</span>
+          </summary>
+          <div class="furgenics-faq-a">{{ rendered_a }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} Unified Furgenics PDP accordion style (2026-07-28) — keep
+        in sync with snippets/description-accordion.liquid. {%- endcomment -%}
+    <style>
+      .furgenics-faq-item { border-bottom: 1px solid #e5e5e5; }
+      .furgenics-faq-item:first-of-type { border-top: 1px solid #e5e5e5; }
+      .furgenics-faq-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; min-height: 52px; box-sizing: border-box; }
+      .furgenics-faq-item > summary::-webkit-details-marker { display: none; }
+      .furgenics-faq-item > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+      .furgenics-faq-q { font-weight: 700; line-height: 1.2; }
+      .furgenics-faq-arrow { display: flex; align-items: center; justify-content: center; width: 20px; flex-shrink: 0; line-height: 1; }
+      .furgenics-faq-item[open] > summary .furgenics-faq-arrow { transform: rotate(180deg); }
+      .furgenics-faq-a { padding: 0 0 16px; line-height: 1.6; color: #555; }
+      @media (prefers-reduced-motion: no-preference) {
+        .furgenics-faq-arrow { transition: transform 0.2s ease; }
+      }
+    </style>
+  {%- endif -%}
+{%- endif -%}

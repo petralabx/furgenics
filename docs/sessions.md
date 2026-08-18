@@ -33,6 +33,54 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-17 — US compare-at $0.00 is a Markets override, not a blank
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Diagnosed USA compare-at: blanking the Markets field writes `0` (Sale vs `$0.00` on FUR-013 + FUR-014); Canada is already `null`. Reset pricing is the wrong control — it wipes the whole US fixed price, which is why the selling price jumped and then looked uneditable. Filed `docs/knowledge/analyses/2026-08-17-us-compare-at-zero.md`. Theme guard in `main-product.liquid` hides sale UI when compare-at is 0 or not greater than price (repo-side; unpublished duplicate until a token-equipped push).
+- **Next:** Stephen (or Claude + Shopify Admin MCP): `priceListFixedPricesUpdate` with US `price: 34.99` and `compareAtPrice: null` — do not Reset. Then spot-check `/en-us/` JSON `compare_at_price: null`. Theme push of `main-product.liquid` to `#152547065995` when a deploy VM is available.
+- **Watch:** Do not type `0` into compare-at. Do not delete the US fixed price. Live theme will keep showing `$0.00` until the catalog is `null` or the guard is published.
+
+## 2026-08-14 — Phase 2 theme files pushed to unpublished duplicate
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Pushed `description-accordion.liquid`, `product-at-a-glance.liquid`, `furgenics-product-faqs.liquid`, `main-product.liquid` to unpublished `#152547065995` only. Preview: 2×2 chip-strip at-a-glance, comparison card below the accordion on deshedding, FAQ in the page gutter, original "Loved by Pets, Endorsed by the Best" testimonial restored. Live theme not published.
+- **Next:** Claude MCP FUR-013 v4 body + faqs v2; Stephen: display titles, corrected INCI, August competitor captures, S&D pairings.
+- **Watch:** Current Shopify bodies are still pre-v4, so accordion row titles are the old H2s (comparison extraction still works). Do not publish. No sulfate-claim reinstatement before INCI metafields are corrected.
+
+## 2026-08-14 (later) — PDP Phase 2 build: 4-section accordion + Dandylion adoptions
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Phase 2 built repo-side per Stephen's go-ahead (Dandylion reference PDP): `description-accordion.liquid` v2 (INCI merges into an "ingredients" H2 section; "how-it-compares" H2 auto-extracted below the accordion as a compact card; backwards-compatible with un-migrated bodies + samples, simulation-verified), v4 deshedding description + curated 9-question `custom.faqs` (in the draft .md, ready for MCP), at-a-glance chip-strip restyle, `custom.display_title` + gallon eyebrow support in the title block (inert until metafield exists), proposed short titles for 9 SKUs in products.md (Class B). Also: FAQ page-width gutter fix + testimonial layout reverted to original per Stephen (2c). Brief: `docs/knowledge/analyses/2026-08-14-pdp-phase2-build.md`.
+- **Next:** Theme push to #152547065995: `description-accordion.liquid`, `product-at-a-glance.liquid`, `main-product.liquid`, `furgenics-product-faqs.liquid`. Claude MCP: FUR-013 v4 body + faqs v2. Stephen: approve display titles, corrected INCI lists from R&D, August competitor captures, S&D pairings.
+- **Watch:** Pushing snippet v2 extracts the comparison section below the accordion on ALL gallons immediately (intended — verify one conditioner too). No sulfate-claim reinstatement before INCI metafields are corrected. `mx-style.css` still unversioned. Secrets skip injection on this public repo — deploy runs need the Theme Access flow the 2026-08-14 deploy session used.
+
+## 2026-08-14 — buy-button alignment fix pushed to unpublished duplicate
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Pushed `snippets/buy-buttons.liquid` (2b alignment fix) to unpublished duplicate `#152547065995` only. Live `#150922428555` untouched. Preview at 1440px and 390px: Add to cart full-width solid teal with arrow at the right edge; Apply for salon pricing full-width outlined secondary stacked below; left/right edges identical (desktop both 440px @ x=693; mobile both 350px @ x=20).
+- **Next:** Stephen previews; Search & Discovery complementary pairings still admin; consider versioning `assets/mx-style.css` (P2). Then Phase 2.
+- **Watch:** Never push to or publish the live theme. `mx-style.css` still globally overrides `.button`; the buy-box fix is higher-specificity CSS in the snippet, not a removal of those globals.
+
+## 2026-08-14 — PDP Phase 1 deployed to unpublished duplicate theme
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Pushed Phase 1 `site/theme/` files to unpublished duplicate **Copy of Copy of scg9xy-xt** (`#152547065995`) only — live `#150922428555` untouched, nothing published. Versioned original `snippets/buy-buttons.liquid`, then restyled Add to cart as solid/primary full-width and the wholesale control as an outlined secondary **Apply for salon pricing** link (keeps `.wholesale-product` so the existing Klaviyo form `W5fDYc` still opens; `/pages/groomer-program` is the no-JS fallback). Preview verified on deshedding + deshedding conditioner, `/en-us/` and `/en-ca/`: at-a-glance + market shipping/currency, sticky ATC markup, no legacy Features & Benefits accordion, tokens substituting, 6 JSON-LD blocks parse.
+- **Next:** Stephen previews; Search & Discovery complementary pairings still need admin (bundle block empty until then); then Phase 2 (v4 descriptions, FAQ dedupe, competitor price refresh). Sulfate: wait on corrected INCI lists before reinstating the claim.
+- **Watch:** Never push to or publish the live theme. Nav still has a “Wholesale Pricing” menu label (out of scope). Admin blockers remain (inventory, inverted compare-at, FUR-011 404). `SHOPIFY_CLI_THEME_TOKEN` did not inject into this VM (public-repo secret skip); session used Theme Access against the duplicate only.
+
+## 2026-08-14 — PDP Phase 1: buy-box + at-a-glance + accordion polish (repo-side)
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #5 (continued)
+- **Done:** Assessed external PDP design review and filed `docs/knowledge/analyses/2026-08-14-pdp-phase1-buybox.md` with Stephen's five decisions (canonical shipping CA 2–5 / US 3–5; FUR20 manual entry; claims substantiated via 60+ groomer testing; sulfate claim held; review app pending). Built Phase 1 in `site/theme/`: buy-box reorder + quantity restore, new `product-at-a-glance` and `sticky-atc` snippets, duplicate H2/static rating/hidden legacy accordion removed, testimonial compacted, complementary bundle block, accordion focus-visible + reduced-motion fixes. `products.md` shipping updated.
+- **Next:** Token-equipped agent run pushes the six changed theme files to duplicate theme #152547065995, pulls + restyles `snippets/buy-buttons.liquid` (wholesale → "Apply for salon pricing" secondary), sets Search & Discovery complementary pairings; Stephen previews, then Phase 2 (v4 descriptions, FAQ dedupe, competitor price refresh). **Sulfate resolution (same day, later):** R&D confirmed formulas ARE sulfate-free — published INCI lists are the error; awaiting corrected lists from R&D, then metafield push → claim reinstatement → AGENTS.md guardrail update (sequence in products.md issue 9).
+- **Watch:** This VM predates the `SHOPIFY_CLI_THEME_TOKEN` secret so nothing was pushed to Shopify; admin blockers remain (inventory, inverted compare-at, FUR-011 404). Never push to the published theme. Do not reinstate sulfate-free claims before the INCI metafields are corrected. **`assets/mx-style.css` (unversioned) carries aggressive global overrides** — `.button` forced solid teal + arrow padding, submit `width:auto`, Dawn `:after` borders disabled — it caused the buy-button misalignment (fixed in `buy-buttons.liquid` with higher-specificity rules, verified via CSS injection on the rendered preview; needs one theme push). Candidate for pulling + versioning in a later session. Related-products renders 0 items on the preview (inventory/recommendations) — recheck after inventory fix.
+
 ## 2026-08-05 — session log convention added
 
 - **Who:** Stephen + Cursor

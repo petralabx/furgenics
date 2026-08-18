@@ -1,0 +1,76 @@
+{%- comment -%}
+  Furgenics — product-at-a-glance snippet (v2, 2026-08-14 chip-strip restyle)
+  Compact spec strip for the PDP buy box: the facts a groomer needs before
+  opening anything, presented as a 2x2 chip grid (Dandylion-style trust row,
+  tuned for a professional buyer) + a one-line coat-fit note.
+
+  Chips: dilution/yield · computed $/working gallon · size · origin+shipping+refund.
+
+  Usage (custom_liquid block in templates/product.json, after `price`):
+    {% render 'product-at-a-glance', product: product %}
+
+  Data sources — nothing that can silently drift:
+  - Dilution: [[VALUE:dilution-ratio]] via snippets/token-substitution.liquid.
+  - Cost per working gallon: computed at render time from the live variant
+    price ÷ 17 — always current, per-market currency.
+  - KEEP "17" (divisor AND the chip label) in sync with the
+    working-gallons-per-bottle VALUE in token-substitution.liquid.
+  - Coat fit: custom.coat_type metafield (coat-types clause, before "Dog types:").
+  - Shipping: canonical per Stephen 2026-08-14 — CA 2–5 / US 3–5 business
+    days (see products.md). Market-aware via localization.country.
+  - Returns: 30-day refund-only policy (products.md).
+
+  Gate: renders only when the description carries the dilution VALUE token —
+  i.e. gallon concentrates. Samples and legacy products render nothing.
+
+  Deferred (needs per-SKU metafields documented in products.md first):
+  contact time chip.
+{%- endcomment -%}
+
+{%- if product.description contains '[[VALUE:dilution-ratio]]' -%}
+  {%- assign _working_gallons = 17.0 -%}
+  {%- assign _per_gallon = product.selected_or_first_available_variant.price | divided_by: _working_gallons | round -%}
+  {%- assign _coat_fit = product.metafields.custom.coat_type.value | split: 'Dog types:' | first | strip -%}
+
+  <div class="furgenics-at-a-glance">
+    <ul class="furgenics-aag-grid">
+      <li class="furgenics-aag-chip">
+        <span class="furgenics-aag-value">{% render 'token-substitution', text: '[[VALUE:dilution-ratio]]' %}</span>
+        <span class="furgenics-aag-label">up to 17 working gallons per bottle</span>
+      </li>
+      <li class="furgenics-aag-chip">
+        <span class="furgenics-aag-value">&asymp; {{ _per_gallon | money }}</span>
+        <span class="furgenics-aag-label">per working gallon at pro dilution</span>
+      </li>
+      <li class="furgenics-aag-chip">
+        <span class="furgenics-aag-value">1 gallon / 128 oz</span>
+        <span class="furgenics-aag-label">professional size</span>
+      </li>
+      <li class="furgenics-aag-chip">
+        <span class="furgenics-aag-value">Made in Canada</span>
+        <span class="furgenics-aag-label">
+          {%- if localization.country.iso_code == 'US' -%}
+            ships in 3&ndash;5 days &middot; 30-day refund
+          {%- else -%}
+            ships in 2&ndash;5 days &middot; 30-day refund
+          {%- endif -%}
+        </span>
+      </li>
+    </ul>
+    {%- if _coat_fit != blank -%}
+      <p class="furgenics-aag-fit"><strong>Best for:</strong> {{ _coat_fit }}</p>
+    {%- endif -%}
+  </div>
+
+  <style>
+    .furgenics-at-a-glance { margin: 12px 0 4px; }
+    .furgenics-aag-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .furgenics-aag-chip { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border: 1px solid #e5e5e5; border-radius: 8px; }
+    .furgenics-aag-value { font-weight: 700; line-height: 1.25; }
+    .furgenics-aag-label { font-size: 0.8em; color: #555; line-height: 1.35; }
+    .furgenics-aag-fit { margin: 8px 0 0; font-size: 0.9em; color: #555; line-height: 1.45; }
+    @media screen and (max-width: 400px) {
+      .furgenics-aag-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+{%- endif -%}

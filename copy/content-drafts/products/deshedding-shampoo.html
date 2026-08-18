@@ -2,17 +2,26 @@
   Furgenics — PDP rewrite (token-driven + universal both-markets)
   Target product: deshedding-shampoo (FUR-013)
   GID: gid://shopify/Product/8104408088715
-  Drafted 2026-05-21. Second of 9 PDP token-conversion rewrites.
+  Drafted 2026-05-21 (v2). v3 2026-07-28 (accordion reorder). v4 2026-08-14:
+  four-section accordion template (Phase 2) — sections consolidated to
+  best-for / dilution-protocol / ingredients-safety / shipping; the
+  "How it compares on cost" section is auto-extracted by
+  site/theme/snippets/description-accordion.liquid and rendered as a compact
+  block BELOW the accordion; the INCI metafield is auto-appended INTO the
+  "Ingredients & safety" row. Chemistry copy folded into Ingredients &
+  safety (no copy deleted). Shipping windows per canonical decision
+  2026-08-14: CA 2-5 / US 3-5 business days. Sulfate-free claim still held
+  until custom.full_ingredients is corrected (R&D confirmed formulas ARE
+  sulfate-free; reinstate claim after the metafield fix ships).
+  See docs/knowledge/analyses/2026-08-14-pdp-phase2-build.md.
 
   Token coverage:
   - PRICE: deshedding-conditioner (matching pair, used 2x); hypoallergenic-shampoo-gallon
-    (sensitive-skin fallback). NOT the product's own handle — that renders in the
-    PDP buy box separately.
+    (sensitive-skin fallback). NOT the product's own handle.
   - VALUE: dilution-ratio, working-gallons-per-bottle, per-working-gallon-cost-narrative,
     made-in-canada
-  - COMPETITOR: furminator-deshedding (mindshare anchor), coat-handler-anti-shed
-    (direct salon-pro head-to-head). Bark2Basics De-Shedding mentioned qualitatively
-    without a token, per prompt's "1–2 competitor tokens" guidance.
+  - COMPETITOR: furminator-deshedding, coat-handler-anti-shed. Bark2Basics
+    qualitative (no token) per the 1-2 competitor-token guideline.
   - DISCOUNT: at the close
 
   SEO fields (pushed separately via the `seo` field on update-product):
@@ -24,47 +33,48 @@
 
 <p>Furgenics Deshedding Shampoo is a [[VALUE:dilution-ratio]] built for heavy double-coated breeds — Huskies, German Shepherds, Goldens, Labs, Akitas, Malamutes, Samoyeds, and the rest of the salon-volume undercoat shedders. Hydrolyzed keratin and safflower oil penetrate the undercoat, release dead hair on the rinse, and condition the topcoat. One gallon yields [[VALUE:working-gallons-per-bottle]] — [[VALUE:per-working-gallon-cost-narrative]].</p>
 
-<h2>Why hydrolyzed keratin and safflower oil work for deshedding</h2>
+<h2>Best for and expected results</h2>
 
-<p>Hydrolyzed keratin is the central chemistry. The protein fragments are small enough to penetrate the hair cuticle and bond with damaged sections — which both reinforces healthy hair and helps loose undercoat detach cleanly during the rinse. A deshedding shampoo without hydrolyzed protein is essentially a regular shampoo with a different label; the protein is what does the work.</p>
+<ul>
+  <li><strong>Coat types:</strong> double-coated, thick, undercoat-heavy, heavy seasonal shedders — also heavy-shedding single coats, where the undercoat-release chemistry still helps.</li>
+  <li><strong>Breeds:</strong> Siberian Huskies, German Shepherds, Golden Retrievers, Labrador Retrievers, Australian Shepherds, Bernese Mountain Dogs, Akitas, Malamutes, Samoyeds, Chow Chows, Newfoundlands, Border Collies.</li>
+  <li><strong>What it does:</strong> loosens packed undercoat during the bath so dead hair releases on the rinse and blow-out, and conditions the topcoat without weighing it down.</li>
+  <li><strong>Salon fit:</strong> daily driver for salons seeing 5+ heavy double-coat dogs per week; seasonal-blowout protocol during spring and late-summer coat blows; rebooked deshed appointments and multi-step deshedding services. For Husky vs GSD protocol notes and the complete workflow, see our <a href="/pages/deshedding-shampoo-huskies-german-shepherds">deshedding protocol guide</a>.</li>
+</ul>
 
-<p>Safflower oil pairs in as the conditioning agent. Light enough to condition the topcoat without weighing down the undercoat. Heavier oils like coconut or shea work well on curly coats but produce drag on a Husky's plush undercoat or a GSD's coarse topcoat — safflower stays out of the way.</p>
-
-<p>The base is sulfate-free, paraben-free, pH-balanced for dog skin, and tearless. Double coats need their natural oils to stay weather-resistant; over-stripping with sulfates produces a soft, greasy-feeling coat that owners notice immediately. The base cleans aggressively enough for production salon use without strip-cleaning the protective layer.</p>
-
-<h2>When to use Furgenics Deshedding Shampoo</h2>
-
-<p><strong>Coat types and breeds:</strong> double-coated, thick, undercoat-heavy, heavy seasonal shedders. The standard cast: Siberian Huskies, German Shepherds, Golden Retrievers, Labrador Retrievers, Australian Shepherds, Bernese Mountain Dogs, Akitas, Malamutes, Samoyeds, Chow Chows, Newfoundlands, Border Collies. Also appropriate for heavy-shedding single-coated breeds where the undercoat-release chemistry helps even without a true double coat to penetrate.</p>
-
-<p><strong>Salon scenarios:</strong> daily driver for any salon seeing 5+ heavy double-coat dogs per week; seasonal-blowout protocol during spring and late-summer coat-blow periods; rebooked deshed appointments where owners are paying specifically for undercoat removal; multi-step deshedding services with second-pass shampoo and HV-dry finish. For full Husky vs GSD protocol notes and the complete deshed workflow, see our <a href="/pages/deshedding-shampoo-huskies-german-shepherds">deshedding protocol guide</a>.</p>
-
-<h2>How it compares to alternatives</h2>
-
-<p><strong>FURminator deShedding Ultra Premium Shampoo</strong> — [[COMPETITOR:furminator-deshedding]]. The mindshare leader for deshedding. Most retail-channel customers recognize the brand. Honest read: on a per-dog basis FURminator works fine, but on per-gallon economics it's materially above Furgenics in both markets for a comparable undercoat-release outcome. Production salons running FURminator out of retail bottles burn through inventory fast.</p>
-
-<p><strong>Coat Handler Anti-Shed Shampoo</strong> — [[COMPETITOR:coat-handler-anti-shed]]. 15:1 concentrate with long salon history; the closest direct head-to-head on chemistry and dilution math. Comparable undercoat-release performance. Where Furgenics differentiates: direct-to-salon pricing in both markets (no Amazon-channel margin), full INCI transparency, and the matching <a href="/products/deshedding-conditioner">Furgenics Deshedding Conditioner</a> ([[PRICE:deshedding-conditioner]]) for the complete two-step deshedding system.</p>
-
-<p>Bark2Basics De-Shedding is the other Amazon-channel option (32:1 concentrate). The higher dilution stretches further per gallon but requires more precise measurement at the bath table; many salons find [[VALUE:dilution-ratio]] a more practical working ratio.</p>
-
-<p>For double-coated dogs with diagnosed skin sensitivity that can't tolerate the more active deshedding chemistry, fall back to <a href="/products/hypoallergenic-shampoo-gallon">Furgenics Hypoallergenic Shampoo</a> ([[PRICE:hypoallergenic-shampoo-gallon]]) instead.</p>
-
-<h2>How to dilute and use on a heavy double coat</h2>
+<h2>Dilution and professional protocol</h2>
 
 <ol>
   <li><strong>Pre-blow with a high-velocity dryer for 5&ndash;8 minutes before water.</strong> Most loose undercoat comes out dry; the shampoo handles the next layer that's still attached. Skipping the pre-blow doubles the bath time.</li>
   <li><strong>Saturate the coat completely with warm water.</strong> On a Husky, expect 3&ndash;5 minutes to fully wet down to the skin.</li>
-  <li><strong>Dilute at [[VALUE:dilution-ratio]]</strong> in a mixing bottle. For a heavy seasonal blowout, a stronger 12:1 first pass releases more undercoat; follow with the standard ratio on the second pass.</li>
+  <li><strong>Dilute at [[VALUE:dilution-ratio]]</strong> in a mixing bottle — or use ready-to-use for heavy soiling. For a heavy seasonal blowout, a stronger 12:1 first pass releases more undercoat; follow with the standard ratio on the second pass.</li>
   <li><strong>Massage 4&ndash;5 minutes</strong>, longer than a routine wash. Hydrolyzed keratin needs contact time to bond with the hair shaft and release the loose undercoat.</li>
   <li><strong>Rinse 5&ndash;7 minutes minimum</strong> — water should run completely clear. Retained shampoo plus dead undercoat mats during the blow-out.</li>
   <li><strong>Follow with <a href="/products/deshedding-conditioner">Furgenics Deshedding Conditioner</a></strong> ([[PRICE:deshedding-conditioner]]) at [[VALUE:dilution-ratio]], leave 2&ndash;3 minutes, rinse fully.</li>
   <li><strong>HV dry while continuing to release undercoat.</strong> Work the nozzle close to skin, against the lay of the coat. Expect another 1&ndash;2 cups of dead undercoat on a heavy seasonal blowout.</li>
 </ol>
 
-<h2>Shipping, sourcing, and the Groomer Program</h2>
+<h2>Ingredients and safety</h2>
 
-<p>Furgenics Deshedding Shampoo is [[VALUE:made-in-canada]] and ships domestically in both markets — Canadian orders from Vaughan, Ontario, US orders from a US fulfillment partner — in 3&ndash;5 business days. No cross-border duty or currency complications either way.</p>
+<p><strong>Hydrolyzed keratin</strong> is the central chemistry. The protein fragments are small enough to penetrate the hair cuticle and bond with damaged sections — which both reinforces healthy hair and helps loose undercoat detach cleanly during the rinse. A deshedding shampoo without hydrolyzed protein is essentially a regular shampoo with a different label; the protein is what does the work.</p>
 
-<p>To test before committing to a gallon, the <a href="/pages/groomer-program">Furgenics Groomer Program</a> ships free 8oz samples to verified Canadian groomers. US groomers get a first-order gallon discount through the same program instead, since US fulfillment doesn't ship non-revenue samples. Apply once and the verification covers any SKU.</p>
+<p><strong>Safflower oil</strong> pairs in as the conditioning agent. Light enough to condition the topcoat without weighing down the undercoat. Heavier oils like coconut or shea work well on curly coats but produce drag on a Husky's plush undercoat or a GSD's coarse topcoat — safflower stays out of the way.</p>
+
+<p><strong>Safety:</strong> the base is paraben-free, pH-balanced for dog skin, and tearless. Double coats need their natural oils to stay weather-resistant; over-stripping produces a soft, greasy-feeling coat that owners notice immediately. The base cleans aggressively enough for production salon use without strip-cleaning the protective layer. Suitable for puppies and senior dogs; as with any new shampoo, patch-test a small area first. Formulated and tested for dogs — not recommended for cats.</p>
+
+<h2>How it compares on cost</h2>
+
+<p><strong>FURminator deShedding Ultra Premium</strong> — [[COMPETITOR:furminator-deshedding]]. The retail mindshare leader; works fine per-dog, but on per-gallon economics it sits materially above Furgenics in both markets for a comparable undercoat-release outcome.</p>
+
+<p><strong>Coat Handler Anti-Shed</strong> — [[COMPETITOR:coat-handler-anti-shed]]. 15:1 concentrate, the closest head-to-head on chemistry and dilution math. Furgenics differentiates on direct-to-salon pricing, full INCI transparency, and the matching <a href="/products/deshedding-conditioner">Deshedding Conditioner</a> ([[PRICE:deshedding-conditioner]]) for the two-step system. Bark2Basics De-Shedding (32:1) stretches further per gallon but demands more precise measuring at the bath table; most salons find [[VALUE:dilution-ratio]] the more practical working ratio.</p>
+
+<p>For double-coated dogs with sensitive skin that can't tolerate the more active deshedding chemistry, use <a href="/products/hypoallergenic-shampoo-gallon">Furgenics Hypoallergenic Shampoo</a> ([[PRICE:hypoallergenic-shampoo-gallon]]) instead.</p>
+
+<h2>Shipping, samples, and the Groomer Program</h2>
+
+<p>Furgenics Deshedding Shampoo is [[VALUE:made-in-canada]] and ships domestically in both markets — Canadian orders from Vaughan, Ontario in 2&ndash;5 business days; US orders from a US fulfillment partner in 3&ndash;5 business days. No cross-border duty or currency complications either way. Gallons carry a 30-day refund policy — no return shipping required.</p>
+
+<p>To test before committing to a gallon, the <a href="/pages/groomer-program">Furgenics Groomer Program</a> ships free 8oz samples to verified Canadian groomers. US groomers get a first-order gallon discount through the same program instead. Apply once and the verification covers any SKU.</p>
 
 [[DISCOUNT]]
 
