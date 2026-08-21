@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-21 — Re-pin compliance drift GEN_REPO to petralabx/PLX_MC
+
+- **Who:** Cursor cloud agent (TASK-1167 remaining consumer)
+- **PR:** #10
+- **Done:** Re-scaffolded `.github/workflows/plx-mc-compliance.yml` and `compliance-gate-drift.yml` `--workflows-only` from `petralabx/PLX_MC@5db108c746fad912f4ab34997caa1c255f5b4d8c`. Drift `GEN_REPO` is now `petralabx/PLX_MC` (was `taylorvalton/PLX_MC`). Live `COMPLIANCE_MODE` left soft. No product files.
+- **Next:** Merge this PR; confirm drift CI green against the new pin.
+- **Watch:** Do not flip live `COMPLIANCE_MODE` (registry=hard, live=soft). Do not hand-edit generated YAML.
+
 ## 2026-08-18 — GSC CTR brief corrected; wash-economics tokens
 
 - **Who:** Stephen + Cursor cloud agent
