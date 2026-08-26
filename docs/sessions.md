@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-26 — Catch PR #9 up to main after #10
+
+- **Who:** Cursor cloud agent (Stephen)
+- **PR:** #9
+- **Done:** Merged `main` (#10 compliance GEN_REPO pin) into this branch. Sole conflict was `docs/sessions.md`; kept #10's 2026-08-21 entry and #9's Aug 18 EOD / homepage / live-push entries. Closed superseded skills PRs #2 and #3 (already landed in #6).
+- **Next:** Merge this PR so `main` matches live theme `#152547065995`. Then paste Goldendoodle + deshedding v3 HTML; INCI metafields (issue 9); FUR-013 v4 MCP. Do not publish FUR-011/020/050.
+- **Watch:** PLX-MC MCP and `MC_MCP_API_KEY` were unavailable this session — no checkout stamp invented. Live push always `--allow-live --nodelete --only`. Do not Reset US pricing. `main-page-pillar.liquid` is not in this repo.
+
 ## 2026-08-21 — Re-pin compliance drift GEN_REPO to petralabx/PLX_MC
 
 - **Who:** Cursor cloud agent (TASK-1167 remaining consumer)
@@ -40,6 +48,30 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 - **Done:** Re-scaffolded `.github/workflows/plx-mc-compliance.yml` and `compliance-gate-drift.yml` `--workflows-only` from `petralabx/PLX_MC@5db108c746fad912f4ab34997caa1c255f5b4d8c`. Drift `GEN_REPO` is now `petralabx/PLX_MC` (was `taylorvalton/PLX_MC`). Live `COMPLIANCE_MODE` left soft. No product files.
 - **Next:** Merge this PR; confirm drift CI green against the new pin.
 - **Watch:** Do not flip live `COMPLIANCE_MODE` (registry=hard, live=soft). Do not hand-edit generated YAML.
+
+## 2026-08-18 — EOD handoff (start here)
+
+- **Who:** Stephen + Cursor cloud agent
+- **PR:** #9 (merge this so `main` matches live). #8 already merged.
+- **Done:** Full day: wash-economics tokens on `main` (#8); five snippets + dilution band + hypoallergenic hero **live** on theme `#152547065995`. Stephen kept oatmeal tile, FUR-001 SHOP NOW, sulfate sentence, pet-owner hero, Bella/Charlie. Write-up: `docs/knowledge/analyses/2026-08-18-eod-handoff.md`.
+- **Next:** (1) Merge #9. (2) Paste Goldendoodle + deshedding v3 HTML in Shopify Admin. (3) INCI metafields (issue 9) before spreading sulfate-free. (4) FUR-013 v4 body + faqs v2 via MCP. Do not publish FUR-011/020/050 yet.
+- **Watch:** Ignore Next bullets in the two older 2026-08-18 entries below — 512 / ultra-gentle / “remove oatmeal” are done or reversed. Live push always `--allow-live --nodelete --only`. Do not Reset US pricing. `main-page-pillar.liquid` is not in this repo.
+
+## 2026-08-18 — Homepage dilution math + hypoallergenic hero
+
+- **Who:** Cursor cloud agent (Stephen)
+- **PR:** #9
+- **Done:** Wired live `fg-dilution-callout` to `wash-economics` (16:1; up to small-dog washes; medium $/wash from deshedding-shampoo). Hero slide 3 now links `hypoallergenic-shampoo-gallon`. Kept oatmeal tile, FUR-001 SHOP NOW, existing sulfate sentence, pet-owner hero, Bella/Charlie. Versioned `sections/fg-dilution-callout.liquid` + `templates/index.json`.
+- **Next:** Correct INCI metafields (issue 9) so the kept sulfate sentence matches published lists. Paste guide HTML in Shopify. Do not activate FUR-020/050/011 until restock.
+- **Watch:** `--nodelete` on partial pushes. Dilution numbers are computed in section liquid — theme-editor 512/$0.18 fields are ignored. Do not Reset US pricing.
+
+## 2026-08-18 — Wash-economics snippets pushed to live theme #152547065995
+
+- **Who:** Cursor cloud agent (Stephen)
+- **PR:** #9
+- **Done:** Confirmed `[live]` is **Copy of Copy of scg9xy-xt** `#152547065995` (old live `#150922428555` is unpublished). `shopify theme push --allow-live --nodelete --only` of `snippets/wash-economics.liquid`, `homepage-wash-stats.liquid`, `token-substitution.liquid`, `value-math.liquid`, `product-at-a-glance.liquid`. Pull-back diff: all 5 match repo. Live HTML `Shopify.theme.id` is 152547065995.
+- **Next:** Homepage JSON is still unversioned and still shows **$0.18 / Up to 512 washes**. Pull homepage and replace that block with `{% render 'homepage-wash-stats' %}`; remove FUR-011 tile and ultra-gentle hero. Paste guide HTML in Shopify (no MCP on this VM). Sulfate copy stays off until INCI metafields are fixed.
+- **Watch:** `--nodelete` is mandatory on partial pushes. Do not push `config/` or a full theme (would clobber live settings / homepage JSON). `main-page-pillar.liquid` is not in this repo. Do not activate FUR-020/050/011. Do not Reset US pricing.
 
 ## 2026-08-18 — GSC CTR brief corrected; wash-economics tokens
 
