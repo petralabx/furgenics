@@ -33,6 +33,22 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-08-26 — Catch PR #9 up to main after #10
+
+- **Who:** Cursor cloud agent (Stephen)
+- **PR:** #9
+- **Done:** Merged `main` (#10 compliance GEN_REPO pin) into this branch. Sole conflict was `docs/sessions.md`; kept #10's 2026-08-21 entry and #9's Aug 18 EOD / homepage / live-push entries. Closed superseded skills PRs #2 and #3 (already landed in #6).
+- **Next:** Merge this PR so `main` matches live theme `#152547065995`. Then paste Goldendoodle + deshedding v3 HTML; INCI metafields (issue 9); FUR-013 v4 MCP. Do not publish FUR-011/020/050.
+- **Watch:** PLX-MC MCP and `MC_MCP_API_KEY` were unavailable this session — no checkout stamp invented. Live push always `--allow-live --nodelete --only`. Do not Reset US pricing. `main-page-pillar.liquid` is not in this repo.
+
+## 2026-08-21 — Re-pin compliance drift GEN_REPO to petralabx/PLX_MC
+
+- **Who:** Cursor cloud agent (TASK-1167 remaining consumer)
+- **PR:** #10
+- **Done:** Re-scaffolded `.github/workflows/plx-mc-compliance.yml` and `compliance-gate-drift.yml` `--workflows-only` from `petralabx/PLX_MC@5db108c746fad912f4ab34997caa1c255f5b4d8c`. Drift `GEN_REPO` is now `petralabx/PLX_MC` (was `taylorvalton/PLX_MC`). Live `COMPLIANCE_MODE` left soft. No product files.
+- **Next:** Merge this PR; confirm drift CI green against the new pin.
+- **Watch:** Do not flip live `COMPLIANCE_MODE` (registry=hard, live=soft). Do not hand-edit generated YAML.
+
 ## 2026-08-18 — EOD handoff (start here)
 
 - **Who:** Stephen + Cursor cloud agent
