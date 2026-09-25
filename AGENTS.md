@@ -2,6 +2,18 @@
 
 Entry point for any agent or collaborator working in this repo. Read this before generating anything.
 
+## Mission Control handshake (Claude Code and every agent)
+
+Before first edit or any PR_CREATE on `petralabx/furgenics`:
+
+1. **Search** projects, buckets and TASK-* first (`mc_search_tasks` / `mc_suggest_work`: branch, title, runId). Reuse a matching open TASK.
+2. **Create only on a real miss**: `mc_create_task` in the registry default bucket (`BKT-INFRA`, from PLX_MC `config/tracked-repos-registry.json`; do not hardcode another prod bucket). Create a project/bucket only if it is truly missing. Never create a TASK to escape incomplete evidence on a live checkout.
+3. **Checkout**: `mc_checkout_task { taskId, repo: "petralabx/furgenics" }` on PLX-MC-Hub. Confirm `taskId` matches and `actor.repo` is `petralabx/furgenics`. Copy `prBodyLine` exactly. HTTP fallback when Hub MCP tools are missing:
+   `COMPLIANCE_CAPTURE=1 MC_REPO=petralabx/furgenics MC_TASK_ID=TASK-N node scripts/compliance-checkout.mjs` (reads `MC_BASE_URL`, `MC_MCP_API_KEY`, `MC_OPERATOR_EMAIL`, `MC_ACCOUNTABLE` from the environment; never echo the key).
+4. **Stamp at PR open**: put the `MC-Checkout: dsp_…` line in the body at `gh pr create` time (the compliance gate reads the body on opened/synchronize/reopened only, not on edits). Never invent a `dsp_*`, never write `MC-Checkout: pending`, never `--no-verify`, never an empty commit or push to re-trigger CI. If the body must change after open, ask CIP to close/reopen.
+5. **Last commit → `mc_complete_task`** (summary + verificationCommands + rollback) **→ freeze**. CIP lands; agents never merge. Next slice = new branch from the integration branch.
+6. If Hub MCP and the HTTP fallback both fail: stop; CoS/CIP paste `prBodyLine`.
+
 ## What this repo is
 
 Versioned brand home for **Furgenics** (furgenics.com) — professional dog grooming shampoos for salons and mobile groomers. Primary market CA, secondary US. Live surfaces: **Shopify storefront** (`scg9xy-xt.myshopify.com`) and Amazon (planned/expanding).
@@ -31,7 +43,7 @@ Versioned brand home for **Furgenics** (furgenics.com) — professional dog groo
 3. Competitor comparisons (e.g. vs Bio-Groom) follow the style guide's pricing/comparison rules — factual, token-driven, no disparagement.
 4. **API keys and secrets never enter this repo** — env var names in `data/config.json` are references only; values live in the steward's environment / GitHub Actions Secrets.
 5. Do not invent Shopify theme/metafield structures — use `site/theme/` and the schema/token conventions in the wiki; fetch live theme state when in doubt.
-6. Import MC task discipline: agent PRs stamp `MC-Checkout: <task-id>` when driven from an MC task (repo is currently soft-gated).
+6. Import MC task discipline: every agent PR carries the Hub-minted `MC-Checkout: dsp_…` line (see Mission Control handshake above). This repo is hard-gated (PLX_MC tracked-repos registry).
 
 ## Workflow discipline
 
