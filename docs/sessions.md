@@ -36,7 +36,7 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 ## 2026-10-02 — FG email popup section (repo; live theme push blocked)
 
 - **Who:** Cursor cloud agent (Stephen)
-- **PR:** pending (this branch)
+- **PR:** #12
 - **Done:** Added `site/theme/sections/fg-email-popup.liquid` — native customer-form capture, code from Theme settings Active Discount Campaign (FUR20 / [percent] / [max]), no WELCOME20, no “we emailed the code” claim. Popup is not inserted into header/footer JSON (unversioned); add via Theme editor after the section file is on the theme.
 - **Next:** (1) Merge PR. (2) `shopify theme push --allow-live --nodelete --only sections/fg-email-popup.liquid` once `SHOPIFY_CLI_THEME_TOKEN` is in the environment. (3) Customize → Header or Footer → Add section → FG Email Popup. (4) Confirm Admin discount FUR20 is still first-order / max 4 gallons / one use.
 - **Watch:** This VM has no Theme Access token and no Shopify CLI — live push could not run here. Never full-theme push / never push `config/`. Do not create a second popup-only code. Native form does not email the code (Flow if you want inbox delivery). Hide-after-order uses `customer.orders_count > 0`.
