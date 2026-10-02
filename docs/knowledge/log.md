@@ -8,6 +8,12 @@
 
 <!-- AUTO-APPEND:timeline:START -->
 
+## [2026-10-02T19:05:00Z] ship | FG email popup live on theme #152547065995
+
+- `shopify theme push --allow-live --nodelete --only` of `sections/fg-email-popup.liquid` plus header-group insert (`fg-email-popup` after `header`) on live **Copy of Copy of scg9xy-xt** (`#152547065995`).
+- Verify: pull-back liquid matches repo; live `furgenics.com/en-ca` and `/en-us` HTML contain `fg-popup`, FUR20 from theme settings, first-order copy, `contact[accepts_marketing]`. `Shopify.theme.id` = 152547065995.
+- Header-group JSON not versioned in this repo. Do not full-theme push. Native customer form does not email the code.
+
 ## [2026-08-18T17:50:00Z] query | EOD handoff filed for next session
 
 - Filed `analyses/2026-08-18-eod-handoff.md`. Morning GSC brief + earlier session Next bullets still mention 512 / ultra-gentle as open — those are shipped. Pickup: merge PR #9, paste guide HTML, INCI issue 9, FUR-013 v4 MCP.

@@ -33,6 +33,30 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-10-02 — FG email popup wider on mobile
+
+- **Who:** Cursor cloud agent (Stephen)
+- **PR:** #12
+- **Done:** Mobile sheet now uses Dawn’s 749.98px breakpoint (was 480px) so phones/landscape get a full-width bottom sheet instead of the 440px centered card.
+- **Next:** Merge #12. Optional Flow to email FUR20 on `popup-20off`.
+- **Watch:** Live push `--allow-live --nodelete --only sections/fg-email-popup.liquid`. Header-group JSON still unversioned.
+
+## 2026-10-02 — FG email popup live on theme #152547065995
+
+- **Who:** Cursor cloud agent (Stephen)
+- **PR:** #12
+- **Done:** `shopify theme push --allow-live --nodelete --only` of `sections/fg-email-popup.liquid` to live **Copy of Copy of scg9xy-xt** `#152547065995`. Inserted the section once in live `sections/header-group.json` (not versioned in this repo). Pull-back liquid matches repo. Live HTML on `/en-ca/` and `/en-us/` includes `fg-popup`, code **FUR20**, heading “Take 20% off your first order.”, `accepts_marketing`, CTA `/collections/active-gallon-pet-grooming-products`. `Shopify.theme.id` = 152547065995.
+- **Next:** Merge #12. Optional Shopify Flow to email FUR20 on tag `popup-20off`. Confirm Admin discount FUR20 still first-order / max 4 gallons / one use. Rotate the Theme Access password that was pasted into chat (used as env only; not committed).
+- **Watch:** Header-group JSON is live-only — do not full-theme push / do not push `config/`. Popup delay 8s + localStorage `fg_popup_v1:FUR20`. Existing customers with `orders_count > 0` do not see it. Native form does not email the code.
+
+## 2026-10-02 — FG email popup section (repo; live theme push blocked)
+
+- **Who:** Cursor cloud agent (Stephen)
+- **PR:** #12
+- **Done:** Added `site/theme/sections/fg-email-popup.liquid` — native customer-form capture, code from Theme settings Active Discount Campaign (FUR20 / [percent] / [max]), no WELCOME20, no “we emailed the code” claim. Popup is not inserted into header/footer JSON (unversioned); add via Theme editor after the section file is on the theme.
+- **Next:** (1) Merge PR. (2) `shopify theme push --allow-live --nodelete --only sections/fg-email-popup.liquid` once `SHOPIFY_CLI_THEME_TOKEN` is in the environment. (3) Customize → Header or Footer → Add section → FG Email Popup. (4) Confirm Admin discount FUR20 is still first-order / max 4 gallons / one use.
+- **Watch:** This VM has no Theme Access token and no Shopify CLI — live push could not run here. Never full-theme push / never push `config/`. Do not create a second popup-only code. Native form does not email the code (Flow if you want inbox delivery). Hide-after-order uses `customer.orders_count > 0`.
+
 ## 2026-08-26 — Catch PR #9 up to main after #10
 
 - **Who:** Cursor cloud agent (Stephen)
