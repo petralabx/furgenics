@@ -125,6 +125,7 @@
 .fg-popup__backdrop { position: absolute; inset: 0; background: rgba(1, 69, 103, 0.55); backdrop-filter: blur(2px); }
 .fg-popup__card {
   position: relative; z-index: 1; width: 100%; max-width: 440px;
+  box-sizing: border-box;
   background: #014567; color: #fff; border-radius: 18px; padding: 36px 32px 28px;
   box-shadow: 0 24px 60px rgba(0,0,0,0.35); overflow: hidden;
   animation: fg-popup-in 0.28s ease-out;
@@ -160,12 +161,21 @@
 }
 .fg-popup__copy { height: 46px; padding: 0 16px; border-radius: 23px; border: 1px solid rgba(185,225,231,0.4); background: transparent; color: #B9E1E7; font-size: 12px; font-weight: 600; cursor: pointer; }
 .fg-popup__copy:hover { background: rgba(185,225,231,0.1); }
-@media (max-width: 480px) {
-  .fg-popup { align-items: flex-end; padding: 0; }
-  .fg-popup__card { border-radius: 18px 18px 0 0; max-width: none; padding: 30px 22px 26px; }
+@media (max-width: 749.98px) {
+  .fg-popup {
+    align-items: flex-end;
+    justify-content: stretch;
+    padding: 0;
+  }
+  .fg-popup__card {
+    width: 100%;
+    max-width: none;
+    border-radius: 20px 20px 0 0;
+    padding: 32px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+  }
   .fg-popup__title { font-size: 24px; }
   .fg-popup__row { flex-direction: column; }
-  .fg-popup__submit { justify-content: center; }
+  .fg-popup__submit, .fg-popup__cta { justify-content: center; width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .fg-popup__card { animation: none; }

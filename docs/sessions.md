@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-10-02 — FG email popup wider on mobile
+
+- **Who:** Cursor cloud agent (Stephen)
+- **PR:** #12
+- **Done:** Mobile sheet now uses Dawn’s 749.98px breakpoint (was 480px) so phones/landscape get a full-width bottom sheet instead of the 440px centered card.
+- **Next:** Merge #12. Optional Flow to email FUR20 on `popup-20off`.
+- **Watch:** Live push `--allow-live --nodelete --only sections/fg-email-popup.liquid`. Header-group JSON still unversioned.
+
 ## 2026-10-02 — FG email popup live on theme #152547065995
 
 - **Who:** Cursor cloud agent (Stephen)
