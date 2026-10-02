@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-10-02 — FG email popup live on theme #152547065995
+
+- **Who:** Cursor cloud agent (Stephen)
+- **PR:** #12
+- **Done:** `shopify theme push --allow-live --nodelete --only` of `sections/fg-email-popup.liquid` to live **Copy of Copy of scg9xy-xt** `#152547065995`. Inserted the section once in live `sections/header-group.json` (not versioned in this repo). Pull-back liquid matches repo. Live HTML on `/en-ca/` and `/en-us/` includes `fg-popup`, code **FUR20**, heading “Take 20% off your first order.”, `accepts_marketing`, CTA `/collections/active-gallon-pet-grooming-products`. `Shopify.theme.id` = 152547065995.
+- **Next:** Merge #12. Optional Shopify Flow to email FUR20 on tag `popup-20off`. Confirm Admin discount FUR20 still first-order / max 4 gallons / one use. Rotate the Theme Access password that was pasted into chat (used as env only; not committed).
+- **Watch:** Header-group JSON is live-only — do not full-theme push / do not push `config/`. Popup delay 8s + localStorage `fg_popup_v1:FUR20`. Existing customers with `orders_count > 0` do not see it. Native form does not email the code.
+
 ## 2026-10-02 — FG email popup section (repo; live theme push blocked)
 
 - **Who:** Cursor cloud agent (Stephen)
