@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-10-06 — Tests for the fleet compliance-pr-verify newest-check pick
+
+- **Who:** Claude Code CLI (Dell, cos@)
+- **PR:** TASK-892 (number set at open)
+- **Done:** Confirmed `scripts/compliance-pr-verify.mjs` on `main` is byte-identical to PLX_MC@64ecc2a (landed with #10). Added `tests/compliance-pr-verify.test.mjs`: the fleet contract tests ported to `node:test`, plus two tests that pin the newest-check jq pick.
+- **Next:** none for this script. Run `node --test tests/compliance-pr-verify.test.mjs` after any re-scaffold from PLX_MC.
+- **Watch:** No CI job runs these tests yet. The jq behavior test skips when `jq` is not on PATH.
+
 ## 2026-08-26 — Catch PR #9 up to main after #10
 
 - **Who:** Cursor cloud agent (Stephen)
