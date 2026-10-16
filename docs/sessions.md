@@ -33,6 +33,14 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 
 ---
 
+## 2026-10-11 — MC routing metadata, routing-only shadow
+
+- **Who:** Claude Code (Dell)
+- **PR:** this PR
+- **Done:** Ran the PLX_MC scaffold `--routing-only`. Added `.github/plx-mc-routing-manifest.json` and `.plx/mc-routing.json`. The workflow from #10 came out unchanged. Added `docs/mc-routing.md`.
+- **Next:** After merge, the operator runs the checks in `docs/mc-routing.md`: OIDC, shadow proposal and audit event, rollback by variable.
+- **Watch:** Gate value is `1`, not `true`. Fuzzy auto-link stays off. Do not hand-edit the generated workflow.
+
 ## 2026-10-06 — Tests for the fleet compliance-pr-verify newest-check pick
 
 - **Who:** Claude Code CLI (Dell, cos@)

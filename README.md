@@ -13,3 +13,5 @@ Brand knowledge wiki: [docs/knowledge/index.md](docs/knowledge/index.md). Produc
 Operational SEO/AEO automation (audits, citation runs, heartbeat) lives in the `plx-aeo-steward` repo — see AGENTS.md for the source-of-truth split.
 
 `docs/design-system/` is maintained separately from brand-ops work — see AGENTS.md.
+
+Mission Control routing metadata (shadow, off by default): see [docs/mc-routing.md](docs/mc-routing.md) for the switch variable, rollback, and operator checks.
