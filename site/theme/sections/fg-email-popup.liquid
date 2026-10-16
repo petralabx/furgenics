@@ -1,0 +1,275 @@
+{%- comment -%}
+  FG Email Popup — first-order email capture.
+
+  - Posts to Shopify's native customer form (no app). Subscriber lands in
+    Customers with tags below and accepts_marketing = true.
+  - Discount code is NOT created here. Uses Theme settings → Active Discount
+    Campaign (live FUR20 / 20% / max 4 gallons) unless a section override is set.
+    Confirm the code exists in Admin → Discounts before enabling.
+  - Native customer form does NOT email the code. Show it on the success state;
+    add a Flow if you also want it in inbox.
+  - Dismissal / success is remembered in localStorage keyed by campaign code.
+  - Add once via the theme editor: Header or Footer group → Add section →
+    FG Email Popup. Pushing this file alone does not insert the section.
+  - Live push: shopify theme push --allow-live --nodelete --only sections/fg-email-popup.liquid
+    Never push config/ or a full theme.
+{%- endcomment -%}
+
+{%- liquid
+  assign code = section.settings.discount_code | strip
+  if code == blank
+    assign code = settings.discount_code | default: 'FUR20'
+  endif
+  assign percent = settings.discount_percent | default: 20
+  assign max_units = settings.discount_max_units | default: 4
+  assign delay_ms = section.settings.delay_seconds | times: 1000
+  assign posted = false
+  if request.params.customer_posted == 'true'
+    assign posted = true
+  endif
+  assign skip_existing = false
+  if customer != blank and customer.orders_count > 0
+    assign skip_existing = true
+  endif
+
+  assign heading = section.settings.heading | replace: '[percent]', percent | replace: '[code]', code
+  assign body = section.settings.body | replace: '[percent]', percent | replace: '[code]', code
+  assign button_label = section.settings.button_label | replace: '[percent]', percent
+  assign fine_print = section.settings.fine_print | replace: '[percent]', percent | replace: '[code]', code | replace: '[max]', max_units
+  assign success_heading = section.settings.success_heading | replace: '[percent]', percent | replace: '[code]', code
+  assign success_body = section.settings.success_body | replace: '[percent]', percent | replace: '[code]', code | replace: '[max]', max_units
+  assign cta_url = section.settings.success_cta_url
+  if cta_url == blank
+    assign cta_url = routes.all_products_collection_url
+  endif
+-%}
+
+{%- if section.settings.enabled and skip_existing == false -%}
+<div
+  class="fg-popup"
+  id="fg-popup-{{ section.id }}"
+  data-delay="{{ delay_ms }}"
+  data-exit-intent="{{ section.settings.exit_intent }}"
+  data-days="{{ section.settings.suppress_days }}"
+  data-posted="{{ posted }}"
+  data-code="{{ code | escape }}"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="fg-popup-title-{{ section.id }}"
+>
+  <div class="fg-popup__backdrop" data-fg-close></div>
+
+  <div class="fg-popup__card">
+    <button type="button" class="fg-popup__close" aria-label="Close" data-fg-close>&times;</button>
+
+    <div class="fg-popup__eyebrow">{{ section.settings.eyebrow }}</div>
+
+    {%- comment -%} ---------- SUCCESS STATE ---------- {%- endcomment -%}
+    <div class="fg-popup__state fg-popup__state--success" {% unless posted %}hidden{% endunless %}>
+      <h2 class="fg-popup__title"{% if posted %} id="fg-popup-title-{{ section.id }}"{% endif %}>{{ success_heading }}</h2>
+      <p class="fg-popup__body">{{ success_body }}</p>
+      <div class="fg-popup__code-row">
+        <code class="fg-popup__code" id="fg-popup-code-{{ section.id }}">{{ code }}</code>
+        <button type="button" class="fg-popup__copy" data-fg-copy="{{ code | escape }}">Copy</button>
+      </div>
+      {% if section.settings.success_cta_label != blank and cta_url != blank %}
+        <a href="{{ cta_url }}" class="fg-popup__cta">{{ section.settings.success_cta_label }} →</a>
+      {% endif %}
+    </div>
+
+    {%- comment -%} ---------- CAPTURE STATE ---------- {%- endcomment -%}
+    <div class="fg-popup__state fg-popup__state--form" {% if posted %}hidden{% endif %}>
+      <h2 class="fg-popup__title"{% unless posted %} id="fg-popup-title-{{ section.id }}"{% endunless %}>{{ heading }}</h2>
+      <p class="fg-popup__body">{{ body }}</p>
+
+      {% capture fg_form_id %}fg-popup-form-{{ section.id }}{% endcapture %}
+      {% form 'customer', id: fg_form_id, class: 'fg-popup__form' %}
+        <input type="hidden" name="contact[tags]" value="{{ section.settings.customer_tags | escape }}">
+        <input type="hidden" name="contact[accepts_marketing]" value="true">
+        <input type="hidden" name="return_to" value="{{ request.path }}?customer_posted=true">
+
+        {% if form.errors %}
+          <div class="fg-popup__error" role="alert">
+            {{ form.errors.translated_fields.email | default: 'Email' | capitalize }} {{ form.errors.messages.email | default: form.errors | join: ', ' }}
+          </div>
+        {% endif %}
+
+        <div class="fg-popup__row">
+          <label class="visually-hidden" for="fg-popup-email-{{ section.id }}">Email</label>
+          <input
+            id="fg-popup-email-{{ section.id }}"
+            type="email"
+            name="contact[email]"
+            class="fg-popup__input"
+            placeholder="{{ section.settings.placeholder | escape }}"
+            value="{% if customer %}{{ customer.email }}{% endif %}"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            required
+          >
+          <button type="submit" class="fg-popup__submit">{{ button_label }}</button>
+        </div>
+      {% endform %}
+
+      <p class="fg-popup__fine">{{ fine_print }}</p>
+      <button type="button" class="fg-popup__dismiss" data-fg-close>{{ section.settings.dismiss_label }}</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.fg-popup { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; font-family: inherit; }
+.fg-popup[hidden] { display: none !important; }
+.fg-popup__backdrop { position: absolute; inset: 0; background: rgba(1, 69, 103, 0.55); backdrop-filter: blur(2px); }
+.fg-popup__card {
+  position: relative; z-index: 1; width: 100%; max-width: 440px;
+  box-sizing: border-box;
+  background: #014567; color: #fff; border-radius: 18px; padding: 36px 32px 28px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35); overflow: hidden;
+  animation: fg-popup-in 0.28s ease-out;
+}
+.fg-popup__card::before { content: ''; position: absolute; width: 260px; height: 260px; border-radius: 50%; background: rgba(185,225,231,0.06); top: -110px; right: -90px; pointer-events: none; }
+@keyframes fg-popup-in { from { opacity: 0; transform: translateY(14px) scale(0.98); } to { opacity: 1; transform: none; } }
+.fg-popup__close { position: absolute; top: 12px; right: 14px; background: none; border: 0; color: #B9E1E7; font-size: 26px; line-height: 1; cursor: pointer; opacity: 0.7; }
+.fg-popup__close:hover { opacity: 1; }
+.fg-popup__eyebrow { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #4ABFB0; margin-bottom: 10px; }
+.fg-popup__title { font-size: 28px; font-weight: 600; line-height: 1.2; margin: 0 0 10px; color: #fff; }
+.fg-popup__body { font-size: 14px; line-height: 1.6; color: #B9E1E7; opacity: 0.9; margin: 0 0 20px; }
+.fg-popup__row { display: flex; gap: 8px; }
+.fg-popup__input {
+  flex: 1; min-width: 0; height: 46px; padding: 0 14px; border-radius: 23px;
+  border: 1px solid rgba(185,225,231,0.3); background: rgba(255,255,255,0.06); color: #fff; font-size: 14px;
+}
+.fg-popup__input::placeholder { color: rgba(185,225,231,0.6); }
+.fg-popup__input:focus { outline: none; border-color: #4ABFB0; background: rgba(255,255,255,0.1); }
+.fg-popup__submit, .fg-popup__cta {
+  height: 46px; padding: 0 20px; border-radius: 23px; border: 0; cursor: pointer;
+  background: #B9E1E7; color: #014567; font-size: 13px; font-weight: 600; letter-spacing: 0.4px;
+  white-space: nowrap; text-decoration: none; display: inline-flex; align-items: center; transition: background 0.15s ease;
+}
+.fg-popup__submit:hover, .fg-popup__cta:hover { background: #a6d6dc; color: #014567; }
+.fg-popup__fine { font-size: 11px; color: #B9E1E7; opacity: 0.6; margin: 14px 0 0; line-height: 1.5; }
+.fg-popup__dismiss { display: block; margin: 14px auto 0; background: none; border: 0; color: #B9E1E7; opacity: 0.6; font-size: 12px; text-decoration: underline; cursor: pointer; }
+.fg-popup__dismiss:hover { opacity: 1; }
+.fg-popup__error { background: rgba(255,120,120,0.15); border: 1px solid rgba(255,120,120,0.4); color: #ffd0d0; font-size: 12px; padding: 8px 12px; border-radius: 8px; margin-bottom: 10px; }
+.fg-popup__code-row { display: flex; gap: 8px; align-items: center; margin: 4px 0 18px; }
+.fg-popup__code {
+  flex: 1; font-size: 20px; font-weight: 700; letter-spacing: 2px; text-align: center;
+  padding: 12px; border-radius: 10px; background: rgba(74,191,176,0.15); border: 1px dashed #4ABFB0; color: #4ABFB0;
+}
+.fg-popup__copy { height: 46px; padding: 0 16px; border-radius: 23px; border: 1px solid rgba(185,225,231,0.4); background: transparent; color: #B9E1E7; font-size: 12px; font-weight: 600; cursor: pointer; }
+.fg-popup__copy:hover { background: rgba(185,225,231,0.1); }
+@media (max-width: 749.98px) {
+  .fg-popup {
+    align-items: flex-end;
+    justify-content: stretch;
+    padding: 0;
+  }
+  .fg-popup__card {
+    width: 100%;
+    max-width: none;
+    border-radius: 20px 20px 0 0;
+    padding: 32px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+  }
+  .fg-popup__title { font-size: 24px; }
+  .fg-popup__row { flex-direction: column; }
+  .fg-popup__submit, .fg-popup__cta { justify-content: center; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fg-popup__card { animation: none; }
+}
+</style>
+
+<script>
+(function () {
+  var root = document.getElementById('fg-popup-{{ section.id }}');
+  if (!root) return;
+
+  var code = root.dataset.code || 'FUR20';
+  var KEY = 'fg_popup_v1:' + code;
+  var days = parseInt(root.dataset.days, 10) || 30;
+  var delay = parseInt(root.dataset.delay, 10) || 0;
+  var exitIntent = root.dataset.exitIntent === 'true';
+  var posted = root.dataset.posted === 'true';
+  var hasErrors = !!root.querySelector('.fg-popup__error');
+  var inEditor = window.Shopify && window.Shopify.designMode;
+  var shown = false;
+
+  function read() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
+  function write(state) { try { localStorage.setItem(KEY, JSON.stringify({ state: state, t: Date.now() })); } catch (e) {} }
+  function suppressed() {
+    var s = read(); if (!s) return false;
+    if (s.state === 'subscribed') return true;
+    return (Date.now() - s.t) < days * 864e5;
+  }
+  function open() {
+    if (shown) return; shown = true;
+    root.hidden = false; document.documentElement.style.overflow = 'hidden';
+    var input = root.querySelector('.fg-popup__input'); if (input && !posted) setTimeout(function () { input.focus(); }, 300);
+  }
+  function close() {
+    root.hidden = true; document.documentElement.style.overflow = '';
+    write(posted ? 'subscribed' : 'dismissed');
+    if (posted && history.replaceState) { history.replaceState(null, '', location.pathname + location.search.replace(/([?&])customer_posted=true&?/, '$1').replace(/[?&]$/, '')); }
+  }
+
+  root.querySelectorAll('[data-fg-close]').forEach(function (el) { el.addEventListener('click', close); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !root.hidden) close(); });
+
+  var copyBtn = root.querySelector('[data-fg-copy]');
+  if (copyBtn) copyBtn.addEventListener('click', function () {
+    var value = copyBtn.dataset.fgCopy;
+    (navigator.clipboard ? navigator.clipboard.writeText(value) : Promise.reject()).then(function () {
+      copyBtn.textContent = 'Copied'; setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800);
+    }).catch(function () { window.prompt('Your code:', value); });
+  });
+
+  if (posted || hasErrors) { if (posted) write('subscribed'); open(); return; }
+  if (inEditor) { open(); return; }
+  if (suppressed()) return;
+
+  if (exitIntent && window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mouseout', function onOut(e) {
+      if (!e.relatedTarget && e.clientY <= 0) { document.removeEventListener('mouseout', onOut); open(); }
+    });
+  }
+  setTimeout(open, delay);
+})();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FG Email Popup",
+  "tag": "div",
+  "class": "fg-section fg-section--popup",
+  "settings": [
+    { "type": "checkbox", "id": "enabled", "label": "Enable popup", "default": true },
+    { "type": "header", "content": "Offer" },
+    { "type": "text", "id": "discount_code", "label": "Discount code override", "info": "Leave blank to use Theme settings → Active Discount Campaign (FUR20). Must match an Admin discount. Do not invent a second code." },
+    { "type": "text", "id": "customer_tags", "label": "Customer tags applied on signup", "default": "newsletter, popup-20off" },
+    { "type": "header", "content": "Copy" },
+    { "type": "paragraph", "content": "Use [percent], [code], and [max] — they resolve from the Active Discount Campaign theme settings." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "FOR PROFESSIONAL GROOMERS" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Take [percent]% off your first order." },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Join the Furgenics list for salon pricing, dilution tips, and new formula drops. Your code shows instantly after you subscribe." },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "you@yoursalon.com" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Get my [percent]% off" },
+    { "type": "text", "id": "fine_print", "label": "Fine print", "default": "One use per customer. Max [max] gallons. New customers, first order only. By subscribing you agree to receive marketing emails from Furgenics. Unsubscribe anytime." },
+    { "type": "text", "id": "dismiss_label", "label": "Dismiss link text", "default": "No thanks, I'll pay full price" },
+    { "type": "header", "content": "Success state" },
+    { "type": "text", "id": "success_heading", "label": "Heading", "default": "You're in. Here's your code:" },
+    { "type": "textarea", "id": "success_body", "label": "Body", "default": "Apply [code] at checkout on your first order. Copy it now — it is not emailed automatically." },
+    { "type": "text", "id": "success_cta_label", "label": "Button label", "default": "Shop Gallon Sizes" },
+    { "type": "url", "id": "success_cta_url", "label": "Button link", "info": "Blank uses the all-products collection." },
+    { "type": "header", "content": "Behaviour" },
+    { "type": "range", "id": "delay_seconds", "label": "Show after (seconds)", "min": 0, "max": 60, "step": 1, "default": 8 },
+    { "type": "checkbox", "id": "exit_intent", "label": "Also trigger on exit intent (desktop)", "default": true },
+    { "type": "range", "id": "suppress_days", "label": "Days to hide after dismissal", "min": 1, "max": 90, "step": 1, "default": 30 }
+  ],
+  "enabled_on": { "groups": ["header", "footer"] },
+  "presets": [ { "name": "FG Email Popup" } ]
+}
+{% endschema %}
