@@ -64,6 +64,13 @@ Keep entries short. File deep analysis under `docs/knowledge/analyses/` and link
 - **Done:** Added `site/theme/sections/fg-email-popup.liquid` — native customer-form capture, code from Theme settings Active Discount Campaign (FUR20 / [percent] / [max]), no WELCOME20, no “we emailed the code” claim. Popup is not inserted into header/footer JSON (unversioned); add via Theme editor after the section file is on the theme.
 - **Next:** (1) Merge PR. (2) `shopify theme push --allow-live --nodelete --only sections/fg-email-popup.liquid` once `SHOPIFY_CLI_THEME_TOKEN` is in the environment. (3) Customize → Header or Footer → Add section → FG Email Popup. (4) Confirm Admin discount FUR20 is still first-order / max 4 gallons / one use.
 - **Watch:** This VM has no Theme Access token and no Shopify CLI — live push could not run here. Never full-theme push / never push `config/`. Do not create a second popup-only code. Native form does not email the code (Flow if you want inbox delivery). Hide-after-order uses `customer.orders_count > 0`.
+## 2026-10-06 — Tests for the fleet compliance-pr-verify newest-check pick
+
+- **Who:** Claude Code CLI (Dell, cos@)
+- **PR:** TASK-892 (number set at open)
+- **Done:** Confirmed `scripts/compliance-pr-verify.mjs` on `main` is byte-identical to PLX_MC@64ecc2a (landed with #10). Added `tests/compliance-pr-verify.test.mjs`: the fleet contract tests ported to `node:test`, plus two tests that pin the newest-check jq pick.
+- **Next:** none for this script. Run `node --test tests/compliance-pr-verify.test.mjs` after any re-scaffold from PLX_MC.
+- **Watch:** No CI job runs these tests yet. The jq behavior test skips when `jq` is not on PATH.
 
 ## 2026-08-26 — Catch PR #9 up to main after #10
 
